@@ -1,0 +1,2 @@
+#include "frmAgregarIncubadora.h"
+
