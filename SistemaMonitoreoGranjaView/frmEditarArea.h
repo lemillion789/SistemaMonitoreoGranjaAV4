@@ -25,12 +25,12 @@ namespace SistemaMonitoreoGranjaView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
-		frmEditarArea(String^ tipoAnimal, String^ razaAnimal)
+		frmEditarArea(String^ ID)
 		{
 			InitializeComponent();
 			//
-			this->Animal = tipoAnimal;
-			this->Raza = razaAnimal;
+			this->ID = ID;
+
 
 			//TODO: agregar código de constructor aquí
 			//
@@ -77,8 +77,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Label^ label8;
 
 	private: List<Comederos^>^ listacomederos;
-	private: String^ Animal;
-	private: String^ Raza;
+	private: String^ ID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
@@ -442,7 +441,7 @@ namespace SistemaMonitoreoGranjaView {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		AreasDeAnimalesController^ gestor = gcnew AreasDeAnimalesController();
-		gestor->editarArea(this->Animal, this->Raza, this->listacomederos);
+		gestor->editarArea(this->ID, this->listacomederos);
 		MessageBox::Show("El partido político ha sido editado con éxito !!!");
 		this->Close();
 	}
@@ -482,7 +481,7 @@ namespace SistemaMonitoreoGranjaView {
 	}
 	private: System::Void frmEditarArea_Load(System::Object^ sender, System::EventArgs^ e) {
 		AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();
-		AreaDeAnimales^ objArea = objGestor->buscarAreaxAnimalxRaza(this->Animal, this->Raza);
+		AreaDeAnimales^ objArea = objGestor->buscarAreaxID(this->ID);
 		this->textBox1->Text = objArea->tipo_animal;
 		this->textBox2->Text = objArea->raza;
 		this->textBox3->Text = objArea->color;
