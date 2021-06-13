@@ -21,6 +21,7 @@ Sensores::Sensores(String^ ID, String^ Nombre, String^ Marca, String^ Tipo_Senso
     this->ID = ID;
     this->marca = Marca;
     this->unidades = unidades;
+    this->listaMediciones = gcnew List<Medicion^>();
 
 
 }

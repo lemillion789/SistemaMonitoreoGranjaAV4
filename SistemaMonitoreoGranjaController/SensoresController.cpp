@@ -105,6 +105,48 @@ int SensoresController::verificarSensor(String^ IDsensor) {
 	return pertenece;
 }
 
+List<Sensores^>^ SensoresController::buscarSensorxTipo(String^ tipoSensor)
+{
+	List<Sensores^>^ listaEncontrados = gcnew List<Sensores^>();
+	array<String^>^ lineas = File::ReadAllLines("Sensores.txt");
+	String^ separadores = ";";
+	for each (String ^ line in lineas) {
+		array<String^>^ palabras = line->Split(separadores->ToCharArray());
+		String^ ID_Sensor = palabras[0];
+		String^ Nombre = palabras[1];
+		String^ Marca = palabras[2];
+		String^ Tipo_Sensor = palabras[3];
+		int Cantidad = Convert::ToInt32(palabras[4]);
+		if (Tipo_Sensor == tipoSensor) { 
+			Sensores^ objSensorEncontrado = gcnew Sensores(ID_Sensor, Nombre, Marca, Tipo_Sensor, Cantidad);
+			objSensorEncontrado->listaMediciones = buscarMedicionesxSensor(ID_Sensor);
+
+			listaEncontrados->Add(objSensorEncontrado);
+			//falta alimento
+		}
+	}
+	return listaEncontrados;
+}
+
+List<Medicion^>^ SensoresController::buscarMedicionesxSensor(String^ ID_Sensor)
+{
+	List<Medicion^>^ listaEncontrados = gcnew List<Medicion^>();
+	array<String^>^ lineas = File::ReadAllLines("Mediciones.txt");		//IDSensor;Medida;Unidad;Hora
+	String^ separadores = ";";
+	for each (String ^ line in lineas) {
+		array<String^>^ palabras = line->Split(separadores->ToCharArray());
+		String^ IDSensor = palabras[0];
+		int Medida = Convert::ToInt32(palabras[1]);
+		String^ Unidad = palabras[2];
+		String^ Hora = palabras[3];
+		if (IDSensor == ID_Sensor) {
+			Medicion^ objMedida = gcnew Medicion(Hora, Unidad, Medida);
+			listaEncontrados->Add(objMedida);
+		}
+	}
+	return listaEncontrados;
+}
+
 /*
 void SensoresController::editarSensor(int codigoPartidoEditar, List<Sensores^>^ listaMiembros) {
 	this->listaPartidosPoliticos->Clear();

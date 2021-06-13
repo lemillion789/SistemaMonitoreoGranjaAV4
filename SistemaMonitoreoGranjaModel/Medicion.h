@@ -6,15 +6,15 @@ namespace SistemaMonitoreoGranjaModel {
 		/*Atributos o Datos*/
 	private:
 		String^ registro_hora;
-		String^ lugar;
-		String^ tipo_de_medicion;
-		String^ ID_sensor;
+		//String^ lugar;
+		//String^ tipo_de_medicion;
+		//String^ ID_sensor;
 		String^ unidades;
-		String^ medida;
+		int medida;
 
 		/*Métodos o Funciones*/
 	public:
-		Medicion(String^ registro_hora, String^ lugar, String^ tipo_de_medicion, String^ ID_sensor, String^ unidades, String^ medida);
+		Medicion(String^ registro_hora, String^ unidades, int medida);
 		Medicion();
 
 	};

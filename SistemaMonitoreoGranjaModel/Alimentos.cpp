@@ -3,7 +3,6 @@
 using namespace SistemaMonitoreoGranjaModel;
 Alimentos::Alimentos()
 {
-    throw gcnew System::NotImplementedException();
 }
 
 Alimentos::Alimentos(String^ codigo, String^ nombre, String^ descripcion, String^ fechaVencimiento, int presentacion, String^ unidadMedida)

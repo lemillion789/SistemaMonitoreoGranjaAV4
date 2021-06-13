@@ -1,8 +1,10 @@
 #include "Medicion.h"
 using namespace SistemaMonitoreoGranjaModel;
-Medicion::Medicion(String^ registro_hora, String^ lugar, String^ tipo_de_medicion, String^ ID_sensor, String^ unidades, String^ medida)
+Medicion::Medicion(String^ registro_hora, String^ unidades, int medida)
 {
-    throw gcnew System::NotImplementedException();
+    this->registro_hora = registro_hora;
+    this->unidades = unidades;
+    this->medida = medida;
 }
 
 Medicion::Medicion()

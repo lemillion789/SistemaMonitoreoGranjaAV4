@@ -18,6 +18,13 @@ namespace SistemaMonitoreoGranjaController {
 		//Sensores^ buscarAlumno(String^ codigoAlumno);
 		void GuardarSensorEnArchivo(Sensores^ objSensor);
 		int verificarSensor(String^ IDsensor);
+		
+		
+		//Diego
+		List<Sensores^>^ buscarSensorxTipo(String^ tipoSensor);
+		List<Medicion^>^ buscarMedicionesxSensor(String^ ID_Sensor);
+			
+
 
 
 	};

@@ -140,7 +140,10 @@
     <ClCompile Include="frmAgregarFarmaco.cpp" />
     <ClCompile Include="frmAgregarIncubadora.cpp" />
     <ClCompile Include="frmAgregarPersonal.cpp" />
+    <ClCompile Include="frmBuscarComederos.cpp" />
+    <ClCompile Include="frmBuscarSensores.cpp" />
     <ClCompile Include="frmEditarArea.cpp" />
+    <ClCompile Include="frmEditarComedero.cpp" />
     <ClCompile Include="frmEditarSensor.cpp" />
     <ClCompile Include="frmIniciarSesion.cpp" />
     <ClCompile Include="frmMantAlimentos.cpp" />
@@ -185,7 +188,16 @@
     <ClInclude Include="frmAgregarPersonal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmBuscarComederos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmBuscarSensores.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmEditarArea.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEditarComedero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEditarSensor.h">
@@ -255,6 +267,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarPersonal.resx">
       <DependentUpon>frmAgregarPersonal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarComederos.resx">
+      <DependentUpon>frmBuscarComederos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarSensores.resx">
+      <DependentUpon>frmBuscarSensores.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarComedero.resx">
+      <DependentUpon>frmEditarComedero.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarSensor.resx">
       <DependentUpon>frmEditarSensor.h</DependentUpon>

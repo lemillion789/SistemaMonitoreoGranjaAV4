@@ -2,7 +2,7 @@
 #include "Medicion.h"
 namespace SistemaMonitoreoGranjaModel {
 	using namespace System;
-
+	using namespace System::Collections::Generic;
 	public ref class Sensores {
 		/*Atributos o Datos*/
 	public:
@@ -11,7 +11,7 @@ namespace SistemaMonitoreoGranjaModel {
 		String^ ID;
 		String^ marca;
 		int unidades;
-		Medicion^ objMedicion;
+		List<Medicion^>^ listaMediciones;
 		/*Métodos o Funciones*/
 	public:
 		Sensores();
