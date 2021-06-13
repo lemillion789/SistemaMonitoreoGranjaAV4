@@ -13,23 +13,22 @@ namespace SistemaMonitoreoGranjaController {
 	public:
 		ComedoresController();
 		Comederos^ buscarComedero(String^ ID);
-		/*List<Comederos^>^ buscarAlumnosxNivelxGradoxSeccion(String^ nivel, int grado, String^ seccion);
-		int verificarSiAlumnoPertencePartidoPolitico(String^ codigoAlumno);
-
-		//Sensores^ buscarAlumno(String^ codigoAlumno);
-		/*List<Sensores^>^ buscarAlumnosxNivelxGradoxSeccion(String^ nivel, int grado, String^ seccion);
-		int verificarSiAlumnoPertencePartidoPolitico(String^ codigoAlumno);*/
+		List<Comederos^>^ buscarComederoxCapacidadMinima(int capAguaMin, int capProteinasMin, int capComidaMin);
+		int verificarSiComederoPerteneceArea(String^ IDComedero);
+		
 
 		void CargarComederoDesdeArchivo();
 		List<Sensores^>^ buscarSensoresComedero(String^ IDcomedero);
 		int ObtenerCantidadComederos();
 		Comederos^ ObtenerComederoLista(int indice);
 		List<Comederos^>^ obtenerListaComederos();
-		//void GuardarComederoEnArchivo(Comederos^ objSensor);
-		//List<Sensores^>^ buscarSensores(String^ nombreBuscar);  //buscar Sensor por nombre
-		//void eliminarComederor(String^ IDSensorEliminar);   //elimninar Sensor seleccionado
-		//Sensores^ buscarSensorxCodigo(int sensor);   // buscar partido politico por codigo
-		//void editarComedero(String^ IDSensorEditar, List<Medicion^>^ listaMediciones);
+		
+
+		void GuardarComederoEnArchivo(Comederos^ objComedero);
+		List<Comederos^>^ buscarComederos(String^ nombre);  
+		void eliminarComedero(String^ IDComedero);   
+		Comederos^ buscarComederoxID(String^ IDComedero);  
+		void editarComedero(String^ IDComederoEditar, List<Sensores^>^ listaSensores); 
 
 	};
 }
