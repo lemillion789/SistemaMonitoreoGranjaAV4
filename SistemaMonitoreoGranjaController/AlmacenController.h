@@ -12,7 +12,7 @@ namespace SistemaMonitoreoGranjaController {
 	public:
 		AlmacenController();
 
-
+		//1234
 
 	};
 }
