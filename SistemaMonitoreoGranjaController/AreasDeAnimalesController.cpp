@@ -4,7 +4,7 @@
 
 using namespace SistemaMonitoreoGranjaController;
 using namespace System;
-using namespace System::IO; /*Este es el namespace que permite manipular las clases y métodos para manejo de archivos de texto*/
+using namespace System::IO; /*Este es el namespace que permite manipular las clases y mÃ©todos para manejo de archivos de texto*/
 
 AreasDeAnimalesController::AreasDeAnimalesController() {
 	this->listaAreaDeAnimales = gcnew List<AreaDeAnimales^>();
@@ -33,11 +33,14 @@ void AreasDeAnimalesController::CargarAreasDesdeArchivo() {
 }
 List<Comederos^>^ AreasDeAnimalesController::BuscarComederosArea(String^ ID) {
 	List<Comederos^>^ listaComederosEncontrados = gcnew List<Comederos^>();
+
 	array<String^>^ lineas = File::ReadAllLines("ComederoenArea.txt");    // IDcomedero, IDarea
+
 	String^ separadores = ";";
 	for each (String ^ lineaComederosArea in lineas) {
 		array<String^>^ palabras = lineaComederosArea->Split(separadores->ToCharArray());
 		String^ IDcomedero = palabras[0];
+
 		String^ IDarea = palabras[1];
 		if (IDarea==ID) {
 			ComedoresController^ gestorComederoController = gcnew ComedoresController();
@@ -83,7 +86,7 @@ void AreasDeAnimalesController::GuardarAreaEnArchivo(AreaDeAnimales^ objArea)
 			k++;  //pasar a la siguiente linea -> arreglo
 		}
 	}
-	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+	/*AquÃ­ ya mi array de lineasArchivo esta OK, con la informaciÃ³n a grabar*/
 	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);    //IDcomedero; IDArea
 
 	//guardar en areasDeAnimales.txt
@@ -92,7 +95,7 @@ void AreasDeAnimalesController::GuardarAreaEnArchivo(AreaDeAnimales^ objArea)
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];  //
 		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad + ";" + objArea->ID;
 	}
-	/*Aquí ya mi array de lineasArchivoArea esta OK, con la información a grabar*/
+	/*AquÃ­ ya mi array de lineasArchivoArea esta OK, con la informaciÃ³n a grabar*/
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
 }
 
@@ -151,7 +154,7 @@ void AreasDeAnimalesController::eliminarArea(String^ ID)
 			k++;  //pasar a la siguiente linea -> arreglo
 		}
 	}
-	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+	/*AquÃ­ ya mi array de lineasArchivo esta OK, con la informaciÃ³n a grabar*/
 	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);
 
 	//guardar en areasDeAnimales.txt
@@ -160,7 +163,7 @@ void AreasDeAnimalesController::eliminarArea(String^ ID)
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];  //
 		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad + ";" + objArea->ID;
 	}
-	/*Aquí ya mi array de lineasArchivoArea esta OK, con la información a grabar*/
+	/*AquÃ­ ya mi array de lineasArchivoArea esta OK, con la informaciÃ³n a grabar*/
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
 }
 
@@ -228,7 +231,7 @@ void AreasDeAnimalesController::editarArea(String^ ID, List<Comederos^>^ listaCo
 			k++;  //pasar a la siguiente linea -> arreglo
 		}
 	}
-	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+	/*AquÃ­ ya mi array de lineasArchivo esta OK, con la informaciÃ³n a grabar*/
 	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);
 
 	//guardar en areasDeAnimales.txt
@@ -237,6 +240,6 @@ void AreasDeAnimalesController::editarArea(String^ ID, List<Comederos^>^ listaCo
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];  //
 		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad + ";" + objArea->ID;
 	}
-	/*Aquí ya mi array de lineasArchivoArea esta OK, con la información a grabar*/
+	/*AquÃ­ ya mi array de lineasArchivoArea esta OK, con la informaciÃ³n a grabar*/
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
 }

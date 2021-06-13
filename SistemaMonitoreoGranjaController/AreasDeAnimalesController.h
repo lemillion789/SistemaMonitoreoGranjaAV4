@@ -23,6 +23,7 @@ namespace SistemaMonitoreoGranjaController {
 		void GuardarAreaEnArchivo(AreaDeAnimales^ objArea);
 
 		List<AreaDeAnimales^>^ buscarAreas(String^ tipoAnimal);
+
 		void eliminarArea(String^ ID);//String^ tipoAnimal, String^ raza
 		//List<AreaDeAnimales^>^ buscarAreaxanimal(String^ tipoAnimal);
 		AreaDeAnimales^ buscarAreaxID(String^ ID);
