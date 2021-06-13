@@ -31,16 +31,17 @@ void AreasDeAnimalesController::CargarAreasDesdeArchivo() {
 		this->listaAreaDeAnimales->Add(objArea);
 	}
 }
-List<Comederos^>^ AreasDeAnimalesController::BuscarComederosArea(String^ tipo_animal, String^ raza_animal) {
+List<Comederos^>^ AreasDeAnimalesController::BuscarComederosArea(String^ ID) {
 	List<Comederos^>^ listaComederosEncontrados = gcnew List<Comederos^>();
-	array<String^>^ lineas = File::ReadAllLines("ComederoenArea.txt");
+	array<String^>^ lineas = File::ReadAllLines("ComederoenArea.txt");   //IDcomedero,IDraza
 	String^ separadores = ";";
 	for each (String ^ lineaComederosArea in lineas) {
 		array<String^>^ palabras = lineaComederosArea->Split(separadores->ToCharArray());
 		String^ IDcomedero = palabras[0];
-		String^ tipoAnimal = palabras[1];
-		String^ raza = palabras[2];
-		if (tipoAnimal == tipo_animal && raza == raza_animal) {
+		String^ IDraza = palabras[1];
+		/*String^ tipoAnimal = palabras[1];
+		String^ raza = palabras[2];*/
+		if (IDraza=ID) {
 			ComedoresController^ gestorComederoController = gcnew ComedoresController();
 			Comederos^ objComedero = gestorComederoController->buscarComedero(IDcomedero);
 			listaComederosEncontrados->Add(objComedero); //agregar nuevo elemeto a la lista

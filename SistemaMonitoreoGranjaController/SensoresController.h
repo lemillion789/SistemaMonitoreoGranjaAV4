@@ -19,6 +19,7 @@ namespace SistemaMonitoreoGranjaController {
 		void GuardarSensorEnArchivo(Sensores^ objSensor);
 		int verificarSensor(String^ IDsensor);
 
+
 	};
 
 }

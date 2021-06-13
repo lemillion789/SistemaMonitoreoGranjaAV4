@@ -15,7 +15,7 @@ namespace SistemaMonitoreoGranjaController {
 		//NOTA:  suponiendo que solo hay un area por raza
 
 		void CargarAreasDesdeArchivo();
-		List<Comederos^>^ BuscarComederosArea(String^ tipo_animal, String^ raza_animal);
+		List<Comederos^>^ BuscarComederosArea(String^ ID); //String^ tipo_animal, String^ raza_animal
 		int ObtenerCantidadAreas();
 		AreaDeAnimales^ ObtenerAreaLista(int indice);
 		List<AreaDeAnimales^>^ obtenerListaAreas();
@@ -23,7 +23,7 @@ namespace SistemaMonitoreoGranjaController {
 		void GuardarAreaEnArchivo(AreaDeAnimales^ objArea);
 
 		List<AreaDeAnimales^>^ buscarAreas(String^ tipoAnimal, String^ raza);
-		void eliminarArea(String^ tipoAnimal, String^ raza);
+		void eliminarArea(String^ ID);//String^ tipoAnimal, String^ raza
 		//List<AreaDeAnimales^>^ buscarAreaxanimal(String^ tipoAnimal);
 		AreaDeAnimales^ buscarAreaxAnimalxRaza(String^ tipoAnimal, String^ razaAnimal);
 		void editarArea(String^ tipoAnimal, String^ raza, List<Comederos^>^ listaComedereos);
