@@ -23,8 +23,8 @@ void AreasDeAnimalesController::CargarAreasDesdeArchivo() {
 		int peso = Convert::ToInt32(palabras[5]);
 		int edad = Convert::ToInt32(palabras[6]);
 		int cantidad = Convert::ToInt32(palabras[7]);
-
-		AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad);
+		String^ ID = (palabras[8]);
+		AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad, ID);
 
 		List<Comederos^>^ listComederosArea = BuscarComederosArea(tipo_animal, raza);
 		objArea->listaComederos = listComederosArea;
@@ -91,7 +91,7 @@ void AreasDeAnimalesController::GuardarAreaEnArchivo(AreaDeAnimales^ objArea)
 	array<String^>^ lineasArchivoArea = gcnew array<String^>(this->listaAreaDeAnimales->Count);
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];  //
-		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad;
+		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad + ";" + objArea->ID;
 	}
 	/*Aquí ya mi array de lineasArchivoArea esta OK, con la información a grabar*/
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
@@ -119,9 +119,9 @@ List<AreaDeAnimales^>^ AreasDeAnimalesController::buscarAreas(String^ tipoAnimal
 		int peso = Convert::ToInt32(palabras[5]);
 		int edad = Convert::ToInt32(palabras[6]);
 		int cantidad = Convert::ToInt32(palabras[7]);
-
+		String^ ID = (palabras[8]);
 		if (tipoAnimal->ToUpper() == tipo_animal->ToUpper() && raza_animal->ToUpper() == raza->ToUpper()) {  //ToUpper para volver a mayuscula la palabra
-			AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad);
+			AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,ID);
 			List<Comederos^>^ listComederoArea = BuscarComederosArea(tipo_animal, raza_animal);
 			objArea->listaComederos = listComederoArea;
 			listaEncontrados->Add(objArea);
@@ -165,7 +165,7 @@ void AreasDeAnimalesController::eliminarArea(String^ tipoAnimal, String^ raza)
 	array<String^>^ lineasArchivoArea = gcnew array<String^>(this->listaAreaDeAnimales->Count);
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];  //
-		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad;
+		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad + ";" + objArea->ID;
 	}
 	/*Aquí ya mi array de lineasArchivoArea esta OK, con la información a grabar*/
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
@@ -193,9 +193,9 @@ AreaDeAnimales^ AreasDeAnimalesController::buscarAreaxAnimalxRaza(String^ tipoAn
 		int peso = Convert::ToInt32(palabras[5]);
 		int edad = Convert::ToInt32(palabras[6]);
 		int cantidad = Convert::ToInt32(palabras[7]);
-
+		String^ ID = (palabras[8]);
 		if (tipoAnimal->ToUpper() == tipo_animal->ToUpper() && raza_animal->ToUpper() == razaAnimal->ToUpper()) {  //ToUpper para volver a mayuscula la palabra
-			objArea = gcnew AreaDeAnimales(raza_animal, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad);
+			objArea = gcnew AreaDeAnimales(raza_animal, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,ID);
 			List<Comederos^>^ listComederoArea = BuscarComederosArea(tipo_animal, raza_animal);
 			objArea->listaComederos = listComederoArea;
 			break;
@@ -242,7 +242,7 @@ void AreasDeAnimalesController::editarArea(String^ tipoAnimal, String^ raza, Lis
 	array<String^>^ lineasArchivoArea = gcnew array<String^>(this->listaAreaDeAnimales->Count);
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];  //
-		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad;
+		lineasArchivoArea[i] = objArea->raza + ";" + objArea->color + ";" + objArea->tipo_animal + ";" + objArea->sexo + ";" + objArea->estado_salud + ";" + objArea->peso + ";" + objArea->edad + ";" + objArea->cantidad + ";" + objArea->ID;
 	}
 	/*Aquí ya mi array de lineasArchivoArea esta OK, con la información a grabar*/
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
