@@ -23,7 +23,7 @@ void AreasDeAnimalesController::CargarAreasDesdeArchivo() {
 		int peso = Convert::ToInt32(palabras[5]);
 		int edad = Convert::ToInt32(palabras[6]);
 		int cantidad = Convert::ToInt32(palabras[7]);
-		String^ ID = (palabras[8]);
+		String^ ID = palabras[8];
 		AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad, ID);
 
 		List<Comederos^>^ listComederosArea = BuscarComederosArea(ID);
@@ -96,7 +96,7 @@ void AreasDeAnimalesController::GuardarAreaEnArchivo(AreaDeAnimales^ objArea)
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
 }
 
-List<AreaDeAnimales^>^ AreasDeAnimalesController::buscarAreas(String^ tipoAnimal, String^ raza)
+List<AreaDeAnimales^>^ AreasDeAnimalesController::buscarAreas(String^ tipoAnimal)
 {
 	List<AreaDeAnimales^>^ listaEncontrados = gcnew List<AreaDeAnimales^>();
 	array<String^>^ lineas = File::ReadAllLines("AreasDeAnimales.txt");
@@ -113,8 +113,8 @@ List<AreaDeAnimales^>^ AreasDeAnimalesController::buscarAreas(String^ tipoAnimal
 		int edad = Convert::ToInt32(palabras[6]);
 		int cantidad = Convert::ToInt32(palabras[7]);
 		String^ ID = (palabras[8]);
-		if (tipoAnimal->ToUpper() == tipo_animal->ToUpper() && raza_animal->ToUpper() == raza->ToUpper()) {  //ToUpper para volver a mayuscula la palabra
-			AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,ID);
+		if (tipoAnimal->ToUpper() == tipo_animal->ToUpper()) {  //ToUpper para volver a mayuscula la palabra
+			AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza_animal, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,ID);
 			List<Comederos^>^ listComederoArea = BuscarComederosArea(ID);
 			objArea->listaComederos = listComederoArea;
 			listaEncontrados->Add(objArea);
