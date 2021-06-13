@@ -26,21 +26,20 @@ void AreasDeAnimalesController::CargarAreasDesdeArchivo() {
 		String^ ID = (palabras[8]);
 		AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad, ID);
 
-		List<Comederos^>^ listComederosArea = BuscarComederosArea(tipo_animal, raza);
+		List<Comederos^>^ listComederosArea = BuscarComederosArea(ID);
 		objArea->listaComederos = listComederosArea;
 		this->listaAreaDeAnimales->Add(objArea);
 	}
 }
-List<Comederos^>^ AreasDeAnimalesController::BuscarComederosArea(String^ tipo_animal, String^ raza_animal) {
+List<Comederos^>^ AreasDeAnimalesController::BuscarComederosArea(String^ ID) {
 	List<Comederos^>^ listaComederosEncontrados = gcnew List<Comederos^>();
-	array<String^>^ lineas = File::ReadAllLines("ComederoenArea.txt");
+	array<String^>^ lineas = File::ReadAllLines("ComederoenArea.txt");    // IDcomedero, IDarea
 	String^ separadores = ";";
 	for each (String ^ lineaComederosArea in lineas) {
 		array<String^>^ palabras = lineaComederosArea->Split(separadores->ToCharArray());
 		String^ IDcomedero = palabras[0];
-		String^ tipoAnimal = palabras[1];
-		String^ raza = palabras[2];
-		if (tipoAnimal == tipo_animal && raza == raza_animal) {
+		String^ IDarea = palabras[1];
+		if (IDarea==ID) {
 			ComedoresController^ gestorComederoController = gcnew ComedoresController();
 			Comederos^ objComedero = gestorComederoController->buscarComedero(IDcomedero);
 			listaComederosEncontrados->Add(objComedero); //agregar nuevo elemeto a la lista
@@ -74,18 +73,18 @@ void AreasDeAnimalesController::GuardarAreaEnArchivo(AreaDeAnimales^ objArea)
 	}
 
 	//guardar en ComederoenArea.txt
-	array<String^>^ lineasArchivo = gcnew array<String^>(totalComederos);
+	array<String^>^ lineasArchivo = gcnew array<String^>(totalComederos);  
 	int k = 0;
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
 		AreaDeAnimales^ objAreaGrabar = this->listaAreaDeAnimales[i];
 		for (int j = 0; j < objAreaGrabar->listaComederos->Count; j++) {
 			Comederos^ objComedero = objAreaGrabar->listaComederos[j];
-			lineasArchivo[k] = objComedero->ID + ";" + objAreaGrabar->tipo_animal + ";" + objAreaGrabar->raza;
+			lineasArchivo[k] = objComedero->ID + ";" + objAreaGrabar->ID;
 			k++;  //pasar a la siguiente linea -> arreglo
 		}
 	}
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
-	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);
+	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);    //IDcomedero; IDArea
 
 	//guardar en areasDeAnimales.txt
 	array<String^>^ lineasArchivoArea = gcnew array<String^>(this->listaAreaDeAnimales->Count);
@@ -103,12 +102,6 @@ List<AreaDeAnimales^>^ AreasDeAnimalesController::buscarAreas(String^ tipoAnimal
 	array<String^>^ lineas = File::ReadAllLines("AreasDeAnimales.txt");
 	String^ separadores = ";";
 
-	/*	AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad);
-
-		List<Comederos^>^ listComederosArea = BuscarComederosArea(tipo_animal, raza);
-		objArea->listaComederos = listComederosArea;
-		this->listaAreaDeAnimales->Add(objArea);
-	}*/
 	for each (String ^ lineaAreas in lineas) {
 		array<String^>^ palabras = lineaAreas->Split(separadores->ToCharArray());
 		String^ raza_animal = palabras[0];
@@ -122,7 +115,7 @@ List<AreaDeAnimales^>^ AreasDeAnimalesController::buscarAreas(String^ tipoAnimal
 		String^ ID = (palabras[8]);
 		if (tipoAnimal->ToUpper() == tipo_animal->ToUpper() && raza_animal->ToUpper() == raza->ToUpper()) {  //ToUpper para volver a mayuscula la palabra
 			AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,ID);
-			List<Comederos^>^ listComederoArea = BuscarComederosArea(tipo_animal, raza_animal);
+			List<Comederos^>^ listComederoArea = BuscarComederosArea(ID);
 			objArea->listaComederos = listComederoArea;
 			listaEncontrados->Add(objArea);
 		}
@@ -130,12 +123,12 @@ List<AreaDeAnimales^>^ AreasDeAnimalesController::buscarAreas(String^ tipoAnimal
 	return listaEncontrados;
 }
 
-void AreasDeAnimalesController::eliminarArea(String^ tipoAnimal, String^ raza)
+void AreasDeAnimalesController::eliminarArea(String^ ID)
 {
 	CargarAreasDesdeArchivo();
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];
-		if (objArea->tipo_animal == tipoAnimal && objArea->raza == raza) {
+		if (objArea->ID==ID) {
 			this->listaAreaDeAnimales->RemoveAt(i);   //remover partido de la lista
 			break;
 		}
@@ -154,7 +147,7 @@ void AreasDeAnimalesController::eliminarArea(String^ tipoAnimal, String^ raza)
 		AreaDeAnimales^ objAreaGrabar = this->listaAreaDeAnimales[i];
 		for (int j = 0; j < objAreaGrabar->listaComederos->Count; j++) {
 			Comederos^ objComedero = objAreaGrabar->listaComederos[j];
-			lineasArchivo[k] = objComedero->ID + ";" + objAreaGrabar->tipo_animal + ";" + objAreaGrabar->raza;
+			lineasArchivo[k] = objComedero->ID + ";" + objAreaGrabar->ID;
 			k++;  //pasar a la siguiente linea -> arreglo
 		}
 	}
@@ -171,7 +164,7 @@ void AreasDeAnimalesController::eliminarArea(String^ tipoAnimal, String^ raza)
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
 }
 
-AreaDeAnimales^ AreasDeAnimalesController::buscarAreaxAnimalxRaza(String^ tipoAnimal, String^ razaAnimal)
+AreaDeAnimales^ AreasDeAnimalesController::buscarAreaxID(String^ ID)
 {
 	AreaDeAnimales^ objArea;
 	array<String^>^ lineas = File::ReadAllLines("AreasDeAnimales.txt");
@@ -193,10 +186,10 @@ AreaDeAnimales^ AreasDeAnimalesController::buscarAreaxAnimalxRaza(String^ tipoAn
 		int peso = Convert::ToInt32(palabras[5]);
 		int edad = Convert::ToInt32(palabras[6]);
 		int cantidad = Convert::ToInt32(palabras[7]);
-		String^ ID = (palabras[8]);
-		if (tipoAnimal->ToUpper() == tipo_animal->ToUpper() && raza_animal->ToUpper() == razaAnimal->ToUpper()) {  //ToUpper para volver a mayuscula la palabra
-			objArea = gcnew AreaDeAnimales(raza_animal, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,ID);
-			List<Comederos^>^ listComederoArea = BuscarComederosArea(tipo_animal, raza_animal);
+		String^ IDarea = (palabras[8]);
+		if (ID==IDarea) {  //ToUpper para volver a mayuscula la palabra
+			objArea = gcnew AreaDeAnimales(raza_animal, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,IDarea);
+			List<Comederos^>^ listComederoArea = BuscarComederosArea(ID);
 			objArea->listaComederos = listComederoArea;
 			break;
 		}
@@ -204,14 +197,14 @@ AreaDeAnimales^ AreasDeAnimalesController::buscarAreaxAnimalxRaza(String^ tipoAn
 	return objArea;
 }
 
-void AreasDeAnimalesController::editarArea(String^ tipoAnimal, String^ raza, List<Comederos^>^ listaComedereos)
+void AreasDeAnimalesController::editarArea(String^ ID, List<Comederos^>^ listaComedereos)
 {
 	this->listaAreaDeAnimales->Clear();
 	CargarAreasDesdeArchivo();
 	//encontrar area a editar
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
 		AreaDeAnimales^ objArea = this->listaAreaDeAnimales[i];
-		if (objArea->tipo_animal == tipoAnimal && objArea->raza == raza) {
+		if (objArea->ID==ID) {
 			this->listaAreaDeAnimales[i]->listaComederos = listaComedereos;
 			break;
 		}
@@ -231,7 +224,7 @@ void AreasDeAnimalesController::editarArea(String^ tipoAnimal, String^ raza, Lis
 		AreaDeAnimales^ objAreaGrabar = this->listaAreaDeAnimales[i];
 		for (int j = 0; j < objAreaGrabar->listaComederos->Count; j++) {
 			Comederos^ objComedero = objAreaGrabar->listaComederos[j];
-			lineasArchivo[k] = objComedero->ID + ";" + objAreaGrabar->tipo_animal + ";" + objAreaGrabar->raza;
+			lineasArchivo[k] = objComedero->ID + ";" + objAreaGrabar->ID;
 			k++;  //pasar a la siguiente linea -> arreglo
 		}
 	}
