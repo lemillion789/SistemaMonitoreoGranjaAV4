@@ -89,7 +89,6 @@ namespace SistemaMonitoreoGranjaView {
 
 
 
-
 	protected:
 	private:
 		/// <summary>
@@ -289,6 +288,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->button1);
 			this->Name = L"frmAdministrarAnimales";
 			this->Text = L"frmAdministrarAnimales";
+			this->Load += gcnew System::EventHandler(this, &frmAdministrarAnimales::frmAdministrarAnimales_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -318,16 +318,16 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		//BUSCAR AREA
 		String^ animalBuscar = this->comboBox1->Text;
-		List<AreaDeAnimales^>^ listaPartidos;
+		List<AreaDeAnimales^>^ listaAreas;
 		AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();  //todas las funciones las hace el gestor
 		if (animalBuscar == "") {	  //casilla vacia 	
 			objGestor->CargarAreasDesdeArchivo();
-			listaPartidos = objGestor->obtenerListaAreas();
+			listaAreas = objGestor->obtenerListaAreas();
 		}
 		else {
-			listaPartidos = objGestor->buscarAreas(animalBuscar);
+			listaAreas = objGestor->buscarAreas(animalBuscar);
 		}
-		mostrarGrilla(listaPartidos);
+		mostrarGrilla(listaAreas);
 	}
 	private: void mostrarGrilla(List<AreaDeAnimales^>^ listaAreas) {
 		this->dataGridView1->Rows->Clear();
@@ -346,5 +346,11 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}
+private: System::Void frmAdministrarAnimales_Load(System::Object^ sender, System::EventArgs^ e) {
+	AreasDeAnimalesController^ gestor = gcnew AreasDeAnimalesController(); //nota: agregar using namespace Siste..Controller
+	gestor->CargarAreasDesdeArchivo();
+	List<AreaDeAnimales^>^ objLista = gestor->obtenerListaAreas();
+	mostrarGrilla(objLista);
+}
 };
 }

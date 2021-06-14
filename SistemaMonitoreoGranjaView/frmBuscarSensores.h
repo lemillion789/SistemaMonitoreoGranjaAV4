@@ -147,6 +147,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(196, 24);
 			this->comboBox2->TabIndex = 8;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &frmBuscarSensores::comboBox2_SelectedIndexChanged);
 			// 
 			// button1
 			// 
@@ -251,6 +252,35 @@ private: void mostrarGrilla(List<Sensores^>^ listaSens) {
 	}
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
+	String^ codigoSensorSeleccionado = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna		
+	SensoresController^ objGestor = gcnew SensoresController();
+	int perteneceComedero = objGestor->verificarSensor(codigoSensorSeleccionado);
+	if (!perteneceComedero) {
+		/*Aquí voy a ver si no esta repetido*/
+		int esta_repetido = 0;
+		for (int i = 0; i < this->listaSensores->Count; i++) {
+			Sensores^ objSensor = this->listaSensores[i];
+			if (objSensor->ID == codigoSensorSeleccionado) {
+				esta_repetido = 1;
+				break;
+			}
+		}
+		if (!esta_repetido) {
+			Sensores^ objSensor = objGestor->buscarSensor(codigoSensorSeleccionado);  //agregar alumno nuevo a la lista
+			this->listaSensores->Add(objSensor);
+			this->Close();
+		}
+		else {
+			MessageBox::Show("El Sensor ya se encuentra dentro de la lista de sensores del Comedero");
+		}
+	}
+	else {
+		MessageBox::Show("El Sensor ya pertenece a otro Comedero");
+	}
+}
+private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
 }
 };
 }

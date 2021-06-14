@@ -139,6 +139,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button3->TabIndex = 6;
 			this->button3->Text = L"Cancelar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmNuevaArea::button3_Click);
 			// 
 			// button2
 			// 
@@ -300,6 +301,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(191, 22);
 			this->textBox4->TabIndex = 18;
+			this->textBox4->TextChanged += gcnew System::EventHandler(this, &frmNuevaArea::textBox4_TextChanged);
 			// 
 			// label4
 			// 
@@ -526,5 +528,17 @@ namespace SistemaMonitoreoGranjaView {
 	}
 	private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox4_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+	e->Handled = !(e->KeyChar.IsNumber(e->KeyChar));
+	if (!(e->KeyChar.IsNumber(e->KeyChar))) {
+		MessageBox::Show("Solo puede digitar numeros");
+	}
+
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
 };
 }

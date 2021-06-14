@@ -1,6 +1,6 @@
 12345;SensorT1;Siemmens;Temperatura;°C
-12346;SensorN1;Siemmens;Nivel;Litro
+12346;SensorN1;Siemmens;Nivel de Agua;Litro
 12347;SensorT2;Siemmens;Temperatura;°C
 12348;SensorH1;Siemmens;Humedad;%
-12349;SensorN1;Siemmens;Nivel;Litro
+12349;SensorN1;Siemmens;Nivel de Agua;Litro
 12350;cunch;Converse;Temperatura;°C

@@ -225,6 +225,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Eliminar Sensor";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmEditarComedero::button3_Click);
 			// 
 			// button2
 			// 
@@ -421,8 +422,18 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	frmBuscarSensores^ ventanaBuscar = gcnew frmBuscarSensores(this->listaSensores);
 	ventanaBuscar->ShowDialog();
 
-	/*Aquí ya la busqueda de alumnos termino y ya agregue un alumno a mi lista*/
-	/*Entonces toca mostrar los alumnos de la lista en la grilla*/
+	mostrarGrilla(this->listaSensores);
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
+	String^ IDComederoSeleccionado = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString();
+	for (int i = 0; this->listaSensores->Count; i++) {
+		Sensores^ obj = this->listaSensores[i];
+		if (obj->ID == IDComederoSeleccionado) {
+			this->listaSensores->RemoveAt(i);
+			break;
+		}
+	}
 	mostrarGrilla(this->listaSensores);
 }
 };

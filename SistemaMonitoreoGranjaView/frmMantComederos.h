@@ -1,5 +1,5 @@
 #pragma once
-#include "frmAgregarComedero.h"
+#include "frmNuevoComedero.h"
 #include "frmEditarComedero.h"
 namespace SistemaMonitoreoGranjaView {
 
@@ -230,7 +230,7 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmAgregarComedero^ ventana = gcnew frmAgregarComedero();
+		frmNuevoComedero^ ventana = gcnew frmNuevoComedero();
 		ventana->ShowDialog();
 
 		ComedoresController^ gestor = gcnew ComedoresController();

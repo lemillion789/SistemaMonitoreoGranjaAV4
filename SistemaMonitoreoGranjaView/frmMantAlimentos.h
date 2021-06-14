@@ -245,7 +245,7 @@ namespace SistemaMonitoreoGranjaView {
 			fila[1] = objAlimento->nombre;
 			fila[2] = Convert::ToString(objAlimento->presentacion) + " " + objAlimento->unidadMedida;
 			fila[3] = objAlimento->fechaVencimiento;
-			fila[4] = objAlimento->descripcion;+" ";
+			fila[4] = objAlimento->descripcion;
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}

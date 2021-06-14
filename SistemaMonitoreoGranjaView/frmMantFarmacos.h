@@ -233,7 +233,7 @@ namespace SistemaMonitoreoGranjaView {
 			fila[1] = objFarmaco->nombre;
 			fila[2] = Convert::ToString(objFarmaco->cantidad);
 			fila[3] = objFarmaco->fechaVencimiento;
-			fila[4] = objFarmaco->descripcion; +" ";
+			fila[4] = objFarmaco->descripcion;
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}
