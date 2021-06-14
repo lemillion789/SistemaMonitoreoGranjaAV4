@@ -23,8 +23,7 @@ namespace SistemaMonitoreoGranjaController {
 		//Diego
 		List<Sensores^>^ buscarSensorxTipo(String^ tipoSensor);
 		List<Medicion^>^ buscarMedicionesxSensor(String^ ID_Sensor);
-			
-
+		void CrearMedicionesNuevas(); //crea mediciones para cada sensor;
 
 
 	};

@@ -6,7 +6,7 @@ Sensores::Sensores()
     throw gcnew System::NotImplementedException();
 }
 
-Sensores::Sensores(String^ tipoSensor, String^ ID, String^ marca, int unidades)
+Sensores::Sensores(String^ tipoSensor, String^ ID, String^ marca, String^ unidades)
 {
     this->tipoSensor = tipoSensor;
     this->ID = ID;
@@ -15,7 +15,7 @@ Sensores::Sensores(String^ tipoSensor, String^ ID, String^ marca, int unidades)
 }
 
 
-Sensores::Sensores(String^ ID, String^ Nombre, String^ Marca, String^ Tipo_Sensor, int unidades) {
+Sensores::Sensores(String^ ID, String^ Nombre, String^ Marca, String^ Tipo_Sensor, String^ unidades) {
     this->Nombre = Nombre;
     this->tipoSensor = Tipo_Sensor;
     this->ID = ID;

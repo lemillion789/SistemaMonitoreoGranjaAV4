@@ -189,6 +189,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dateTimePicker1->Name = L"dateTimePicker1";
 			this->dateTimePicker1->Size = System::Drawing::Size(259, 22);
 			this->dateTimePicker1->TabIndex = 11;
+			this->dateTimePicker1->ValueChanged += gcnew System::EventHandler(this, &frmAgregarAlimento::dateTimePicker1_ValueChanged);
 			// 
 			// frmAgregarAlimento
 			// 
@@ -235,6 +236,8 @@ private: System::Void frmAgregarAlimento_Load(System::Object^ sender, System::Ev
 }
 private: System::Void Cancelar_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void dateTimePicker1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

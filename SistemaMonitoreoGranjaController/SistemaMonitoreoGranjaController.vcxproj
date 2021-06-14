@@ -120,6 +120,7 @@
     <ClInclude Include="AreasDeAnimalesController.h" />
     <ClInclude Include="ComedoresController.h" />
     <ClInclude Include="IncubadorasController.h" />
+    <ClInclude Include="MedicionController.h" />
     <ClInclude Include="SensoresController.h" />
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +128,7 @@
     <ClCompile Include="AreasDeAnimalesController.cpp" />
     <ClCompile Include="ComedoresController.cpp" />
     <ClCompile Include="IncubadorasController.cpp" />
+    <ClCompile Include="MedicionController.cpp" />
     <ClCompile Include="SensoresController.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

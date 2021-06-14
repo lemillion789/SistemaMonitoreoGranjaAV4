@@ -10,13 +10,13 @@ namespace SistemaMonitoreoGranjaModel {
 		String^ tipoSensor;
 		String^ ID;
 		String^ marca;
-		int unidades;
+		String^ unidades;
 		List<Medicion^>^ listaMediciones;
 		/*Métodos o Funciones*/
 	public:
 		Sensores();
-		Sensores(String^ ID, String^ Nombre, String^ Marca, String^ Tipo_Sensor, int unidades);
-		Sensores(String^ tipoSensor, String^ ID, String^ marca, int unidades);
+		Sensores(String^ ID, String^ Nombre, String^ Marca, String^ Tipo_Sensor, String^ unidades);
+		Sensores(String^ tipoSensor, String^ ID, String^ marca, String^ unidades);
 
 	};
 }

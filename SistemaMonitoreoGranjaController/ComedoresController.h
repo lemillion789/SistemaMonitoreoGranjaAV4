@@ -30,5 +30,7 @@ namespace SistemaMonitoreoGranjaController {
 		Comederos^ buscarComederoxID(String^ IDComedero);  
 		void editarComedero(String^ IDComederoEditar, List<Sensores^>^ listaSensores); 
 
+
+
 	};
 }

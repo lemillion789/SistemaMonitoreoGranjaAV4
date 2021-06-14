@@ -234,9 +234,9 @@ namespace SistemaMonitoreoGranjaView {
 		String^ Marca = Convert::ToString(this->textBox3->Text);
 		String^ Tipo_Sensor = this->comboBox1->Text;
 
-		int Cantidad = Convert::ToInt32(this->textBox4->Text);
+		String^ unidad = (this->textBox4->Text);
 		
-		Sensores^ objSensor = gcnew Sensores(ID, Nombre, Marca, Tipo_Sensor, Cantidad);
+		Sensores^ objSensor = gcnew Sensores(ID, Nombre, Marca, Tipo_Sensor, unidad);
 		SensoresController^ gestorSensores = gcnew SensoresController();
 		gestorSensores->GuardarSensorEnArchivo(objSensor);
 		this->Close();

@@ -1,9 +1,6 @@
-12345;SensorT1;Siemmens;Temperatura;2
-12346;SensorN1;Siemmens;Nivel;4
-12347;SensorT2;Siemmens;Temperatura;2
-12348;SensorH1;Siemmens;Humedad;1
-12349;SensorN1;Siemmens;Nivel;4
-12345;SensorIU;Nike;Nivel;69
-3456;cunch;Converse;Temperatura;96
-12345;SensorT1;Siemmens;Temperatura;2
-12345;SensorT1;Siemmens;Temperatura;8
+12345;SensorT1;Siemmens;Temperatura;°C
+12346;SensorN1;Siemmens;Nivel;Litro
+12347;SensorT2;Siemmens;Temperatura;°C
+12348;SensorH1;Siemmens;Humedad;%
+12349;SensorN1;Siemmens;Nivel;Litro
+12350;cunch;Converse;Temperatura;°C

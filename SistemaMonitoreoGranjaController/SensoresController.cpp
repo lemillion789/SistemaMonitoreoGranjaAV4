@@ -1,4 +1,7 @@
 #include "SensoresController.h"
+#include "MedicionController.h"
+#include <time.h>
+#include<stdlib.h>
 //#include "MedicionController.h"
 using namespace SistemaMonitoreoGranjaModel;
 using namespace SistemaMonitoreoGranjaController;
@@ -20,9 +23,9 @@ Sensores^ SensoresController::buscarSensor(String^ ID) {
 		String^ Nombre = palabras[1];
 		String^ Marca = palabras[2];
 		String^ Tipo_Sensor = palabras[3];
-		int Cantidad = Convert::ToInt32(palabras[4]);
+		String^ Unidad =(palabras[4]);
 		if (ID_Sensor == ID) {
-			objSensorEncontrado = gcnew Sensores(ID, Nombre, Marca, Tipo_Sensor, Cantidad);
+			objSensorEncontrado = gcnew Sensores(ID, Nombre, Marca, Tipo_Sensor, Unidad);
 			break;
 		}
 	}
@@ -39,8 +42,8 @@ void SensoresController::CargarSensores() {
 		String^ Nombre = palabras[1];
 		String^ Marca = palabras[2];
 		String^ Tipo_Sensor = palabras[3];
-		int Cantidad = Convert::ToInt32(palabras[4]);
-		Sensores^ objSensor = gcnew  Sensores(ID_Sensor, Nombre, Marca, Tipo_Sensor, Cantidad);
+		String^ Unidad = (palabras[4]);
+		Sensores^ objSensor = gcnew  Sensores(ID_Sensor, Nombre, Marca, Tipo_Sensor, Unidad);
 		//List<Sensores^>^ listaSensores = BuscarAlumnosPartidoPolitico(codigoPartido);
 		//objPartido->listaAlumnos = listAlumnosPartido;
 		this->listaSensores->Add(objSensor);
@@ -52,7 +55,7 @@ List<Sensores^>^ SensoresController::obtenerListaSensores() {
 }
 
 void SensoresController::GuardarSensorEnArchivo(Sensores^ objSensor) {
-	//Miembros de Partidos Politicos
+	
 	this->listaSensores->Clear();
 	CargarSensores();
 	String^ codigo = objSensor->ID;
@@ -116,9 +119,9 @@ List<Sensores^>^ SensoresController::buscarSensorxTipo(String^ tipoSensor)
 		String^ Nombre = palabras[1];
 		String^ Marca = palabras[2];
 		String^ Tipo_Sensor = palabras[3];
-		int Cantidad = Convert::ToInt32(palabras[4]);
+		String^ Unidad = (palabras[4]);
 		if (Tipo_Sensor == tipoSensor) { 
-			Sensores^ objSensorEncontrado = gcnew Sensores(ID_Sensor, Nombre, Marca, Tipo_Sensor, Cantidad);
+			Sensores^ objSensorEncontrado = gcnew Sensores(ID_Sensor, Nombre, Marca, Tipo_Sensor, Unidad);
 			objSensorEncontrado->listaMediciones = buscarMedicionesxSensor(ID_Sensor);
 
 			listaEncontrados->Add(objSensorEncontrado);
@@ -140,11 +143,51 @@ List<Medicion^>^ SensoresController::buscarMedicionesxSensor(String^ ID_Sensor)
 		String^ Unidad = palabras[2];
 		String^ Hora = palabras[3];
 		if (IDSensor == ID_Sensor) {
-			Medicion^ objMedida = gcnew Medicion(Hora, Unidad, Medida);
+			Medicion^ objMedida = gcnew Medicion(Hora, Unidad, Medida, IDSensor);
 			listaEncontrados->Add(objMedida);
 		}
 	}
 	return listaEncontrados;
+}
+
+
+void SensoresController::CrearMedicionesNuevas()
+{
+	srand(time(NULL));
+	this->listaSensores->Clear();
+	CargarSensores();
+
+	//AÑADIR MEDICION A CADA SENSOR
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = this->listaSensores[i];
+		
+		int aleatorio = rand() % 100;
+		//AGREGAR LA MEDICION ALEATORIA
+		MedicionController^ gestorMedicion = gcnew MedicionController();
+		List<Medicion^>^ listaNueva = gestorMedicion->agregarMedicionAleatoria(objSensorGrab,aleatorio);
+		objSensorGrab->listaMediciones = listaNueva;
+	}
+	
+	//GUARDAR
+	int totalMediciones = 0;
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = this->listaSensores[i];
+		totalMediciones = totalMediciones + objSensorGrab->listaMediciones->Count;
+	}
+
+	//guardar en Mediciones.txt
+	array<String^>^ lineasArchivo = gcnew array<String^>(totalMediciones);
+	int k = 0;
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = this->listaSensores[i];
+		for (int j = 0; j < objSensorGrab->listaMediciones->Count; j++) {
+			Medicion^ objMedicion = objSensorGrab->listaMediciones[j];
+			lineasArchivo[k] = objSensorGrab->ID + ";" + objMedicion->medida + ";" + objMedicion->unidades + ";" + objMedicion->registro_hora;
+			k++;  //pasar a la siguiente linea -> arreglo
+		}
+	}
+	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+	File::WriteAllLines("Mediciones.txt", lineasArchivo);
 }
 
 /*
