@@ -240,6 +240,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(1016, 280);
 			this->dataGridView1->TabIndex = 9;
 			// 
@@ -369,7 +370,6 @@ namespace SistemaMonitoreoGranjaView {
 		//EDITAR Area
 		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
 		String^ IDAreaEditar = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-
 		frmEditarArea^ ventanaEditarArea = gcnew frmEditarArea(IDAreaEditar);
 		ventanaEditarArea->ShowDialog();
 
@@ -377,6 +377,8 @@ namespace SistemaMonitoreoGranjaView {
 		gestor->CargarAreasDesdeArchivo();
 		List<AreaDeAnimales^>^ listaAreas = gestor->obtenerListaAreas();
 		mostrarGrilla(listaAreas);
+	
+		
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		//ELIMINAR Area

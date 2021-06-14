@@ -128,6 +128,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(685, 185);
 			this->dataGridView1->TabIndex = 4;
 			// 

@@ -107,6 +107,8 @@ namespace SistemaMonitoreoGranjaView {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
@@ -123,8 +125,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
-			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
@@ -176,6 +176,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(685, 164);
 			this->dataGridView1->TabIndex = 11;
 			// 
@@ -272,6 +273,25 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del area";
 			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmNuevaArea::groupBox1_Enter);
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(313, 26);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(29, 17);
+			this->label9->TabIndex = 20;
+			this->label9->Text = L"ID: ";
+			this->label9->Click += gcnew System::EventHandler(this, &frmNuevaArea::label9_Click);
+			// 
+			// textBox9
+			// 
+			this->textBox9->Location = System::Drawing::Point(378, 23);
+			this->textBox9->Margin = System::Windows::Forms::Padding(4);
+			this->textBox9->Name = L"textBox9";
+			this->textBox9->Size = System::Drawing::Size(191, 22);
+			this->textBox9->TabIndex = 19;
 			// 
 			// textBox4
 			// 
@@ -417,25 +437,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Tipo de \r\nanimal :";
 			this->label1->Click += gcnew System::EventHandler(this, &frmNuevaArea::label1_Click);
-			// 
-			// textBox9
-			// 
-			this->textBox9->Location = System::Drawing::Point(378, 23);
-			this->textBox9->Margin = System::Windows::Forms::Padding(4);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(191, 22);
-			this->textBox9->TabIndex = 19;
-			// 
-			// label9
-			// 
-			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(313, 26);
-			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(29, 17);
-			this->label9->TabIndex = 20;
-			this->label9->Text = L"ID: ";
-			this->label9->Click += gcnew System::EventHandler(this, &frmNuevaArea::label9_Click);
 			// 
 			// frmNuevaArea
 			// 

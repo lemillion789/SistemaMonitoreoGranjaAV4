@@ -277,6 +277,9 @@
     <EmbeddedResource Include="frmBuscarSensores.resx">
       <DependentUpon>frmBuscarSensores.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarArea.resx">
+      <DependentUpon>frmEditarArea.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditarComedero.resx">
       <DependentUpon>frmEditarComedero.h</DependentUpon>
     </EmbeddedResource>

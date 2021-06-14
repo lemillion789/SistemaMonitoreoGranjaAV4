@@ -166,6 +166,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(721, 331);
 			this->dataGridView1->TabIndex = 11;
 			// 
@@ -306,6 +307,7 @@ namespace SistemaMonitoreoGranjaView {
 	//MOSTRAR COMEDEROS
 	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
 	String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna
+	
 
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {

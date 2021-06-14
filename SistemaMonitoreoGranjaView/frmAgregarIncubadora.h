@@ -123,10 +123,9 @@ namespace SistemaMonitoreoGranjaView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(83, 125);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(111, 154);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(118, 13);
+			this->label1->Size = System::Drawing::Size(159, 17);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Sensor de Temperatura";
 			this->label1->Click += gcnew System::EventHandler(this, &frmAgregarIncubadora::label1_Click);
@@ -134,19 +133,18 @@ namespace SistemaMonitoreoGranjaView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(83, 299);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(111, 368);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(104, 13);
+			this->label2->Size = System::Drawing::Size(138, 17);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Sensor de Humedad";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(223, 464);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(297, 571);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(56, 19);
+			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 6;
 			this->button1->Text = L"Aceptar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -154,10 +152,10 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(327, 464);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Location = System::Drawing::Point(436, 571);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(64, 19);
+			this->button2->Size = System::Drawing::Size(85, 23);
 			this->button2->TabIndex = 7;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -170,42 +168,55 @@ namespace SistemaMonitoreoGranjaView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(86, 168);
+			this->dataGridView1->Location = System::Drawing::Point(115, 207);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(517, 111);
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(689, 137);
 			this->dataGridView1->TabIndex = 8;
 			// 
 			// Column1
 			// 
 			this->Column1->HeaderText = L"ID_Sensor";
+			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"Nombre";
+			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"Tipo_Sensor";
+			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
 			// 
 			// Column4
 			// 
 			this->Column4->HeaderText = L"Marca";
+			this->Column4->MinimumWidth = 6;
 			this->Column4->Name = L"Column4";
+			this->Column4->Width = 125;
 			// 
 			// Column5
 			// 
 			this->Column5->HeaderText = L"Unidades";
+			this->Column5->MinimumWidth = 6;
 			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(631, 182);
-			this->button3->Margin = System::Windows::Forms::Padding(2);
+			this->button3->Location = System::Drawing::Point(841, 224);
+			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(88, 51);
+			this->button3->Size = System::Drawing::Size(117, 63);
 			this->button3->TabIndex = 10;
 			this->button3->Text = L"Seleccionar Sensor";
 			this->button3->UseVisualStyleBackColor = true;
@@ -213,10 +224,10 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(631, 339);
-			this->button4->Margin = System::Windows::Forms::Padding(2);
+			this->button4->Location = System::Drawing::Point(841, 417);
+			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(88, 51);
+			this->button4->Size = System::Drawing::Size(117, 63);
 			this->button4->TabIndex = 11;
 			this->button4->Text = L"Seleccionar Sensor";
 			this->button4->UseVisualStyleBackColor = true;
@@ -229,60 +240,73 @@ namespace SistemaMonitoreoGranjaView {
 				this->dataGridViewTextBoxColumn1,
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn5
 			});
-			this->dataGridView2->Location = System::Drawing::Point(86, 330);
+			this->dataGridView2->Location = System::Drawing::Point(115, 406);
+			this->dataGridView2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dataGridView2->Name = L"dataGridView2";
-			this->dataGridView2->Size = System::Drawing::Size(517, 111);
+			this->dataGridView2->RowHeadersWidth = 51;
+			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView2->Size = System::Drawing::Size(689, 137);
 			this->dataGridView2->TabIndex = 12;
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
 			this->dataGridViewTextBoxColumn1->HeaderText = L"ID_Sensor";
+			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			this->dataGridViewTextBoxColumn1->Width = 125;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
 			this->dataGridViewTextBoxColumn2->HeaderText = L"Nombre";
+			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			this->dataGridViewTextBoxColumn2->Width = 125;
 			// 
 			// dataGridViewTextBoxColumn3
 			// 
 			this->dataGridViewTextBoxColumn3->HeaderText = L"Tipo_Sensor";
+			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			this->dataGridViewTextBoxColumn3->Width = 125;
 			// 
 			// dataGridViewTextBoxColumn4
 			// 
 			this->dataGridViewTextBoxColumn4->HeaderText = L"Marca";
+			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
+			this->dataGridViewTextBoxColumn4->Width = 125;
 			// 
 			// dataGridViewTextBoxColumn5
 			// 
 			this->dataGridViewTextBoxColumn5->HeaderText = L"Unidades";
+			this->dataGridViewTextBoxColumn5->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
+			this->dataGridViewTextBoxColumn5->Width = 125;
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(83, 43);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(111, 53);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(62, 13);
+			this->label3->Size = System::Drawing::Size(82, 17);
 			this->label3->TabIndex = 13;
 			this->label3->Text = L"Tipo Animal";
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(86, 77);
+			this->comboBox1->Location = System::Drawing::Point(115, 95);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(188, 21);
+			this->comboBox1->Size = System::Drawing::Size(249, 24);
 			this->comboBox1->TabIndex = 14;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmAgregarIncubadora::comboBox1_SelectedIndexChanged);
 			// 
 			// frmAgregarIncubadora
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(766, 531);
+			this->ClientSize = System::Drawing::Size(1021, 654);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->dataGridView2);
@@ -293,7 +317,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmAgregarIncubadora";
 			this->Text = L"frmAgregarIncubadora";
 			this->Load += gcnew System::EventHandler(this, &frmAgregarIncubadora::frmAgregarIncubadora_Load);
