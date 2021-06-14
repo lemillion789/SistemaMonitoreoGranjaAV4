@@ -1,4 +1,5 @@
 #pragma once
+#include "frmBuscarComederos.h"
 
 namespace SistemaMonitoreoGranjaView {
 
@@ -442,22 +443,20 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		AreasDeAnimalesController^ gestor = gcnew AreasDeAnimalesController();
 		gestor->editarArea(this->ID, this->listacomederos);
-		MessageBox::Show("El partido político ha sido editado con éxito !!!");
+		MessageBox::Show("El Area de Animales ha sido editado con éxito !!!");
 		this->Close();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*frmBuscarAlumnos^ ventanaBuscarAlumnos = gcnew frmBuscarAlumnos(this->listaMiembros);
-		ventanaBuscarAlumnos->ShowDialog();
+		frmBuscarComederos^ ventanaBuscar = gcnew frmBuscarComederos(this->listacomederos);
+		ventanaBuscar->ShowDialog();
 
-		/*Aquí ya la busqueda de alumnos termino y ya agregue un alumno a mi lista*/
-		/*Entonces toca mostrar los alumnos de la lista en la grilla*/
-		//mostrarGrilla(this->listaMiembros);
+		mostrarGrilla(this->listacomederos);
 	}
 	private: void mostrarGrilla(List<Comederos^>^ lista) {
 		this->dataGridView1->Rows->Clear();
 		for (int i = 0; i < lista->Count; i++) {
 			Comederos^ obj = lista[i];
-			array<String^>^ fila = gcnew array<String^>(5);
+			array<String^>^ fila = gcnew array<String^>(6);
 			fila[0] = obj->ID;
 			fila[1] = obj->nombre;
 			fila[2] = obj->horaLlenado;

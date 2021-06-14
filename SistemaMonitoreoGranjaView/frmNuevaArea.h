@@ -1,6 +1,6 @@
 #pragma once
 #include "frmNuevoComedero.h"
-
+#include "frmBuscarComederos.h"
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
@@ -463,8 +463,10 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmNuevoComedero^ ventanaNuevoComedero = gcnew frmNuevoComedero();
-		ventanaNuevoComedero->ShowDialog();
+		frmBuscarComederos^ ventanaBuscarComedero = gcnew frmBuscarComederos(this->listaComederos);
+		ventanaBuscarComedero->ShowDialog();
+
+		mostrarGrilla(this->listaComederos);
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		//guardar casillas completadas para grabar partido
@@ -476,9 +478,9 @@ namespace SistemaMonitoreoGranjaView {
 		int peso = Convert::ToInt32(this->textBox6->Text);
 		String^ color = this->textBox7->Text;
 		String^ raza = this->textBox8->Text;
-		String^ ID = this->textBox9->Text;
+		//String^ ID = this->textBox9->Text;
 
-		AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo, sexo, estado, peso, edad, cantidad, ID,listaComederos);
+		AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo, sexo, estado, peso, edad, cantidad, this->textBox9->Text,listaComederos);
 		AreasDeAnimalesController^ objgestor = gcnew AreasDeAnimalesController();
 
 		objgestor->GuardarAreaEnArchivo(objArea);
@@ -487,6 +489,11 @@ namespace SistemaMonitoreoGranjaView {
 
 	}
 	private: System::Void frmNuevaArea_Load(System::Object^ sender, System::EventArgs^ e) {
+		AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+		gestorArea->CargarAreasDesdeArchivo();
+		int Cantidad = gestorArea->ObtenerCantidadAreas();
+		String^ nuevoID = Cantidad.ToString("D5");
+		this->textBox9->Text = nuevoID;
 	}
 	private: void mostrarGrilla(List<Comederos^>^ lista) {
 		this->dataGridView1->Rows->Clear();

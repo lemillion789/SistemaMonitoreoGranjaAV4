@@ -1,4 +1,4 @@
-Angus;Cafe;Bovino;H;Bien;50;10;8;00001
-Sheltie;Blanco;Cuy;M;Regular;40;5;15;00002		
-Ssdaf;Negro;Alpaca;M;Regular;20;8;10;00003	
-F;Cafe;Bovino;M;Mal;20;20;10;00004
+Angus;Cafe;Bovino;H;Bien;50;10;8;00000
+Sheltie;Blanco;Cuy;M;Regular;40;5;15;00001		
+Ssdaf;Negro;Alpaca;M;Regular;20;8;10;00002	
+F;Cafe;Bovino;M;Mal;20;20;10;00003

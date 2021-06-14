@@ -247,6 +247,9 @@
     <EmbeddedResource Include="frmAdministrarAlmacen.resx">
       <DependentUpon>frmAdministrarAlmacen.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministrarAnimales.resx">
+      <DependentUpon>frmAdministrarAnimales.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAdministrarPersonal.resx">
       <DependentUpon>frmAdministrarPersonal.h</DependentUpon>
     </EmbeddedResource>
