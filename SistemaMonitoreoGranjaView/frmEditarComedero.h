@@ -77,11 +77,11 @@ namespace SistemaMonitoreoGranjaView {
 
 
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
 	private: System::Windows::Forms::TextBox^ textBox4;
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label5;
@@ -97,6 +97,11 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Label^ label4;
 	private: String^ IDComederoEditar;
 	private: List<Sensores^>^ listaSensores;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 
 	private:
 		/// <summary>
@@ -183,7 +188,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// Column1
 			// 
-			this->Column1->HeaderText = L"ID_Sensor";
+			this->Column1->HeaderText = L"ID de Sensor";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
 			this->Column1->Width = 125;
@@ -197,7 +202,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// Column3
 			// 
-			this->Column3->HeaderText = L"Tipo_Sensor";
+			this->Column3->HeaderText = L"Tipo de Sensor";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
 			this->Column3->Width = 125;
@@ -252,7 +257,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(35, 23);
+			this->groupBox1->Location = System::Drawing::Point(39, 23);
 			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
@@ -323,7 +328,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->textBox2->Location = System::Drawing::Point(626, 99);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 22);
+			this->textBox2->Size = System::Drawing::Size(163, 22);
 			this->textBox2->TabIndex = 21;
 			// 
 			// textBox1

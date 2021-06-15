@@ -1,5 +1,5 @@
 #pragma once
-
+#include "frmAdministrarComederosDeArea.h"
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
@@ -307,7 +307,8 @@ namespace SistemaMonitoreoGranjaView {
 	//MOSTRAR COMEDEROS
 	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
 	String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna
-	
+	frmAdministrarComederosDeArea^ ventanaAdminComederoArea = gcnew frmAdministrarComederosDeArea(IDareaSeleccionada);
+	ventanaAdminComederoArea->ShowDialog();
 
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {

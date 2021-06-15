@@ -34,7 +34,7 @@ void AreasDeAnimalesController::CargarAreasDesdeArchivo() {
 List<Comederos^>^ AreasDeAnimalesController::BuscarComederosArea(String^ ID) {
 	List<Comederos^>^ listaComederosEncontrados = gcnew List<Comederos^>();
 
-	array<String^>^ lineas = File::ReadAllLines("ComederoenArea.txt");    // IDcomedero, IDarea
+	array<String^>^ lineas = File::ReadAllLines("ComederoEnArea.txt");    // IDcomedero, IDarea
 
 	String^ separadores = ";";
 	for each (String ^ lineaComederosArea in lineas) {
@@ -75,7 +75,7 @@ void AreasDeAnimalesController::GuardarAreaEnArchivo(AreaDeAnimales^ objArea)
 		totalComederos = totalComederos + objAreaGrabar->listaComederos->Count;
 	}
 
-	//guardar en ComederoenArea.txt
+	//guardar en ComederoEnArea.txt
 	array<String^>^ lineasArchivo = gcnew array<String^>(totalComederos);  
 	int k = 0;
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
@@ -87,7 +87,7 @@ void AreasDeAnimalesController::GuardarAreaEnArchivo(AreaDeAnimales^ objArea)
 		}
 	}
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
-	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);    //IDcomedero; IDArea
+	File::WriteAllLines("ComederoEnArea.txt", lineasArchivo);    //IDcomedero; IDArea
 
 	//guardar en areasDeAnimales.txt
 	array<String^>^ lineasArchivoArea = gcnew array<String^>(this->listaAreaDeAnimales->Count);
@@ -143,7 +143,7 @@ void AreasDeAnimalesController::eliminarArea(String^ ID)
 		totalComederos = totalComederos + objAreaGrabar->listaComederos->Count;
 	}
 
-	//guardar en ComederoenArea.txt
+	//guardar en ComederoEnArea.txt
 	array<String^>^ lineasArchivo = gcnew array<String^>(totalComederos);
 	int k = 0;
 	for (int i = 0; i < this->listaAreaDeAnimales->Count; i++) {
@@ -155,7 +155,7 @@ void AreasDeAnimalesController::eliminarArea(String^ ID)
 		}
 	}
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
-	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);
+	File::WriteAllLines("ComederoEnArea.txt", lineasArchivo);
 
 	//guardar en areasDeAnimales.txt
 	array<String^>^ lineasArchivoArea = gcnew array<String^>(this->listaAreaDeAnimales->Count);
@@ -173,12 +173,6 @@ AreaDeAnimales^ AreasDeAnimalesController::buscarAreaxID(String^ ID)
 	array<String^>^ lineas = File::ReadAllLines("AreasDeAnimales.txt");
 	String^ separadores = ";";
 
-	/*	AreaDeAnimales^ objArea = gcnew AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad);
-
-		List<Comederos^>^ listComederosArea = BuscarComederosArea(tipo_animal, raza);
-		objArea->listaComederos = listComederosArea;
-		this->listaAreaDeAnimales->Add(objArea);
-	}*/
 	for each (String ^ lineaAreas in lineas) {
 		array<String^>^ palabras = lineaAreas->Split(separadores->ToCharArray());
 		String^ raza_animal = palabras[0];
@@ -189,7 +183,7 @@ AreaDeAnimales^ AreasDeAnimalesController::buscarAreaxID(String^ ID)
 		int peso = Convert::ToInt32(palabras[5]);
 		int edad = Convert::ToInt32(palabras[6]);
 		int cantidad = Convert::ToInt32(palabras[7]);
-		String^ IDarea = (palabras[8]);
+		String^ IDarea = palabras[8];
 		if (ID==IDarea) {  //ToUpper para volver a mayuscula la palabra
 			objArea = gcnew AreaDeAnimales(raza_animal, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad,IDarea);
 			List<Comederos^>^ listComederoArea = BuscarComederosArea(ID);
@@ -232,7 +226,7 @@ void AreasDeAnimalesController::editarArea(String^ ID, List<Comederos^>^ listaCo
 		}
 	}
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
-	File::WriteAllLines("ComederoenArea.txt", lineasArchivo);
+	File::WriteAllLines("ComederoEnArea.txt", lineasArchivo);
 
 	//guardar en areasDeAnimales.txt
 	array<String^>^ lineasArchivoArea = gcnew array<String^>(this->listaAreaDeAnimales->Count);

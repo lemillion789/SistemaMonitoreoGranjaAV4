@@ -95,7 +95,7 @@ void SensoresController::GuardarSensorEnArchivo(Sensores^ objSensor) {
 
 int SensoresController::verificarSensor(String^ IDsensor) {
 	int pertenece = 0;
-	array<String^>^ lineas = File::ReadAllLines("Sensores.txt");
+	array<String^>^ lineas = File::ReadAllLines("SensoresEnComedero.txt");
 	String^ separadores = ";";
 	for each (String ^ lineaSensores in lineas) {
 		array<String^>^ palabras = lineaSensores->Split(separadores->ToCharArray());

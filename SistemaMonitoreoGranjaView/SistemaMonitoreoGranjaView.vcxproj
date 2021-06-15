@@ -133,7 +133,9 @@
   <ItemGroup>
     <ClCompile Include="frmAdministrarAlmacen.cpp" />
     <ClCompile Include="frmAdministrarAnimales.cpp" />
+    <ClCompile Include="frmAdministrarComederosDeArea.cpp" />
     <ClCompile Include="frmAdministrarPersonal.cpp" />
+    <ClCompile Include="frmAdministrarSensoresDeComedero.cpp" />
     <ClCompile Include="frmAgregarAlimento.cpp" />
     <ClCompile Include="frmAgregarAlmacen.cpp" />
     <ClCompile Include="frmAgregarComedero.cpp" />
@@ -158,6 +160,7 @@
     <ClCompile Include="frmNuevoComedero.cpp" />
     <ClCompile Include="frmNuevoSensor.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmReporteAreas.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +170,13 @@
     <ClInclude Include="frmAdministrarAnimales.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmAdministrarComederosDeArea.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmAdministrarPersonal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmAdministrarSensoresDeComedero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmAgregarAlimento.h">
@@ -242,6 +251,9 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmReporteAreas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="frmAdministrarAlmacen.resx">
@@ -250,8 +262,14 @@
     <EmbeddedResource Include="frmAdministrarAnimales.resx">
       <DependentUpon>frmAdministrarAnimales.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministrarComederosDeArea.resx">
+      <DependentUpon>frmAdministrarComederosDeArea.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAdministrarPersonal.resx">
       <DependentUpon>frmAdministrarPersonal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministrarSensoresDeComedero.resx">
+      <DependentUpon>frmAdministrarSensoresDeComedero.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAgregarAlimento.resx">
       <DependentUpon>frmAgregarAlimento.h</DependentUpon>
@@ -324,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteAreas.resx">
+      <DependentUpon>frmReporteAreas.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
