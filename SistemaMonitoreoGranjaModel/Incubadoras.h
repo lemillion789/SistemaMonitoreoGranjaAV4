@@ -11,7 +11,7 @@ namespace SistemaMonitoreoGranjaModel {
 
 		//String^ codigo;
 		//String^ modelo;
-		String^ tipoAnimal;
+		//String^ tipoAnimal;
 		//String^ marca;
 		//int temperatura;
 		//int humedad;
@@ -22,7 +22,8 @@ namespace SistemaMonitoreoGranjaModel {
 		//Incubadoras(String^ codigo, String^ marca, String^ modelo, int temperatura, int humedad);
 		//Incubadoras(String^ codigo, String^ marca, String^ modelo, String^ tipoAnimal);
 		//Incubadoras(String^ raza, String^ color, String^ tipo_animal, String^ sexo, String^ estado_salud, int peso, int edad, int cantidad, String^ tipoAnimal, List<Sensores^>^ List_Sensores);
-		Incubadoras(String^ tipoAnimal, List<Sensores^>^ List_Sensores);
+		Incubadoras(String^ raza, String^ color, String^ tipo_animal, String^ sexo, String^ estado_salud, int peso, int edad, int cantidad, String^ ID, List<Sensores^>^ listaSensores);
+		//Incubadoras(String^ tipoAnimal, List<Sensores^>^ List_Sensores);
 		//Incubadoras(String^ tipoAnimal, List<Sensores^>^ List_Sensores)
 	};
 }
