@@ -63,3 +63,4 @@ namespace SistemaMonitoreoGranjaView {
 #pragma endregion
 	};
 }
+

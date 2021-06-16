@@ -134,6 +134,7 @@
     <ClCompile Include="frmAdministrarAlmacen.cpp" />
     <ClCompile Include="frmAdministrarAnimales.cpp" />
     <ClCompile Include="frmAdministrarComederosDeArea.cpp" />
+    <ClCompile Include="frmAdministrarComederoySensorIncubadora.cpp" />
     <ClCompile Include="frmAdministrarPersonal.cpp" />
     <ClCompile Include="frmAdministrarSensoresDeComedero.cpp" />
     <ClCompile Include="frmAgregarAlimento.cpp" />
@@ -172,6 +173,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmAdministrarComederosDeArea.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmAdministrarComederoySensorIncubadora.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmAdministrarPersonal.h">
