@@ -15,14 +15,10 @@ Incubadoras::Incubadoras(String^ codigo, String^ marca, String^ modelo, String^ 
 	this->tipoAnimal = tipoAnimal;
 }
 */
-Incubadoras::Incubadoras(String^ tipoAnimal, List<Sensores^>^ List_Sensores) :AreaDeAnimales( raza,  color,  tipo_animal, sexo, estado_salud,  peso,  edad, cantidad, ID) {
-	this->List_Sensores = List_Sensores;
-	this->tipoAnimal = tipoAnimal;
+
+Incubadoras::Incubadoras(String^ raza, String^ color, String^ tipo_animal, String^ sexo, String^ estado_salud, int peso, int edad, int cantidad, String^ ID, List<Sensores^>^  listaSensores) : AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad, ID) {
+	
+	this->List_Sensores = listaSensores;
+	
 
 }
-/*
-Incubadoras::Incubadoras(String^ tipoAnimal, List<Sensores^>^ List_Sensores){
-this->List_Sensores = List_Sensores;
-this->tipoAnimal = tipoAnimal;
-}
-*/
