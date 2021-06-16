@@ -58,11 +58,12 @@ namespace SistemaMonitoreoGranjaView {
 
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
-	private: List<Incubadoras^>^ listaIncubadoras;
+	public: List<Incubadoras^>^ listaIncubadoras;
 	private: int nCodigo;
 	//private: Incubadoras^ objIncubadora;
 	private: Sensores^ objSensorH;
 	private: Sensores^ objSensorT;
+	private: AreaDeAnimales^ objArea;
 
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 
@@ -329,34 +330,61 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		//this->listaIncubadoras->Clear();
 		IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
 		gestorIncubadoras->obtenerListaIncubadoras();
 
-		
+		String^ Tipo_Area = this->comboBox1->Text;
+		AreasDeAnimalesController^ gestorAreaAnimales = gcnew AreasDeAnimalesController(); //Instanciamos al controlador
+		gestorAreaAnimales->CargarAreasDesdeArchivo();
+		List<AreaDeAnimales^>^ listaAnimales = gestorAreaAnimales->buscarAreas(Tipo_Area);
+
+		for (int i = 0; i < listaAnimales->Count; i++) {
+
+			AreaDeAnimales^ objAnimalito = listaAnimales[i];
+			if (objAnimalito->edad < 2) {
+
+
+				this->objArea = objAnimalito;
+
+			}
+		}
+
+		int posicionFilaSeleccionada1 = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+		String^ IDSensor1 = (this->dataGridView1->Rows[posicionFilaSeleccionada1]->Cells[0]->Value->ToString());
+		SensoresController^ gestorSensor = gcnew SensoresController();
+		Sensores^ objSensor1 = gestorSensor->buscarSensor(IDSensor1);
+		this->objSensorT = objSensor1;
+
+		int posicionFilaSeleccionada2 = this->dataGridView2->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+		String^ IDSensor2 = (this->dataGridView2->Rows[posicionFilaSeleccionada2]->Cells[0]->Value->ToString());
+		//SensoresController^ gestorSensor = gcnew SensoresController();
+		Sensores^ objSensor2 = gestorSensor->buscarSensor(IDSensor2);
+		this->objSensorH = objSensor2;
+
+		//String^ marquita = objSensorH->marca;
+
 
 		List<Sensores^>^ listaSensores = gcnew List<Sensores^>();
-		listaSensores->Add(objSensorT);
-		listaSensores->Add(objSensorH);
-		String^ Tipo_Animal = Convert::ToString("NuevoAnimal");
-		Incubadoras^ objIncubadora = gcnew Incubadoras(Tipo_Animal, listaSensores);
-		//objIncubadora->tipoAnimal = "NuevoAnimal";
-		//objIncubadora->List_Sensores = listaSensores;
+		listaSensores->Add(this->objSensorT);
+		listaSensores->Add(this->objSensorH);
+		//String^ Tipo_Animal = Convert::ToString("NuevoAnimal");
+		String^ ID_Area = objArea->ID;
+		String^ Tipo_Animal = objArea->tipo_animal;
+		String^ Raza = objArea->raza;
+		String^ Color_animal = objArea->color;
+		String^ Sexo = objArea->sexo;
+		String^ Salud = objArea->estado_salud;
+		int Peso = objArea->peso;
+		int Edad = objArea->edad;
+		int Cantidad= objArea->cantidad;
+
+		Incubadoras^ objIncubadora = gcnew Incubadoras(Raza, Color_animal, Tipo_Animal, Sexo, Salud, Peso, Edad, Cantidad, ID_Area,  listaSensores);
+
 		this->listaIncubadoras->Add(objIncubadora);
 
-		/*
-		String^ marca = this->textBox1->Text;
-		String^ modelo = this->textBox1->Text;
-		String^ tipoAnimal = this->comboBox1->Text;
-		srand(time(NULL));
-		nCodigo = rand() % 9000 + 1000;
-		String^ codigo = "INCV" + Convert::ToString(nCodigo);
-		objIncubadora = gcnew Incubadoras(codigo, marca, modelo, tipoAnimal);
-		this->listaIncubadoras->Add(objIncubadora);
-		MessageBox::Show("Se ha agregado el objeto a la lista.");
 		this->Close();
-		*/
-
+	
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
@@ -364,13 +392,24 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void frmAgregarIncubadora_Load(System::Object^ sender, System::EventArgs^ e) {
 
 
-	/*
+	AreasDeAnimalesController^ gestorAreaAnimales = gcnew AreasDeAnimalesController(); //Instanciamos al controlador
+	gestorAreaAnimales->CargarAreasDesdeArchivo();
+	List<AreaDeAnimales^>^ listaAnimales = gestorAreaAnimales->obtenerListaAreas();
+	//this->objArea = 
 	this->comboBox1->Items->Clear();
-	this->comboBox1->Items->Add("Bobinos");
-	this->comboBox1->Items->Add("Cuyes");
-	this->comboBox1->Items->Add("Alpacas");
 
-	*/
+	for (int i = 0; i < listaAnimales->Count; i++) {
+		
+		AreaDeAnimales^ objAnimalito = listaAnimales[i];
+		if (objAnimalito->edad < 2) {
+
+		
+		this->comboBox1->Items->Add(objAnimalito->tipo_animal);
+
+		}
+	}
+
+
 
 	this->dataGridView1->Rows->Clear();
 	this->dataGridView2->Rows->Clear();
@@ -404,12 +443,14 @@ private: System::Void frmAgregarIncubadora_Load(System::Object^ sender, System::
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-
+	/*
 	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
 	String^ IDSensor = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
 	SensoresController^ gestorSensor = gcnew SensoresController();
 	Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
 	this->objSensorT = objSensor;
+	//MessageBox::Show("Sensor Agregado");
+	
 	/*
 	frmEditarSensor^ ventanaEditarSensor = gcnew frmEditarSensor(objSensor);
 
@@ -428,12 +469,14 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+	/*
 	int posicionFilaSeleccionada = this->dataGridView2->SelectedRows[0]->Index; // posición de la primera fila seleccionada
 	String^ IDSensor = (this->dataGridView2->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
 	SensoresController^ gestorSensor = gcnew SensoresController();
 	Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
 	this->objSensorH = objSensor;
+	//MessageBox::Show("Sensor Agregado");
+	*/
 }
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 

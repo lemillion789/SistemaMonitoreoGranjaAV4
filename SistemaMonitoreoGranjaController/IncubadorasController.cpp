@@ -19,7 +19,7 @@ Incubadoras^ IncubadorasController::buscarIncubadoras(String^ TipoAnimal) {
 	for (int i = 0; i < ListadeIncubadoras->Count; i++){
 	//for each (String ^ Lista in ListadeIncubadoras) {
 		Incubadoras^ objIncubadora= ListadeIncubadoras[i];
-		String^ Tipo = objIncubadora->tipoAnimal;
+		String^ Tipo = objIncubadora->tipo_animal;
 	
 		if (Tipo == TipoAnimal) {
 			objIncubadoraEncontrada = objIncubadora;
