@@ -1,5 +1,5 @@
 #pragma once
-
+#include "frmPrincipal.h"
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
@@ -8,6 +8,9 @@ namespace SistemaMonitoreoGranjaView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaMonitoreoGranjaController;
+	using namespace SistemaMonitoreoGranjaModel;
+	using namespace System::Collections::Generic;
 
 	/// <summary>
 	/// Resumen de frmIniciarSesion
@@ -142,7 +145,30 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	String^ ID = this->textBox1->Text;
+	String^ Contraseña = this->textBox2->Text;
+	UsuarioController^ verificar = gcnew UsuarioController();
+	String^ validoID = Convert::ToString(verificar->ValidarDatosID(ID));
+	String^ validoContrasena = Convert::ToString(verificar->ValidarDatosContrasena(Contraseña));
+	if (validoID == "1") {
+		if (validoContrasena == "1") {
+			frmPrincipal^ ventanaMenuIngreso = gcnew frmPrincipal();
+			ventanaMenuIngreso->Show();
+			this->Hide();
+		}
+		else {
+			MessageBox::Show("Contraseña incorrecta");
+		}
+	}
+	else {
+
+		MessageBox::Show("ID incorrecto");
+	}
+
+
 	this->Close();
+
 }
 };
 }

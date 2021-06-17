@@ -123,6 +123,7 @@
     <ClInclude Include="MedicionController.h" />
     <ClInclude Include="ReporteController.h" />
     <ClInclude Include="SensoresController.h" />
+    <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlmacenController.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="MedicionController.cpp" />
     <ClCompile Include="ReporteController.cpp" />
     <ClCompile Include="SensoresController.cpp" />
+    <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
