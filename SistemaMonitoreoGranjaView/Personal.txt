@@ -1,0 +1,5 @@
+433218;luis;revisar al personal;administrador;asistio;9:00pm
+498456;diego;revisar los animales;veterinario;asistio;9:00pm
+487526;sergio;revisar los sensores;tecnico;asistio;9:00pm
+489563;davies;administar almacen;administrador;asistio;9:00pm
+433296;alberto;revizar almacen;granjero;asistio;9:00pm

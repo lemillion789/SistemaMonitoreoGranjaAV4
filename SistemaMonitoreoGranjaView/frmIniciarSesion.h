@@ -1,5 +1,5 @@
 #pragma once
-#include "frmPrincipal.h"
+
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
@@ -153,9 +153,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ validoContrasena = Convert::ToString(verificar->ValidarDatosContrasena(Contraseña));
 	if (validoID == "1") {
 		if (validoContrasena == "1") {
-			frmPrincipal^ ventanaMenuIngreso = gcnew frmPrincipal();
-			ventanaMenuIngreso->Show();
-			this->Hide();
+			this->Close();
+			//this->Hide();
 		}
 		else {
 			MessageBox::Show("Contraseña incorrecta");
@@ -167,7 +166,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	}
 
 
-	this->Close();
+	
 
 }
 };
