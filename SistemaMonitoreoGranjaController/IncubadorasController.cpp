@@ -28,3 +28,26 @@ Incubadoras^ IncubadorasController::buscarIncubadoras(String^ TipoAnimal) {
 	}
 	return objIncubadoraEncontrada;
 }
+
+Incubadoras^ IncubadorasController::buscarIncubadorasxID(String^ ID_area) {
+	Incubadoras^ objIncubadoraEncontrada;
+	//array<String^>^ lineas = File::ReadAllLines("Incubadoras.txt");
+	//String^ separadores = ";";
+	List<Incubadoras^>^ ListadeIncubadoras = obtenerListaIncubadoras();
+	for (int i = 0; i < ListadeIncubadoras->Count; i++) {
+		//for each (String ^ Lista in ListadeIncubadoras) {
+		Incubadoras^ objIncubadora = ListadeIncubadoras[i];
+		String^ ID_INCUBADORA = objIncubadora->ID;
+
+		if (ID_INCUBADORA == ID_area) {
+			objIncubadoraEncontrada = objIncubadora;
+			break;
+		}
+	}
+	return objIncubadoraEncontrada;
+
+
+
+
+
+}

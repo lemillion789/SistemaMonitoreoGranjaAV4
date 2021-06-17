@@ -15,6 +15,7 @@ namespace SistemaMonitoreoGranjaController {
 		//Comederos^ buscarIncubadoras(String^ Nombre);
 		List<Incubadoras^>^ obtenerListaIncubadoras();
 		Incubadoras^ buscarIncubadoras(String^ TipoAnimal);
+		Incubadoras^ buscarIncubadorasxID(String^ ID_area);
 		/*List<Comederos^>^ buscarAlumnosxNivelxGradoxSeccion(String^ nivel, int grado, String^ seccion);
 		int verificarSiAlumnoPertencePartidoPolitico(String^ codigoAlumno);
 	*/

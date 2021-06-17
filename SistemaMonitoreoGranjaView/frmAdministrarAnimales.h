@@ -1,5 +1,6 @@
 #pragma once
 #include "frmAdministrarComederosDeArea.h"
+#include "frmAdministrarComederoySensorIncubadora.h"
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
@@ -133,7 +134,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(86, 35);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Comederos";
+			this->button2->Text = L"Ver Area";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &frmAdministrarAnimales::button2_Click);
 			// 
@@ -312,9 +313,18 @@ namespace SistemaMonitoreoGranjaView {
 	//MOSTRAR COMEDEROS
 	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
 	String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna
-	frmAdministrarComederosDeArea^ ventanaAdminComederoArea = gcnew frmAdministrarComederosDeArea(IDareaSeleccionada);
-	ventanaAdminComederoArea->ShowDialog();
 
+	
+	if (this->CheckBox->Checked == true) {
+		frmAdministrarComederoySensorIncubadora^ ventanaAdminComederoArea = gcnew frmAdministrarComederoySensorIncubadora(IDareaSeleccionada);
+		ventanaAdminComederoArea->ShowDialog();
+	}
+	else {
+		frmAdministrarComederosDeArea^ ventanaAdminComederoArea = gcnew frmAdministrarComederosDeArea(IDareaSeleccionada);
+		ventanaAdminComederoArea->ShowDialog();
+
+	}
+	//frmAdministrarComederoySensorIncubadora
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	//MOSTRAR ALIMENTO
@@ -364,19 +374,8 @@ private: System::Void Incubadoras_CheckedChanged(System::Object^ sender, System:
 		List<AreaDeAnimales^>^ listaAreas;
 		List<AreaDeAnimales^>^ listaAreasbebe= gcnew List<AreaDeAnimales^>();
 		AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();  //todas las funciones las hace el gestor
-		 //casilla vacia 	
-			//objGestor->CargarAreasDesdeArchivo();
-			//listaAreas = objGestor->obtenerListaAreas();
-		/*	for (int i = 0; i < listaAreas->Count; i++) {
-				AreaDeAnimales^ objArea = listaAreas[i];
-				if (objArea->edad < 4) {
-					listaAreasbebe->Add(objArea);
 
-				}
-			}
-		mostrarGrilla(listaAreasbebe);
-		
-		*/
+
 
 		String^ animalBuscar = this->comboBox1->Text;
 		//List<AreaDeAnimales^>^ listaAreas;
