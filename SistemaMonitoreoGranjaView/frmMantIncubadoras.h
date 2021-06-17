@@ -219,26 +219,33 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(listaIncubadoras);
+		frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(this->listaIncubadoras);
 		ventana->ShowDialog();
 		/*
 		mostrarGrilla(listaIncubadoras);
 		*/
+		//List<Incubadoras^>^ listaIncubadoras = ventana->listaIncubadoras;
+		mostrarGrilla(this->listaIncubadoras);
 	}
-		   /*
-	private: void mostrarGrilla(List<Incubadoras^>^ listaIncubadoras) {
+		 
+	private: void mostrarGrilla(List<Incubadoras^>^ lista_incubadoras) {
 		this->dataGridView1->Rows->Clear();
-		for (int i = 0; i < listaIncubadoras->Count; i++) {
-			Incubadoras^ objIncubadora = listaIncubadoras[i];
+		for (int i = 0; i < lista_incubadoras->Count; i++) {
+			Incubadoras^ objIncubadora = lista_incubadoras[i];
+			List<Sensores^>^ listadesensores = objIncubadora->List_Sensores;
+			//int sensores = listadesensores->Count;
+			Sensores^ objTemperatura = listadesensores[0];
+			Sensores^ objHumedad = listadesensores[1];
+			
 			array<String^>^ fila = gcnew array<String^>(5);
-			fila[0] = objIncubadora->codigo;
-			fila[1] = objIncubadora->marca;
-			fila[2] = objIncubadora->modelo;
-			fila[3] = objIncubadora->tipoAnimal;
+			fila[0] = objIncubadora->tipo_animal;
+			fila[1] = objTemperatura->Nombre;
+			fila[2] = objHumedad->Nombre;
+			
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}
-	*/
+	
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	/*int posicion = this->dataGridView1->SelectedRows[0]->Index;
 	this->listaIncubadoras->RemoveAt(posicion);
@@ -255,8 +262,10 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	*/
 }
 private: System::Void frmMantIncubadoras_Load(System::Object^ sender, System::EventArgs^ e) {
+	//frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(listaIncubadoras);
 
-
+	//List<Incubadoras^>^ listaIncubadoras = ventana->listaIncubadoras;
+	//mostrarGrilla(this->listaIncubadoras);
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
