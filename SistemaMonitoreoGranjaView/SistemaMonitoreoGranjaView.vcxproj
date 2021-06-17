@@ -273,6 +273,9 @@
     <EmbeddedResource Include="frmAdministrarComederosDeArea.resx">
       <DependentUpon>frmAdministrarComederosDeArea.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministrarComederoySensorIncubadora.resx">
+      <DependentUpon>frmAdministrarComederoySensorIncubadora.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAdministrarPersonal.resx">
       <DependentUpon>frmAdministrarPersonal.h</DependentUpon>
     </EmbeddedResource>
