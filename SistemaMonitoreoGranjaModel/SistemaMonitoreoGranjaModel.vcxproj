@@ -120,6 +120,7 @@
     <ClInclude Include="Medicion.h" />
     <ClInclude Include="Movimiento.h" />
     <ClInclude Include="Personal.h" />
+    <ClInclude Include="ReporteAreas.h" />
     <ClInclude Include="Sensores.h" />
     <ClInclude Include="Tarea.h" />
     <ClInclude Include="Usuario.h" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Medicion.cpp" />
     <ClCompile Include="Movimiento.cpp" />
     <ClCompile Include="Personal.cpp" />
+    <ClCompile Include="ReporteAreas.cpp" />
     <ClCompile Include="Sensores.cpp" />
     <ClCompile Include="Tarea.cpp" />
     <ClCompile Include="Usuario.cpp" />

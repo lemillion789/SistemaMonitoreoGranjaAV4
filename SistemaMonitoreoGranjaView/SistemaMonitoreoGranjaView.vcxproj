@@ -162,6 +162,7 @@
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmReporteAreas.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="verReporteMediciones.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmAdministrarAlmacen.h">
@@ -252,6 +253,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmReporteAreas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="verReporteMediciones.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -345,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteAreas.resx">
       <DependentUpon>frmReporteAreas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="verReporteMediciones.resx">
+      <DependentUpon>verReporteMediciones.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
