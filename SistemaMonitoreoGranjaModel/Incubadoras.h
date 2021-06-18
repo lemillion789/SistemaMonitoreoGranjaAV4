@@ -18,7 +18,7 @@ namespace SistemaMonitoreoGranjaModel {
 		List<Sensores^>^ List_Sensores;
 
 	public:
-		//Incubadoras();
+		Incubadoras();
 		//Incubadoras(String^ codigo, String^ marca, String^ modelo, int temperatura, int humedad);
 		//Incubadoras(String^ codigo, String^ marca, String^ modelo, String^ tipoAnimal);
 		//Incubadoras(String^ raza, String^ color, String^ tipo_animal, String^ sexo, String^ estado_salud, int peso, int edad, int cantidad, String^ tipoAnimal, List<Sensores^>^ List_Sensores);

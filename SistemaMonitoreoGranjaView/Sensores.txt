@@ -5,3 +5,5 @@
 12349;SensorN1;Siemmens;Nivel de Agua;Litro
 12350;cunch;Converse;Temperatura;°C
 12351;SensorX;X;Humedad;%
+12352;cunch;Converse;Temperatura;°C
+12353;SensorX;X;Humedad;%

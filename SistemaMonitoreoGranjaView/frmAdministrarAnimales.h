@@ -97,7 +97,7 @@ namespace SistemaMonitoreoGranjaView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -303,33 +303,33 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	//MOSTRAR INCUBADORA
-	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
-	String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna		
-	//AlumnoController^ objGestorAlumno = gcnew AlumnoController();
-	//int pertenecePartido = objGestorAlumno->verificarSiAlumnoPertencePartidoPolitico(codigoAlumnoSeleccionado);
+		//MOSTRAR INCUBADORA
+		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
+		String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna		
+		//AlumnoController^ objGestorAlumno = gcnew AlumnoController();
+		//int pertenecePartido = objGestorAlumno->verificarSiAlumnoPertencePartidoPolitico(codigoAlumnoSeleccionado);
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	//MOSTRAR COMEDEROS
-	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
-	String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna
+		//MOSTRAR COMEDEROS
+		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
+		String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna
 
-	
-	if (this->CheckBox->Checked == true) {
-		frmAdministrarComederoySensorIncubadora^ ventanaAdminComederoArea = gcnew frmAdministrarComederoySensorIncubadora(IDareaSeleccionada);
-		ventanaAdminComederoArea->ShowDialog();
-	}
-	else {
-		frmAdministrarComederosDeArea^ ventanaAdminComederoArea = gcnew frmAdministrarComederosDeArea(IDareaSeleccionada);
-		ventanaAdminComederoArea->ShowDialog();
 
-	}
-	//frmAdministrarComederoySensorIncubadora
+		if (this->CheckBox->Checked == true) {
+			frmAdministrarComederoySensorIncubadora^ ventanaAdminComederoArea = gcnew frmAdministrarComederoySensorIncubadora(IDareaSeleccionada);
+			ventanaAdminComederoArea->ShowDialog();
+		}
+		else {
+			frmAdministrarComederosDeArea^ ventanaAdminComederoArea = gcnew frmAdministrarComederosDeArea(IDareaSeleccionada);
+			ventanaAdminComederoArea->ShowDialog();
+
+		}
+		//frmAdministrarComederoySensorIncubadora
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	//MOSTRAR ALIMENTO
-	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
-	String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna	
+		//MOSTRAR ALIMENTO
+		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;  //posicion de fila seleccionada
+		String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna	
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		//BUSCAR AREA
@@ -362,50 +362,67 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}
-private: System::Void frmAdministrarAnimales_Load(System::Object^ sender, System::EventArgs^ e) {
-	AreasDeAnimalesController^ gestor = gcnew AreasDeAnimalesController(); //nota: agregar using namespace Siste..Controller
-	gestor->CargarAreasDesdeArchivo();
-	List<AreaDeAnimales^>^ objLista = gestor->obtenerListaAreas();
-	mostrarGrilla(objLista);
-}
-private: System::Void Incubadoras_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 
-	//this->CheckBox->
-		List<AreaDeAnimales^>^ listaAreas;
-		List<AreaDeAnimales^>^ listaAreasbebe= gcnew List<AreaDeAnimales^>();
-		AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();  //todas las funciones las hace el gestor
+	private: System::Void frmAdministrarAnimales_Load(System::Object^ sender, System::EventArgs^ e) {
+		AreasDeAnimalesController^ gestor = gcnew AreasDeAnimalesController(); //nota: agregar using namespace Siste..Controller
+		gestor->CargarAreasDesdeArchivo();
+		List<AreaDeAnimales^>^ objLista = gestor->obtenerListaAreas();
+		mostrarGrilla(objLista);
+	}
+	private: System::Void Incubadoras_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (this->CheckBox->Checked == true) {
+
+			List<AreaDeAnimales^>^ listaAreas;
+			List<AreaDeAnimales^>^ listaAreasbebe = gcnew List<AreaDeAnimales^>();
+			AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();  //todas las funciones las hace el gestor
+			//IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
+			//gestorIncubadoras->CargarIncubadorasDesdeArchivo();
+			//List<Incubadoras^>^ listaIncubadoras = gestorIncubadoras->obtenerListaIncubadoras();
+
+			//frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(listaIncubadoras);
+
+			//List<Incubadoras^>^ listaIncubadoras = ventana->listaIncubadoras;
+			String^ animalBuscar = this->comboBox1->Text;
+			//List<AreaDeAnimales^>^ listaAreas;
+
+			if (animalBuscar == "") {	  //casilla vacia 	
+				objGestor->CargarAreasDesdeArchivo();
+				listaAreas = objGestor->obtenerListaAreas();
+				for (int i = 0; i < listaAreas->Count; i++) {
+					AreaDeAnimales^ objArea = listaAreas[i];
+					if (objArea->edad < 4) {
+						listaAreasbebe->Add(objArea);
+
+					}
+				}
 
 
+			}
+			else {
+				listaAreas = objGestor->buscarAreas(animalBuscar);
+				for (int i = 0; i < listaAreas->Count; i++) {
+					AreaDeAnimales^ objArea = listaAreas[i];
+					if (objArea->edad < 4) {
+						listaAreasbebe->Add(objArea);
 
-		String^ animalBuscar = this->comboBox1->Text;
-		//List<AreaDeAnimales^>^ listaAreas;
-		
-		if (animalBuscar == "") {	  //casilla vacia 	
-			objGestor->CargarAreasDesdeArchivo();
-			listaAreas = objGestor->obtenerListaAreas();
-			for (int i = 0; i < listaAreas->Count; i++) {
-				AreaDeAnimales^ objArea = listaAreas[i];
-				if (objArea->edad < 4) {
-					listaAreasbebe->Add(objArea);
-
+					}
 				}
 			}
+			mostrarGrilla(listaAreasbebe);
 
 
 		}
 		else {
-			listaAreas = objGestor->buscarAreas(animalBuscar);
-			for (int i = 0; i < listaAreas->Count; i++) {
-				AreaDeAnimales^ objArea = listaAreas[i];
-				if (objArea->edad < 4) {
-					listaAreasbebe->Add(objArea);
 
-				}
-			}
+			AreasDeAnimalesController^ gestor = gcnew AreasDeAnimalesController(); //nota: agregar using namespace Siste..Controller
+			gestor->CargarAreasDesdeArchivo();
+			List<AreaDeAnimales^>^ objLista = gestor->obtenerListaAreas();
+			mostrarGrilla(objLista);
+
+
+
+
 		}
-		mostrarGrilla(listaAreasbebe);
-
-
-}
-};
-}
+	}
+	};
+	}

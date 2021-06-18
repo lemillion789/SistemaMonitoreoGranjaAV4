@@ -4,7 +4,14 @@ using namespace SistemaMonitoreoGranjaModel;
 using namespace System;
 using namespace System::Collections::Generic;
 
+
+
+Incubadoras::Incubadoras() : AreaDeAnimales(raza, color, tipo_animal, sexo, estado_salud, peso, edad, cantidad, ID) {
+
+	
+}
 /*
+
 Incubadoras::Incubadoras(String^ codigo, String^ marca, String^ modelo, int temperatura, int humedad):AreaDeAnimales(raza, color, tipo_animal, sexo,estado_salud,peso,edad,cantidad) {
 
 }

@@ -1,4 +1,6 @@
 #include "IncubadorasController.h"
+#include "AreasDeAnimalesController.h"
+#include "SensoresController.h"
 
 using namespace SistemaMonitoreoGranjaController;
 using namespace System;
@@ -30,7 +32,7 @@ Incubadoras^ IncubadorasController::buscarIncubadoras(String^ TipoAnimal) {
 }
 
 Incubadoras^ IncubadorasController::buscarIncubadorasxID(String^ ID_area) {
-	Incubadoras^ objIncubadoraEncontrada;
+	Incubadoras^ objIncubadoraEncontrada= gcnew Incubadoras();
 	//array<String^>^ lineas = File::ReadAllLines("Incubadoras.txt");
 	//String^ separadores = ";";
 	List<Incubadoras^>^ ListadeIncubadoras = obtenerListaIncubadoras();
@@ -48,6 +50,37 @@ Incubadoras^ IncubadorasController::buscarIncubadorasxID(String^ ID_area) {
 
 
 
+}
+void IncubadorasController::CargarIncubadorasDesdeArchivo() {
+	array<String^>^ lineas = File::ReadAllLines("Incubadoras.txt");
+	String^ separadores = ";";
+	AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+	SensoresController^ gestorSensores = gcnew SensoresController();
+	List<Sensores^>^ listaSensores = gcnew List<Sensores^>();
+	for each (String ^ lineaIncubadoras in lineas) {
+		array<String^>^ palabras = lineaIncubadoras->Split(separadores->ToCharArray());
+		String^ ID_area = palabras[0];
+		String^ ID_Temperatura = palabras[1];
+		String^ ID_Humedad = palabras[2];
+		AreaDeAnimales^ objArea = gestorArea->buscarAreaxID(ID_area);
+		String^ razaInc = objArea->raza;
+		String^ colorInc = objArea->color;
+		String^ tipo_animalInc = objArea->tipo_animal;
+		String^ sexoInc = objArea->sexo;
+		String^ estado_saludInc = objArea->estado_salud;
+		int pesoInc = objArea->peso;
+		int edadInc = objArea->edad;
+		int cantidadInc = objArea->cantidad;
+		String^ IDInc = objArea->ID;;
 
+		Sensores^ objTemperatura = gestorSensores->buscarSensor(ID_Temperatura);
+		Sensores^ objHumedad = gestorSensores->buscarSensor(ID_Humedad);
+		List<Sensores^>^ listaSensores = gcnew List<Sensores^>();
+		listaSensores->Add(objTemperatura);
+		listaSensores->Add(objHumedad);
+
+		Incubadoras^ incubadora = gcnew Incubadoras(razaInc, colorInc, tipo_animalInc, sexoInc, estado_saludInc, pesoInc, edadInc, cantidadInc, IDInc, listaSensores);
+		this->listaIncubadoras->Add(incubadora);
+	}
 
 }

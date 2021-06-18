@@ -262,10 +262,13 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	*/
 }
 private: System::Void frmMantIncubadoras_Load(System::Object^ sender, System::EventArgs^ e) {
+	IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
+	gestorIncubadoras->CargarIncubadorasDesdeArchivo();
+	this->listaIncubadoras = gestorIncubadoras->obtenerListaIncubadoras();
 	//frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(listaIncubadoras);
 
 	//List<Incubadoras^>^ listaIncubadoras = ventana->listaIncubadoras;
-	//mostrarGrilla(this->listaIncubadoras);
+	mostrarGrilla(this->listaIncubadoras);
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
