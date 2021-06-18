@@ -27,6 +27,14 @@ namespace SistemaMonitoreoGranjaView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		frmMantAlimentos(List<Alimentos^>^ listaAlimentos)
+		{
+			InitializeComponent();
+			//
+			this->listaAlimentos = listaAlimentos;
+			//TODO: agregar código de constructor aquí
+			//
+		}
 
 	protected:
 		/// <summary>

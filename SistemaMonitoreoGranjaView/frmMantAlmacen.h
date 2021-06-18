@@ -27,6 +27,14 @@ namespace SistemaMonitoreoGranjaView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		frmMantAlmacen(List<Almacen^>^ listaAlmacenes)
+		{
+			InitializeComponent();
+			this->listaAlmacenes = listaAlmacenes;
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
 
 	protected:
 		/// <summary>
@@ -93,7 +101,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Size = System::Drawing::Size(789, 146);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"groupBox1";
+			this->groupBox1->Text = L"Buscar Almacen";
 			// 
 			// textBox1
 			// 
@@ -204,6 +212,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantAlmacen";
 			this->Text = L"Almacen";
+			this->Load += gcnew System::EventHandler(this, &frmMantAlmacen::frmMantAlmacen_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -239,6 +248,9 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	this->listaAlmacenes->RemoveAt(posicion);
 	frmAgregarAlmacen^ ventana = gcnew frmAgregarAlmacen(listaAlmacenes);
 	ventana->ShowDialog();
+	mostrarGrilla(this->listaAlmacenes);
+}
+private: System::Void frmMantAlmacen_Load(System::Object^ sender, System::EventArgs^ e) {
 	mostrarGrilla(this->listaAlmacenes);
 }
 };

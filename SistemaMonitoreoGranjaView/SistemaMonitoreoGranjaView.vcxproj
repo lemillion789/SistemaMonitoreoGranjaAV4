@@ -149,6 +149,7 @@
     <ClCompile Include="frmEditarComedero.cpp" />
     <ClCompile Include="frmEditarPersonal1.cpp" />
     <ClCompile Include="frmEditarSensor.cpp" />
+    <ClCompile Include="frmHistorialAlmacen.cpp" />
     <ClCompile Include="frmIniciarSesion.cpp" />
     <ClCompile Include="frmMantAlimentos.cpp" />
     <ClCompile Include="frmMantAlmacen.cpp" />
@@ -158,11 +159,13 @@
     <ClCompile Include="frmMantIncubadoras.cpp" />
     <ClCompile Include="frmMantPersonal.cpp" />
     <ClCompile Include="frmMantSensores.cpp" />
+    <ClCompile Include="frmMovimientoAlmacen.cpp" />
     <ClCompile Include="frmNuevaArea.cpp" />
     <ClCompile Include="frmNuevoComedero.cpp" />
     <ClCompile Include="frmNuevoSensor.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmReporteAreas.cpp" />
+    <ClCompile Include="frmVerAlmacen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="verReporteMediciones.cpp" />
   </ItemGroup>
@@ -221,6 +224,9 @@
     <ClInclude Include="frmEditarSensor.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmHistorialAlmacen.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmIniciarSesion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -248,6 +254,9 @@
     <ClInclude Include="frmMantSensores.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmMovimientoAlmacen.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmNuevaArea.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -261,6 +270,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmReporteAreas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmVerAlmacen.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="verReporteMediciones.h">
@@ -322,6 +334,9 @@
     <EmbeddedResource Include="frmEditarSensor.resx">
       <DependentUpon>frmEditarSensor.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmHistorialAlmacen.resx">
+      <DependentUpon>frmHistorialAlmacen.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIniciarSesion.resx">
       <DependentUpon>frmIniciarSesion.h</DependentUpon>
     </EmbeddedResource>
@@ -349,6 +364,9 @@
     <EmbeddedResource Include="frmMantSensores.resx">
       <DependentUpon>frmMantSensores.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMovimientoAlmacen.resx">
+      <DependentUpon>frmMovimientoAlmacen.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNuevaArea.resx">
       <DependentUpon>frmNuevaArea.h</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteAreas.resx">
       <DependentUpon>frmReporteAreas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVerAlmacen.resx">
+      <DependentUpon>frmVerAlmacen.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="verReporteMediciones.resx">
       <DependentUpon>verReporteMediciones.h</DependentUpon>
