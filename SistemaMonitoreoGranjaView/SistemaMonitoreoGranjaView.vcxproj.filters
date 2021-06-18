@@ -111,8 +111,8 @@
     <ClCompile Include="verReporteMediciones.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="frmAdministrarComederoySensorIncubadora.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="frmEditarPersonal1.cpp">
+      <Filter>Archivos de encabezado</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -209,7 +209,7 @@
     <ClInclude Include="verReporteMediciones.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="frmAdministrarComederoySensorIncubadora.h">
+    <ClInclude Include="frmEditarPersonal1.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

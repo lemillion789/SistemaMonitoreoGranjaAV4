@@ -7,5 +7,6 @@ Usuario::Usuario()
 
 Usuario::Usuario(String^ ID, String^ contraseña)
 {
-	throw gcnew System::NotImplementedException();
+	this->ID = ID;
+	this->contraseña = contraseña;
 }

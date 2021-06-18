@@ -1,13 +1,20 @@
 #include "Personal.h"
 using namespace SistemaMonitoreoGranjaModel;
-Personal::Personal()
+
+
+Personal::Personal(String^ ID,String^ nombre, String^ ApPaterno, String^ ApMaterno, String^ funcion, String^ horario, String^ tareas, String^ asistencia)
 {
-    throw gcnew System::NotImplementedException();
+    this->ID = ID;
+    this->nombre = nombre;
+    this->ApPaterno = ApPaterno;
+    this->ApMaterno = ApMaterno;
+    this->funcion= funcion;
+    this->horario = horario;
+    this->tareas = tareas;
+    this->asistencia = asistencia;
+    this->tareas = tareas;
+   
 }
 
-Personal::Personal(String^ nombre, String^ ApPaterno, String^ ApMaterno, String^ horario, String^ tarea, String^ funcion, String^ asistencia, Usuario^ objUsuario, Tarea^ objTarea)
-{
-    throw gcnew System::NotImplementedException();
-}
 
 

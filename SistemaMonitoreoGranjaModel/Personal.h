@@ -5,8 +5,9 @@ namespace SistemaMonitoreoGranjaModel {
 	using namespace System;
 
 	public ref class Personal {
-	private:
+	public:
 
+		String^ ID;
 		String^ nombre;
 		String^ ApPaterno;
 		String^ ApMaterno;
@@ -17,8 +18,8 @@ namespace SistemaMonitoreoGranjaModel {
 		Tarea^ objTarea;
 		Usuario^ objUsuario;
 	public:
-		Personal();
-		Personal(String^ nombre, String^ ApPaterno, String^ ApMaterno, String^ horario, String^ tarea, String^ funcion, String^ asistencia,  Usuario^ objUsuario, Tarea^ objTarea);
+		
+		Personal(String^ ID, String^ nombre, String^ ApPaterno, String^ ApMaterno, String^ funcion, String^ horario, String^ tareas , String^ asistencia );
 
 
 	};

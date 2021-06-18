@@ -40,7 +40,7 @@ namespace SistemaMonitoreoGranjaView {
 		}
 
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
+
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
@@ -107,7 +107,6 @@ namespace SistemaMonitoreoGranjaView {
 		void InitializeComponent(void)
 		{
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -137,17 +136,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->button2->Text = L"Ver Area";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &frmAdministrarAnimales::button2_Click);
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(567, 236);
-			this->button3->Margin = System::Windows::Forms::Padding(2);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(86, 35);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"Alimentos";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &frmAdministrarAnimales::button3_Click);
 			// 
 			// dataGridView1
 			// 
@@ -288,7 +276,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->CheckBox);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"frmAdministrarAnimales";
