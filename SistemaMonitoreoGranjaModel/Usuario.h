@@ -4,7 +4,7 @@ namespace SistemaMonitoreoGranjaModel {
 	using namespace System;
 
 	public ref class Usuario {
-	private:
+	public:
 
 		String^ ID;
 		String^ contraseña;

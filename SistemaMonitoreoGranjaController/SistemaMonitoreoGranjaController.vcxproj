@@ -121,6 +121,7 @@
     <ClInclude Include="ComedoresController.h" />
     <ClInclude Include="IncubadorasController.h" />
     <ClInclude Include="MedicionController.h" />
+    <ClInclude Include="PersonalController.h" />
     <ClInclude Include="ReporteController.h" />
     <ClInclude Include="SensoresController.h" />
     <ClInclude Include="UsuarioController.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="ComedoresController.cpp" />
     <ClCompile Include="IncubadorasController.cpp" />
     <ClCompile Include="MedicionController.cpp" />
+    <ClCompile Include="PersonalController.cpp" />
     <ClCompile Include="ReporteController.cpp" />
     <ClCompile Include="SensoresController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
