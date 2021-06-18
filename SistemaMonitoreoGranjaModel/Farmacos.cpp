@@ -7,7 +7,7 @@ Farmacos::Farmacos()
 
 Farmacos::Farmacos(String^ codigo, String^ nombre, int cantidad, String^ fechaVencimiento, String^ descripcion)
 {
-    this->codigo = codigo;
+    this->ID = codigo;
     this->nombre = nombre;
     this->cantidad = cantidad;
     this->fechaVencimiento = fechaVencimiento;

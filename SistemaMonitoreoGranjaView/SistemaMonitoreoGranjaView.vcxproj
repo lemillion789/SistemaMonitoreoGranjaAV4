@@ -148,6 +148,7 @@
     <ClCompile Include="frmEditarArea.cpp" />
     <ClCompile Include="frmEditarComedero.cpp" />
     <ClCompile Include="frmEditarPersonal1.cpp" />
+    <ClCompile Include="frmEditarFarmaco.cpp" />
     <ClCompile Include="frmEditarSensor.cpp" />
     <ClCompile Include="frmIniciarSesion.cpp" />
     <ClCompile Include="frmMantAlimentos.cpp" />
@@ -216,6 +217,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEditarPersonal1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEditarFarmaco.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEditarSensor.h">
@@ -318,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarPersonal1.resx">
       <DependentUpon>frmEditarPersonal1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarFarmaco.resx">
+      <DependentUpon>frmEditarFarmaco.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarSensor.resx">
       <DependentUpon>frmEditarSensor.h</DependentUpon>
