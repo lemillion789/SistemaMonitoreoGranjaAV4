@@ -530,8 +530,9 @@ namespace SistemaMonitoreoGranjaView {
 		this->listaComederos = objArea->listaComederos;
 		mostrarGrilla(this->listaComederos);
 		/*
-		IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
-		Incubadoras^ incubadorabebe = gestorIncubadora->buscarIncubadoras(IDAreaSeleccionada);
+		IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
+		gestorIncubadoras->CargarIncubadorasDesdeArchivo();
+		Incubadoras^ incubadorabebe = gestorIncubadoras->buscarIncubadoras(IDAreaSeleccionada);
 		List<Sensores^>^ listSensoresbebe = incubadorabebe->List_Sensores;
 		String^ SensorT_ID = listSensoresbebe[0]->ID;
 		String^ SensorH_ID = listSensoresbebe[1]->ID;
