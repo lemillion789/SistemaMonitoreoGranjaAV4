@@ -117,11 +117,11 @@ namespace SistemaMonitoreoGranjaView {
 		if (listaMedidas->Count > 5) {
 			int cantidadMedidas = listaMedidas->Count;
 			List<Medicion^>^ listaMostrar = gcnew List<Medicion^>();
-			listaMostrar->Add(listaMedidas[cantidadMedidas - 1]);
-			listaMostrar->Add(listaMedidas[cantidadMedidas - 2]);
-			listaMostrar->Add(listaMedidas[cantidadMedidas - 3]);
-			listaMostrar->Add(listaMedidas[cantidadMedidas - 4]);
 			listaMostrar->Add(listaMedidas[cantidadMedidas - 5]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas - 4]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas - 3]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas - 2]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas - 1]);
 			mostrarGrafica(listaMostrar);
 		}
 		else
@@ -144,11 +144,11 @@ namespace SistemaMonitoreoGranjaView {
 		if (listaMedidas->Count > 5) {
 			int cantidadMedidas = listaMedidas->Count;
 			List<Medicion^>^ listaMostrar = gcnew List<Medicion^> ();
-			listaMostrar->Add(listaMedidas[cantidadMedidas-1]);
-			listaMostrar->Add(listaMedidas[cantidadMedidas-2]);
-			listaMostrar->Add(listaMedidas[cantidadMedidas-3]);
-			listaMostrar->Add(listaMedidas[cantidadMedidas-4]);
 			listaMostrar->Add(listaMedidas[cantidadMedidas-5]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas-4]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas-3]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas-2]);
+			listaMostrar->Add(listaMedidas[cantidadMedidas-1]);
 			mostrarGrafica(listaMostrar);
 		}
 		else

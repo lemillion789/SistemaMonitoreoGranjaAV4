@@ -1,6 +1,6 @@
 #pragma once
 #include "frmAgregarFarmaco.h"
-
+#include "frmEditarFarmaco.h"
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
@@ -111,6 +111,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantFarmacos::button1_Click);
 			// 
 			// label1
 			// 
@@ -125,7 +126,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->button2->Location = System::Drawing::Point(230, 197);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(75, 34);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Agregar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -135,7 +136,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->button3->Location = System::Drawing::Point(388, 197);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->Size = System::Drawing::Size(75, 34);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
@@ -145,7 +146,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->button4->Location = System::Drawing::Point(543, 197);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(75, 34);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Eliminar";
 			this->button4->UseVisualStyleBackColor = true;
@@ -212,6 +213,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmMantFarmacos";
 			this->Text = L"Farmacos";
+			this->Load += gcnew System::EventHandler(this, &frmMantFarmacos::frmMantFarmacos_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -220,16 +222,19 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmAgregarFarmaco^ ventana = gcnew frmAgregarFarmaco(listaFarmacos);
+		frmAgregarFarmaco^ ventana = gcnew frmAgregarFarmaco();
 		ventana->ShowDialog();
-		mostrarGrilla(this->listaFarmacos);
+		FarmacoController^ gestor = gcnew FarmacoController();
+		gestor->CargarFarmacosDesdeArchivo();
+		List<Farmacos^>^ objLista = gestor->obtenerListaFarmacos();
+		mostrarGrilla(objLista);
 	}
 	private: void mostrarGrilla(List<Farmacos^>^ listaFarmacos) {
 		this->dataGridView1->Rows->Clear();
 		for (int i = 0; i < listaFarmacos->Count; i++) {
 			Farmacos^ objFarmaco = listaFarmacos[i];
 			array<String^>^ fila = gcnew array<String^>(5);
-			fila[0] = objFarmaco->codigo;
+			fila[0] = objFarmaco->ID;
 			fila[1] = objFarmaco->nombre;
 			fila[2] = Convert::ToString(objFarmaco->cantidad);
 			fila[3] = objFarmaco->fechaVencimiento;
@@ -239,15 +244,42 @@ namespace SistemaMonitoreoGranjaView {
 	}
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	int posicion = this->dataGridView1->SelectedRows[0]->Index;
-	this->listaFarmacos->RemoveAt(posicion);
-	mostrarGrilla(this->listaFarmacos);
+	String^ IDEliminar = (this->dataGridView1->Rows[posicion]->Cells[0]->Value->ToString());
+	FarmacoController^ objGestor = gcnew FarmacoController();
+	objGestor->eliminarFarmaco(IDEliminar);
+	objGestor->CargarFarmacosDesdeArchivo();
+	List<Farmacos^>^ lista = objGestor->obtenerListaFarmacos();
+	mostrarGrilla(lista);
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	int posicion = this->dataGridView1->SelectedRows[0]->Index;
-	this->listaFarmacos->RemoveAt(posicion);
-	frmAgregarFarmaco^ ventana = gcnew frmAgregarFarmaco(listaFarmacos);
+	String^ IDFarmacoEditar = this->dataGridView1->Rows[posicion]->Cells[0]->Value->ToString();
+	frmEditarFarmaco^ ventana = gcnew frmEditarFarmaco(IDFarmacoEditar);
 	ventana->ShowDialog();
-	mostrarGrilla(this->listaFarmacos);
+	
+	FarmacoController^ gestor = gcnew FarmacoController();
+	gestor->CargarFarmacosDesdeArchivo();
+	List<Farmacos^>^ lista = gestor->obtenerListaFarmacos();
+	mostrarGrilla(lista);
+}
+private: System::Void frmMantFarmacos_Load(System::Object^ sender, System::EventArgs^ e) {
+	FarmacoController^ gestor = gcnew FarmacoController();
+	gestor->CargarFarmacosDesdeArchivo();
+	List<Farmacos^>^ objLista = gestor->obtenerListaFarmacos();
+	mostrarGrilla(objLista);
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ nombreBuscar = this->textBox1->Text;
+	List<Farmacos^>^ lista;
+	FarmacoController^ objGestor = gcnew FarmacoController();
+	if (nombreBuscar == "") {
+		objGestor->CargarFarmacosDesdeArchivo();
+		lista = objGestor->obtenerListaFarmacos();
+	}
+	else {
+		lista = objGestor->buscarFarmacos(nombreBuscar);
+	}
+	mostrarGrilla(lista);
 }
 };
 }

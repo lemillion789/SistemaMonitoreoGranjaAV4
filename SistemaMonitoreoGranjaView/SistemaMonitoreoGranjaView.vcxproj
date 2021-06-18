@@ -146,6 +146,7 @@
     <ClCompile Include="frmBuscarSensores.cpp" />
     <ClCompile Include="frmEditarArea.cpp" />
     <ClCompile Include="frmEditarComedero.cpp" />
+    <ClCompile Include="frmEditarFarmaco.cpp" />
     <ClCompile Include="frmEditarPersonal1.cpp" />
     <ClCompile Include="frmEditarSensor.cpp" />
     <ClCompile Include="frmIniciarSesion.cpp" />
@@ -211,9 +212,12 @@
     <ClInclude Include="frmEditarComedero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="frmEditarPersonal1.h">
+    <ClInclude Include="frmEditarFarmaco.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmEditarPersonal1.h">
+       <FileType>CppForm</FileType>
+    </ClInclude> 
     <ClInclude Include="frmEditarSensor.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -308,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarComedero.resx">
       <DependentUpon>frmEditarComedero.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarFarmaco.resx">
+      <DependentUpon>frmEditarFarmaco.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarPersonal1.resx">
       <DependentUpon>frmEditarPersonal1.h</DependentUpon>

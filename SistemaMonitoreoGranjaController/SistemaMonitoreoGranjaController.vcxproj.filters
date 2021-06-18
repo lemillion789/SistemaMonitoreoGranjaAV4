@@ -36,6 +36,9 @@
     <ClInclude Include="ReporteController.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="FarmacoController.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="UsuarioController.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -65,6 +68,9 @@
     <ClCompile Include="ReporteController.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="FarmacoController.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
     <ClCompile Include="UsuarioController.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
