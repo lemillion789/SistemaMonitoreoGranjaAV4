@@ -6,7 +6,7 @@ namespace SistemaMonitoreoGranjaModel {
 
 		/*Atributos o Datos*/
 	public:
-		String^ codigo;
+		String^ ID;
 		String^ nombre;
 		int cantidad;
 		String^ fechaVencimiento;
@@ -16,7 +16,7 @@ namespace SistemaMonitoreoGranjaModel {
 	public:
 
 		Farmacos();
-		Farmacos(String^ codigo, String^ nombre, int cantidad, String^ fechaVencimiento, String^ descripcion);
+		Farmacos(String^ codigo, String^ nombre,int cantidad, String^ fechaVencimiento, String^ descripcion);
 
 	};
 }
