@@ -9,18 +9,16 @@ namespace SistemaMonitoreoGranjaModel {
 
 	public ref class Movimiento {
 		/*Atributos o Datos*/
-	private:
-		String^ cantidad;
-		String^ tipo_de_movimiento;
+	public:
+		int cantidad;
+		String^ tipoMovimiento;
 		String^ elementos;
-		String^ hora;
-		AreaDeAnimales^ objAreaDeAnimales;
-		Almacen^ objAlmacen;
-		Alimentos^ objAlimentos;
-		Farmacos^ objFarmacos;
+		String^ fecha;
+		String^ origen;
+		String^ destino;
 		/*Métodos o Funciones*/
 	public:
-		Movimiento(String^ cantidad, String^ tipo_de_movimiento, String^ elementos, String^ hora, AreaDeAnimales^ objAreaDeAnimales, Almacen^ objAlmacen, Alimentos^ objAlimentos);
+		Movimiento(int cantidad, String^ tipoMovimiento, String^ elementos, String^ fecha, String^ origen, String^ destino);
 		Movimiento();
 
 

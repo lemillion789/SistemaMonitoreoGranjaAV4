@@ -186,7 +186,8 @@ namespace SistemaMonitoreoGranjaView {
 #pragma endregion
 	private: System::Void frmAgregarAlmacen_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->comboBox1->Items->Clear();
-		this->comboBox1->Items->Add("Estado");
+		this->comboBox1->Items->Add("Activo");
+		this->comboBox1->Items->Add("Inactivo");
 
 		this->comboBox2->Items->Clear();
 		this->comboBox2->Items->Add("Norte");

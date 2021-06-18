@@ -1,0 +1,2 @@
+#include "frmHistorialAlmacen.h"
+

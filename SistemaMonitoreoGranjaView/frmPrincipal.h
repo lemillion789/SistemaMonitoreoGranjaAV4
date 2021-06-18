@@ -10,7 +10,8 @@
 #include "frmMantSensores.h"
 #include "frmMantAreaDeAnimales.h"
 /*Administracion:*/
-#include "frmAdministrarAlmacen.h"
+//#include "frmAdministrarAlmacen.h"
+#include "frmHistorialAlmacen.h"
 #include "frmAdministrarAnimales.h"
 #include "frmAdministrarPersonal.h"
 /*Reportes*/
@@ -35,6 +36,10 @@ namespace SistemaMonitoreoGranjaView {
 		frmPrincipal(void)
 		{
 			InitializeComponent();
+			this->listaAlimentos = gcnew List<Alimentos^>();
+			this->listaFarmacos = gcnew List<Farmacos^>();
+			this->listaAlmacenes = gcnew List<Almacen^>();
+
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -78,6 +83,9 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesiónToolStripMenuItem;
 
 	private: System::ComponentModel::IContainer^ components;
+	private: List<Alimentos^>^ listaAlimentos;
+	private: List<Farmacos^>^ listaFarmacos;
+	private: List<Almacen^>^ listaAlmacenes;
 
 
 	private:
@@ -311,7 +319,7 @@ namespace SistemaMonitoreoGranjaView {
 	}
 private: System::Void almacenToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
-		frmMantAlmacen^ ventana = gcnew frmMantAlmacen();
+		frmMantAlmacen^ ventana = gcnew frmMantAlmacen(listaAlmacenes);
 		ventana-> ShowDialog();
 	}
 	else {
@@ -320,7 +328,7 @@ private: System::Void almacenToolStripMenuItem_Click(System::Object^ sender, Sys
 }
 private: System::Void alimentosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
-		frmMantAlimentos^ ventana = gcnew frmMantAlimentos();
+		frmMantAlimentos^ ventana = gcnew frmMantAlimentos(listaAlimentos);
 		ventana->ShowDialog();
 	}
 	else {
@@ -329,7 +337,7 @@ private: System::Void alimentosToolStripMenuItem_Click(System::Object^ sender, S
 }
 private: System::Void farmacosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
-		frmMantFarmacos^ ventana = gcnew frmMantFarmacos();
+		frmMantFarmacos^ ventana = gcnew frmMantFarmacos(listaFarmacos);
 		ventana->ShowDialog();
 	}
 	else {
@@ -385,7 +393,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
-		frmAdministrarAlmacen^ ventana = gcnew frmAdministrarAlmacen();
+		frmHistorialAlmacen^ ventana = gcnew frmHistorialAlmacen(listaAlimentos, listaFarmacos, listaAlmacenes);
 		ventana->ShowDialog();
 	}
 	else {

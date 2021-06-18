@@ -27,6 +27,14 @@ namespace SistemaMonitoreoGranjaView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		frmMantFarmacos(List<Farmacos^>^ listaFarmacos)
+		{
+			InitializeComponent();
+			this->listaFarmacos = listaFarmacos;
+			//
+			//TODO: agregar código de constructor aquí
+			//
+		}
 
 	protected:
 		/// <summary>
@@ -94,7 +102,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Size = System::Drawing::Size(789, 146);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"groupBox1";
+			this->groupBox1->Text = L"Buscar Farmaco";
 			// 
 			// textBox1
 			// 
