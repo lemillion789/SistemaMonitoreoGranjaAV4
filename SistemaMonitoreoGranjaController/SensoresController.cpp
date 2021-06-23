@@ -298,3 +298,24 @@ void SensoresController::editarSensor(int codigoPartidoEditar, List<Sensores^>^ 
 		}
 	}
 	*/
+String^ SensoresController::BuscarUnidadxIDSensor(String^ ID_SensorID) {
+
+	String^ Unidades;
+	array<String^>^ lineas = File::ReadAllLines("Sensores.txt");		
+	String^ separadores = ";";
+	for each (String ^ line in lineas) {
+		array<String^>^ palabras = line->Split(separadores->ToCharArray());
+		String^ IDSensor = palabras[0];
+		String^ tipoSensor = palabras[1];
+		String^ Marca = palabras[2];
+		String^ sensortipounidad = palabras[3];
+		String^ Unidad = palabras[4];
+		if (IDSensor == ID_SensorID) {
+			Unidades = Unidad;
+			break;
+		}
+	}
+	return Unidades;
+
+
+}

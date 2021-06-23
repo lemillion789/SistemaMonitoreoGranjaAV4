@@ -1,7 +1,7 @@
 #pragma once
 
 namespace SistemaMonitoreoGranjaController {
-
+	
 	using namespace System::Collections::Generic;
 	using namespace SistemaMonitoreoGranjaModel;
 	using namespace System;
@@ -24,6 +24,7 @@ namespace SistemaMonitoreoGranjaController {
 		List<Sensores^>^ buscarSensorxTipo(String^ tipoSensor);
 		List<Medicion^>^ buscarMedicionesxSensor(String^ ID_Sensor);
 		void CrearMedicionesNuevas(); //crea mediciones para cada sensor;
+		String^ BuscarUnidadxIDSensor(String^ ID_SensorID);
 		//String^ IDSensorAlarma(); //ID Sensor identificado;
 
 	};
