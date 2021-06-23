@@ -1,9 +1,9 @@
-12345;SensorT1;Siemmens;Temperatura;°C
-12346;SensorN1;Siemmens;Nivel de Agua;Litro
-12347;SensorT2;Siemmens;Temperatura;°C
-12348;SensorH1;Siemmens;Humedad;%
-12349;SensorN1;Siemmens;Nivel de Agua;Litro
-12350;cunch;Converse;Temperatura;°C
-12351;SensorX;X;Humedad;%
+12345;SensorT1;Siemmens;Peso;Kg
+12346;SensorN1;Siemmens;Temperatura;°C
+12347;SensorT2;Siemmens;Nivel de Agua;Litro
+12348;SensorH1;Siemmens;Peso;Kg
+12349;SensorN1;Siemmens;Temperatura;°C
+12350;cunch;Converse;Nivel de Agua;Litro
+12351;SensorX;X;Peso;Kg
 12352;cunch;Converse;Temperatura;°C
-12353;SensorX;X;Humedad;%
+12353;SensorX;X;Nivel de Agua;Litro

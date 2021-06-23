@@ -1,13 +1,14 @@
 #include "Tarea.h"
 using namespace SistemaMonitoreoGranjaModel;
-Tarea::Tarea()
-{
-    throw gcnew System::NotImplementedException();
-}
 
-Tarea::Tarea(String^ lugar, String^ tipo_de_tarea, String^ nombre_personal, String^ ID, String^ fecha, String^ descripcion)
+
+
+Tarea::Tarea(String^ lugar ,String^ fecha, String^ descripcion)
 {
-    throw gcnew System::NotImplementedException();
+    this->lugar = lugar;
+    this->fecha = fecha;
+    this->descripcion = descripcion;
+    this->ListaPersonal = gcnew List<Personal^>();
 }
 
 

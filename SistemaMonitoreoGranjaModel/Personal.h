@@ -1,6 +1,5 @@
 #pragma once
 #include "Usuario.h"
-#include "Tarea.h"
 namespace SistemaMonitoreoGranjaModel {
 	using namespace System;
 
@@ -15,7 +14,6 @@ namespace SistemaMonitoreoGranjaModel {
 		String^ horario;
 		String^ tareas;
 		String^ asistencia;
-		Tarea^ objTarea;
 		Usuario^ objUsuario;
 	public:
 		

@@ -237,3 +237,25 @@ void AreasDeAnimalesController::editarArea(String^ ID, List<Comederos^>^ listaCo
 	/*Aquí ya mi array de lineasArchivoArea esta OK, con la información a grabar*/
 	File::WriteAllLines("AreasDeAnimales.txt", lineasArchivoArea);
 }
+String^ AreasDeAnimalesController::AreaDeAnimalesxIDsensor(String^ ID) {
+
+	String^ objArea;
+	array<String^>^ lineas = File::ReadAllLines("SensoresEnComedero.txt");
+	String^ separadores = ";";
+
+	for each (String ^ lineaAreas in lineas) {
+		array<String^>^ palabras = lineaAreas->Split(separadores->ToCharArray());
+		String^ IDsensor = palabras[0];
+		String^  IDAreaAnimal= palabras[1];
+		
+		if (ID == IDsensor) {  //ToUpper para volver a mayuscula la palabra
+			objArea = IDAreaAnimal;
+			
+			break;
+		}
+	}
+	return objArea;
+
+
+
+}

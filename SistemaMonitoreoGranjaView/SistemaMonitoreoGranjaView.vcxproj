@@ -164,6 +164,7 @@
     <ClCompile Include="frmNuevoSensor.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="frmReporteAreas.cpp" />
+    <ClCompile Include="frmTarea.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="verReporteMediciones.cpp" />
   </ItemGroup>
@@ -265,6 +266,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmReporteAreas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmTarea.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="verReporteMediciones.h">
