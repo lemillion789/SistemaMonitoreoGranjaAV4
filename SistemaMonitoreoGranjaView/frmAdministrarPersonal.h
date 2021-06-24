@@ -1,6 +1,6 @@
 #pragma once
 #include "frmAgregarPersonal.h"
-#include "frmEditarPersonal1.h"
+#include "frmEditarPersonal.h"
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
