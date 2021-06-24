@@ -186,6 +186,10 @@ void SensoresController::CrearMedicionesNuevas()
 			Max = 100;
 			Min = 0;
 		}
+		else if (objSensorGrab->tipoSensor == "Peso") {
+			Max = 100;
+			Min = 0;
+		}
 
 
 		if (listaMedicion->Count == 0) {
