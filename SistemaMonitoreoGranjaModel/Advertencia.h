@@ -9,7 +9,7 @@ namespace SistemaMonitoreoGranjaModel {
 	public:
 		String^ IdSensor;
 		Boolean alarma;  //1 alerta, 0 no hay alerta
-
+		//Boolean Verificado;
 
 		/*Métodos o Funciones*/
 	public:
