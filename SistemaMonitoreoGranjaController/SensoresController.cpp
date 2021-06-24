@@ -182,7 +182,7 @@ void SensoresController::CrearMedicionesNuevas()
 			Max = 5;
 			Min = 0;
 		}
-		else if (objSensorGrab->tipoSensor == "Nivel de Comida") {
+		else if (objSensorGrab->tipoSensor == "Nivel de Proteinas") {
 			Max = 100;
 			Min = 0;
 		}
@@ -197,13 +197,18 @@ void SensoresController::CrearMedicionesNuevas()
 		}
 		else {
 			objMedicion = listaMedicion[listaMedicion->Count - 1]; //cuidado
-			if (objMedicion->medida <= Min) {
-				medidaNueva = 0;
-			}
-			else if (objMedicion->medida > Min && objSensorGrab->tipoSensor != "Temperatura" && objSensorGrab->tipoSensor != "Humedad") {
-				medidaNueva = objMedicion->medida - aleatorio;							//cuidado
+			
+			if (objMedicion->medida >= Min && objSensorGrab->tipoSensor != "Temperatura" && objSensorGrab->tipoSensor != "Humedad") {
+				//comida,agua,proteinas
+				if (objMedicion->medida <= Min) {
+					medidaNueva = 0;
+				}
+				else {
+					medidaNueva = objMedicion->medida - aleatorio;
+				}
 			}
 			else if (objMedicion->medida >= Min && objMedicion->medida <= Max && (objSensorGrab->tipoSensor == "Temperatura" || objSensorGrab->tipoSensor == "Humedad")) {
+				//temperatura, humedad
 				int factor = rand() % 2;
 				if (factor) {
 					medidaNueva = objMedicion->medida + aleatorio;

@@ -1,4 +1,7 @@
-00000;Comedero de Vaca;20;5;4;15:00
-00001;Comedero de Cerdo;50;40;15;12:30
-00002;Comedero de Cuy;40;40;12;10:30
-00004;Comedero X;5;20;10;20
+00000;Comedero Regular;20;5;4;15:00
+00001;Comedero Grande;50;40;15;12:30
+00002;Comedero Grande;40;40;12;10:30
+00003;Comedero Especial;30;30;20;15:20
+00004;Comedero Normal;5;20;10;20:00
+00005;Comedero Pequeño;10;10;10;12:00
+00006;Comedero Mediano;25;30;24;5:00

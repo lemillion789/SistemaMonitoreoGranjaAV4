@@ -48,6 +48,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
 	private: String^ IDsensor;
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Button^ button1;
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 
@@ -70,6 +71,7 @@ namespace SistemaMonitoreoGranjaView {
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -96,11 +98,22 @@ namespace SistemaMonitoreoGranjaView {
 			this->timer1->Interval = 10000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &verReporteMediciones::timer1_Tick);
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(902, 168);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(119, 57);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &verReporteMediciones::button1_Click);
+			// 
 			// verReporteMediciones
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(832, 470);
+			this->ClientSize = System::Drawing::Size(1106, 470);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->chart1);
 			this->Name = L"verReporteMediciones";
 			this->Text = L"verReporteMediciones";
@@ -158,5 +171,11 @@ namespace SistemaMonitoreoGranjaView {
 
 		
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	//Corregir medida
+	TareaController^ gestorTarea = gcnew TareaController();
+	gestorTarea->realizarTareaSensor(this->IDsensor);
+
+}
 };
 }
