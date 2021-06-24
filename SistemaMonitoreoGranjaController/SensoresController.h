@@ -24,7 +24,7 @@ namespace SistemaMonitoreoGranjaController {
 		List<Sensores^>^ buscarSensorxTipo(String^ tipoSensor);
 		List<Medicion^>^ buscarMedicionesxSensor(String^ ID_Sensor);
 		void CrearMedicionesNuevas(); //crea mediciones para cada sensor;
-
+		//String^ IDSensorAlarma(); //ID Sensor identificado;
 
 	};
 

@@ -44,6 +44,7 @@ void SensoresController::CargarSensores() {
 		String^ Tipo_Sensor = palabras[3];
 		String^ Unidad = (palabras[4]);
 		Sensores^ objSensor = gcnew  Sensores(ID_Sensor, Nombre, Marca, Tipo_Sensor, Unidad);
+		objSensor->listaMediciones = buscarMedicionesxSensor(ID_Sensor);		// añadir mediciones al sensor
 		//List<Sensores^>^ listaSensores = BuscarAlumnosPartidoPolitico(codigoPartido);
 		//objPartido->listaAlumnos = listAlumnosPartido;
 		this->listaSensores->Add(objSensor);
@@ -156,15 +157,67 @@ void SensoresController::CrearMedicionesNuevas()
 	srand(time(NULL));
 	this->listaSensores->Clear();
 	CargarSensores();
-
+	Medicion^ objMedicion;
+	MedicionController^ gestorMedicion = gcnew MedicionController();
+	int Max;
+	int Min;
+	int medidaNueva;
 	//AÑADIR MEDICION A CADA SENSOR
 	for (int i = 0; i < this->listaSensores->Count; i++) {
 		Sensores^ objSensorGrab = this->listaSensores[i];
+
+		List<Medicion^>^ listaMedicion = buscarMedicionesxSensor(objSensorGrab->ID);
 		
-		int aleatorio = rand() % 100;
+		int aleatorio = rand() % 2;
+
+		if (objSensorGrab->tipoSensor == "Temperatura") {
+			Max = 30;
+			Min = 0;
+		}
+		else if (objSensorGrab->tipoSensor == "Humedad") {
+			Max = 100;
+			Min = 0;
+		}
+		else if (objSensorGrab->tipoSensor == "Nivel de Agua") {
+			Max = 5;
+			Min = 0;
+		}
+		else if (objSensorGrab->tipoSensor == "Nivel de Comida") {
+			Max = 100;
+			Min = 0;
+		}
+
+
+		if (listaMedicion->Count == 0) {
+			medidaNueva = Max;
+		}
+		else {
+			objMedicion = listaMedicion[listaMedicion->Count - 1]; //cuidado
+			if (objMedicion->medida <= Min) {
+				medidaNueva = 0;
+			}
+			else if (objMedicion->medida > Min && objSensorGrab->tipoSensor != "Temperatura" && objSensorGrab->tipoSensor != "Humedad") {
+				medidaNueva = objMedicion->medida - aleatorio;							//cuidado
+			}
+			else if (objMedicion->medida >= Min && objMedicion->medida <= Max && (objSensorGrab->tipoSensor == "Temperatura" || objSensorGrab->tipoSensor == "Humedad")) {
+				int factor = rand() % 2;
+				if (factor) {
+					medidaNueva = objMedicion->medida + aleatorio;
+				}
+				else {
+					medidaNueva = objMedicion->medida - aleatorio;
+				}
+				if (medidaNueva >= Max) {
+					medidaNueva = Max;
+				}
+				else if (medidaNueva <= Min) {
+					medidaNueva = Min;
+				}
+			}
+		}
+
 		//AGREGAR LA MEDICION ALEATORIA
-		MedicionController^ gestorMedicion = gcnew MedicionController();
-		List<Medicion^>^ listaNueva = gestorMedicion->agregarMedicionAleatoria(objSensorGrab,aleatorio);
+		List<Medicion^>^ listaNueva = gestorMedicion->agregarMedicionAleatoria(objSensorGrab,medidaNueva);
 		objSensorGrab->listaMediciones = listaNueva;
 	}
 	
@@ -189,6 +242,49 @@ void SensoresController::CrearMedicionesNuevas()
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
 	File::WriteAllLines("Mediciones.txt", lineasArchivo);
 }
+
+/*String^ SensoresController::IDSensorAlarma()
+{
+	String^ IDSensorIdentificado;
+	this->listaSensores->Clear();
+	CargarSensores();
+	int Max;
+	int Min;
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ SensorElegido = this->listaSensores[i];
+		List<Medicion^>^ listaMedicionesSensor = gcnew List<Medicion^>();
+		listaMedicionesSensor= SensorElegido->listaMediciones;
+		Medicion^ ultimaMedicion = gcnew Medicion();
+		ultimaMedicion = listaMedicionesSensor[(listaMedicionesSensor->Count) - 1];
+		int ultimaMedida = ultimaMedicion->medida;
+
+		if (SensorElegido->tipoSensor == "Temperatura") {
+			Max = 30;
+			Min = 0;
+		}
+		else if (SensorElegido->tipoSensor == "Humedad") {
+			Max = 100;
+			Min = 0;
+		}
+		else if (SensorElegido->tipoSensor == "Nivel de Agua") {
+			Max = 100;
+			Min = 0;
+		}
+		else if (SensorElegido->tipoSensor == "Nivel de Comida") {
+			Max = 100;
+			Min = 0;
+		}
+
+
+		if (ultimaMedida <= Min) {
+			return SensorElegido->ID;	//falta corregir para una lista de errores
+		}
+		else {
+			return "-1";
+		}
+	}
+
+}*/
 
 /*
 void SensoresController::editarSensor(int codigoPartidoEditar, List<Sensores^>^ listaMiembros) {

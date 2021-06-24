@@ -417,7 +417,16 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	//GENERAR MEDICIONES DESDE QUE EMPIEZA EL PROGRAMA
 	SensoresController^ objGestor = gcnew SensoresController();
 	objGestor->CrearMedicionesNuevas();
-	
+
+	AdvertenciaController^ GestorAdvertencia = gcnew AdvertenciaController();
+	List<Advertencia^>^ listaAdvertencias = GestorAdvertencia->generarReporteAdvertencias();
+	for (int i = 0; i < listaAdvertencias->Count; i++) {
+		Advertencia^ objAdvertencia = listaAdvertencias[i];
+		if (objAdvertencia->alarma) {
+			MessageBox::Show(objAdvertencia->IdSensor + "necesita revision");
+		}
+	}
+
 }
 private: System::Void menuStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
 }

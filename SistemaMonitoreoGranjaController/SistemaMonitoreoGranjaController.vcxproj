@@ -116,6 +116,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdvertenciaController.h" />
     <ClInclude Include="AlmacenController.h" />
     <ClInclude Include="AreasDeAnimalesController.h" />
     <ClInclude Include="ComedoresController.h" />
@@ -128,6 +129,7 @@
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdvertenciaController.cpp" />
     <ClCompile Include="AlmacenController.cpp" />
     <ClCompile Include="AreasDeAnimalesController.cpp" />
     <ClCompile Include="ComedoresController.cpp" />
