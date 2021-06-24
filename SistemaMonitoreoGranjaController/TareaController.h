@@ -12,5 +12,7 @@ namespace SistemaMonitoreoGranjaController {
 		TareaController();
 		/*Tarea^ TareaPendiente(String^ tarea);*/
 
+		void realizarTareaSensor(String^ IdSensor);
+
 	};
 }

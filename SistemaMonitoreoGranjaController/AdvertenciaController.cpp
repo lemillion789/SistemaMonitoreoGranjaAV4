@@ -20,9 +20,25 @@ List<Advertencia^>^ AdvertenciaController::generarReporteAdvertencias()
 		Sensores^ objSensor = listaSensores[i];
 		int cantidadMediciones = objSensor->listaMediciones->Count;
 		Medicion^ ultimaMedicion = objSensor->listaMediciones[cantidadMediciones - 1];
-		
+		Boolean Alarma;
 		//falta aclarar limites
-		Boolean Alarma = (ultimaMedicion->medida == 0);
+			if (objSensor->tipoSensor == "Temperatura") {
+				Alarma = ultimaMedicion->medida < 10 || ultimaMedicion->medida>40;
+			}
+			else if (objSensor->tipoSensor == "Humedad") {
+				Alarma = ultimaMedicion->medida < 40 || ultimaMedicion->medida>70;
+			}
+			else if (objSensor->tipoSensor == "Nivel de Agua") {
+				Alarma = ultimaMedicion->medida <= 0;
+			}
+			else if (objSensor->tipoSensor == "Peso") { //Nivel de comida
+				Alarma = ultimaMedicion->medida <= 0;
+			}
+			else if (objSensor->tipoSensor == "Nivel de Proteinas") {
+				Alarma = ultimaMedicion->medida <= 0;
+			}
+
+		//Boolean Alarma = (ultimaMedicion->medida == 0);
 		Advertencia^ objAdvertencia = gcnew Advertencia(objSensor->ID, Alarma);
 		this->listaAdvertencias->Add(objAdvertencia);
 	}
