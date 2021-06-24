@@ -1,5 +1,6 @@
 #pragma once
 #include "frmAgregarIncubadora.h"
+#include "frmEditarIncubadora.h"
 
 namespace SistemaMonitoreoGranjaView {
 
@@ -53,9 +54,13 @@ namespace SistemaMonitoreoGranjaView {
 
 
 	private: List<Incubadoras^>^ listaIncubadoras;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+
+
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -77,6 +82,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -90,11 +96,11 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Cursor = System::Windows::Forms::Cursors::Default;
-			this->groupBox1->Location = System::Drawing::Point(45, 34);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Location = System::Drawing::Point(34, 28);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox1->Size = System::Drawing::Size(789, 146);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Size = System::Drawing::Size(592, 119);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Buscar";
@@ -102,18 +108,18 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(160, 63);
-			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox1->Location = System::Drawing::Point(120, 51);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(412, 22);
+			this->textBox1->Size = System::Drawing::Size(310, 20);
 			this->textBox1->TabIndex = 2;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(643, 63);
-			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button1->Location = System::Drawing::Point(482, 51);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(56, 19);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -121,18 +127,19 @@ namespace SistemaMonitoreoGranjaView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(75, 66);
+			this->label1->Location = System::Drawing::Point(56, 54);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(62, 17);
+			this->label1->Size = System::Drawing::Size(47, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Nombre:";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(229, 197);
-			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button2->Location = System::Drawing::Point(172, 160);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(56, 19);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Agregar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -140,10 +147,10 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(388, 197);
-			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button3->Location = System::Drawing::Point(291, 160);
+			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->Size = System::Drawing::Size(56, 19);
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Editar";
 			this->button3->UseVisualStyleBackColor = true;
@@ -151,10 +158,10 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(543, 197);
-			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button4->Location = System::Drawing::Point(407, 160);
+			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(56, 19);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Eliminar";
 			this->button4->UseVisualStyleBackColor = true;
@@ -163,18 +170,23 @@ namespace SistemaMonitoreoGranjaView {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
-				this->Column1,
-					this->Column2, this->Column3
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Column4,
+					this->Column1, this->Column2, this->Column3
 			});
-			this->dataGridView1->Location = System::Drawing::Point(45, 238);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridView1->Location = System::Drawing::Point(34, 193);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(789, 294);
+			this->dataGridView1->Size = System::Drawing::Size(592, 239);
 			this->dataGridView1->TabIndex = 4;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"ID";
+			this->Column4->Name = L"Column4";
 			// 
 			// Column1
 			// 
@@ -199,15 +211,15 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// frmMantIncubadoras
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(883, 553);
+			this->ClientSize = System::Drawing::Size(662, 449);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->groupBox1);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"frmMantIncubadoras";
 			this->Text = L"Incubadoras";
 			this->Load += gcnew System::EventHandler(this, &frmMantIncubadoras::frmMantIncubadoras_Load);
@@ -238,9 +250,10 @@ namespace SistemaMonitoreoGranjaView {
 			Sensores^ objHumedad = listadesensores[1];
 			
 			array<String^>^ fila = gcnew array<String^>(5);
-			fila[0] = objIncubadora->tipo_animal;
-			fila[1] = objTemperatura->Nombre;
-			fila[2] = objHumedad->Nombre;
+			fila[0] = objIncubadora->ID;
+			fila[1] = objIncubadora->tipo_animal;
+			fila[2] = objTemperatura->Nombre;
+			fila[3] = objHumedad->Nombre;
 			
 			this->dataGridView1->Rows->Add(fila);
 		}
@@ -253,6 +266,24 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	*/
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+	String^ IDincubadora= (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+	IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
+	gestorIncubadora->CargarIncubadorasDesdeArchivo();
+	Incubadoras^ objIncubadora = gestorIncubadora->buscarIncubadorasxID(IDincubadora);
+
+	frmEditarIncubadora^ ventanaEditarIncubadora = gcnew frmEditarIncubadora(objIncubadora);
+	
+	ventanaEditarIncubadora->ShowDialog();
+	//SensoresController^ gestorSensores = gcnew SensoresController(); //Instanciamos al controlador
+
+	//gestorIncubadora->CargarIncubadorasDesdeArchivo();
+	List<Incubadoras^>^ listaIncubadoras = gestorIncubadora->obtenerListaIncubadoras();
+	mostrarGrilla(listaIncubadoras);
+	MessageBox::Show("Incubadora Editada");
+
+
 	/*
 	int posicion = this->dataGridView1->SelectedRows[0]->Index;
 	this->listaIncubadoras->RemoveAt(posicion);

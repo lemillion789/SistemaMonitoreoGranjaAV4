@@ -147,6 +147,7 @@
     <ClCompile Include="frmBuscarSensores.cpp" />
     <ClCompile Include="frmEditarArea.cpp" />
     <ClCompile Include="frmEditarComedero.cpp" />
+    <ClCompile Include="frmEditarIncubadora.cpp" />
     <ClCompile Include="frmEditarPersonal1.cpp" />
     <ClCompile Include="frmEditarSensor.cpp" />
     <ClCompile Include="frmIniciarSesion.cpp" />
@@ -213,6 +214,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEditarComedero.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEditarIncubadora.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmEditarPersonal1.h">
@@ -315,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarComedero.resx">
       <DependentUpon>frmEditarComedero.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarIncubadora.resx">
+      <DependentUpon>frmEditarIncubadora.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditarPersonal1.resx">
       <DependentUpon>frmEditarPersonal1.h</DependentUpon>
