@@ -81,9 +81,10 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn5;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::TextBox^ textBox1;
 	protected:
 
 	private:
@@ -116,9 +117,9 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			this->SuspendLayout();
@@ -274,15 +275,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->label3->TabIndex = 13;
 			this->label3->Text = L"Tipo Animal";
 			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(86, 77);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(188, 21);
-			this->comboBox1->TabIndex = 14;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmEditarIncubadora::comboBox1_SelectedIndexChanged);
-			// 
 			// button3
 			// 
 			this->button3->Location = System::Drawing::Point(642, 189);
@@ -303,14 +295,22 @@ namespace SistemaMonitoreoGranjaView {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &frmEditarIncubadora::button4_Click_1);
 			// 
+			// textBox1
+			// 
+			this->textBox1->Enabled = false;
+			this->textBox1->Location = System::Drawing::Point(86, 76);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(159, 20);
+			this->textBox1->TabIndex = 17;
+			// 
 			// frmEditarIncubadora
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(766, 531);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
-			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->dataGridView2);
 			this->Controls->Add(this->dataGridView1);
@@ -343,19 +343,10 @@ namespace SistemaMonitoreoGranjaView {
 		gestorAreaAnimales->CargarAreasDesdeArchivo();
 		List<AreaDeAnimales^>^ listaAnimales = gestorAreaAnimales->obtenerListaAreas();
 		//this->objArea = 
-		this->comboBox1->Items->Clear();
+		
 		String^ tipo_Animalito = this->objIncubadora->tipo_animal;
-		this->comboBox1->Text = tipo_Animalito;
-		for (int i = 0; i < listaAnimales->Count; i++) {
-
-			AreaDeAnimales^ objAnimalito = listaAnimales[i];
-			if (objAnimalito->edad < 2) {
-
-				if(!(tipo_Animalito == objAnimalito->tipo_animal))
-				this->comboBox1->Items->Add(objAnimalito->tipo_animal);
-
-			}
-		}
+		this->textBox1->Text = tipo_Animalito;
+		
 
 
 
