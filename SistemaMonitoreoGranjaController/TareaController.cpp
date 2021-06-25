@@ -11,8 +11,6 @@ using namespace System::IO;
 TareaController::TareaController() {
 	this->listaTarea = gcnew List<Tarea^>();
 }
-void TareaController::TareaPendiente(String^ IDSensor) {
-
 
 void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(String^ IdSensor)
 {
