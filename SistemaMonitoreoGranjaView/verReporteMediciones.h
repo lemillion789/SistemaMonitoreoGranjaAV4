@@ -69,6 +69,7 @@ namespace SistemaMonitoreoGranjaView {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -81,7 +82,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->chart1->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(12, 12);
+			this->chart1->Location = System::Drawing::Point(83, 12);
 			this->chart1->Name = L"chart1";
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
@@ -91,6 +92,9 @@ namespace SistemaMonitoreoGranjaView {
 			this->chart1->Size = System::Drawing::Size(791, 433);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
+			title1->Name = L"Title1";
+			title1->Text = L"Gráfica de Mediciones vs Tiempo";
+			this->chart1->Titles->Add(title1);
 			// 
 			// timer1
 			// 
