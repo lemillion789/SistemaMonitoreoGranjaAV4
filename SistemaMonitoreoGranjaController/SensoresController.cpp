@@ -299,7 +299,7 @@ void SensoresController::editarSensor(int codigoPartidoEditar, List<Sensores^>^ 
 	}
 	*/
 String^ SensoresController::BuscarUnidadxIDSensor(String^ ID_SensorID) {
-
+	
 	String^ Unidades;
 	array<String^>^ lineas = File::ReadAllLines("Sensores.txt");		
 	String^ separadores = ";";

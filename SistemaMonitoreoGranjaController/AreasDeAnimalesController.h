@@ -29,6 +29,6 @@ namespace SistemaMonitoreoGranjaController {
 		AreaDeAnimales^ buscarAreaxID(String^ ID);
 		void editarArea(String^ ID, List<Comederos^>^ listaComedereos);
 		String^ AreaDeAnimalesxIDsensor(String^ ID);
-
+		String^ AnimalxIDAreaAnimales(String^ IDArea);
 	};
 }

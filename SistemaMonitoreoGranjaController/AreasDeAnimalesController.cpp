@@ -259,3 +259,25 @@ String^ AreasDeAnimalesController::AreaDeAnimalesxIDsensor(String^ ID) {
 
 
 }
+String^ AreasDeAnimalesController::AnimalxIDAreaAnimales(String^ IDArea) {
+
+	String^ objAnimal;
+	array<String^>^ lineas = File::ReadAllLines("AreasDeAnimales.txt");
+	String^ separadores = ";";
+
+	for each (String ^ lineaAreas in lineas) {
+		array<String^>^ palabras = lineaAreas->Split(separadores->ToCharArray());
+		String^ Animal = palabras[2];
+		String^ IDAreaAnimal = palabras[8];
+
+		if (IDAreaAnimal == IDArea) {  //ToUpper para volver a mayuscula la palabra
+			objAnimal = Animal;
+
+			break;
+		}
+	}
+	return objAnimal;
+
+
+
+}

@@ -30,3 +30,12 @@ List<Advertencia^>^ AdvertenciaController::generarReporteAdvertencias()
 	return this->listaAdvertencias;
 }
 
+List<Advertencia^>^ AdvertenciaController::obtenerlistaAdvertencias() {
+	
+	
+	return this->listaAdvertencias;
+
+
+
+
+}

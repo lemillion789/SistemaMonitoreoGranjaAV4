@@ -25,6 +25,7 @@ void PersonalController::CargarPersonalDesdeArchivo() {
 
 		Personal^ objPersonal = gcnew Personal(ID, nombre, ApPaterno, ApMaterno, Funcion, horario, tareas, asistencia);
 		this->listaPersonal->Add(objPersonal);
+		
 	}
 }
 List<Personal^>^ PersonalController::obtenerListaPersonal() {

@@ -1,0 +1,6 @@
+En Area deBovino;Revisar sensor;El sensor deKgDetecto que en el comedero deBovinoesta vacio
+En Area deBovino;Revisar sensor;El sensor deLitroDetecto que en el comedero deBovinoesta vacio
+En Area deCuy;Revisar sensor;El sensor deKgDetecto que en el comedero deCuyesta vacio
+En Area deCuy;Revisar sensor;El sensor deLitroDetecto que en el comedero deCuyesta vacio
+En Area deAlpaca;Revisar sensor;El sensor deKgDetecto que en el comedero deAlpacaesta vacio
+En Area deAlpaca;Revisar sensor;El sensor deLitroDetecto que en el comedero deAlpacaesta vacio
