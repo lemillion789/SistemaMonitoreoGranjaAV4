@@ -98,13 +98,13 @@ namespace SistemaMonitoreoGranjaView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(32, 187);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridView1->Location = System::Drawing::Point(24, 152);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(704, 199);
+			this->dataGridView1->Size = System::Drawing::Size(528, 162);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// Column1
@@ -147,11 +147,11 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Location = System::Drawing::Point(63, 28);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Location = System::Drawing::Point(47, 23);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox1->Size = System::Drawing::Size(645, 130);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
+			this->groupBox1->Size = System::Drawing::Size(484, 106);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Buscar sensor";
@@ -159,36 +159,38 @@ namespace SistemaMonitoreoGranjaView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(59, 58);
+			this->label1->Location = System::Drawing::Point(44, 47);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(126, 17);
+			this->label1->Size = System::Drawing::Size(79, 13);
 			this->label1->TabIndex = 2;
-			this->label1->Text = L"Codigo del sensor:";
+			this->label1->Text = L"Tipo de Sensor";
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(189, 55);
-			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox1->Location = System::Drawing::Point(142, 45);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(245, 22);
+			this->textBox1->Size = System::Drawing::Size(185, 20);
 			this->textBox1->TabIndex = 1;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(480, 55);
-			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button1->Location = System::Drawing::Point(360, 45);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(56, 19);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantSensores::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(233, 400);
-			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button2->Location = System::Drawing::Point(175, 325);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(56, 19);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Nuevo";
 			this->button2->UseVisualStyleBackColor = true;
@@ -196,20 +198,21 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(499, 400);
-			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button3->Location = System::Drawing::Point(374, 325);
+			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(75, 23);
+			this->button3->Size = System::Drawing::Size(56, 19);
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"Eliminar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmMantSensores::button3_Click);
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(364, 400);
-			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button4->Location = System::Drawing::Point(273, 325);
+			this->button4->Margin = System::Windows::Forms::Padding(2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(56, 19);
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Editar";
 			this->button4->UseVisualStyleBackColor = true;
@@ -217,15 +220,15 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// frmMantSensores
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(791, 434);
+			this->ClientSize = System::Drawing::Size(593, 353);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView1);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"frmMantSensores";
 			this->Text = L"frmMantSensores";
 			this->Load += gcnew System::EventHandler(this, &frmMantSensores::frmMantSensores_Load);
@@ -251,7 +254,10 @@ namespace SistemaMonitoreoGranjaView {
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 
-
+		if (this->dataGridView1->SelectedRows->Count == 0) {
+	
+		MessageBox::Show("Seleccionar Sensor");
+	}
 		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
 		String^ IDSensor = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
 		SensoresController^ gestorSensor = gcnew SensoresController();
@@ -259,18 +265,25 @@ namespace SistemaMonitoreoGranjaView {
 
 		//this->listadeSensores->Add(objSensor);
 		//this->Close();
+		if (this->dataGridView1->SelectedRows->Count == 0) {
 
-	
-		frmEditarSensor^ ventanaEditarSensor = gcnew frmEditarSensor(objSensor);
+			MessageBox::Show("Seleccionar Sensor");
+		}
+		else{
+
+
+
+		frmEditarSensor ^ ventanaEditarSensor = gcnew frmEditarSensor(objSensor);
 
 		ventanaEditarSensor->ShowDialog();
 		SensoresController^ gestorSensores = gcnew SensoresController(); //Instanciamos al controlador
-		
+
 
 		gestorSensores->CargarSensores();
 		List<Sensores^>^ listasensores = gestorSensores->obtenerListaSensores();
 		mostrarGrilla(listasensores);
 		MessageBox::Show("Sensor Editado");
+		}
 	}
 	private: System::Void frmMantSensores_Load(System::Object^ sender, System::EventArgs^ e) {
 
@@ -300,7 +313,47 @@ namespace SistemaMonitoreoGranjaView {
 		}
 	}
 
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+		String^ tipo_sensor = this->textBox1->Text;
+		List<Sensores^>^ ListaSeleccionada = gcnew List<Sensores^>();
+		SensoresController^ gestorSensores = gcnew SensoresController();
+		gestorSensores->CargarSensores();
+		this->listadeSensores = gestorSensores->obtenerListaSensores();
+		for (int i = 0; i < listadeSensores->Count; i++) {
+			Sensores^ Sensor = listadeSensores[i];
+			if (tipo_sensor == Sensor->tipoSensor) {
+
+				ListaSeleccionada->Add(Sensor);
+			}
+			else if (tipo_sensor == "") {
+				ListaSeleccionada = listadeSensores;
+			}
+		}
+		mostrarGrilla(ListaSeleccionada);
+	}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+	String^ IDSensor = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+	SensoresController^ gestorSensor = gcnew SensoresController();
+	//Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
+	if (this->dataGridView1->SelectedRows->Count == 0) {
+	
+		MessageBox::Show("Seleccionar Sensor");
+	}
+	else {
+
+
+		gestorSensor->EliminarSensor(IDSensor);
+		List<Sensores^>^ ListaFinal = gestorSensor->obtenerListaSensores();
+		mostrarGrilla(ListaFinal);
+		gestorSensor->GuardarEnArchivo(ListaFinal);
+
+	}
+}
+};
 
 }
 

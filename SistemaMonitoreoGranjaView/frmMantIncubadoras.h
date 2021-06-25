@@ -264,7 +264,27 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	/*int posicion = this->dataGridView1->SelectedRows[0]->Index;
 	this->listaIncubadoras->RemoveAt(posicion);
 	mostrarGrilla(this->listaIncubadoras);
+
 	*/
+	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+	String^ IDincubadora = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+	IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
+	gestorIncubadora->CargarIncubadorasDesdeArchivo();
+	Incubadoras^ objIncubadora = gestorIncubadora->buscarIncubadorasxID(IDincubadora);
+
+	if (this->dataGridView1->SelectedRows->Count == 0) {
+
+		MessageBox::Show("Seleccionar Sensor");
+	}
+	else {
+
+
+		gestorIncubadora->EliminarIncubadora(IDincubadora);
+		List<Incubadoras^>^ ListaFinal = gestorIncubadora->obtenerListaIncubadoras();
+		mostrarGrilla(ListaFinal);
+		gestorIncubadora->GuardarEnArchivo(ListaFinal);
+
+	}
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 

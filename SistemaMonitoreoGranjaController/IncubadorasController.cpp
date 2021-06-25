@@ -84,3 +84,27 @@ void IncubadorasController::CargarIncubadorasDesdeArchivo() {
 	}
 
 }
+void IncubadorasController::EliminarIncubadora(String^ IDIncubadora) {
+	this->listaIncubadoras->Clear();
+	CargarIncubadorasDesdeArchivo();
+	for (int i = 0; i < this->listaIncubadoras->Count; i++) {
+		Incubadoras^ objIncubadora = this->listaIncubadoras[i];
+		if (objIncubadora->ID == IDIncubadora) {
+			this->listaIncubadoras->RemoveAt(i);
+			break;
+		}
+	}
+}
+
+void IncubadorasController::GuardarEnArchivo(List<Incubadoras^>^ lista)
+{
+	this->listaIncubadoras = lista;
+	array<String^>^ lineasArchivoSensores = gcnew array<String^>(this->listaIncubadoras->Count);
+
+	for (int i = 0; i < this->listaIncubadoras->Count; i++) {
+		Incubadoras^ objIncubadora = this->listaIncubadoras[i];
+		lineasArchivoSensores[i] = objIncubadora->ID + ";" + objIncubadora->List_Sensores[0]->ID + ";" + objIncubadora->List_Sensores[1]->ID ;
+
+	}
+	File::WriteAllLines("Incubadoras.txt", lineasArchivoSensores);
+}
