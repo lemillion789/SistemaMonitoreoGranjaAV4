@@ -2,7 +2,7 @@
 #include "frmAgregarPersonal.h"
 #include "frmEditarPersonal1.h"
 namespace SistemaMonitoreoGranjaView {
-
+	//comentario
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
