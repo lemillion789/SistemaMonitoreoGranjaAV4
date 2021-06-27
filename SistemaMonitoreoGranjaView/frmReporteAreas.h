@@ -50,6 +50,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: String^ IDSensorSeleccionado;
 	private: String^ IDAreaSeleccionado;
 	private: String^ IDComederoSeleccionado;
+
 	protected:
 
 	private:
@@ -68,6 +69,7 @@ namespace SistemaMonitoreoGranjaView {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Title^ title1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -88,16 +90,21 @@ namespace SistemaMonitoreoGranjaView {
 			this->chart1->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(113, 27);
+			this->chart1->Location = System::Drawing::Point(357, 65);
 			this->chart1->Margin = System::Windows::Forms::Padding(4);
 			this->chart1->Name = L"chart1";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Areas";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(648, 226);
+			this->chart1->Size = System::Drawing::Size(876, 452);
 			this->chart1->TabIndex = 1;
 			this->chart1->Text = L"chart1";
+			title1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
+			title1->Name = L"Title1";
+			title1->ShadowOffset = 2;
+			title1->Text = L"Grafica de cantidad de Comederos por Área";
+			this->chart1->Titles->Add(title1);
 			// 
 			// groupBox1
 			// 
@@ -109,16 +116,16 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->label1);
-			this->groupBox1->Location = System::Drawing::Point(35, 285);
+			this->groupBox1->Location = System::Drawing::Point(37, 64);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(829, 161);
+			this->groupBox1->Size = System::Drawing::Size(254, 453);
 			this->groupBox1->TabIndex = 2;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Estado";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(19, 95);
+			this->button1->Location = System::Drawing::Point(70, 384);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(107, 48);
 			this->button1->TabIndex = 7;
@@ -129,7 +136,7 @@ namespace SistemaMonitoreoGranjaView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(657, 18);
+			this->label4->Location = System::Drawing::Point(77, 314);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(68, 17);
 			this->label4->TabIndex = 6;
@@ -138,7 +145,7 @@ namespace SistemaMonitoreoGranjaView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(448, 18);
+			this->label3->Location = System::Drawing::Point(75, 216);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(80, 17);
 			this->label3->TabIndex = 5;
@@ -147,7 +154,7 @@ namespace SistemaMonitoreoGranjaView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(218, 18);
+			this->label2->Location = System::Drawing::Point(51, 110);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(126, 17);
 			this->label2->TabIndex = 4;
@@ -156,7 +163,7 @@ namespace SistemaMonitoreoGranjaView {
 			// comboBox3
 			// 
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(599, 39);
+			this->comboBox3->Location = System::Drawing::Point(19, 335);
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(190, 24);
 			this->comboBox3->TabIndex = 3;
@@ -165,7 +172,7 @@ namespace SistemaMonitoreoGranjaView {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(392, 39);
+			this->comboBox2->Location = System::Drawing::Point(19, 237);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(190, 24);
 			this->comboBox2->TabIndex = 2;
@@ -174,7 +181,7 @@ namespace SistemaMonitoreoGranjaView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(185, 39);
+			this->comboBox1->Location = System::Drawing::Point(18, 131);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(190, 24);
 			this->comboBox1->TabIndex = 1;
@@ -193,7 +200,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(915, 486);
+			this->ClientSize = System::Drawing::Size(1274, 606);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->chart1);
 			this->Name = L"frmReporteAreas";
@@ -255,7 +262,7 @@ private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, Sys
 	this->IDComederoSeleccionado = ComederoSeleccionado->ID;
 	for (int i = 0; i < listaSensores->Count; i++) {
 		Sensores^ objSensor = listaSensores[i];
-		String^ nombre = objSensor->Nombre + " " + objSensor->tipoSensor;
+		String^ nombre = objSensor->Nombre;
 		this->comboBox3->Items->Add(nombre);
 	}
 }
@@ -272,6 +279,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		ventanaReporteMedicion->ShowDialog();
 	}
 	
+}
+private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

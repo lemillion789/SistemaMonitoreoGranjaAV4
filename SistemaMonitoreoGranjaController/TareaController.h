@@ -20,5 +20,10 @@ namespace SistemaMonitoreoGranjaController {
 
 		void realizarTareaSensor(String^ IdSensor);
 
+		void TareaPendiente(String^ IDsensor);
+		//List <Tarea^>^ TareaAlerta();
+		List <Tarea^>^ RetornarListaTarea();
+		void GuardarListaEnTXT();
+		void CargarTareaDesdeArchivo();
 	};
 }

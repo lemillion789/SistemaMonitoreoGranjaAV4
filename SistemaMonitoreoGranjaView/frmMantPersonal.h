@@ -179,6 +179,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(789, 294);
 			this->dataGridView1->TabIndex = 4;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmMantPersonal::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
@@ -317,6 +318,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	String^ IDPersonalEditar = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString();
 	frmEditarPersonal^ ventanaEditar = gcnew frmEditarPersonal(IDPersonalEditar);
 	ventanaEditar->ShowDialog();
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 };
 }

@@ -1,3 +1,24 @@
+00000;Sensor de Comida;Siemmes;Peso;Kg
+00001;Sensor de Agua;HOBO;Nivel de Agua;Litro
+00002;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
+00003;Sensor de Comida;Siemmes;Peso;Kg
+00004;Sensor de Agua;HOBO;Nivel de Agua;Litro
+00005;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
+00006;Sensor de Comida;Siemmes;Peso;Kg
+00007;Sensor de Agua;HOBO;Nivel de Agua;Litro
+00008;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
+00009;Sensor de Comida;Siemmes;Peso;Kg
+00010;Sensor de Agua;HOBO;Nivel de Agua;Litro
+00011;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
+00012;Sensor de Comida;Siemmes;Peso;Kg
+00013;Sensor de Agua;HOBO;Nivel de Agua;Litro
+00014;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
+00015;Sensor de Comida;Siemmes;Peso;Kg
+00016;Sensor de Agua;HOBO;Nivel de Agua;Litro
+00017;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
+00018;Sensor de Comida;Siemmes;Peso;Kg
+00019;Sensor de Agua;HOBO;Nivel de Agua;Litro
+00020;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
 12345;SensorT1;Siemmens;Peso;Kg
 12346;SensorN1;Siemmens;Temperatura;°C
 12347;SensorT2;Siemmens;Nivel de Agua;Litro

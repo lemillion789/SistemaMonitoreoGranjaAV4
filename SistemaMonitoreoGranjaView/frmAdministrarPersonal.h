@@ -1,6 +1,7 @@
 #pragma once
 #include "frmAgregarPersonal.h"
 #include "frmEditarPersonal.h"
+#include "frmTarea.h"
 namespace SistemaMonitoreoGranjaView {
 
 	using namespace System;
@@ -56,6 +57,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
 	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button2;
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -83,6 +85,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -195,11 +198,22 @@ namespace SistemaMonitoreoGranjaView {
 			this->button5->Text = L"Asignar Usuario y Contraseña";
 			this->button5->UseVisualStyleBackColor = true;
 			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(673, 303);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(103, 47);
+			this->button2->TabIndex = 5;
+			this->button2->Text = L"Monitorear tareas:";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmAdministrarPersonal::button2_Click_1);
+			// 
 			// frmAdministrarPersonal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(811, 449);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox1);
@@ -261,5 +275,10 @@ namespace SistemaMonitoreoGranjaView {
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-	};
+	private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+		frmTarea^ ventanatarea = gcnew frmTarea();
+		ventanatarea->ShowDialog();
+	}
+};
 }

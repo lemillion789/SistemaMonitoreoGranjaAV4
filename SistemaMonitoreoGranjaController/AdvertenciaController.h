@@ -14,6 +14,6 @@ namespace SistemaMonitoreoGranjaController {
 		AdvertenciaController();
 		List<Advertencia^>^ generarReporteAdvertencias();
 		
-		
+		List<Advertencia^>^ obtenerlistaAdvertencias();
 	};
 }
