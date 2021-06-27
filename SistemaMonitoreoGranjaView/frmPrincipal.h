@@ -126,7 +126,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(781, 30);
+			this->menuStrip1->Size = System::Drawing::Size(781, 28);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &frmPrincipal::menuStrip1_ItemClicked);
@@ -138,7 +138,7 @@ namespace SistemaMonitoreoGranjaView {
 					this->cerrarSesiónToolStripMenuItem
 			});
 			this->loginToolStripMenuItem->Name = L"loginToolStripMenuItem";
-			this->loginToolStripMenuItem->Size = System::Drawing::Size(60, 26);
+			this->loginToolStripMenuItem->Size = System::Drawing::Size(60, 24);
 			this->loginToolStripMenuItem->Text = L"Login";
 			// 
 			// iniciarSesiónToolStripMenuItem
@@ -163,7 +163,7 @@ namespace SistemaMonitoreoGranjaView {
 					this->incubadorasToolStripMenuItem, this->sensoresToolStripMenuItem, this->areaDeAnimalesToolStripMenuItem
 			});
 			this->mantenimientosToolStripMenuItem->Name = L"mantenimientosToolStripMenuItem";
-			this->mantenimientosToolStripMenuItem->Size = System::Drawing::Size(130, 26);
+			this->mantenimientosToolStripMenuItem->Size = System::Drawing::Size(130, 24);
 			this->mantenimientosToolStripMenuItem->Text = L"Mantenimientos";
 			this->mantenimientosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientosToolStripMenuItem_Click);
 			// 
@@ -227,7 +227,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->reportesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->areasDeAnimalesToolStripMenuItem });
 			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
-			this->reportesToolStripMenuItem->Size = System::Drawing::Size(82, 26);
+			this->reportesToolStripMenuItem->Size = System::Drawing::Size(82, 24);
 			this->reportesToolStripMenuItem->Text = L"Reportes";
 			// 
 			// areasDeAnimalesToolStripMenuItem
@@ -273,7 +273,7 @@ namespace SistemaMonitoreoGranjaView {
 			// timer1
 			// 
 			this->timer1->Enabled = true;
-			this->timer1->Interval = 10000;
+			this->timer1->Interval = 60000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &frmPrincipal::timer1_Tick);
 			// 
 			// frmPrincipal

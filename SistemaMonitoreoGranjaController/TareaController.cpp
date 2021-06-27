@@ -75,7 +75,7 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(Stri
 	File::WriteAllLines("Mediciones.txt", lineasArchivo);
 
 }
-Tarea^ TareaController::TareaPendiente(String^ IDSensor) {
+void TareaController::TareaPendiente(String^ IDSensor) {
 	SensoresController^ objSensor = gcnew SensoresController();
 	String^ Unidades = objSensor->BuscarUnidadxIDSensor(IDSensor);
 
@@ -86,9 +86,9 @@ Tarea^ TareaController::TareaPendiente(String^ IDSensor) {
 	String^ Animal = objArea->AnimalxIDAreaAnimales(IDArea);
 
 
-	String^ Lugar = "En Area de" + Animal;
+	String^ Lugar = "En Area de " + Animal;
 	String^ Fecha = "Revisar sensor";
-	String^ Descripcion = "El sensor de" + Unidades + "Detecto que en el comedero de" + Animal + "esta vacio";
+	String^ Descripcion = "El sensor de " + Unidades + " Detecto que en el comedero de " + Animal + " esta vacio ";
 	Tarea^ objTarea = gcnew Tarea(Lugar, Fecha, Descripcion);
 	this->listaTarea->Add(objTarea);
 

@@ -325,6 +325,4 @@ String^ SensoresController::BuscarUnidadxIDSensor(String^ ID_SensorID) {
 		}
 	}
 	return Unidades;
-
-
 }
