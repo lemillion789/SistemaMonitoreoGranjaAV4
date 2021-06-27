@@ -545,7 +545,7 @@ namespace SistemaMonitoreoGranjaView {
 		// Mostramos medida de Humedad
 		List<Medicion^>^ listaMedicionesH = gestorSensores->buscarMedicionesxSensor(SensorH_ID);
 		int ultimamedidaH = listaMedicionesH->Count;
-		this->textBox11->Text = Convert::ToString(listaMedicionesT[ultimamedidaT-1]->medida);
+		this->textBox11->Text = Convert::ToString(listaMedicionesT[ultimamedidaH-1]->medida);
 
 		// Mostrando ID De sensores
 		this->textBox12->Text = Convert::ToString(listSensoresbebe[0]->ID);
