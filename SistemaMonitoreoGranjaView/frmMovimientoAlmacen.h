@@ -301,7 +301,7 @@ namespace SistemaMonitoreoGranjaView {
 		for (int i = 0; i < listaFarmacos->Count; i++) {
 			Farmacos^ objFarmaco = listaFarmacos[i];
 			array<String^>^ fila = gcnew array<String^>(4);
-			fila[0] = objFarmaco->codigo;
+			fila[0] = objFarmaco->ID;
 			fila[1] = objFarmaco->nombre;
 			fila[3] = objFarmaco->fechaVencimiento;
 			fila[2] = Convert::ToString(objFarmaco->cantidad);
