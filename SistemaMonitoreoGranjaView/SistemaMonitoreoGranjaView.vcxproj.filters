@@ -121,6 +121,8 @@
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="frmEditarPersonal.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
     <ClCompile Include="frmHistorialAlmacen.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
@@ -235,6 +237,8 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="frmEditarPersonal.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="frmHistorialAlmacen.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
