@@ -529,22 +529,29 @@ namespace SistemaMonitoreoGranjaView {
 		this->textBox9->Text = objArea->ID;
 		this->listaComederos = objArea->listaComederos;
 		mostrarGrilla(this->listaComederos);
-		/*
+		
 		IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
 		gestorIncubadoras->CargarIncubadorasDesdeArchivo();
-		Incubadoras^ incubadorabebe = gestorIncubadoras->buscarIncubadoras(IDAreaSeleccionada);
+		Incubadoras^ incubadorabebe = gestorIncubadoras->buscarIncubadorasxID(IDAreaSeleccionada);
 		List<Sensores^>^ listSensoresbebe = incubadorabebe->List_Sensores;
 		String^ SensorT_ID = listSensoresbebe[0]->ID;
 		String^ SensorH_ID = listSensoresbebe[1]->ID;
 		SensoresController^ gestorSensores = gcnew SensoresController();
+
+		// Mostramos medida de Temperatura
 		List<Medicion^>^ listaMedicionesT = gestorSensores->buscarMedicionesxSensor(SensorT_ID);
 		int ultimamedidaT = listaMedicionesT->Count;
-		this->textBox11->Text = Convert::ToString(listaMedicionesT[ultimamedidaT]->medida);
+		this->textBox10->Text = Convert::ToString(listaMedicionesT[ultimamedidaT-1]->medida);
+		// Mostramos medida de Humedad
 		List<Medicion^>^ listaMedicionesH = gestorSensores->buscarMedicionesxSensor(SensorH_ID);
 		int ultimamedidaH = listaMedicionesH->Count;
-		this->textBox11->Text = Convert::ToString(listaMedicionesT[ultimamedidaT]->medida);
+		this->textBox11->Text = Convert::ToString(listaMedicionesT[ultimamedidaH-1]->medida);
 
-		*/
+		// Mostrando ID De sensores
+		this->textBox12->Text = Convert::ToString(listSensoresbebe[0]->ID);
+		this->textBox13->Text = Convert::ToString(listSensoresbebe[1]->ID);
+
+		
 
 		
 		

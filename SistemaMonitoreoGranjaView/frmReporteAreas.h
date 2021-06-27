@@ -100,11 +100,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->chart1->Size = System::Drawing::Size(876, 452);
 			this->chart1->TabIndex = 1;
 			this->chart1->Text = L"chart1";
-			title1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-			title1->Name = L"Title1";
-			title1->ShadowOffset = 2;
-			title1->Text = L"Grafica de cantidad de Comederos por Área";
-			this->chart1->Titles->Add(title1);
 			// 
 			// groupBox1
 			// 

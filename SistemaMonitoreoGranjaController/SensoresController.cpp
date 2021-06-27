@@ -291,9 +291,21 @@ void SensoresController::CrearMedicionesNuevas()
 		else {
 			return "-1";
 		}
-	}
+	}*/
 
-}*/
+
+
+void SensoresController::EliminarSensor(String^ IDSensor) {
+	this->listaSensores->Clear();
+	CargarSensores();
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ objSensor = this->listaSensores[i];
+		if (objSensor->ID == IDSensor) {
+			this->listaSensores->RemoveAt(i);
+			break;
+		}
+	}
+}
 
 /*
 void SensoresController::editarSensor(int codigoPartidoEditar, List<Sensores^>^ listaMiembros) {
@@ -305,6 +317,7 @@ void SensoresController::editarSensor(int codigoPartidoEditar, List<Sensores^>^ 
 			this->listaPartidosPoliticos[i]->listaAlumnos = listaMiembros;
 			break;
 		}
+	}
 	}
 	*/
 String^ SensoresController::BuscarUnidadxIDSensor(String^ ID_SensorID) {
@@ -325,4 +338,18 @@ String^ SensoresController::BuscarUnidadxIDSensor(String^ ID_SensorID) {
 		}
 	}
 	return Unidades;
+}
+
+
+void SensoresController::GuardarEnArchivo(List<Sensores^>^ lista)
+{
+	this->listaSensores = lista;
+	array<String^>^ lineasArchivoSensores = gcnew array<String^>(this->listaSensores->Count);
+
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ objSensor = this->listaSensores[i];
+		lineasArchivoSensores[i] = objSensor->ID + ";" + objSensor->Nombre + ";" + objSensor->marca + ";" + objSensor->tipoSensor + ";" + objSensor->unidades;
+
+	}
+	File::WriteAllLines("Sensores.txt", lineasArchivoSensores);
 }
