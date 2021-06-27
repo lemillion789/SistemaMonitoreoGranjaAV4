@@ -3,7 +3,7 @@
 #include "frmEditarPersonal.h"
 #include "frmTarea.h"
 namespace SistemaMonitoreoGranjaView {
-
+	//comentario
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
