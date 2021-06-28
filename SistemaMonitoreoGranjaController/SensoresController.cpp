@@ -179,7 +179,7 @@ void SensoresController::CrearMedicionesNuevas()
 			Min = 0;
 		}
 		else if (objSensorGrab->tipoSensor == "Nivel de Agua") {
-			Max = 5;
+			Max = 3;
 			Min = 0;
 		}
 		else if (objSensorGrab->tipoSensor == "Nivel de Proteinas") {
@@ -187,7 +187,7 @@ void SensoresController::CrearMedicionesNuevas()
 			Min = 0;
 		}
 		else if (objSensorGrab->tipoSensor == "Peso") {
-			Max = 100;
+			Max = 5;
 			Min = 0;
 		}
 

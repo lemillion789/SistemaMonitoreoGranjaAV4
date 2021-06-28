@@ -1,3 +1,12 @@
-En Area de ;Revisar sensor;El sensor de Litro Detecto que en el comedero de  esta vacio 
-En Area de ;Revisar sensor;El sensor de Litro Detecto que en el comedero de  esta vacio 
-En Area de ;Revisar sensor;El sensor de Litro Detecto que en el comedero de  esta vacio 
+En Area de Bovino Angus de sexo H;12:59:43;El sensor de Nivel de Agua Detecto que el comedero de Bovino esta vacio o tiene problemas
+En Area de Cuy Sheltie de sexo M;12:59:43;El sensor de Nivel de Agua Detecto que el comedero de Cuy esta vacio o tiene problemas
+En Area de Alpaca Pituca de sexo M;12:59:43;El sensor de Peso Detecto que el comedero de Alpaca esta vacio o tiene problemas
+En Area de Alpaca Pituca de sexo M;12:59:43;El sensor de Nivel de Agua Detecto que el comedero de Alpaca esta vacio o tiene problemas
+En Area de Conejo Guerrero de sexo M;12:59:43;El sensor de Peso Detecto que el comedero de Conejo esta vacio o tiene problemas
+En Area de Conejo Guerrero de sexo M;12:59:43;El sensor de Nivel de Agua Detecto que el comedero de Conejo esta vacio o tiene problemas
+En Area de Bovino Filete de sexo H;12:59:43;El sensor de Peso Detecto que el comedero de Bovino esta vacio o tiene problemas
+En Area de Bovino Filete de sexo H;12:59:43;El sensor de Nivel de Agua Detecto que el comedero de Bovino esta vacio o tiene problemas
+En Area de Cuy Chiquito de sexo F;12:59:43;El sensor de Peso Detecto que el comedero de Cuy esta vacio o tiene problemas
+En Area de Cuy Chiquito de sexo F;12:59:43;El sensor de Nivel de Agua Detecto que el comedero de Cuy esta vacio o tiene problemas
+En Area de Alpaca Chompa de sexo F;12:59:43;El sensor de Peso Detecto que el comedero de Alpaca esta vacio o tiene problemas
+En Area de Alpaca Chompa de sexo F;12:59:43;El sensor de Nivel de Agua Detecto que el comedero de Alpaca esta vacio o tiene problemas

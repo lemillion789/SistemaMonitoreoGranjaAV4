@@ -75,23 +75,29 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(Stri
 	File::WriteAllLines("Mediciones.txt", lineasArchivo);
 
 }
-void TareaController::TareaPendiente(String^ IDSensor) {
-	SensoresController^ objSensor = gcnew SensoresController();
+void TareaController::TareaPendiente(List<Advertencia^>^ listaTareasProgramadas) {
+	//GENERAR TAREAS
+	/*SensoresController^ objSensor = gcnew SensoresController();
 	String^ Unidades = objSensor->BuscarUnidadxIDSensor(IDSensor);
-
 	AreasDeAnimalesController^ objArea = gcnew AreasDeAnimalesController();
 	String^ IDArea = objArea->AreaDeAnimalesxIDsensor(IDSensor);
-
-
 	String^ Animal = objArea->AnimalxIDAreaAnimales(IDArea);
-
-
-	String^ Lugar = "En Area de " + Animal;
-	String^ Fecha = "Revisar sensor";
-	String^ Descripcion = "El sensor de " + Unidades + " Detecto que en el comedero de " + Animal + " esta vacio ";
-	Tarea^ objTarea = gcnew Tarea(Lugar, Fecha, Descripcion);
-	this->listaTarea->Add(objTarea);
-
+	*/
+	this->listaTarea->Clear();
+	AreasDeAnimalesController^ objArea = gcnew AreasDeAnimalesController();
+	for (int i = 0; i < listaTareasProgramadas->Count; i++) {
+		Sensores^ objSensor = listaTareasProgramadas[i]->objSensor;
+		int cantMediciones = objSensor->listaMediciones->Count;
+		String^ IDArea = objArea->AreaDeAnimalesxIDsensor(objSensor->ID);
+		AreaDeAnimales^ objAreaAnimal = objArea->buscarAreaxID(IDArea);
+		//String^ Animal = objArea->AnimalxIDAreaAnimales(IDArea);
+		String^ Lugar = "En Area de " + objAreaAnimal->tipo_animal + " " + objAreaAnimal->raza + " de sexo " + objAreaAnimal->sexo;
+		String^ Fecha = objSensor->listaMediciones[(cantMediciones)-1]->registro_hora;
+		String^ Descripcion = "El sensor de " + objSensor->tipoSensor + " Detecto que el comedero de " + objAreaAnimal->tipo_animal + " esta vacio o tiene problemas";
+		Tarea^ objTarea = gcnew Tarea(Lugar, Fecha, Descripcion);
+		this->listaTarea->Add(objTarea);
+	}
+	
 }
 
 List <Tarea^>^ TareaController::RetornarListaTarea() {
@@ -110,8 +116,6 @@ array<String^>^ lineasArchivo = gcnew array<String^>(this->listaTarea->Count);
 	}
 	File::WriteAllLines("Tarea.txt", lineasArchivo);
 
-
-
 }
 
 void TareaController::CargarTareaDesdeArchivo() {
@@ -126,9 +130,8 @@ void TareaController::CargarTareaDesdeArchivo() {
 		String^ Fecha = palabras[1];
 		String^ Descripcion = palabras[2];
 
-
-		Tarea^ objPersonal = gcnew Tarea(Lugar, Fecha, Descripcion);
-		this->listaTarea->Add(objPersonal);
+		Tarea^ objTarea = gcnew Tarea(Lugar, Fecha, Descripcion);
+		this->listaTarea->Add(objTarea);
 
 	}
 }

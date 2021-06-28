@@ -39,7 +39,7 @@ List<Advertencia^>^ AdvertenciaController::generarReporteAdvertencias()
 			}
 
 		//Boolean Alarma = (ultimaMedicion->medida == 0);
-		Advertencia^ objAdvertencia = gcnew Advertencia(objSensor->ID, Alarma);
+		Advertencia^ objAdvertencia = gcnew Advertencia(objSensor, Alarma);
 		this->listaAdvertencias->Add(objAdvertencia);
 	}
 
