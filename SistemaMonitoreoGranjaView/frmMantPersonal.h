@@ -53,8 +53,15 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
+
+
+
+
+
+
+
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -82,7 +89,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -167,9 +173,9 @@ namespace SistemaMonitoreoGranjaView {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8
+					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column8
 			});
 			this->dataGridView1->Location = System::Drawing::Point(45, 225);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -218,17 +224,10 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// Column6
 			// 
-			this->Column6->HeaderText = L" horario";
+			this->Column6->HeaderText = L"Horario";
 			this->Column6->MinimumWidth = 6;
 			this->Column6->Name = L"Column6";
 			this->Column6->Width = 125;
-			// 
-			// Column7
-			// 
-			this->Column7->HeaderText = L"tareas";
-			this->Column7->MinimumWidth = 6;
-			this->Column7->Name = L"Column7";
-			this->Column7->Width = 125;
 			// 
 			// Column8
 			// 
@@ -282,8 +281,8 @@ private: System::Void frmMantPersonal_Load(System::Object^ sender, System::Event
 		 fila[3] = objPersonal->ApMaterno;
 		 fila[4] = objPersonal->funcion;
 		 fila[5] = objPersonal->horario;
-		 fila[6] = objPersonal->tareas;
-		 fila[7] = objPersonal->asistencia;
+		 //fila[6] = objPersonal->tareas;
+		 fila[6] = objPersonal->asistencia;
 		 this->dataGridView1->Rows->Add(fila);
 	 }
  }

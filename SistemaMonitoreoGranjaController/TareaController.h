@@ -19,5 +19,10 @@ namespace SistemaMonitoreoGranjaController {
 		List <Tarea^>^ RetornarListaTarea();
 		void GuardarListaEnTXT();
 		void CargarTareaDesdeArchivo();
+
+		void asignarTarea(String^ IDPersonal,String^ IDtarea);
+		List<Tarea^>^ buscarTareaxPersonal(String^ IDPersonal);
+		Tarea^ buscarTareaxID(String^ ID);
+		int verificarSiTareaPertenecePersonal(String^ IDTareaAsignar);
 	};
 }

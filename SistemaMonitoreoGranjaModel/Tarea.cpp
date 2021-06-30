@@ -3,12 +3,13 @@ using namespace SistemaMonitoreoGranjaModel;
 
 
 
-Tarea::Tarea(String^ lugar ,String^ fecha, String^ descripcion)
+Tarea::Tarea(String^ IDtarea, String^ lugar ,String^ fecha, String^ descripcion)
 {
+    this->IDtarea = IDtarea;
     this->lugar = lugar;
     this->fecha = fecha;
     this->descripcion = descripcion;
-    this->ListaPersonal = gcnew List<Personal^>();
+    //this->ListaPersonal = gcnew List<Personal^>();
 }
 
 

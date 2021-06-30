@@ -297,10 +297,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ ApMaterno = this->textBox3->Text;
 	String^ Funcion = this->comboBox1->Text;
 	String^ horario = this->dateTimePicker1->Text;
-	String^ Tareas = this->textBox4->Text;
+	//String^ Tareas = this->textBox4->Text;
 	String^ asistencia = this->comboBox2->Text;
 	
-	Personal^ objPersonal = gcnew Personal(ID, Nombre, ApPaterno, ApMaterno, Funcion, horario, Tareas, asistencia);
+	List<Tarea^>^ listaTareas;
+	Personal^ objPersonal = gcnew Personal(ID, Nombre, ApPaterno, ApMaterno, Funcion, horario, listaTareas, asistencia);
 	PersonalController^ objGestorPersonal = gcnew PersonalController();
 	objGestorPersonal->GuardarPersonalEnArchivo(objPersonal);
 	MessageBox::Show("El Personal ha sido guardado con éxito");

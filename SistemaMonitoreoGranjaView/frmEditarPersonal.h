@@ -300,7 +300,7 @@ namespace SistemaMonitoreoGranjaView {
 		this->textBox2->Text = objPersonal->ApPaterno;
 		this->textBox3->Text = objPersonal->ApMaterno;
 		this->comboBox1->Text = objPersonal->funcion;
-		this->textBox4->Text = objPersonal->tareas;
+		//this->textBox4->Text = objPersonal->tareas;
 		this->comboBox2->Text = objPersonal->asistencia;
 
 	}

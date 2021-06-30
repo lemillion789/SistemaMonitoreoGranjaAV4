@@ -17,5 +17,8 @@ namespace SistemaMonitoreoGranjaController {
 		List<Personal^>^ buscarPersonal(String^ nombreBuscar);
 		void EliminarPersonal(String^ IDPersonalEliminar);
 		Personal^ buscarPersonalxCodigo(String^ IDBuscar);
+
+
+		void asignarTarea(String^ IDpersonalSeleccionado, List<Tarea^>^ listaTareas);
 	};
 }
