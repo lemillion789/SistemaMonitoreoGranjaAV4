@@ -17,6 +17,9 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(Stri
 {
 	SensoresController^ GestorSensores = gcnew SensoresController();
 	MedicionController^ gestorMedicion = gcnew MedicionController();
+	PersonalController^ gestorPersonal = gcnew PersonalController();
+	gestorPersonal->CargarPersonalDesdeArchivo();
+	List<Personal^>^ listaPersonal = gestorPersonal->obtenerListaPersonal();
 	GestorSensores->CargarSensores();
 	List<Sensores^>^ listaSensores = GestorSensores->obtenerListaSensores();
 
@@ -53,6 +56,25 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(Stri
 		}
 
 	}
+	
+	int totalTareasPersonal = 0;
+	for (int i = 0; i < listaPersonal->Count; i++) {
+		Personal^ objPersonal = listaPersonal[i];
+		totalTareasPersonal = totalTareasPersonal + objPersonal->listaTareas->Count;
+	}
+
+	//guardar en TareaxPersonal.txt
+	array<String^>^ lineas = gcnew array<String^>(totalTareasPersonal);
+	int l = 0;
+	for (int i = 0; i < listaPersonal->Count; i++) {
+		Personal^ objPersonal = listaPersonal[i];
+		for (int j = 0; j < objPersonal->listaTareas->Count; j++) {
+			Tarea^ objTarea = objPersonal->listaTareas[j];
+			lineas[l] = objTarea->IDtarea + ";" + objPersonal->ID;
+			l++;  //pasar a la siguiente linea -> arreglo
+		}
+	}
+	File::WriteAllLines("TareaxPersonal.txt", lineas);
 
 	//GUARDAR
 	int totalMediciones = 0;
@@ -75,6 +97,112 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(Stri
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
 	File::WriteAllLines("Mediciones.txt", lineasArchivo);
 
+
+	
+}
+void SistemaMonitoreoGranjaController::TareaController::realizarTarea(String^ IdTarea)
+{
+	SensoresController^ GestorSensores = gcnew SensoresController();
+	MedicionController^ gestorMedicion = gcnew MedicionController();
+	PersonalController^ gestorPersonal = gcnew PersonalController();
+	gestorPersonal->CargarPersonalDesdeArchivo();
+	List<Personal^>^ listaPersonal = gestorPersonal->obtenerListaPersonal();
+	GestorSensores->CargarSensores();
+	List<Sensores^>^ listaSensores = GestorSensores->obtenerListaSensores();
+
+	//Sensores^ objSensor = GestorSensores->buscarSensor(IdSensor);
+	//Medicion^ ultimaMedicion = objSensor->listaMediciones[(objSensor->listaMediciones->Count) - 1];
+	//String^ tipoSensor = objSensor->tipoSensor;
+	int MedidaCorregida = 0;
+	String^ IdSensor;
+	//BUSCAR TAREA POR ADVERTENCIA -> BUSCAR ADVERTENCIA POR SENSOR
+	
+	List<Tarea^>^ listaTareacodigos = obtenerCodigosTarea();
+	for (int i = 0; i < listaTareacodigos->Count; i++) {
+		Tarea^ objTareaAnalizado = listaTareacodigos[i];
+		if (objTareaAnalizado->IDtarea == IdTarea) {
+			IdSensor = objTareaAnalizado->descripcion; //idsensor
+			break;
+		}
+	}
+	//REMOVER TAREA
+	for (int j = 0; j < listaPersonal->Count; j++) {
+		Personal^ objPersonal = listaPersonal[j];
+		for (int w = 0; w < objPersonal->listaTareas->Count; w++) {
+			if (objPersonal->listaTareas[w]->IDtarea== IdTarea) {
+				objPersonal->listaTareas->RemoveAt(w);
+				break;
+			}
+		}	
+	}
+
+	//corregir ultimaMedida
+
+	for (int i = 0; i < listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = listaSensores[i];
+
+		if (objSensorGrab->ID == IdSensor) {
+			if (objSensorGrab->tipoSensor == "Temperatura") {
+				MedidaCorregida = 25;
+			}
+			else if (objSensorGrab->tipoSensor == "Humedad") {
+				MedidaCorregida = 55;
+			}
+			else if (objSensorGrab->tipoSensor == "Nivel de Agua") {
+				MedidaCorregida = 100;
+			}
+			else if (objSensorGrab->tipoSensor == "Peso") { //Nivel de comida
+				MedidaCorregida = 100;
+			}
+			else if (objSensorGrab->tipoSensor == "Nivel de Proteinas") {
+				MedidaCorregida = 100;
+			}
+			//AGREGAR LA MEDICION NUEVA
+			List<Medicion^>^ listaNueva = gestorMedicion->agregarMedicionAleatoria(objSensorGrab, MedidaCorregida);
+			objSensorGrab->listaMediciones = listaNueva;
+			break;
+		}
+	}
+	//REMOVER TAREA
+	int totalTareasPersonal = 0;
+	for (int i = 0; i < listaPersonal->Count; i++) {
+		Personal^ objPersonal = listaPersonal[i];
+		totalTareasPersonal = totalTareasPersonal + objPersonal->listaTareas->Count;
+	}
+
+	//guardar en TareaxPersonal.txt
+	array<String^>^ lineas = gcnew array<String^>(totalTareasPersonal);
+	int l = 0;
+	for (int i = 0; i < listaPersonal->Count; i++) {
+		Personal^ objPersonal = listaPersonal[i];
+		for (int j = 0; j < objPersonal->listaTareas->Count; j++) {
+			Tarea^ objTarea = objPersonal->listaTareas[j];
+			lineas[l] = objTarea->IDtarea + ";" + objPersonal->ID;
+			l++;  //pasar a la siguiente linea -> arreglo
+		}
+	}
+	File::WriteAllLines("TareaxPersonal.txt", lineas);
+
+	//GUARDAR
+	int totalMediciones = 0;
+	for (int i = 0; i < listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = listaSensores[i];
+		totalMediciones = totalMediciones + objSensorGrab->listaMediciones->Count;
+	}
+
+	//guardar en Mediciones.txt
+	array<String^>^ lineasArchivo = gcnew array<String^>(totalMediciones);
+	int k = 0;
+	for (int i = 0; i < listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = listaSensores[i];
+		for (int j = 0; j < objSensorGrab->listaMediciones->Count; j++) {
+			Medicion^ objMedicion = objSensorGrab->listaMediciones[j];
+			lineasArchivo[k] = objSensorGrab->ID + ";" + objMedicion->medida + ";" + objMedicion->unidades + ";" + objMedicion->registro_hora;
+			k++;  //pasar a la siguiente linea -> arreglo
+		}
+	}
+	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+	File::WriteAllLines("Mediciones.txt", lineasArchivo);
 }
 void TareaController::TareaPendiente(List<Advertencia^>^ listaTareasProgramadas) {
 	//GENERAR TAREAS
@@ -86,6 +214,8 @@ void TareaController::TareaPendiente(List<Advertencia^>^ listaTareasProgramadas)
 	*/
 	this->listaTarea->Clear();
 	AreasDeAnimalesController^ objArea = gcnew AreasDeAnimalesController();
+	array<String^>^ lineasArchivo = gcnew array<String^>(listaTareasProgramadas->Count);
+
 	for (int i = 0; i < listaTareasProgramadas->Count; i++) {
 		Sensores^ objSensor = listaTareasProgramadas[i]->objSensor;
 		int cantMediciones = objSensor->listaMediciones->Count;
@@ -97,9 +227,14 @@ void TareaController::TareaPendiente(List<Advertencia^>^ listaTareasProgramadas)
 		String^ Descripcion = "El sensor de " + objSensor->tipoSensor + " Detecto que el comedero de " + objAreaAnimal->tipo_animal + " esta vacio o tiene problemas";
 		Tarea^ objTarea = gcnew Tarea(IDtarea, Lugar, Fecha, Descripcion);
 		this->listaTarea->Add(objTarea);
+		//PARA GUARDAR TXT DE CODIGOS
+		lineasArchivo[i] = objTarea->IDtarea + ";" + IDArea + ";" + Fecha + ";" + objSensor->ID;
 	}
-	
+	// GUARDAR Tarea por codigos:  IDTarea;IDarea;Fecha;IDSensor;
+	File::WriteAllLines("TareaCodigos.txt", lineasArchivo);
+
 }
+
 
 List <Tarea^>^ TareaController::RetornarListaTarea() {
 
@@ -132,6 +267,24 @@ void TareaController::CargarTareaDesdeArchivo() {
 		this->listaTarea->Add(objTarea);
 
 	}
+}
+
+List<Tarea^>^ TareaController::obtenerCodigosTarea()
+{
+	List<Tarea^>^ listaCodigosTarea = gcnew List<Tarea^>();
+	array<String^>^ lineas = File::ReadAllLines("TareaCodigos.txt");
+	String^ separadores = ";";
+	for each (String ^ lineaPersonal in lineas) {
+		array<String^>^ palabras = lineaPersonal->Split(separadores->ToCharArray());
+		String^ IDarea = palabras[1];
+		String^ Fecha = palabras[2];
+		String^ IDSensor = palabras[3];
+		String^ IDTarea = palabras[0];
+		Tarea^ objTarea = gcnew Tarea(IDTarea, IDarea, Fecha, IDSensor);
+		listaCodigosTarea->Add(objTarea);
+
+	}
+	return listaCodigosTarea;
 }
 
 void TareaController::asignarTarea(String^ IDPersonal, String^ IDtarea)

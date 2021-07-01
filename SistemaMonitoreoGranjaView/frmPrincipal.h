@@ -16,6 +16,8 @@
 #include "frmAdministrarPersonal.h"
 /*Reportes*/
 #include "frmReporteAreas.h"
+/*Tareas*/
+#include "frmMisTareas.h"
 
 namespace SistemaMonitoreoGranjaView {
 
@@ -85,8 +87,9 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::ComponentModel::IContainer^ components;
 	private: List<Alimentos^>^ listaAlimentos;
 	private: List<Farmacos^>^ listaFarmacos;
+	private: System::Windows::Forms::ToolStripMenuItem^ misTareasToolStripMenuItem;
 	private: List<Almacen^>^ listaAlmacenes;
-
+	private: Personal^ objPersonal;
 
 	private:
 		/// <summary>
@@ -121,15 +124,16 @@ namespace SistemaMonitoreoGranjaView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->misTareasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->loginToolStripMenuItem,
-					this->mantenimientosToolStripMenuItem, this->reportesToolStripMenuItem
+					this->mantenimientosToolStripMenuItem, this->reportesToolStripMenuItem, this->misTareasToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -283,6 +287,13 @@ namespace SistemaMonitoreoGranjaView {
 			this->timer1->Enabled = true;
 			this->timer1->Interval = 20000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &frmPrincipal::timer1_Tick);
+			// 
+			// misTareasToolStripMenuItem
+			// 
+			this->misTareasToolStripMenuItem->Name = L"misTareasToolStripMenuItem";
+			this->misTareasToolStripMenuItem->Size = System::Drawing::Size(91, 24);
+			this->misTareasToolStripMenuItem->Text = L"Mis Tareas";
+			this->misTareasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::misTareasToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
@@ -450,6 +461,15 @@ private: System::Void areasDeAnimalesToolStripMenuItem_Click(System::Object^ sen
 	ventanaReporte->ShowDialog();
 }
 private: System::Void comederosToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void misTareasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmMisTareas^ ventana = gcnew frmMisTareas("20152005");
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
 }
 };
 }

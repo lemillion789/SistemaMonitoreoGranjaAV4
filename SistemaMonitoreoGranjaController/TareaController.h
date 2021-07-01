@@ -13,12 +13,14 @@ namespace SistemaMonitoreoGranjaController {
 		/*Tarea^ TareaPendiente(String^ tarea);*/
 
 		void realizarTareaSensor(String^ IdSensor);
+		void realizarTarea(String^ IdTarea);		//REVISAR REVISAR
 
 		void TareaPendiente(List<Advertencia^>^ listaTareasProgramadas);
 		//List <Tarea^>^ TareaAlerta();
 		List <Tarea^>^ RetornarListaTarea();
 		void GuardarListaEnTXT();
 		void CargarTareaDesdeArchivo();
+		List<Tarea^>^ obtenerCodigosTarea();
 
 		void asignarTarea(String^ IDPersonal,String^ IDtarea);
 		List<Tarea^>^ buscarTareaxPersonal(String^ IDPersonal);

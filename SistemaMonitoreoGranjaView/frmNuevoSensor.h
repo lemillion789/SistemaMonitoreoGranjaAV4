@@ -81,9 +81,10 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(242, 393);
+			this->button1->Location = System::Drawing::Point(323, 484);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(100, 28);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Crear";
 			this->button1->UseVisualStyleBackColor = true;
@@ -91,93 +92,105 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(242, 83);
+			this->textBox1->Location = System::Drawing::Point(323, 102);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(130, 20);
+			this->textBox1->Size = System::Drawing::Size(172, 22);
 			this->textBox1->TabIndex = 1;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &frmNuevoSensor::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(242, 122);
+			this->textBox2->Location = System::Drawing::Point(323, 150);
+			this->textBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(130, 20);
+			this->textBox2->Size = System::Drawing::Size(172, 22);
 			this->textBox2->TabIndex = 2;
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(242, 164);
+			this->textBox3->Location = System::Drawing::Point(323, 202);
+			this->textBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(130, 20);
+			this->textBox3->Size = System::Drawing::Size(172, 22);
 			this->textBox3->TabIndex = 3;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(160, 90);
+			this->label1->Location = System::Drawing::Point(213, 111);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(18, 13);
+			this->label1->Size = System::Drawing::Size(21, 17);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"ID";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(160, 122);
+			this->label2->Location = System::Drawing::Point(213, 150);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 13);
+			this->label2->Size = System::Drawing::Size(58, 17);
 			this->label2->TabIndex = 5;
 			this->label2->Text = L"Nombre";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(160, 167);
+			this->label3->Location = System::Drawing::Point(213, 206);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(37, 13);
+			this->label3->Size = System::Drawing::Size(47, 17);
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Marca";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(160, 220);
+			this->label4->Location = System::Drawing::Point(213, 271);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(67, 13);
+			this->label4->Size = System::Drawing::Size(89, 17);
 			this->label4->TabIndex = 7;
 			this->label4->Text = L"Tipo_Sensor";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(160, 274);
+			this->label5->Location = System::Drawing::Point(213, 337);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(49, 13);
+			this->label5->Size = System::Drawing::Size(64, 17);
 			this->label5->TabIndex = 8;
 			this->label5->Text = L"Cantidad";
 			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(242, 271);
+			this->textBox4->Location = System::Drawing::Point(323, 334);
+			this->textBox4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(130, 20);
+			this->textBox4->Size = System::Drawing::Size(172, 22);
 			this->textBox4->TabIndex = 9;
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Nivel", L"Temperatura", L"Humedad" });
-			this->comboBox1->Location = System::Drawing::Point(242, 212);
+			this->comboBox1->Location = System::Drawing::Point(323, 261);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(130, 21);
+			this->comboBox1->Size = System::Drawing::Size(172, 24);
 			this->comboBox1->TabIndex = 10;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmNuevoSensor::comboBox1_SelectedIndexChanged);
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Location = System::Drawing::Point(107, 67);
+			this->groupBox1->Location = System::Drawing::Point(143, 82);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(327, 295);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Size = System::Drawing::Size(436, 363);
 			this->groupBox1->TabIndex = 11;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos";
@@ -186,17 +199,18 @@ namespace SistemaMonitoreoGranjaView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(242, 22);
+			this->label6->Location = System::Drawing::Point(323, 27);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(75, 13);
+			this->label6->Size = System::Drawing::Size(98, 17);
 			this->label6->TabIndex = 12;
 			this->label6->Text = L"Nuevo Sensor";
 			// 
 			// frmNuevoSensor
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(593, 442);
+			this->ClientSize = System::Drawing::Size(791, 544);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->textBox4);
@@ -210,6 +224,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"frmNuevoSensor";
 			this->Text = L"frmNuevoSensor";
 			this->ResumeLayout(false);
