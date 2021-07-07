@@ -1,3 +1,4 @@
+#include "frmPrincipal.h"
 #pragma once
 
 namespace SistemaMonitoreoGranjaView {
@@ -90,7 +91,7 @@ namespace SistemaMonitoreoGranjaView {
 			// textBox1
 			// 
 			this->textBox1->Location = System::Drawing::Point(120, 72);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(116, 20);
 			this->textBox1->TabIndex = 2;
@@ -99,15 +100,17 @@ namespace SistemaMonitoreoGranjaView {
 			// textBox2
 			// 
 			this->textBox2->Location = System::Drawing::Point(120, 128);
-			this->textBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox2->Margin = System::Windows::Forms::Padding(2);
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->PasswordChar = '*';
 			this->textBox2->Size = System::Drawing::Size(116, 20);
 			this->textBox2->TabIndex = 3;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &frmIniciarSesion::textBox2_TextChanged);
 			// 
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(43, 199);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(72, 30);
 			this->button1->TabIndex = 4;
@@ -118,7 +121,7 @@ namespace SistemaMonitoreoGranjaView {
 			// button2
 			// 
 			this->button2->Location = System::Drawing::Point(164, 199);
-			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(72, 30);
 			this->button2->TabIndex = 5;
@@ -137,7 +140,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"frmIniciarSesion";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"frmIniciarSesion";
@@ -157,15 +160,19 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ ID = this->textBox1->Text;
 	String^ Contraseña = this->textBox2->Text;
 	UsuarioController^ verificar = gcnew UsuarioController();
-	String^ validoID = Convert::ToString(verificar->ValidarDatosID(ID));
-	String^ validoContrasena = Convert::ToString(verificar->ValidarDatosContrasena(Contraseña));
+	String^ validoID = Convert::ToString(verificar->BuscarIDenBD(ID));
+	String^ validoContrasena = Convert::ToString(verificar->BuscarContraseñaenBD(Contraseña));
 	if (validoID == "1") {
 		if (validoContrasena == "1") {
-			this->Close();
-			//this->Hide();
+			
+			//this->Close();
+			frmPrincipal^ gestor = gcnew frmPrincipal();
+			gestor->Show();
+			this->Hide();
 		}
 		else {
 			MessageBox::Show("Contraseña incorrecta");
+
 		}
 	}
 	else {
@@ -178,6 +185,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 }
 private: System::Void frmIniciarSesion_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
