@@ -3,6 +3,9 @@
 using namespace SistemaMonitoreoGranjaController;
 using namespace System;
 using namespace System::IO;
+using namespace System::IO;
+using namespace System::Collections::Generic;
+
 PersonalController::PersonalController() {
 	this->listaPersonal = gcnew List<Personal^>();
 	this->objConexion = gcnew SqlConnection();
@@ -35,6 +38,8 @@ List<Personal^>^ PersonalController::obtenerListaPersonal() {
 	return this->listaPersonal;
 
 }
+*/
+/*
 void PersonalController::GuardarPersonalEnArchivo(Personal^ objPersonal) {
 	this->listaPersonal->Clear();
 	CargarPersonalDesdeArchivo();
@@ -53,7 +58,9 @@ void PersonalController::GuardarPersonalEnArchivo(Personal^ objPersonal) {
 	}
 	File::WriteAllLines("Personal.txt", lineasArchivo);
 }
-/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar
+*/
+//Aquí ya mi array de lineasArchivo esta OK, con la información a grabar
+/*
 List<Personal^>^ PersonalController::buscarPersonal(String^ nombreBuscar) {
 
 	List<Personal^>^ listaPersonalEncontrados = gcnew List<Personal^>();
@@ -79,7 +86,8 @@ List<Personal^>^ PersonalController::buscarPersonal(String^ nombreBuscar) {
 	}
 	return listaPersonalEncontrados;
 }
-
+*/
+/*
 void PersonalController::EliminarPersonal(String^ IDPersonalEliminar) {
 	CargarPersonalDesdeArchivo();
 	for (int i = 0; i < this->listaPersonal->Count; i++) {
@@ -101,7 +109,7 @@ void PersonalController::EliminarPersonal(String^ IDPersonalEliminar) {
 
 
 }
-
+*//*
 Personal^ PersonalController::buscarPersonalxCodigo(String^ IDBuscar) {
 	Personal^ objPersonalEncontrado;
 	array<String^>^ lineas = File::ReadAllLines("Personal.txt");
@@ -127,11 +135,11 @@ Personal^ PersonalController::buscarPersonalxCodigo(String^ IDBuscar) {
 
 
 }
+*/
+void PersonalController::asignarTarea(String^ IDpersonalSeleccionado, List<Tarea^>^ listaTareas) {
 
-void PersonalController::asignarTarea(String^ IDpersonalSeleccionado, List<Tarea^>^ listaTareas)
-{
 	this->listaPersonal->Clear();
-	CargarPersonalDesdeArchivo();
+	this->listaPersonal = ObtenerlistaPersonaldesdeBD();
 	for (int i = 0; i < this->listaPersonal->Count; i++) {
 		Personal^ objPersonal = this->listaPersonal[i];
 		if (objPersonal->ID == IDpersonalSeleccionado) {
@@ -140,9 +148,11 @@ void PersonalController::asignarTarea(String^ IDpersonalSeleccionado, List<Tarea
 		}
 	}
 
-	/*Primero vamos a guardar la información de los miembros de los partidos
-	en su respectivo archivo*/
-	/*1.- Voy a contar cuantos miembros en total hay entre todos lo partidos*/
+
+
+	///*Primero vamos a guardar la información de los miembros de los partidos
+	//en su respectivo archivo
+	//1.- Voy a contar cuantos miembros en total hay entre todos lo partidos
 	int totalTareas = 0;
 	for (int i = 0; i < this->listaPersonal->Count; i++) {
 		Personal^ objPersonalGrabar = this->listaPersonal[i];
@@ -158,51 +168,70 @@ void PersonalController::asignarTarea(String^ IDpersonalSeleccionado, List<Tarea
 			k++;
 		}
 	}
-	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+	//Aquí ya mi array de lineasArchivo esta OK, con la información a grabar
 	File::WriteAllLines("TareaxPersonal.txt", lineasArchivo);
 
-	array<String^>^ lineasArchivoPersonal = gcnew array<String^>(this->listaPersonal->Count);
-	for (int i = 0; i < this->listaPersonal->Count; i++) {
-		Personal^ objPersonal = this->listaPersonal[i];
-		lineasArchivoPersonal[i] = objPersonal->ID + ";" + objPersonal->nombre + ";" + objPersonal->ApPaterno + ";" + objPersonal->ApMaterno + ";" + objPersonal->funcion + ";" + objPersonal->horario + ";" + objPersonal->asistencia;
-	}
-	/*Aquí ya mi array de lineasArchivoPartido esta OK, con la información a grabar*/
-	File::WriteAllLines("Personal.txt", lineasArchivoPersonal);
+	//array<String^>^ lineasArchivoPersonal = gcnew array<String^>(this->listaPersonal->Count);
+	//for (int i = 0; i < this->listaPersonal->Count; i++) {
+		//Personal^ objPersonal = this->listaPersonal[i];
+		//lineasArchivoPersonal[i] = objPersonal->ID + ";" + objPersonal->nombre + ";" + objPersonal->ApPaterno + ";" + objPersonal->ApMaterno + ";" + objPersonal->funcion + ";" + objPersonal->horario + ";" + objPersonal->asistencia;
+	//}
+	//Aquí ya mi array de lineasArchivoPartido esta OK, con la información a grabar
+	//File::WriteAllLines("Personal.txt", lineasArchivoPersonal);
 }
-}*/
-// TODO EN BASE DE DATOS 
-void PersonalController::AbrirConexion() {
+	
 
-	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20152005;User ID=a20152005;Password=WLt8qnYH;";
-	this->objConexion->Open();
-}
-void PersonalController::CerrarConexion() {
-	this->objConexion->Close();
-}
-List<Personal^>^ PersonalController::buscarPersonalxNombreBD(String^ Nombre) {
-	List<Personal^>^ listaPersonal=gcnew List<Personal^>();
-	Personal^ objPersonal = nullptr;
-	AbrirConexion();
-	SqlCommand^ objQuery = gcnew SqlCommand();
-	objQuery->Connection = this->objConexion;
-	objQuery->CommandText = "select * from Personal where Nombre='" + Nombre + "';";
-	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
-	while (objData->Read()) {
-		String^ ID =Convert::ToString( (safe_cast<int>(objData[0])));
-		String^ Nombres = safe_cast<String^>(objData[1]);
-		String^ apellidoPaterno = safe_cast<String^>(objData[2]);
-		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
-		String^ Funcion = safe_cast<String^>(objData[4]);
-		String^ Horario = safe_cast<String^>(objData[5]);
-		//String^ Tarea = safe_cast<String^>(objData[6]);
-		String^ Asistencia = safe_cast<String^>(objData[6]);
-		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Asistencia);
-		listaPersonal->Add(objPersonal);
+	
+	// TODO EN BASE DE DATOS 
+	void PersonalController::AbrirConexion() {
+
+		this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20152005;User ID=a20152005;Password=WLt8qnYH;";
+		this->objConexion->Open();
 	}
-	objData->Close();
-	CerrarConexion();
-	return listaPersonal;
-}
+	void PersonalController::CerrarConexion() {
+		this->objConexion->Close();
+	}
+	List<Personal^>^ PersonalController::buscarPersonalxNombreBD(String ^ NombreBuscar) {
+		List<Personal^>^ listaPersonal = gcnew List<Personal^>();
+		Personal^ objPersonal = nullptr;
+		AbrirConexion();
+		SqlCommand^ objQuery = gcnew SqlCommand();
+		objQuery->Connection = this->objConexion;
+		objQuery->CommandText = "select * from Personal where Nombre='" + NombreBuscar + "';";
+		SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
+		while (objData->Read()) {
+			String^ ID = Convert::ToString((safe_cast<int>(objData[0])));
+			String^ Nombres = safe_cast<String^>(objData[1]);
+			String^ apellidoPaterno = safe_cast<String^>(objData[2]);
+			String^ apellidoMaterno = safe_cast<String^>(objData[3]);
+			String^ Funcion = safe_cast<String^>(objData[4]);
+			String^ Horario = safe_cast<String^>(objData[5]);
+			//String^ Tarea = safe_cast<String^>(objData[6]);
+			String^ Asistencia = safe_cast<String^>(objData[6]);
+
+
+
+
+
+			if (NombreBuscar == Nombres) {
+				TareaController^ gestorTarea = gcnew TareaController();
+				List<Tarea^>^ listaTareas = gestorTarea->buscarTareaxPersonal(ID);
+				//objPersonalEncontrado = gcnew Personal(ID, nombre, ApPaterno, ApMaterno, funcion, horario, listaTareas, asistencia);
+				objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, listaTareas, Asistencia);
+				listaPersonal->Add(objPersonal);
+				break;
+			}
+
+
+
+			//objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, listatareas, Asistencia);
+			//listaPersonal->Add(objPersonal);
+		}
+		objData->Close();
+		CerrarConexion();
+		return listaPersonal;
+	}
+
 List<Personal^>^ PersonalController::ObtenerlistaPersonaldesdeBD() {
 
 	List<Personal^>^ listaPersonal = gcnew List<Personal^>();
@@ -220,8 +249,11 @@ List<Personal^>^ PersonalController::ObtenerlistaPersonaldesdeBD() {
 		String^ Funcion = safe_cast<String^>(objData[4]);
 		String^ Horario = safe_cast<String^>(objData[5]);
 		//String^ Tarea = safe_cast<String^>(objData[6]);
+		TareaController^ gestorTarea = gcnew TareaController();
+		List<Tarea^>^ listaTareas = gestorTarea->buscarTareaxPersonal(ID);
 		String^ Asistencia = safe_cast<String^>(objData[6]);
-		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Asistencia);
+		//objPersonalEncontrado = gcnew Personal(ID, nombre, ApPaterno, ApMaterno, funcion, horario, listaTareas, asistencia);
+		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, listaTareas, Asistencia);
 		listaPersonal->Add(objPersonal);
 	}
 	objData->Close();
@@ -277,13 +309,13 @@ void PersonalController::GuardarPersonalEnBD(Personal^ objPersonal) {
 
 
 }
-Personal^ PersonalController::buscarPersonalxIDBD(String^ ID) {
+Personal^ PersonalController::buscarPersonalxIDBD(String^ IDBuscar) {
 	List<Personal^>^ listaPersonal = gcnew List<Personal^>();
 	Personal^ objPersonal = nullptr;
 	AbrirConexion();
 	SqlCommand^ objQuery = gcnew SqlCommand();
 	objQuery->Connection = this->objConexion;
-	objQuery->CommandText = "select * from Personal where ID='" + ID + "';";
+	objQuery->CommandText = "select * from Personal where ID='" + IDBuscar + "';";
 	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
 	while (objData->Read()) {
 		String^ ID = Convert::ToString((safe_cast<int>(objData[0])));
@@ -293,8 +325,19 @@ Personal^ PersonalController::buscarPersonalxIDBD(String^ ID) {
 		String^ Funcion = safe_cast<String^>(objData[4]);
 		String^ Horario = safe_cast<String^>(objData[5]);
 		//String^ Tarea = safe_cast<String^>(objData[6]);
+
 		String^ Asistencia = safe_cast<String^>(objData[6]);
-		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Asistencia);
+
+
+		TareaController^ gestorTarea = gcnew TareaController();
+		if (IDBuscar == ID) {
+			List<Tarea^>^ listaTareas = gestorTarea->buscarTareaxPersonal(ID);
+			objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, listaTareas, Asistencia);
+			break;
+		}
+
+
+		
 		
 	}
 	objData->Close();

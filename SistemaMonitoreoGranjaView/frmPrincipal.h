@@ -1286,16 +1286,8 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	TareaController^ objTareacontroller = gcnew TareaController();
 	AdvertenciaController^ GestorAdvertencia = gcnew AdvertenciaController();
 	List<Advertencia^>^ listaAdvertencias = GestorAdvertencia->generarReporteAdvertencias();
-	for (int i = 0; i < listaAdvertencias->Count; i++) {
-		Advertencia^ objAdvertencia = listaAdvertencias[i];
-		if (objAdvertencia->alarma) {
-			String^ IDsensor = objAdvertencia->IdSensor;
-			objTareacontroller->TareaPendiente(IDsensor);
-			objTareacontroller->GuardarListaEnTXT();
-			//MessageBox::Show(objAdvertencia->IdSensor + "necesita revision");
-		}
-	}
-
+	List<Advertencia^>^ listaAdvertenciasControladas = GestorAdvertencia->obtenerListaTXT();
+	objTareacontroller->TareaPendiente(listaAdvertenciasControladas);
 }
 private: System::Void menuStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
 }

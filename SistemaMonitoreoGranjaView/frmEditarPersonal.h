@@ -304,7 +304,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ horario = this->dateTimePicker1->Text;
 	//String^ Tareas = this->textBox4->Text;
 	String^ asistencia = this->comboBox2->Text;
-	Personal^ objPersonal = gcnew Personal(ID, Nombre,ApPaterno, ApMaterno, Funcion, horario, asistencia);
+	TareaController^ gestorTareas = gcnew TareaController();
+	List<Tarea^>^ listaTareas = gestorTareas->buscarTareaxPersonal(ID);
+	Personal^ objPersonal = gcnew Personal(ID, Nombre,ApPaterno, ApMaterno, Funcion, horario, listaTareas, asistencia);
 	PersonalController^ objPersonalController = gcnew PersonalController();
 	objPersonalController->EditarPersonalenBD(objPersonal, this->IDPersonalEditar);
 	this->Close();

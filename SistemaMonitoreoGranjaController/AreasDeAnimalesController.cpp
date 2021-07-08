@@ -3,6 +3,7 @@
 #include "ComedoresController.h"
 
 using namespace SistemaMonitoreoGranjaController;
+
 using namespace System;
 using namespace System::IO; /*Este es el namespace que permite manipular las clases y métodos para manejo de archivos de texto*/
 
@@ -241,6 +242,7 @@ String^ AreasDeAnimalesController::AreaDeAnimalesxIDsensor(String^ ID) {
 
 	String^ objArea;
 	array<String^>^ lineas = File::ReadAllLines("SensoresEnComedero.txt");
+	array<String^>^ lineasIncubadoras = File::ReadAllLines("Incubadoras.txt");
 	String^ separadores = ";";
 
 	for each (String ^ lineaAreas in lineas) {
@@ -254,6 +256,20 @@ String^ AreasDeAnimalesController::AreaDeAnimalesxIDsensor(String^ ID) {
 			break;
 		}
 	}
+	for each (String ^ lineaAreas2 in lineasIncubadoras) {
+		array<String^>^ palabras2 = lineaAreas2->Split(separadores->ToCharArray());
+		String^ IDsensorH = palabras2[2];
+		String^ IDsensorT = palabras2[1];
+		String^ IDAreaAnimal = palabras2[0];
+
+		if (ID == IDsensorT || ID == IDsensorH) {  //ToUpper para volver a mayuscula la palabra
+			objArea = IDAreaAnimal;
+
+			break;
+		}
+	}
+
+
 	return objArea;
 
 

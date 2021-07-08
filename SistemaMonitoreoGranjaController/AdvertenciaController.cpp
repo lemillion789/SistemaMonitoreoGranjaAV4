@@ -24,6 +24,9 @@ List<Advertencia^>^ AdvertenciaController::generarReporteAdvertencias()
 		Medicion^ ultimaMedicion = objSensor->listaMediciones[cantidadMediciones - 1];
 		Boolean Alarma;
 		//falta aclarar limites
+		int Usado1 = gestorSensores->verificarSensor(listaSensores[i]->ID);
+		int Usado2 = gestorSensores->verificarSensorIncubadora(listaSensores[i]->ID);
+		if (Usado1 == 1 || Usado2 == 1) {
 			if (objSensor->tipoSensor == "Temperatura") {
 				Alarma = ultimaMedicion->medida < 10 || ultimaMedicion->medida>30;
 			}
@@ -40,9 +43,10 @@ List<Advertencia^>^ AdvertenciaController::generarReporteAdvertencias()
 				Alarma = ultimaMedicion->medida <= 0;
 			}
 
-		//Boolean Alarma = (ultimaMedicion->medida == 0);
-		Advertencia^ objAdvertencia = gcnew Advertencia(objSensor, Alarma);
-		listaAdvertenciaGrabar->Add(objAdvertencia);
+			//Boolean Alarma = (ultimaMedicion->medida == 0);
+			Advertencia^ objAdvertencia = gcnew Advertencia(objSensor, Alarma);
+			listaAdvertenciaGrabar->Add(objAdvertencia);
+		}
 	}
 	for (int j = 0; j < listaAdvertenciaGrabar->Count; j++) {
 		if (listaAdvertenciaGrabar[j]->alarma) {

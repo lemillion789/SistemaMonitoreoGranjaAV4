@@ -27,8 +27,8 @@ void TareaController::realizarTareaSensor(String^ IdSensor)
 	SensoresController^ GestorSensores = gcnew SensoresController();
 	MedicionController^ gestorMedicion = gcnew MedicionController();
 	PersonalController^ gestorPersonal = gcnew PersonalController();
-	gestorPersonal->CargarPersonalDesdeArchivo();
-	List<Personal^>^ listaPersonal = gestorPersonal->obtenerListaPersonal();
+	//gestorPersonal->CargarPersonalDesdeArchivoBD();
+	List<Personal^>^ listaPersonal = gestorPersonal->ObtenerlistaPersonaldesdeBD();
 	GestorSensores->CargarSensores();
 	List<Sensores^>^ listaSensores = GestorSensores->obtenerListaSensores();
 
@@ -193,8 +193,8 @@ void TareaController::realizarTarea(String^ IdTarea)
 	//REMOVER TAREA
 	List<Advertencia^>^ listaAdvertencias = gestorAdvertencia->generarReporteAdvertencias();
 
-	gestorPersonal->CargarPersonalDesdeArchivo();
-	List<Personal^>^ listaPersonal = gestorPersonal->obtenerListaPersonal();
+	//gestorPersonal->CargarPersonalDesdeArchivoBD();
+	List<Personal^>^ listaPersonal = gestorPersonal->ObtenerlistaPersonaldesdeBD();
 	int totalTareasPersonal = 0;
 	for (int i = 0; i < listaPersonal->Count; i++) {
 		Personal^ objPersonal = listaPersonal[i];
@@ -338,7 +338,7 @@ void TareaController::asignarTarea(String^ IDPersonal, String^ IDtarea)
 	Tarea^ objTarea = buscarTareaxID(IDtarea);
 
 	PersonalController^ gestorPersonal = gcnew PersonalController();
-	Personal^ objPersonal = gestorPersonal->buscarPersonalxCodigo(IDPersonal);
+	Personal^ objPersonal = gestorPersonal->buscarPersonalxIDBD(IDPersonal);
 	objPersonal->listaTareas->Add(objTarea);
 }
 

@@ -366,7 +366,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	//List<Tarea^>^ listaTareas = gestor->buscarTareaxPersonal(IDpersonalSeleccionado);
 	//List<Tarea^>^ listaTareas = gestorPersonal->buscarPersonalxCodigo(IDpersonalSeleccionado)->listaTareas;
 	//EN PRUEBA
-	Personal^ objPersonal = gestorPersonal->buscarPersonalxCodigo(IDpersonalSeleccionado);
+	Personal^ objPersonal = gestorPersonal->buscarPersonalxIDBD(IDpersonalSeleccionado);
 	//List<Tarea^>^ listaTareas = objPersonal->listaTareas;
 	//this->listaTareas = listaTareas;
 	int pertenecePartido = gestor->verificarSiTareaPertenecePersonal(IDTareaAsignar);
