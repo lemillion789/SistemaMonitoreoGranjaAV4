@@ -17,6 +17,9 @@
 #include "frmAdministrarPersonal.h"
 /*Reportes*/
 #include "frmReporteAreas.h"
+#include "frmMisTareas.h"
+#include "frmMisEstadisticas.h"
+
 
 
 
@@ -36,12 +39,13 @@ namespace SistemaMonitoreoGranjaView {
 	public ref class frmPrincipal : public System::Windows::Forms::Form
 	{
 	public:
-		frmPrincipal(void)
+		frmPrincipal(String^ IDUsuario)
 		{
 			InitializeComponent();
 			this->listaAlimentos = gcnew List<Alimentos^>();
 			this->listaFarmacos = gcnew List<Farmacos^>();
 			this->listaAlmacenes = gcnew List<Almacen^>();
+			this->IDUsuario = IDUsuario;
 			
 			//
 			//TODO: agregar código de constructor aquí
@@ -129,30 +133,6 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::ToolStripMenuItem^ reportesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ areasDeAnimalesToolStripMenuItem;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 private: System::Windows::Forms::Panel^ PanelReportes;
 private: System::Windows::Forms::Panel^ panel6;
 private: System::Windows::Forms::Button^ button6;
@@ -160,9 +140,9 @@ private: System::Windows::Forms::Label^ label13;
 private: System::Windows::Forms::Panel^ panel15;
 private: System::Windows::Forms::Button^ button9;
 private: System::Windows::Forms::Label^ label14;
-private: System::Windows::Forms::Panel^ panel16;
-private: System::Windows::Forms::Button^ button10;
-private: System::Windows::Forms::Label^ label15;
+
+
+
 private: System::Windows::Forms::Panel^ panel7;
 private: System::Windows::Forms::Label^ label5;
 private: System::Windows::Forms::Button^ BotonAlmacen;
@@ -190,6 +170,7 @@ private: System::Windows::Forms::Button^ botonareas;
 private: System::Windows::Forms::Panel^ panelMantenimientos;
 
 	private: List<Almacen^>^ listaAlmacenes;
+	private: String^ IDUsuario;
 
 
 	private:
@@ -250,9 +231,6 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->panel15 = (gcnew System::Windows::Forms::Panel());
 			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->label14 = (gcnew System::Windows::Forms::Label());
-			this->panel16 = (gcnew System::Windows::Forms::Panel());
-			this->button10 = (gcnew System::Windows::Forms::Button());
-			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->BotonAlmacen = (gcnew System::Windows::Forms::Button());
@@ -291,7 +269,6 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->PanelReportes->SuspendLayout();
 			this->panel6->SuspendLayout();
 			this->panel15->SuspendLayout();
-			this->panel16->SuspendLayout();
 			this->panel7->SuspendLayout();
 			this->panel14->SuspendLayout();
 			this->panel8->SuspendLayout();
@@ -446,7 +423,7 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			// timer1
 			// 
 			this->timer1->Enabled = true;
-			this->timer1->Interval = 60000;
+			this->timer1->Interval = 10000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &frmPrincipal::timer1_Tick);
 			// 
 			// Menu
@@ -618,6 +595,7 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->button7->Text = L"      Tareas";
 			this->button7->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
 			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &frmPrincipal::button7_Click);
 			// 
 			// button8
 			// 
@@ -703,7 +681,6 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->PanelReportes->Controls->Add(this->panel6);
 			this->PanelReportes->Controls->Add(this->panel15);
-			this->PanelReportes->Controls->Add(this->panel16);
 			this->PanelReportes->Location = System::Drawing::Point(200, 21);
 			this->PanelReportes->Name = L"PanelReportes";
 			this->PanelReportes->Size = System::Drawing::Size(683, 471);
@@ -713,7 +690,7 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			// 
 			this->panel6->Controls->Add(this->button6);
 			this->panel6->Controls->Add(this->label13);
-			this->panel6->Location = System::Drawing::Point(95, 257);
+			this->panel6->Location = System::Drawing::Point(92, 78);
 			this->panel6->Name = L"panel6";
 			this->panel6->Size = System::Drawing::Size(174, 174);
 			this->panel6->TabIndex = 6;
@@ -750,7 +727,7 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			// 
 			this->panel15->Controls->Add(this->button9);
 			this->panel15->Controls->Add(this->label14);
-			this->panel15->Location = System::Drawing::Point(374, 77);
+			this->panel15->Location = System::Drawing::Point(391, 77);
 			this->panel15->Name = L"panel15";
 			this->panel15->Size = System::Drawing::Size(174, 174);
 			this->panel15->TabIndex = 5;
@@ -766,6 +743,7 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->button9->Size = System::Drawing::Size(176, 138);
 			this->button9->TabIndex = 2;
 			this->button9->UseVisualStyleBackColor = true;
+			this->button9->Click += gcnew System::EventHandler(this, &frmPrincipal::button9_Click);
 			// 
 			// label14
 			// 
@@ -779,42 +757,6 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->label14->Size = System::Drawing::Size(123, 19);
 			this->label14->TabIndex = 4;
 			this->label14->Text = L"Mis Resultados";
-			// 
-			// panel16
-			// 
-			this->panel16->Controls->Add(this->button10);
-			this->panel16->Controls->Add(this->label15);
-			this->panel16->Location = System::Drawing::Point(95, 77);
-			this->panel16->Name = L"panel16";
-			this->panel16->Size = System::Drawing::Size(174, 174);
-			this->panel16->TabIndex = 0;
-			// 
-			// button10
-			// 
-			this->button10->FlatAppearance->BorderSize = 0;
-			this->button10->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button10->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button10.Image")));
-			this->button10->Location = System::Drawing::Point(2, 36);
-			this->button10->Margin = System::Windows::Forms::Padding(2);
-			this->button10->Name = L"button10";
-			this->button10->Size = System::Drawing::Size(174, 136);
-			this->button10->TabIndex = 4;
-			this->button10->UseVisualStyleBackColor = true;
-			this->button10->Click += gcnew System::EventHandler(this, &frmPrincipal::button10_Click);
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label15->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
-				static_cast<System::Int32>(static_cast<System::Byte>(78)));
-			this->label15->Location = System::Drawing::Point(23, 10);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(129, 19);
-			this->label15->TabIndex = 4;
-			this->label15->Text = L"Mis Actividades";
-			this->label15->Click += gcnew System::EventHandler(this, &frmPrincipal::label15_Click);
 			// 
 			// panel7
 			// 
@@ -1143,8 +1085,6 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->panel6->PerformLayout();
 			this->panel15->ResumeLayout(false);
 			this->panel15->PerformLayout();
-			this->panel16->ResumeLayout(false);
-			this->panel16->PerformLayout();
 			this->panel7->ResumeLayout(false);
 			this->panel14->ResumeLayout(false);
 			this->panel8->ResumeLayout(false);
@@ -1418,6 +1358,15 @@ private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ 
 }
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmReporteAreas^ ventanaReporte = gcnew frmReporteAreas();
+	ventanaReporte->ShowDialog();
+}
+private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmMisTareas^ ventanaReporte = gcnew frmMisTareas(IDUsuario);
+	ventanaReporte->ShowDialog();
+
+}
+private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmMisEstadisticas^ ventanaReporte = gcnew frmMisEstadisticas(IDUsuario);
 	ventanaReporte->ShowDialog();
 }
 };

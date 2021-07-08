@@ -1,0 +1,11 @@
+00001;False
+00004;False
+00007;False
+00010;True
+00013;True
+00016;False
+00019;True
+12348;True
+12351;True
+12352;True
+12353;True

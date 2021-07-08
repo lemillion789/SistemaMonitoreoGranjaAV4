@@ -47,7 +47,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::Label^ label4;
-
+	
 
 
 	private:
@@ -167,7 +167,8 @@ namespace SistemaMonitoreoGranjaView {
 			// pictureBox4
 			// 
 			this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
-			this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox4->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->pictureBox4->Location = System::Drawing::Point(72, 48);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(43, 34);
@@ -231,7 +232,7 @@ namespace SistemaMonitoreoGranjaView {
 			if (validoContrasena == "1") {
 
 				//this->Close();
-				frmPrincipal^ gestor = gcnew frmPrincipal();
+				frmPrincipal^ gestor = gcnew frmPrincipal(this->textBox1->Text);
 				gestor->Show();
 				this->Hide();
 			}
@@ -244,9 +245,7 @@ namespace SistemaMonitoreoGranjaView {
 
 			MessageBox::Show("ID incorrecto");
 		}
-
-
-
+		
 
 	}
 	private: System::Void frmIniciarSesion_Load(System::Object^ sender, System::EventArgs^ e) {

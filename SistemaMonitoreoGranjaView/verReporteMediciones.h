@@ -48,7 +48,8 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
 	private: String^ IDsensor;
 	private: System::Windows::Forms::Timer^ timer1;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Panel^ panel1;
+
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 
@@ -71,24 +72,26 @@ namespace SistemaMonitoreoGranjaView {
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
+			this->chart1->BackColor = System::Drawing::Color::WhiteSmoke;
 			chartArea1->Name = L"ChartArea1";
 			this->chart1->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(12, 12);
+			this->chart1->Location = System::Drawing::Point(195, 0);
+			this->chart1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->chart1->Name = L"chart1";
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series1->Legend = L"Legend1";
 			series1->Name = L"Mediciones";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(791, 433);
+			this->chart1->Size = System::Drawing::Size(671, 448);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
@@ -98,23 +101,24 @@ namespace SistemaMonitoreoGranjaView {
 			this->timer1->Interval = 10000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &verReporteMediciones::timer1_Tick);
 			// 
-			// button1
+			// panel1
 			// 
-			this->button1->Location = System::Drawing::Point(902, 168);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(119, 57);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &verReporteMediciones::button1_Click);
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(200, 459);
+			this->panel1->TabIndex = 1;
 			// 
 			// verReporteMediciones
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1106, 470);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(867, 459);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->chart1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"verReporteMediciones";
 			this->Text = L"verReporteMediciones";
 			this->Load += gcnew System::EventHandler(this, &verReporteMediciones::verReporteMediciones_Load);
