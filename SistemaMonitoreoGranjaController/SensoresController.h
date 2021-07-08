@@ -26,6 +26,8 @@ namespace SistemaMonitoreoGranjaController {
 		void CrearMedicionesNuevas(); //crea mediciones para cada sensor;
 		void EliminarSensor(String^ IDSensor);
 		void GuardarEnArchivo(List<Sensores^>^ objSensor);
+		void GuardarMedicionesEnArchivo();
+
 		int verificarSensorIncubadora(String^ IDsensor);
 		String^ BuscarUnidadxIDSensor(String^ ID_SensorID);
 		//String^ IDSensorAlarma(); //ID Sensor identificado;

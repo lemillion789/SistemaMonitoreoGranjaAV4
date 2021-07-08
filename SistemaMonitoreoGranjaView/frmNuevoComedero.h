@@ -140,14 +140,14 @@ namespace SistemaMonitoreoGranjaView {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -315,28 +315,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Agregar Sensores";
 			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(767, 117);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(100, 58);
-			this->button3->TabIndex = 7;
-			this->button3->Text = L"Eliminar Sensores";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &frmNuevoComedero::button3_Click);
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(405, 469);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(100, 28);
-			this->button1->TabIndex = 7;
-			this->button1->Text = L"Grabar";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &frmNuevoComedero::button1_Click_1);
-			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -387,6 +365,28 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column5->MinimumWidth = 6;
 			this->Column5->Name = L"Column5";
 			this->Column5->Width = 125;
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(767, 117);
+			this->button3->Margin = System::Windows::Forms::Padding(4);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(100, 58);
+			this->button3->TabIndex = 7;
+			this->button3->Text = L"Eliminar Sensores";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &frmNuevoComedero::button3_Click);
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(405, 469);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(100, 28);
+			this->button1->TabIndex = 7;
+			this->button1->Text = L"Grabar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmNuevoComedero::button1_Click_1);
 			// 
 			// frmNuevoComedero
 			// 

@@ -162,6 +162,8 @@
     <ClCompile Include="frmMantIncubadoras.cpp" />
     <ClCompile Include="frmMantPersonal.cpp" />
     <ClCompile Include="frmMantSensores.cpp" />
+    <ClCompile Include="frmMisEstadisticas.cpp" />
+    <ClCompile Include="frmMisTareas.cpp" />
     <ClCompile Include="frmMovimientoAlmacen.cpp" />
     <ClCompile Include="frmNuevaArea.cpp" />
     <ClCompile Include="frmNuevoComedero.cpp" />
@@ -265,6 +267,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantSensores.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMisEstadisticas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMisTareas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMovimientoAlmacen.h">
@@ -388,6 +396,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantSensores.resx">
       <DependentUpon>frmMantSensores.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMisEstadisticas.resx">
+      <DependentUpon>frmMisEstadisticas.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMisTareas.resx">
+      <DependentUpon>frmMisTareas.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMovimientoAlmacen.resx">
       <DependentUpon>frmMovimientoAlmacen.h</DependentUpon>

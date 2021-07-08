@@ -1,3 +1,3 @@
-20152005;Davies;Aguirre;Blas;Administrador;jueves, 17 de junio de 20210;Auxiliar de Almacén;Asistio
-20012305;David;Allasi;Baldeón;Gerente;jueves, 17 de junio de 20210;Dirección de la granja;Asistio
-19174353;Marcial;Rubio;Fujimori;Granjero;jueves, 17 de junio de 20210;Cuidado de los animales;Asistio
+20152005;Davies;Aguirre;Blas;Administrador;jueves, 17 de junio de 20210;Auxiliar de Almacén
+20012305;David;Allasi;Baldeón;Gerente;jueves, 17 de junio de 20210;Dirección de la granja
+19174353;Marcial;Rubio;Fujimori;Granjero;jueves, 17 de junio de 20210;Cuidado de los animales

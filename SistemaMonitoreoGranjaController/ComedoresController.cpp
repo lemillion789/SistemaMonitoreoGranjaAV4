@@ -4,8 +4,18 @@
 using namespace SistemaMonitoreoGranjaController;
 using namespace System;
 using namespace System::IO;
+void ComedoresController::AbrirConexion()
+{
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20152005;User ID=a20152005;Password=WLt8qnYH;";
+	this->objConexion->Open(); /*Ya establecí conexión con la BD*/
+}
+void ComedoresController::CerrarConexion()
+{
+	this->objConexion->Close();
+}
 ComedoresController::ComedoresController() {
 	this->listaComederos = gcnew List<Comederos^>();
+	this->objConexion = gcnew SqlConnection();
 }
 
 

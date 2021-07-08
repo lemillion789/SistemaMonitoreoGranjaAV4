@@ -30,5 +30,13 @@ namespace SistemaMonitoreoGranjaController {
 		Personal^ buscarPersonalxIDBD(String^ ID);
 		void EditarPersonalenBD(Personal^ objPersonal, String^ ID);
 
+		List<Personal^>^ obtenerListaPersonal();
+		void GuardarPersonalEnArchivo(Personal^ objPersonal);
+		List<Personal^>^ buscarPersonal(String^ nombreBuscar);
+		void EliminarPersonal(String^ IDPersonalEliminar);
+		Personal^ buscarPersonalxCodigo(String^ IDBuscar);
+
+
+		void asignarTarea(String^ IDpersonalSeleccionado, List<Tarea^>^ listaTareas);
 	};
 }

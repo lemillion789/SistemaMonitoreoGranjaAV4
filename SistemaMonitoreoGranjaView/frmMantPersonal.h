@@ -225,7 +225,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// Column6
 			// 
-			this->Column6->HeaderText = L" horario";
+			this->Column6->HeaderText = L"Horario";
 			this->Column6->MinimumWidth = 6;
 			this->Column6->Name = L"Column6";
 			this->Column6->Width = 125;

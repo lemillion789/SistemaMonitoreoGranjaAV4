@@ -108,7 +108,8 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(242, 164);
+			this->textBox3->Location = System::Drawing::Point(323, 202);
+			this->textBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(130, 20);
 			this->textBox3->TabIndex = 3;

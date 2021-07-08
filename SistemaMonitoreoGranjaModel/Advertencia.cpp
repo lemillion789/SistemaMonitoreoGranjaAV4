@@ -1,12 +1,12 @@
 #include "Advertencia.h"
-
+#include "Sensores.h"
 using namespace SistemaMonitoreoGranjaModel;
 Advertencia::Advertencia()
 {
 }
 
-Advertencia::Advertencia(String^ IdSensor, Boolean alarma)
+Advertencia::Advertencia(Sensores^ objSensor, Boolean alarma)
 {
-	this->IdSensor = IdSensor;
+	this->objSensor = objSensor;
 	this->alarma = alarma;
 }

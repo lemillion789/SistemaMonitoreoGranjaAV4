@@ -280,7 +280,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	//String^ Tareas = this->textBox4->Text;
 	String^ asistencia = this->comboBox2->Text;
 	
-	Personal^ objPersonal = gcnew Personal(ID,Nombre, ApPaterno, ApMaterno, Funcion, horario, asistencia);
+	List<Tarea^>^ listaTareas;
+	Personal^ objPersonal = gcnew Personal(ID, Nombre, ApPaterno, ApMaterno, Funcion, horario, listaTareas, asistencia);
 	PersonalController^ objGestorPersonal = gcnew PersonalController();
 	UsuarioController^ objGestorUsuario = gcnew UsuarioController();
 	objGestorUsuario->Grabarusuario(ID);

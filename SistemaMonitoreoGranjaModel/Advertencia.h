@@ -1,4 +1,5 @@
 #pragma once
+#include "Sensores.h"
 
 namespace SistemaMonitoreoGranjaModel {
 	using namespace System;
@@ -7,14 +8,15 @@ namespace SistemaMonitoreoGranjaModel {
 		/*Atributos o Datos*/
 
 	public:
-		String^ IdSensor;
+		//String^ IdSensor;
+		Sensores^ objSensor;
 		Boolean alarma;  //1 alerta, 0 no hay alerta
 		//Boolean Verificado;
 
 		/*Métodos o Funciones*/
 	public:
 		Advertencia();
-		Advertencia(String^ IdSensor, Boolean alarma);
+		Advertencia(Sensores^ objSensor, Boolean alarma);
 
 
 	};
