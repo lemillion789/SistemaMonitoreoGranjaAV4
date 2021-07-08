@@ -11,16 +11,18 @@ namespace SistemaMonitoreoGranjaController {
 		SqlConnection^ objConexion;
 	public:
 		PersonalController();
-		void CargarPersonalDesdeArchivo();
+		//void CargarPersonalDesdeArchivo();
 
-		List<Personal^>^ obtenerListaPersonal();
-		void GuardarPersonalEnArchivo(Personal^ objPersonal);
-		List<Personal^>^ buscarPersonal(String^ nombreBuscar);
-		void EliminarPersonal(String^ IDPersonalEliminar);
-		Personal^ buscarPersonalxCodigo(String^ IDBuscar);
+		//List<Personal^>^ obtenerListaPersonal();
+		//void GuardarPersonalEnArchivo(Personal^ objPersonal);
+		//List<Personal^>^ buscarPersonal(String^ nombreBuscar);
+		//void EliminarPersonal(String^ IDPersonalEliminar);
+		//Personal^ buscarPersonalxCodigo(String^ IDBuscar);
+			//base de datos
+
 		void AbrirConexion();
 		void CerrarConexion();
-		//base de datos
+	
 		List<Personal^>^ buscarPersonalxNombreBD(String^ Nombre);
 		List<Personal^>^ ObtenerlistaPersonaldesdeBD();
 		void EliminarPersonalBD(String^ IDPersonalEliminar);

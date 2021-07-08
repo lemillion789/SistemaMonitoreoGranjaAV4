@@ -49,16 +49,23 @@ namespace SistemaMonitoreoGranjaView {
 
 
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column7;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
-	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button2;
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -77,16 +84,15 @@ namespace SistemaMonitoreoGranjaView {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
@@ -138,17 +144,37 @@ namespace SistemaMonitoreoGranjaView {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column7, this->Column8
+					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6, this->Column8
 			});
-			this->dataGridView1->Location = System::Drawing::Point(34, 183);
+			this->dataGridView1->Location = System::Drawing::Point(34, 184);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(592, 239);
 			this->dataGridView1->TabIndex = 4;
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(669, 214);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(108, 51);
+			this->button5->TabIndex = 3;
+			this->button5->Text = L"Asignar Usuario y Contraseña";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &frmAdministrarPersonal::button5_Click);
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(673, 303);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(103, 47);
+			this->button2->TabIndex = 5;
+			this->button2->Text = L"Monitorear tareas:";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &frmAdministrarPersonal::button2_Click_1);
 			// 
 			// Column1
 			// 
@@ -180,35 +206,10 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column6->HeaderText = L" horario";
 			this->Column6->Name = L"Column6";
 			// 
-			// Column7
-			// 
-			this->Column7->HeaderText = L"tareas";
-			this->Column7->Name = L"Column7";
-			// 
 			// Column8
 			// 
 			this->Column8->HeaderText = L"asistencia";
 			this->Column8->Name = L"Column8";
-			// 
-			// button5
-			// 
-			this->button5->Location = System::Drawing::Point(669, 214);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(108, 51);
-			this->button5->TabIndex = 3;
-			this->button5->Text = L"Asignar Usuario y Contraseña";
-			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &frmAdministrarPersonal::button5_Click);
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(673, 303);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(103, 47);
-			this->button2->TabIndex = 5;
-			this->button2->Text = L"Monitorear tareas:";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &frmAdministrarPersonal::button2_Click_1);
 			// 
 			// frmAdministrarPersonal
 			// 
@@ -235,7 +236,7 @@ namespace SistemaMonitoreoGranjaView {
 	}
 	private: System::Void frmMantPersonal_Load(System::Object^ sender, System::EventArgs^ e) {
 		PersonalController^ gestorPersonal = gcnew PersonalController();
-		gestorPersonal->CargarPersonalDesdeArchivo();
+		//gestorPersonal->CargarPersonalDesdeArchivo();
 		List<Personal^>^ objListaPartidos;
 		mostrarGrilla(gestorPersonal->ObtenerlistaPersonaldesdeBD());
 	}
@@ -243,15 +244,15 @@ namespace SistemaMonitoreoGranjaView {
 		this->dataGridView1->Rows->Clear();
 		for (int i = 0; i < listaPartidos->Count; i++) {
 			Personal^ objPersonal = listaPartidos[i];
-			array<String^>^ fila = gcnew array<String^>(8);
+			array<String^>^ fila = gcnew array<String^>(7);
 			fila[0] = objPersonal->ID;
 			fila[1] = objPersonal->nombre;
 			fila[2] = objPersonal->ApPaterno;
 			fila[3] = objPersonal->ApMaterno;
 			fila[4] = objPersonal->funcion;
 			fila[5] = objPersonal->horario;
-			fila[6] = objPersonal->tareas;
-			fila[7] = objPersonal->asistencia;
+			//fila[6] = objPersonal->tareas;
+			fila[6] = objPersonal->asistencia;
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}
@@ -263,7 +264,7 @@ namespace SistemaMonitoreoGranjaView {
 		List<Personal^>^ listaPersonal;
 		PersonalController^ objGestorPartido = gcnew PersonalController();
 		if (BuscarPersonal == "") {
-			objGestorPartido->CargarPersonalDesdeArchivo();
+			//objGestorPartido->CargarPersonalDesdeArchivo();
 			listaPersonal = objGestorPartido->ObtenerlistaPersonaldesdeBD();
 		}
 		else {

@@ -7,6 +7,7 @@ PersonalController::PersonalController() {
 	this->listaPersonal = gcnew List<Personal^>();
 	this->objConexion = gcnew SqlConnection();
 }
+/*
 void PersonalController::CargarPersonalDesdeArchivo() {
 
 	this->listaPersonal->Clear();
@@ -51,7 +52,7 @@ void PersonalController::GuardarPersonalEnArchivo(Personal^ objPersonal) {
 	}
 	File::WriteAllLines("Personal.txt", lineasArchivo);
 }
-/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar
 List<Personal^>^ PersonalController::buscarPersonal(String^ nombreBuscar) {
 
 	List<Personal^>^ listaPersonalEncontrados = gcnew List<Personal^>();
@@ -122,7 +123,7 @@ Personal^ PersonalController::buscarPersonalxCodigo(String^ IDBuscar) {
 	return objPersonalEncontrado;
 
 
-}
+}*/
 // TODO EN BASE DE DATOS 
 void PersonalController::AbrirConexion() {
 
@@ -147,9 +148,9 @@ List<Personal^>^ PersonalController::buscarPersonalxNombreBD(String^ Nombre) {
 		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
 		String^ Funcion = safe_cast<String^>(objData[4]);
 		String^ Horario = safe_cast<String^>(objData[5]);
-		String^ Tarea = safe_cast<String^>(objData[6]);
-		String^ Asistencia = safe_cast<String^>(objData[7]);
-		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Tarea, Asistencia);
+		//String^ Tarea = safe_cast<String^>(objData[6]);
+		String^ Asistencia = safe_cast<String^>(objData[6]);
+		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Asistencia);
 		listaPersonal->Add(objPersonal);
 	}
 	objData->Close();
@@ -172,9 +173,9 @@ List<Personal^>^ PersonalController::ObtenerlistaPersonaldesdeBD() {
 		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
 		String^ Funcion = safe_cast<String^>(objData[4]);
 		String^ Horario = safe_cast<String^>(objData[5]);
-		String^ Tarea = safe_cast<String^>(objData[6]);
-		String^ Asistencia = safe_cast<String^>(objData[7]);
-		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Tarea, Asistencia);
+		//String^ Tarea = safe_cast<String^>(objData[6]);
+		String^ Asistencia = safe_cast<String^>(objData[6]);
+		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Asistencia);
 		listaPersonal->Add(objPersonal);
 	}
 	objData->Close();
@@ -197,7 +198,7 @@ void PersonalController::GuardarPersonalEnBD(Personal^ objPersonal) {
 	AbrirConexion();
 	SqlCommand^ objQuery = gcnew SqlCommand();
 	objQuery->Connection = this->objConexion;
-	objQuery->CommandText = "insert into Personal values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8);";
+	objQuery->CommandText = "insert into Personal values (@p1,@p2,@p3,@p4,@p5,@p6,@p7);";
 	/*Esto de los parámetros es solo para el insert*/
 	SqlParameter^ p1 = gcnew SqlParameter("@p1", System::Data::SqlDbType::Int);
 	p1->Value = objPersonal->ID;
@@ -211,10 +212,10 @@ void PersonalController::GuardarPersonalEnBD(Personal^ objPersonal) {
 	p5->Value = objPersonal->funcion;
 	SqlParameter^ p6 = gcnew SqlParameter("@p6", System::Data::SqlDbType::VarChar, 50);
 	p6->Value = objPersonal->horario;
+	//SqlParameter^ p7 = gcnew SqlParameter("@p7", System::Data::SqlDbType::VarChar, 50);
+	//p7->Value = objPersonal->tareas;
 	SqlParameter^ p7 = gcnew SqlParameter("@p7", System::Data::SqlDbType::VarChar, 50);
-	p7->Value = objPersonal->tareas;
-	SqlParameter^ p8 = gcnew SqlParameter("@p8", System::Data::SqlDbType::VarChar, 50);
-	p8->Value = objPersonal->asistencia;
+	p7->Value = objPersonal->asistencia;
 	objQuery->Parameters->Add(p1);
 	objQuery->Parameters->Add(p2);
 	objQuery->Parameters->Add(p3);
@@ -222,7 +223,7 @@ void PersonalController::GuardarPersonalEnBD(Personal^ objPersonal) {
 	objQuery->Parameters->Add(p5);
 	objQuery->Parameters->Add(p6);
 	objQuery->Parameters->Add(p7);
-	objQuery->Parameters->Add(p8);
+	//objQuery->Parameters->Add(p8);
 	/*Este método se ejecuta tanto para el update, delete e insert*/
 	objQuery->ExecuteNonQuery();
 	CerrarConexion();
@@ -245,9 +246,9 @@ Personal^ PersonalController::buscarPersonalxIDBD(String^ ID) {
 		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
 		String^ Funcion = safe_cast<String^>(objData[4]);
 		String^ Horario = safe_cast<String^>(objData[5]);
-		String^ Tarea = safe_cast<String^>(objData[6]);
-		String^ Asistencia = safe_cast<String^>(objData[7]);
-		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Tarea, Asistencia);
+		//String^ Tarea = safe_cast<String^>(objData[6]);
+		String^ Asistencia = safe_cast<String^>(objData[6]);
+		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Asistencia);
 		
 	}
 	objData->Close();
@@ -260,7 +261,7 @@ void PersonalController::EditarPersonalenBD(Personal^ objPersonal, String^ ID) {
 	AbrirConexion();
 	SqlCommand^ objQuery = gcnew SqlCommand();
 	objQuery->Connection = this->objConexion;
-	objQuery->CommandText = "update Personal set ID = "+ objPersonal->ID +", Nombre = '" + objPersonal->nombre + "', apPaterno = '" + objPersonal->ApPaterno + "', ApMaterno = '" + objPersonal->ApMaterno + "', Funcion= '" + objPersonal->funcion + "', Horario = '" + objPersonal->horario + "', Tareas = '" + objPersonal->tareas+ "', Asistencia = '" + objPersonal->asistencia + "' where ID =" + ID + ";";
+	objQuery->CommandText = "update Personal set ID = "+ objPersonal->ID +", Nombre = '" + objPersonal->nombre + "', apPaterno = '" + objPersonal->ApPaterno + "', ApMaterno = '" + objPersonal->ApMaterno + "', Funcion= '" + objPersonal->funcion + "', Horario = '" + objPersonal->horario + "',  Asistencia = '" + objPersonal->asistencia + "' where ID =" + ID + ";";
 	objQuery->ExecuteNonQuery();
 	CerrarConexion();
 

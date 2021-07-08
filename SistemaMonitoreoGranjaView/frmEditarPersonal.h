@@ -48,8 +48,8 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::Label^ label6;
+
+
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
 	private: System::Windows::Forms::Button^ button2;
@@ -80,8 +80,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -119,39 +117,23 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Asistio", L"Ausente" });
-			this->comboBox2->Location = System::Drawing::Point(33, 298);
+			this->comboBox2->Location = System::Drawing::Point(33, 264);
 			this->comboBox2->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(169, 21);
 			this->comboBox2->TabIndex = 33;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &frmEditarPersonal::comboBox2_SelectedIndexChanged);
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(31, 285);
+			this->label7->Location = System::Drawing::Point(31, 251);
 			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(58, 13);
 			this->label7->TabIndex = 32;
 			this->label7->Text = L"Asistencia:";
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(33, 262);
-			this->textBox4->Margin = System::Windows::Forms::Padding(2);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(170, 20);
-			this->textBox4->TabIndex = 31;
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(32, 249);
-			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(38, 13);
-			this->label6->TabIndex = 30;
-			this->label6->Text = L"Tarea:";
+			this->label7->Click += gcnew System::EventHandler(this, &frmEditarPersonal::label7_Click);
 			// 
 			// label5
 			// 
@@ -173,7 +155,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(142, 333);
+			this->button2->Location = System::Drawing::Point(142, 299);
 			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(61, 50);
@@ -184,7 +166,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(35, 333);
+			this->button1->Location = System::Drawing::Point(35, 299);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(65, 50);
@@ -276,8 +258,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->comboBox2);
 			this->Controls->Add(this->label7);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->button2);
@@ -307,7 +287,7 @@ namespace SistemaMonitoreoGranjaView {
 		this->textBox2->Text = objPersonal->ApPaterno;
 		this->textBox3->Text = objPersonal->ApMaterno;
 		this->comboBox1->Text = objPersonal->funcion;
-		this->textBox4->Text = objPersonal->tareas;
+		//this->textBox4->Text = objPersonal->tareas;
 		this->comboBox2->Text = objPersonal->asistencia;
 
 	}
@@ -322,9 +302,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ ApMaterno = this->textBox3->Text;
 	String^ Funcion = this->comboBox1->Text;
 	String^ horario = this->dateTimePicker1->Text;
-	String^ Tareas = this->textBox4->Text;
+	//String^ Tareas = this->textBox4->Text;
 	String^ asistencia = this->comboBox2->Text;
-	Personal^ objPersonal = gcnew Personal(ID, Nombre,ApPaterno, ApMaterno, Funcion, horario, Tareas, asistencia);
+	Personal^ objPersonal = gcnew Personal(ID, Nombre,ApPaterno, ApMaterno, Funcion, horario, asistencia);
 	PersonalController^ objPersonalController = gcnew PersonalController();
 	objPersonalController->EditarPersonalenBD(objPersonal, this->IDPersonalEditar);
 	this->Close();
@@ -334,6 +314,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
