@@ -138,7 +138,7 @@ int SistemaMonitoreoGranjaController::AdvertenciaController::SeEncuentra(Adverte
 {
 	int Encuentra = 0;
 	for (int i = 0; i < listaComparar->Count; i++) {
-		if (listaComparar[i]->objSensor->ID == objAdvertencia->objSensor->ID || listaComparar[i]->alarma != objAdvertencia->alarma) {
+		if (listaComparar[i]->objSensor->ID == objAdvertencia->objSensor->ID && listaComparar[i]->alarma == objAdvertencia->alarma) {
 			Encuentra = 1;
 			break;
 		}

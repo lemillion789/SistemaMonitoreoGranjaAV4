@@ -160,7 +160,7 @@ void TareaController::realizarTarea(String^ IdTarea)
 				MedidaCorregida = 100;
 			}
 			else if (objSensorGrab->tipoSensor == "Peso") { //Nivel de comida
-				MedidaCorregida = 100;
+				MedidaCorregida = 15;
 			}
 			else if (objSensorGrab->tipoSensor == "Nivel de Proteinas") {
 				MedidaCorregida = 100;
@@ -340,51 +340,6 @@ void TareaController::asignarTarea(String^ IDPersonal, String^ IDtarea)
 	PersonalController^ gestorPersonal = gcnew PersonalController();
 	Personal^ objPersonal = gestorPersonal->buscarPersonalxCodigo(IDPersonal);
 	objPersonal->listaTareas->Add(objTarea);
-	/*
-	gestorPersonal->CargarPersonalDesdeArchivo();
-	List<Personal^>^ listaPersonal = gestorPersonal->obtenerListaPersonal();
-	//guardar
-	int totalTareas = 0;
-	for (int i = 0; i < listaPersonal->Count; i++) {
-		Personal^ objPersonalGrabar = listaPersonal[i];
-		totalTareas = totalTareas + objPersonalGrabar->listaTareas->Count;
-	}
-	array<String^>^ lineasArchivo = gcnew array<String^>(totalTareas);
-	int k = 0;
-	for (int i = 0; i < listaPersonal->Count; i++) {
-		Personal^ Personal = listaPersonal[i];
-		for (int j = 0; j < objPersonal->listaTareas->Count; j++) {
-			Tarea^ objTarea2 = objPersonal->listaTareas[j];
-			lineasArchivo[k] = objTarea2->IDtarea + ";" + objPersonal->ID;
-			k++;
-		}
-	}
-	File::WriteAllLines("TareaxPersonal.txt", lineasArchivo);
-	*/
-	/*int pertenecePartido = objGestorAlumno->verificarSiAlumnoPertencePartidoPolitico(codigoAlumnoSeleccionado);
-	if (!pertenecePartido) {
-		//Aquí voy a ver si no esta repetido
-		int esta_repetido = 0;
-		for (int i = 0; i < this->listaMiembros->Count; i++) {
-			Alumno^ objAlumno = this->listaMiembros[i];
-			if (objAlumno->codigo == codigoAlumnoSeleccionado) {
-				esta_repetido = 1;
-				break;
-			}
-		}
-		if (!esta_repetido) {
-			Personal^ objPersonal = gestorPersonal->buscarPersonalxCodigo(IDPersonal);
-			objPersonal->listaTareas->Add(objTarea);
-			this->Close();
-		}
-		else {
-			MessageBox::Show("El alumno ya se encuentra dentro de la lista de miembros del partido");
-		}
-	}
-	else {
-		MessageBox::Show("El alumno ya pertenece a otro partido");
-	}*/
-
 }
 
 List<Tarea^>^ TareaController::buscarTareaxPersonal(String^ IDPersonal)

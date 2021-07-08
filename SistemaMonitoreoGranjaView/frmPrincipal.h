@@ -16,8 +16,9 @@
 #include "frmAdministrarPersonal.h"
 /*Reportes*/
 #include "frmReporteAreas.h"
-/*Tareas*/
+/*Personal*/
 #include "frmMisTareas.h"
+#include "frmMisEstadisticas.h"
 
 namespace SistemaMonitoreoGranjaView {
 
@@ -486,7 +487,7 @@ private: System::Void misTareasToolStripMenuItem1_Click(System::Object^ sender, 
 }
 private: System::Void misEstadisticasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
-		frmMisTareas^ ventana = gcnew frmMisTareas("20152005");
+		frmMisEstadisticas^ ventana = gcnew frmMisEstadisticas("20152005");
 		ventana->ShowDialog();
 	}
 	else {
