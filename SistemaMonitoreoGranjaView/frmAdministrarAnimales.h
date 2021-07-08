@@ -53,7 +53,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Button^ button4;
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::CheckBox^ CheckBox;
 
@@ -119,7 +119,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->CheckBox = (gcnew System::Windows::Forms::CheckBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -128,7 +127,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(567, 177);
+			this->button2->Location = System::Drawing::Point(566, 152);
 			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(86, 35);
@@ -218,12 +217,12 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->CheckBox);
 			this->groupBox2->Controls->Add(this->comboBox1);
-			this->groupBox2->Controls->Add(this->button4);
 			this->groupBox2->Controls->Add(this->label1);
 			this->groupBox2->Location = System::Drawing::Point(10, 17);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(694, 82);
+			this->groupBox2->Size = System::Drawing::Size(642, 82);
 			this->groupBox2->TabIndex = 10;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Criterios de Búsqueda";
@@ -232,26 +231,17 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Bovino", L"Cuy", L"Alpaca" });
-			this->comboBox1->Location = System::Drawing::Point(147, 41);
+			this->comboBox1->Location = System::Drawing::Point(142, 38);
 			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(208, 21);
 			this->comboBox1->TabIndex = 3;
-			// 
-			// button4
-			// 
-			this->button4->Location = System::Drawing::Point(411, 41);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
-			this->button4->TabIndex = 2;
-			this->button4->Text = L"Buscar";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &frmAdministrarAnimales::button4_Click);
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmAdministrarAnimales::comboBox1_SelectedIndexChanged);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(66, 43);
+			this->label1->Location = System::Drawing::Point(61, 40);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(44, 13);
 			this->label1->TabIndex = 0;
@@ -260,7 +250,7 @@ namespace SistemaMonitoreoGranjaView {
 			// CheckBox
 			// 
 			this->CheckBox->AutoSize = true;
-			this->CheckBox->Location = System::Drawing::Point(567, 132);
+			this->CheckBox->Location = System::Drawing::Point(408, 42);
 			this->CheckBox->Name = L"CheckBox";
 			this->CheckBox->Size = System::Drawing::Size(147, 17);
 			this->CheckBox->TabIndex = 4;
@@ -272,8 +262,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(743, 421);
-			this->Controls->Add(this->CheckBox);
+			this->ClientSize = System::Drawing::Size(667, 407);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->button2);
@@ -285,7 +274,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -319,18 +307,6 @@ namespace SistemaMonitoreoGranjaView {
 		String^ IDareaSeleccionada = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString(); //cells columna	
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		//BUSCAR AREA
-		String^ animalBuscar = this->comboBox1->Text;
-		List<AreaDeAnimales^>^ listaAreas;
-		AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();  //todas las funciones las hace el gestor
-		if (animalBuscar == "") {	  //casilla vacia 	
-			objGestor->CargarAreasDesdeArchivo();
-			listaAreas = objGestor->obtenerListaAreas();
-		}
-		else {
-			listaAreas = objGestor->buscarAreas(animalBuscar);
-		}
-		mostrarGrilla(listaAreas);
 	}
 	private: void mostrarGrilla(List<AreaDeAnimales^>^ listaAreas) {
 		this->dataGridView1->Rows->Clear();
@@ -356,15 +332,16 @@ namespace SistemaMonitoreoGranjaView {
 		List<AreaDeAnimales^>^ objLista = gestor->obtenerListaAreas();
 		mostrarGrilla(objLista);
 	}
+	
 	private: System::Void Incubadoras_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (this->CheckBox->Checked == true) {
 
 			List<AreaDeAnimales^>^ listaAreas;
 			List<AreaDeAnimales^>^ listaAreasbebe = gcnew List<AreaDeAnimales^>();
 			AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();  //todas las funciones las hace el gestor
-			//IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
-			//gestorIncubadoras->CargarIncubadorasDesdeArchivo();
-			//List<Incubadoras^>^ listaIncubadoras = gestorIncubadoras->obtenerListaIncubadoras();
+			IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
+			gestorIncubadoras->CargarIncubadorasDesdeArchivo();
+			List<Incubadoras^>^ listaIncubadoras = gestorIncubadoras->obtenerListaIncubadoras();
 
 			//frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(listaIncubadoras);
 
@@ -374,22 +351,20 @@ namespace SistemaMonitoreoGranjaView {
 
 			if (animalBuscar == "") {	  //casilla vacia 	
 				objGestor->CargarAreasDesdeArchivo();
-				listaAreas = objGestor->obtenerListaAreas();
-				for (int i = 0; i < listaAreas->Count; i++) {
-					AreaDeAnimales^ objArea = listaAreas[i];
-					if (objArea->edad < 4) {
+				//listaAreas = objGestor->obtenerListaAreas();
+				for (int i = 0; i < listaIncubadoras->Count; i++) {
+					Incubadoras^ objIncubadora = listaIncubadoras[i];
+					AreaDeAnimales^ objArea = objGestor->buscarAreaxID(objIncubadora->ID);
 						listaAreasbebe->Add(objArea);
 
 					}
 				}
-
-
-			}
 			else {
 				listaAreas = objGestor->buscarAreas(animalBuscar);
 				for (int i = 0; i < listaAreas->Count; i++) {
 					AreaDeAnimales^ objArea = listaAreas[i];
-					if (objArea->edad < 4) {
+					int verificado = gestorIncubadoras->verificarIncubadora(objArea->ID);
+					if (verificado== 1 ) {
 						listaAreasbebe->Add(objArea);
 
 					}
@@ -411,5 +386,20 @@ namespace SistemaMonitoreoGranjaView {
 
 		}
 	}
-	};
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+			//BUSCAR AREA
+		String^ animalBuscar = this->comboBox1->Text;
+		List<AreaDeAnimales^>^ listaAreas;
+		AreasDeAnimalesController^ objGestor = gcnew AreasDeAnimalesController();  //todas las funciones las hace el gestor
+		if (animalBuscar == "") {	  //casilla vacia 	
+			objGestor->CargarAreasDesdeArchivo();
+			listaAreas = objGestor->obtenerListaAreas();
+		}
+		else {
+			listaAreas = objGestor->buscarAreas(animalBuscar);
+		}
+		mostrarGrilla(listaAreas);
+	}
+	
+};
 	}

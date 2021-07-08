@@ -172,12 +172,12 @@ void SensoresController::CrearMedicionesNuevas()
 		int aleatorio = rand() % 2;
 
 		if (objSensorGrab->tipoSensor == "Temperatura") {
-			Max = 30;
-			Min = 0;
+			Max = 35;
+			Min = 5;
 		}
 		else if (objSensorGrab->tipoSensor == "Humedad") {
-			Max = 100;
-			Min = 0;
+			Max = 70;
+			Min = 30;
 		}
 		else if (objSensorGrab->tipoSensor == "Nivel de Agua") {
 			Max = 3;
@@ -378,4 +378,21 @@ void SensoresController::GuardarMedicionesEnArchivo()
 	}
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
 	File::WriteAllLines("Mediciones.txt", lineasArchivo);
+}
+
+
+int SensoresController::verificarSensorIncubadora(String^ IDsensor) {
+	int pertenece = 0;
+	array<String^>^ lineas = File::ReadAllLines("Incubadoras.txt");
+	String^ separadores = ";";
+	for each (String ^ lineaSensores in lineas) {
+		array<String^>^ palabras = lineaSensores->Split(separadores->ToCharArray());
+		String^ IDdelSensorT = palabras[1];
+		String^ IDdelSensorH = palabras[2];
+		if (IDsensor == IDdelSensorT || IDsensor == IDdelSensorH) {
+			pertenece = 1;
+			break;
+		}
+	}
+	return pertenece;
 }

@@ -365,95 +365,97 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void frmAgregarIncubadora_Load(System::Object^ sender, System::EventArgs^ e) {
 
-
+	IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
+	gestorIncubadoras->CargarIncubadorasDesdeArchivo();
+	//
 	AreasDeAnimalesController^ gestorAreaAnimales = gcnew AreasDeAnimalesController(); //Instanciamos al controlador
 	gestorAreaAnimales->CargarAreasDesdeArchivo();
 	List<AreaDeAnimales^>^ listaAnimales = gestorAreaAnimales->obtenerListaAreas();
 	//this->objArea = 
 	this->comboBox1->Items->Clear();
-
+	//int cuenta = 0;
 	for (int i = 0; i < listaAnimales->Count; i++) {
-		
+
 		AreaDeAnimales^ objAnimalito = listaAnimales[i];
-		if (objAnimalito->edad < 2) {
+		int habido = gestorIncubadoras->verificarIncubadora(objAnimalito->ID);
+		if (!(habido == 1)) {
+			//cuenta++;
+			if (objAnimalito->edad < 2) {
+				this->comboBox1->Items->Add(objAnimalito->tipo_animal);
+			}
+			/*if (cuenta == (listaAnimales->Count)) {
+				MessageBox::Show("No hay Áreas disponibles para crear una Incubadora");
+				this->Close();
+			}
+		}
+		else
+		{
+			if (objAnimalito->edad < 2) {
+				this->comboBox1->Items->Add(objAnimalito->tipo_animal);
 
-		
-		this->comboBox1->Items->Add(objAnimalito->tipo_animal);
+
+			}
+
+		}*/
+		}
+
+
+
+		this->dataGridView1->Rows->Clear();
+		this->dataGridView2->Rows->Clear();
+
+		SensoresController^ gestorSensores = gcnew SensoresController();
+		gestorSensores->CargarSensores();
+		List<Sensores^>^ listaSensores = gestorSensores->obtenerListaSensores();
+
+
+		for (int i = 0; i < listaSensores->Count; i++) {
+
+			Sensores^ objSensor = listaSensores[i];
+			array<String^>^ fila = gcnew array<String^>(5);
+			fila[0] = objSensor->ID;
+			fila[1] = objSensor->Nombre;
+			fila[2] = objSensor->marca;
+			fila[3] = objSensor->tipoSensor;
+			fila[4] = Convert::ToString(objSensor->unidades);
+			if (objSensor->tipoSensor == "Temperatura") {
+				int trabajando2 = gestorSensores->verificarSensorIncubadora(objSensor->ID);
+				if (trabajando2 == 1)
+				{
+					this->dataGridView1->Rows->Add(fila);
+				}
+
+			}
+			else if (objSensor->tipoSensor == "Humedad") {
+				int trabajando1 = gestorSensores->verificarSensorIncubadora(objSensor->ID);
+				if (trabajando1 == 1)
+				{
+					this->dataGridView2->Rows->Add(fila);
+				}
+
+			}
 
 		}
+
+
 	}
-
-
-
-	this->dataGridView1->Rows->Clear();
-	this->dataGridView2->Rows->Clear();
-
-	SensoresController^ gestorSensores = gcnew SensoresController();
-	gestorSensores->CargarSensores();
-	List<Sensores^>^ listaSensores = gestorSensores->obtenerListaSensores();
-	
-	
-	for (int i = 0; i < listaSensores->Count; i++) {
-
-		Sensores^ objSensor = listaSensores[i];
-		array<String^>^ fila = gcnew array<String^>(5);
-		fila[0] = objSensor->ID;
-		fila[1] = objSensor->Nombre;
-		fila[2] = objSensor->marca;
-		fila[3] = objSensor->tipoSensor;
-		fila[4] = Convert::ToString(objSensor->unidades);
-		if (objSensor->tipoSensor == "Temperatura") {
-			this->dataGridView1->Rows->Add(fila);
-		}
-		else if (objSensor->tipoSensor == "Humedad") {
-			this->dataGridView2->Rows->Add(fila);
-
-		}
-		
+	if (this->comboBox1->Items->Count == 0 ) {
+		MessageBox::Show("No hay Áreas disponibles para crear una Incubadora");
+		this->Close();
 	}
-
-
+	else if ((this->dataGridView1->Rows->Count == 0) || (this->dataGridView2->Rows->Count == 0)) {
+		MessageBox::Show("No hay Sensores para crear una Incubadora");
+		this->Close();
+	}
 }
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*
-	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-	String^ IDSensor = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-	SensoresController^ gestorSensor = gcnew SensoresController();
-	Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
-	this->objSensorT = objSensor;
-	//MessageBox::Show("Sensor Agregado");
-	
-	/*
-	frmEditarSensor^ ventanaEditarSensor = gcnew frmEditarSensor(objSensor);
-
-	ventanaEditarSensor->ShowDialog();
-	SensoresController^ gestorSensores = gcnew SensoresController(); //Instanciamos al controlador
-
-
-	gestorSensores->CargarSensores();
-	List<Sensores^>^ listasensores = gestorSensores->obtenerListaSensores();
-	mostrarGrilla(listasensores);
-	MessageBox::Show("Sensor Editado");
-	*/
-
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {	
 }
-
-
 
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*
-	int posicionFilaSeleccionada = this->dataGridView2->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-	String^ IDSensor = (this->dataGridView2->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-	SensoresController^ gestorSensor = gcnew SensoresController();
-	Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
-	this->objSensorH = objSensor;
-	//MessageBox::Show("Sensor Agregado");
-	*/
 }
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-
 }
 };
 }

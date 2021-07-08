@@ -42,8 +42,8 @@ namespace SistemaMonitoreoGranjaView {
 		}
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Button^ button1;
+
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
@@ -58,6 +58,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
 
 
 
@@ -75,8 +76,6 @@ namespace SistemaMonitoreoGranjaView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -86,14 +85,14 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->textBox1);
-			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Controls->Add(this->comboBox1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->groupBox1->Location = System::Drawing::Point(34, 28);
@@ -105,25 +104,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Buscar";
 			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmMantIncubadoras::groupBox1_Enter);
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(120, 51);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(310, 20);
-			this->textBox1->TabIndex = 2;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(472, 51);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(56, 19);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Buscar";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &frmMantIncubadoras::button1_Click);
 			// 
 			// label1
 			// 
@@ -210,6 +190,15 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column3->Name = L"Column3";
 			this->Column3->Width = 125;
 			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(138, 51);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(147, 21);
+			this->comboBox1->TabIndex = 1;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmMantIncubadoras::comboBox1_SelectedIndexChanged);
+			// 
 			// frmMantIncubadoras
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -260,58 +249,63 @@ namespace SistemaMonitoreoGranjaView {
 		}
 	}
 	
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	/*int posicion = this->dataGridView1->SelectedRows[0]->Index;
-	this->listaIncubadoras->RemoveAt(posicion);
-	mostrarGrilla(this->listaIncubadoras);
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*int posicion = this->dataGridView1->SelectedRows[0]->Index;
+		this->listaIncubadoras->RemoveAt(posicion);
+		mostrarGrilla(this->listaIncubadoras);
 
-	*/
-	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-	String^ IDincubadora = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-	IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
-	gestorIncubadora->CargarIncubadorasDesdeArchivo();
-	Incubadoras^ objIncubadora = gestorIncubadora->buscarIncubadorasxID(IDincubadora);
+		*/
+		if (this->dataGridView1->SelectedRows->Count == 0) {
 
-	if (this->dataGridView1->SelectedRows->Count == 0) {
+			//MessageBox::Show("Seleccionar Sensor");
+		}
+		else
+		{
+			int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+			String^ IDincubadora = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+			IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
+			gestorIncubadora->CargarIncubadorasDesdeArchivo();
+			Incubadoras^ objIncubadora = gestorIncubadora->buscarIncubadorasxID(IDincubadora);
 
-		MessageBox::Show("Seleccionar Sensor");
-	}
-	else {
 
-
-		gestorIncubadora->EliminarIncubadora(IDincubadora);
-		List<Incubadoras^>^ ListaFinal = gestorIncubadora->obtenerListaIncubadoras();
-		mostrarGrilla(ListaFinal);
-		gestorIncubadora->GuardarEnArchivo(ListaFinal);
-
-	}
+			gestorIncubadora->EliminarIncubadora(IDincubadora);
+			List<Incubadoras^>^ ListaFinal = gestorIncubadora->obtenerListaIncubadoras();
+			mostrarGrilla(ListaFinal);
+			//gestorIncubadora->GuardarEnArchivo(ListaFinal);
+		}
+	
 	}
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-	String^ IDincubadora= (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-	IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
-	gestorIncubadora->CargarIncubadorasDesdeArchivo();
-	Incubadoras^ objIncubadora = gestorIncubadora->buscarIncubadorasxID(IDincubadora);
 
-	frmEditarIncubadora^ ventanaEditarIncubadora = gcnew frmEditarIncubadora(objIncubadora);
+
+	//if (!(this->dataGridView1->SelectedRows->Count == 0)) {
+		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+		String^ IDincubadora = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+		IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
+		gestorIncubadora->CargarIncubadorasDesdeArchivo();
+		Incubadoras^ objIncubadora = gestorIncubadora->buscarIncubadorasxID(IDincubadora);
+
+		frmEditarIncubadora^ ventanaEditarIncubadora = gcnew frmEditarIncubadora(objIncubadora);
+
+		ventanaEditarIncubadora->ShowDialog();
+
+		List<Incubadoras^>^ listaIncubadoras = gestorIncubadora->obtenerListaIncubadoras();
+		mostrarGrilla(listaIncubadoras);
+		MessageBox::Show("Incubadora Editada");
+
+		
+		//this->Close();
+	//}
+	//else {
 	
-	ventanaEditarIncubadora->ShowDialog();
-	//SensoresController^ gestorSensores = gcnew SensoresController(); //Instanciamos al controlador
 
-	//gestorIncubadora->CargarIncubadorasDesdeArchivo();
-	List<Incubadoras^>^ listaIncubadoras = gestorIncubadora->obtenerListaIncubadoras();
-	mostrarGrilla(listaIncubadoras);
-	MessageBox::Show("Incubadora Editada");
+		//MessageBox::Show("Seleccionar Sensor");
+
+	//}
 
 
-	/*
-	int posicion = this->dataGridView1->SelectedRows[0]->Index;
-	this->listaIncubadoras->RemoveAt(posicion);
-	frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(listaIncubadoras);
-	ventana->ShowDialog();
-	mostrarGrilla(this->listaIncubadoras);
-	*/
+
 }
 private: System::Void frmMantIncubadoras_Load(System::Object^ sender, System::EventArgs^ e) {
 	IncubadorasController^ gestorIncubadoras = gcnew IncubadorasController();
@@ -319,14 +313,39 @@ private: System::Void frmMantIncubadoras_Load(System::Object^ sender, System::Ev
 	this->listaIncubadoras = gestorIncubadoras->obtenerListaIncubadoras();
 	//frmAgregarIncubadora^ ventana = gcnew frmAgregarIncubadora(listaIncubadoras);
 
+
+
+
 	//List<Incubadoras^>^ listaIncubadoras = ventana->listaIncubadoras;
 	mostrarGrilla(this->listaIncubadoras);
+
+	AreasDeAnimalesController^ gestorAreaAnimales = gcnew AreasDeAnimalesController(); //Instanciamos al controlador
+	gestorAreaAnimales->CargarAreasDesdeArchivo();
+	List<AreaDeAnimales^>^ listaAnimales = gestorAreaAnimales->obtenerListaAreas();
+	//this->objArea = 
+	this->comboBox1->Items->Clear();
+
+	for (int i = 0; i < listaAnimales->Count; i++) {
+
+		AreaDeAnimales^ objAnimalito = listaAnimales[i];
+		if (objAnimalito->edad < 2) {
+
+
+			this->comboBox1->Items->Add(objAnimalito->tipo_animal);
+
+		}
+	}
+
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	String^ tipo_animalito = this->textBox1->Text;
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
+
+	String^ tipo_animalito = this->comboBox1->Text;
 	List<Incubadoras^>^ ListaSeleccionada = gcnew List<Incubadoras^>();
 	IncubadorasController^ gestorIncubadora = gcnew IncubadorasController();
 	gestorIncubadora->CargarIncubadorasDesdeArchivo();

@@ -49,7 +49,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Label^ label6;
 	protected:
 	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::TextBox^ textBox4;
+
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label3;
@@ -61,6 +61,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: Sensores^ Sensor;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
 
 	private:
 		/// <summary>
@@ -77,7 +78,6 @@ namespace SistemaMonitoreoGranjaView {
 		{
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -88,115 +88,103 @@ namespace SistemaMonitoreoGranjaView {
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(300, 36);
-			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label6->Location = System::Drawing::Point(225, 29);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(94, 17);
+			this->label6->Size = System::Drawing::Size(70, 13);
 			this->label6->TabIndex = 25;
 			this->label6->Text = L"Editar Sensor";
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(300, 270);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				L"Nivel de Proteinas", L"Nivel de Agua", L"Peso",
+					L"Temperatura", L"Humedad"
+			});
+			this->comboBox1->Location = System::Drawing::Point(225, 219);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(172, 24);
+			this->comboBox1->Size = System::Drawing::Size(130, 21);
 			this->comboBox1->TabIndex = 23;
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(300, 342);
-			this->textBox4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(172, 22);
-			this->textBox4->TabIndex = 22;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(191, 346);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(143, 281);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(64, 17);
+			this->label5->Size = System::Drawing::Size(52, 13);
 			this->label5->TabIndex = 21;
-			this->label5->Text = L"Cantidad";
+			this->label5->Text = L"Unidades";
+			this->label5->Click += gcnew System::EventHandler(this, &frmEditarSensor::label5_Click);
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(191, 279);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(143, 227);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(89, 17);
+			this->label4->Size = System::Drawing::Size(67, 13);
 			this->label4->TabIndex = 20;
 			this->label4->Text = L"Tipo_Sensor";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(191, 214);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Location = System::Drawing::Point(143, 174);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(47, 17);
+			this->label3->Size = System::Drawing::Size(37, 13);
 			this->label3->TabIndex = 19;
 			this->label3->Text = L"Marca";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(191, 159);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(143, 129);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(58, 17);
+			this->label2->Size = System::Drawing::Size(44, 13);
 			this->label2->TabIndex = 18;
 			this->label2->Text = L"Nombre";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(191, 119);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(143, 97);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(21, 17);
+			this->label1->Size = System::Drawing::Size(18, 13);
 			this->label1->TabIndex = 17;
 			this->label1->Text = L"ID";
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(300, 210);
-			this->textBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox3->Location = System::Drawing::Point(225, 171);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(172, 22);
+			this->textBox3->Size = System::Drawing::Size(130, 20);
 			this->textBox3->TabIndex = 16;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(300, 159);
-			this->textBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox2->Location = System::Drawing::Point(225, 129);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(172, 22);
+			this->textBox2->Size = System::Drawing::Size(130, 20);
 			this->textBox2->TabIndex = 15;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(300, 111);
-			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox1->Location = System::Drawing::Point(225, 90);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(172, 22);
+			this->textBox1->Size = System::Drawing::Size(130, 20);
 			this->textBox1->TabIndex = 14;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(300, 492);
-			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button1->Location = System::Drawing::Point(225, 400);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(100, 28);
+			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"Guardar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -204,23 +192,30 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Location = System::Drawing::Point(120, 91);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Controls->Add(this->comboBox2);
+			this->groupBox1->Location = System::Drawing::Point(90, 74);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->groupBox1->Size = System::Drawing::Size(436, 363);
+			this->groupBox1->Size = System::Drawing::Size(327, 295);
 			this->groupBox1->TabIndex = 24;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos";
 			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Kg", L"Litro", L"Raciones", L"°C", L"%" });
+			this->comboBox2->Location = System::Drawing::Point(135, 204);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(130, 21);
+			this->comboBox2->TabIndex = 24;
+			// 
 			// frmEditarSensor
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(712, 570);
+			this->ClientSize = System::Drawing::Size(534, 463);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->comboBox1);
-			this->Controls->Add(this->textBox4);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
@@ -231,10 +226,10 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->groupBox1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"frmEditarSensor";
 			this->Text = L"frmEditarSensor";
 			this->Load += gcnew System::EventHandler(this, &frmEditarSensor::frmEditarSensor_Load);
+			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -248,7 +243,7 @@ namespace SistemaMonitoreoGranjaView {
 		String^ Marca = Convert::ToString(this->textBox3->Text);
 		String^ Tipo_Sensor = this->comboBox1->Text;
 
-		String^ Unidad = (this->textBox4->Text);
+		String^ Unidad = (this->comboBox2->Text);
 
 		this->Sensor = gcnew Sensores(ID, Nombre, Marca, Tipo_Sensor, Unidad);
 		
@@ -264,9 +259,11 @@ private: System::Void frmEditarSensor_Load(System::Object^ sender, System::Event
 	this->textBox2->Text = Convert::ToString(objSensor->Nombre);
 	this->textBox3->Text = Convert::ToString(objSensor->marca);
 	this->comboBox1->Text = Convert::ToString(objSensor->tipoSensor);
-	this->textBox4->Text = Convert::ToString(objSensor->unidades);
+	this->comboBox2->Text = Convert::ToString(objSensor->unidades);
 
 
+}
+private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
