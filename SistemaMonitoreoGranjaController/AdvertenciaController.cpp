@@ -92,18 +92,6 @@ void AdvertenciaController::generarReporteAdvertenciasControladas(List<Advertenc
 	GuardarAdvertenciaTXT(this->listaAdvertenciasControladas);
 	TareaController^ gestorTarea = gcnew TareaController();
 	gestorTarea->TareaPendiente(this->listaAdvertenciasControladas);
-	
-	/*else {
-		for (int i = 0; i < listaAdvertencia->Count; i++) {
-			if (listaAdvertencia[i]->objSensor->ID != listaComparar[i]->objSensor->ID || listaAdvertencia[i]->alarma != listaComparar[i]->alarma) {
-				Diferencia = 1;
-				break;
-			}
-		}
-	}*/
-	/*for (int i = 0; i < this->listaAdvertencias->Count; i++) {
-		
-	}*/
 }
 
 List<Advertencia^>^ AdvertenciaController::obtenerlistaAdvertencias() {
