@@ -11,6 +11,8 @@ namespace SistemaMonitoreoGranjaView {
 	using namespace System::Drawing;
 	using namespace SistemaMonitoreoGranjaModel;
 	using namespace System::Collections::Generic;
+	using namespace SistemaMonitoreoGranjaController;
+	using namespace SistemaMonitoreoGranjaModel;
 
 	/// <summary>
 	/// Resumen de frmAdministrarAlmacen
@@ -354,6 +356,8 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void frmAdministrarAlmacen_Load(System::Object^ sender, System::EventArgs^ e) {
+		AlmacenController^ objController = gcnew AlmacenController();
+		listaAlmacenes = objController->leerDatos();
 		this->comboBox1->Items->Clear();
 		for (int i = 0; i < listaAlmacenes->Count; i++) {
 			Almacen^ objAlmacen = listaAlmacenes[i];

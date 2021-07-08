@@ -11,6 +11,8 @@ namespace SistemaMonitoreoGranjaView {
 	using namespace System::Drawing;
 	using namespace SistemaMonitoreoGranjaModel;
 	using namespace System::Collections::Generic;
+	using namespace SistemaMonitoreoGranjaController;
+	using namespace SistemaMonitoreoGranjaModel;
 
 	/// <summary>
 	/// Resumen de frmMovimientoAlmacen
@@ -209,15 +211,19 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		int i = 0;
 		String^ nombreAlmacen;
+		String^ codigoAlmacen;
+		String^ codigoElemento;
 		if (tipoTrans == "Nueva adquicsición") {
 			if (elemento == "Farmaco") {
 				int posicion = this->dataGridView1->SelectedRows[0]->Index;
 				Farmacos^ objFarmaco = listaFarmacos[posicion];
+				codigoElemento = objFarmaco->ID;
 				nombreAlmacen = " ";
 				i = 0;
 				while (nombreAlmacen!=destino) {
 					Almacen^ almacen = listaAlmacenes[i];
 					nombreAlmacen = almacen->nombre;
+					codigoAlmacen = almacen->codigo;
 					i++;
 				}
 				Almacen^ objAlmacen = listaAlmacenes[i-1];
@@ -228,11 +234,13 @@ namespace SistemaMonitoreoGranjaView {
 			else {
 				int posicion = this->dataGridView1->SelectedRows[0]->Index;
 				Alimentos^ objAlimento = listaAlimentos[posicion];
+				codigoElemento = objAlimento->codigo;
 				nombreAlmacen = " ";
 				i = 0;
 				while (nombreAlmacen != destino) {
 					Almacen^ almacen = listaAlmacenes[i];
 					nombreAlmacen = almacen->nombre;
+					codigoAlmacen = almacen->codigo;
 					i++;
 				}
 				Almacen^ objAlmacen = listaAlmacenes[i-1];
@@ -240,14 +248,16 @@ namespace SistemaMonitoreoGranjaView {
 				listaAlmacenes[i-1] = objAlmacen;
 				MessageBox::Show("Se ha agregado el objeto al almacen");			
 			}
-
+			int cantidad = Convert::ToInt32(this->textBox1->Text);
+			AlmacenController^ objGestorAlmacen = gcnew AlmacenController();
+			objGestorAlmacen->guardarElementoAlmacen(codigoAlmacen, codigoElemento, elemento, cantidad);
 		}
 		else if (tipoTrans == "Abastecimiento") {
 			if (elemento == "Farmaco") {
-				MessageBox::Show("Se ha agregado el objeto al almacen");
+				MessageBox::Show("Se ha hecho el abastecimiento saisfactoriamente");
 			}
 			else {
-				MessageBox::Show("Se ha agregado el objeto al almacen");
+				MessageBox::Show("Se ha hecho el abastecimiento saisfactoriamente");
 			}
 
 		}
@@ -255,45 +265,55 @@ namespace SistemaMonitoreoGranjaView {
 			if (elemento == "Farmaco") {
 				int posicion = this->dataGridView1->SelectedRows[0]->Index;
 				Farmacos^ objFarmaco = listaFarmacosAlmacen[posicion];
+				codigoElemento = objFarmaco->ID;
 				nombreAlmacen = " ";
 				i = 0;
 				while (nombreAlmacen != destino) {
 					Almacen^ almacen = listaAlmacenes[i];
 					nombreAlmacen = almacen->nombre;
+					codigoAlmacen = almacen->codigo;
 					i++;
 				}
 				Almacen^ objAlmacen = listaAlmacenes[i - 1];
 				objAlmacen->List_Farmacos->Add(objFarmaco);
 				listaAlmacenes[i - 1] = objAlmacen;
-				MessageBox::Show("Se ha agregado el objeto al almacen");
+				MessageBox::Show("Se ha transferido el objeto al almacen");
 
 			}
 			else {
 				int posicion = this->dataGridView1->SelectedRows[0]->Index;
 				Alimentos^ objAlimento = listaAlimentosAlmacen[posicion];
+				codigoElemento = objAlimento->codigo;
 				nombreAlmacen = " ";
 				i = 0;
 				while (nombreAlmacen != destino) {
 					Almacen^ almacen = listaAlmacenes[i];
 					nombreAlmacen = almacen->nombre;
+					codigoAlmacen = almacen->codigo;
 					i++;
 				}
 				Almacen^ objAlmacen = listaAlmacenes[i - 1];
 				objAlmacen->List_Alimentos->Add(objAlimento);
 				listaAlmacenes[i - 1] = objAlmacen;
-				MessageBox::Show("Se ha agregado el objeto al almacen");
+				MessageBox::Show("Se ha transferido el objeto al almacen");
 
 			}
+			int cantidad = Convert::ToInt32(this->textBox1->Text);
+			AlmacenController^ objGestorAlmacen = gcnew AlmacenController();
+			objGestorAlmacen->guardarElementoAlmacen(codigoAlmacen, codigoElemento, elemento, cantidad);
 		}
+		MovimientoController^ objGestor = gcnew MovimientoController();
 		String^ tipoMovimiento = this->tipoTrans;
 		String^ origen = this->origen;
 		String^ destino = this->destino;
 		String^ elementos = this->elemento;
 		int cantidad = Convert::ToInt32(this->textBox1->Text);
-		String^ fecha = "date.Today";
+		String^ fecha = "8/07/21";
 		Movimiento^ objMovimiento;
 		objMovimiento = gcnew Movimiento(cantidad, tipoMovimiento, elementos, fecha, origen, destino);
-		this->listaMovimientos->Add(objMovimiento);
+		listaMovimientos=objGestor->leerDatos();
+		listaMovimientos->Add(objMovimiento);
+		objGestor->guardarDatos(listaMovimientos);
 		this->Close();
 	}
 	private: void mostrarGrillaFarmaco(List<Farmacos^>^ listaFarmacos) {
@@ -312,7 +332,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Rows->Clear();
 			for (int i = 0; i < listaAlimentos->Count; i++) {
 				Alimentos^ objAlimento = listaAlimentos[i];
-				array<String^>^ fila = gcnew array<String^>(5);
+				array<String^>^ fila = gcnew array<String^>(4);
 				fila[0] = objAlimento->codigo;
 				fila[1] = objAlimento->nombre;
 				fila[3] = objAlimento->fechaVencimiento;
@@ -323,16 +343,23 @@ namespace SistemaMonitoreoGranjaView {
 private: System::Void frmMovimientoAlmacen_Load(System::Object^ sender, System::EventArgs^ e) {
 	Almacen^ objAlmacen;
 	String^ nombreAlmacen;
+	String^ codigoAlmacen;
 	int i;
+	AlmacenController^ objGestorAlmacen = gcnew AlmacenController();
 	if (tipoTrans == "Nueva adquicsición") {
 		if (elemento == "Farmaco") {
+			FarmacoController^ objControllerF = gcnew FarmacoController();
+			listaFarmacos = objControllerF->leerDatos();
 			mostrarGrillaFarmaco(listaFarmacos);
 		}
 		else {
+			AlimentosController^ objControllerA = gcnew AlimentosController();
+			listaAlimentos = objControllerA->leerDatos();
 			mostrarGrillaAlimento(listaAlimentos);
 		}
 	}
 	else if (tipoTrans == "Abastecimiento") {
+		String^ codigoAlmacen;
 		i = 0;
 		nombreAlmacen = " ";
 		while (nombreAlmacen != origen) {
@@ -341,12 +368,13 @@ private: System::Void frmMovimientoAlmacen_Load(System::Object^ sender, System::
 			i++;
 		}
 		objAlmacen = listaAlmacenes[i-1];
+		codigoAlmacen = objAlmacen->codigo;
 		if (elemento == "Farmaco") {
-			listaFarmacosAlmacen = objAlmacen->List_Farmacos;
+			listaFarmacosAlmacen = objGestorAlmacen->obtenerFarmacosAlmacen(codigoAlmacen);
 			mostrarGrillaFarmaco(listaFarmacosAlmacen);
 		}
 		else {
-			listaAlimentosAlmacen = objAlmacen->List_Alimentos;
+			listaAlimentosAlmacen =objGestorAlmacen->obtenerAlimentosAlmacen(codigoAlmacen);
 			mostrarGrillaAlimento(listaAlimentosAlmacen);
 		}
 	}
@@ -359,12 +387,13 @@ private: System::Void frmMovimientoAlmacen_Load(System::Object^ sender, System::
 			i++;
 		}
 		objAlmacen = listaAlmacenes[i - 1];
+		codigoAlmacen = objAlmacen->codigo;
 		if (elemento == "Farmaco") {
-			listaFarmacosAlmacen = objAlmacen->List_Farmacos;
+			listaFarmacosAlmacen = objGestorAlmacen->obtenerFarmacosAlmacen(codigoAlmacen);
 			mostrarGrillaFarmaco(listaFarmacosAlmacen);
 		}
 		else {
-			listaAlimentosAlmacen = objAlmacen->List_Alimentos;
+			listaAlimentosAlmacen = objGestorAlmacen->obtenerAlimentosAlmacen(codigoAlmacen);
 			mostrarGrillaAlimento(listaAlimentosAlmacen);
 		}
 	}

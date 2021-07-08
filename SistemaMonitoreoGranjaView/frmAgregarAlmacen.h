@@ -209,6 +209,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ codigo = "ALCN" + Convert::ToString(nCodigo);
 	objAlmacen = gcnew Almacen(codigo, nombre, estado, zona);
 	this->listaAlmacenes->Add(objAlmacen);
+	AlmacenController^ objController = gcnew AlmacenController();
+	objController->guardarDatos(listaAlmacenes);
 	MessageBox::Show("Se ha agregado el objeto a la lista.");
 	this->Close();
 }

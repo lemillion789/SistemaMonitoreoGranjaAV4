@@ -117,9 +117,6 @@
     <ClCompile Include="frmTarea.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="frmAdministrarComederoySensorIncubadora.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
     <ClCompile Include="frmEditarPersonal.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
@@ -136,6 +133,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="frmEditarIncubadora.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="frmAdministrarComederoySensorIncubadora.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
   </ItemGroup>

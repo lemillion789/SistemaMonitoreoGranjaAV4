@@ -117,12 +117,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdvertenciaController.h" />
+    <ClInclude Include="AlimentosController.h" />
     <ClInclude Include="AlmacenController.h" />
     <ClInclude Include="AreasDeAnimalesController.h" />
     <ClInclude Include="ComedoresController.h" />
     <ClInclude Include="FarmacoController.h" />
     <ClInclude Include="IncubadorasController.h" />
     <ClInclude Include="MedicionController.h" />
+    <ClInclude Include="MovimientoController.h" />
     <ClInclude Include="PersonalController.h" />
     <ClInclude Include="ReporteController.h" />
     <ClInclude Include="SensoresController.h" />
@@ -131,17 +133,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdvertenciaController.cpp" />
+    <ClCompile Include="AlimentosController.cpp" />
     <ClCompile Include="AlmacenController.cpp" />
     <ClCompile Include="AreasDeAnimalesController.cpp" />
     <ClCompile Include="ComedoresController.cpp" />
     <ClCompile Include="FarmacoController.cpp" />
     <ClCompile Include="IncubadorasController.cpp" />
     <ClCompile Include="MedicionController.cpp" />
+    <ClCompile Include="MovimientoController.cpp" />
     <ClCompile Include="PersonalController.cpp" />
     <ClCompile Include="ReporteController.cpp" />
     <ClCompile Include="SensoresController.cpp" />
     <ClCompile Include="TareaController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -241,6 +241,8 @@ namespace SistemaMonitoreoGranjaView {
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	int posicion = this->dataGridView1->SelectedRows[0]->Index;
 	this->listaAlmacenes->RemoveAt(posicion);
+	AlmacenController^ objController = gcnew AlmacenController();
+	objController->guardarDatos(listaAlmacenes);
 	mostrarGrilla(this->listaAlmacenes);
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -251,6 +253,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	mostrarGrilla(this->listaAlmacenes);
 }
 private: System::Void frmMantAlmacen_Load(System::Object^ sender, System::EventArgs^ e) {
+	AlmacenController^ objController = gcnew AlmacenController;
+	listaAlmacenes = objController->leerDatos();
 	mostrarGrilla(this->listaAlmacenes);
 }
 };

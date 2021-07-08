@@ -1,1 +1,4 @@
-00000;Paracetamol;10;jueves, 17 de junio de 2021;Fiebre
+00000;Paracetamol;10;jueves, 8 de julio de 2021;
+00001;vacuna covid;100;jueves, 8 de julio de 2021;
+00002;medicina para vacas;12;jueves, 8 de julio de 2021;
+00003;medicina para cuyes;12;jueves, 8 de julio de 2021;
