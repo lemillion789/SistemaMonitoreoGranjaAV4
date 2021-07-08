@@ -63,26 +63,26 @@ namespace SistemaMonitoreoGranjaView {
 	private: int user = 0;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	protected:
-	private: System::Windows::Forms::ToolStripMenuItem^ loginToolStripMenuItem;
 
 
-	private: System::Windows::Forms::ToolStripMenuItem^ mantenimientosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ almacenToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ alimentosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ farmacosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ personalToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ comederosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ incubadorasToolStripMenuItem;
+
+
+
+
+
+
+
+
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::ToolStripMenuItem^ sensoresToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ areaDeAnimalesToolStripMenuItem;
+
+
 	private: System::Windows::Forms::Timer^ timer1;
-	private: System::Windows::Forms::ToolStripMenuItem^ reportesToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ areasDeAnimalesToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ iniciarSesiónToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesiónToolStripMenuItem;
+
+
+
+
 
 	private: System::ComponentModel::IContainer^ components;
 	private: List<Alimentos^>^ listaAlimentos;
@@ -110,6 +110,20 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::ToolStripMenuItem^ loginToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ iniciarSesiónToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesiónToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ mantenimientosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ almacenToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ alimentosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ farmacosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ personalToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ comederosToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ incubadorasToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ sensoresToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ areaDeAnimalesToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ reportesToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ areasDeAnimalesToolStripMenuItem;
 
 
 
@@ -170,20 +184,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmPrincipal::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->loginToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->iniciarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->mantenimientosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->almacenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->alimentosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->farmacosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->personalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->comederosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->incubadorasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->sensoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->areaDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->areasDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -205,6 +205,20 @@ namespace SistemaMonitoreoGranjaView {
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->iniciarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->loginToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->areasDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->almacenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->alimentosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->farmacosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->personalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->comederosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->incubadorasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->sensoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->areaDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mantenimientosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->Menu->SuspendLayout();
 			this->panel5->SuspendLayout();
@@ -233,112 +247,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &frmPrincipal::menuStrip1_ItemClicked);
-			// 
-			// loginToolStripMenuItem
-			// 
-			this->loginToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->iniciarSesiónToolStripMenuItem,
-					this->cerrarSesiónToolStripMenuItem
-			});
-			this->loginToolStripMenuItem->Name = L"loginToolStripMenuItem";
-			this->loginToolStripMenuItem->Size = System::Drawing::Size(49, 20);
-			this->loginToolStripMenuItem->Text = L"Login";
-			// 
-			// iniciarSesiónToolStripMenuItem
-			// 
-			this->iniciarSesiónToolStripMenuItem->Name = L"iniciarSesiónToolStripMenuItem";
-			this->iniciarSesiónToolStripMenuItem->Size = System::Drawing::Size(146, 22);
-			this->iniciarSesiónToolStripMenuItem->Text = L"Iniciar Sesión ";
-			this->iniciarSesiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::iniciarSesiónToolStripMenuItem_Click);
-			// 
-			// cerrarSesiónToolStripMenuItem
-			// 
-			this->cerrarSesiónToolStripMenuItem->Name = L"cerrarSesiónToolStripMenuItem";
-			this->cerrarSesiónToolStripMenuItem->Size = System::Drawing::Size(146, 22);
-			this->cerrarSesiónToolStripMenuItem->Text = L"Cerrar Sesión";
-			this->cerrarSesiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::cerrarSesiónToolStripMenuItem_Click);
-			// 
-			// mantenimientosToolStripMenuItem
-			// 
-			this->mantenimientosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
-				this->almacenToolStripMenuItem,
-					this->alimentosToolStripMenuItem, this->farmacosToolStripMenuItem, this->personalToolStripMenuItem, this->comederosToolStripMenuItem,
-					this->incubadorasToolStripMenuItem, this->sensoresToolStripMenuItem, this->areaDeAnimalesToolStripMenuItem
-			});
-			this->mantenimientosToolStripMenuItem->Name = L"mantenimientosToolStripMenuItem";
-			this->mantenimientosToolStripMenuItem->Size = System::Drawing::Size(106, 20);
-			this->mantenimientosToolStripMenuItem->Text = L"Mantenimientos";
-			this->mantenimientosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientosToolStripMenuItem_Click);
-			// 
-			// almacenToolStripMenuItem
-			// 
-			this->almacenToolStripMenuItem->Name = L"almacenToolStripMenuItem";
-			this->almacenToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->almacenToolStripMenuItem->Text = L"Almacen";
-			this->almacenToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::almacenToolStripMenuItem_Click);
-			// 
-			// alimentosToolStripMenuItem
-			// 
-			this->alimentosToolStripMenuItem->Name = L"alimentosToolStripMenuItem";
-			this->alimentosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->alimentosToolStripMenuItem->Text = L"Alimentos";
-			this->alimentosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::alimentosToolStripMenuItem_Click);
-			// 
-			// farmacosToolStripMenuItem
-			// 
-			this->farmacosToolStripMenuItem->Name = L"farmacosToolStripMenuItem";
-			this->farmacosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->farmacosToolStripMenuItem->Text = L"Farmacos";
-			this->farmacosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::farmacosToolStripMenuItem_Click);
-			// 
-			// personalToolStripMenuItem
-			// 
-			this->personalToolStripMenuItem->Name = L"personalToolStripMenuItem";
-			this->personalToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->personalToolStripMenuItem->Text = L"Personal";
-			this->personalToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::personalToolStripMenuItem_Click);
-			// 
-			// comederosToolStripMenuItem
-			// 
-			this->comederosToolStripMenuItem->Name = L"comederosToolStripMenuItem";
-			this->comederosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->comederosToolStripMenuItem->Text = L"Comederos";
-			this->comederosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::comederosToolStripMenuItem_Click);
-			// 
-			// incubadorasToolStripMenuItem
-			// 
-			this->incubadorasToolStripMenuItem->Name = L"incubadorasToolStripMenuItem";
-			this->incubadorasToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->incubadorasToolStripMenuItem->Text = L"Incubadoras";
-			this->incubadorasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::incubadorasToolStripMenuItem_Click);
-			// 
-			// sensoresToolStripMenuItem
-			// 
-			this->sensoresToolStripMenuItem->Name = L"sensoresToolStripMenuItem";
-			this->sensoresToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->sensoresToolStripMenuItem->Text = L"Sensores";
-			this->sensoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::sensoresToolStripMenuItem_Click);
-			// 
-			// areaDeAnimalesToolStripMenuItem
-			// 
-			this->areaDeAnimalesToolStripMenuItem->Name = L"areaDeAnimalesToolStripMenuItem";
-			this->areaDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->areaDeAnimalesToolStripMenuItem->Text = L"Area de Animales";
-			this->areaDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areaDeAnimalesToolStripMenuItem_Click);
-			// 
-			// reportesToolStripMenuItem
-			// 
-			this->reportesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->areasDeAnimalesToolStripMenuItem });
-			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
-			this->reportesToolStripMenuItem->Size = System::Drawing::Size(65, 20);
-			this->reportesToolStripMenuItem->Text = L"Reportes";
-			// 
-			// areasDeAnimalesToolStripMenuItem
-			// 
-			this->areasDeAnimalesToolStripMenuItem->Name = L"areasDeAnimalesToolStripMenuItem";
-			this->areasDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(171, 22);
-			this->areasDeAnimalesToolStripMenuItem->Text = L"Areas de Animales";
-			this->areasDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areasDeAnimalesToolStripMenuItem_Click);
 			// 
 			// button1
 			// 
@@ -473,7 +381,7 @@ namespace SistemaMonitoreoGranjaView {
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
 				static_cast<System::Int32>(static_cast<System::Byte>(238)));
-			this->label4->Location = System::Drawing::Point(65, 58);
+			this->label4->Location = System::Drawing::Point(65, 53);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(104, 25);
 			this->label4->TabIndex = 9;
@@ -515,7 +423,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
 			this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox4->Location = System::Drawing::Point(26, 49);
+			this->pictureBox4->Location = System::Drawing::Point(26, 44);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(43, 34);
 			this->pictureBox4->TabIndex = 13;
@@ -549,7 +457,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
 				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->button7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button7.Image")));
-			this->button7->Location = System::Drawing::Point(0, 317);
+			this->button7->Location = System::Drawing::Point(0, 327);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(200, 53);
 			this->button7->TabIndex = 8;
@@ -566,7 +474,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
 				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->button8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button8.Image")));
-			this->button8->Location = System::Drawing::Point(0, 241);
+			this->button8->Location = System::Drawing::Point(0, 251);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(200, 53);
 			this->button8->TabIndex = 7;
@@ -584,7 +492,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
 				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->button5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button5.Image")));
-			this->button5->Location = System::Drawing::Point(0, 165);
+			this->button5->Location = System::Drawing::Point(0, 175);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(200, 53);
 			this->button5->TabIndex = 6;
@@ -602,7 +510,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
 				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->button4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button4.Image")));
-			this->button4->Location = System::Drawing::Point(0, 89);
+			this->button4->Location = System::Drawing::Point(0, 99);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(200, 53);
 			this->button4->TabIndex = 0;
@@ -610,6 +518,112 @@ namespace SistemaMonitoreoGranjaView {
 			this->button4->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &frmPrincipal::button4_Click);
+			// 
+			// iniciarSesiónToolStripMenuItem
+			// 
+			this->iniciarSesiónToolStripMenuItem->Name = L"iniciarSesiónToolStripMenuItem";
+			this->iniciarSesiónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->iniciarSesiónToolStripMenuItem->Text = L"Iniciar Sesión ";
+			this->iniciarSesiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::iniciarSesiónToolStripMenuItem_Click);
+			// 
+			// cerrarSesiónToolStripMenuItem
+			// 
+			this->cerrarSesiónToolStripMenuItem->Name = L"cerrarSesiónToolStripMenuItem";
+			this->cerrarSesiónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->cerrarSesiónToolStripMenuItem->Text = L"Cerrar Sesión";
+			this->cerrarSesiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::cerrarSesiónToolStripMenuItem_Click);
+			// 
+			// loginToolStripMenuItem
+			// 
+			this->loginToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->iniciarSesiónToolStripMenuItem,
+					this->cerrarSesiónToolStripMenuItem
+			});
+			this->loginToolStripMenuItem->Name = L"loginToolStripMenuItem";
+			this->loginToolStripMenuItem->Size = System::Drawing::Size(49, 20);
+			this->loginToolStripMenuItem->Text = L"Login";
+			// 
+			// areasDeAnimalesToolStripMenuItem
+			// 
+			this->areasDeAnimalesToolStripMenuItem->Name = L"areasDeAnimalesToolStripMenuItem";
+			this->areasDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->areasDeAnimalesToolStripMenuItem->Text = L"Areas de Animales";
+			this->areasDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areasDeAnimalesToolStripMenuItem_Click);
+			// 
+			// reportesToolStripMenuItem
+			// 
+			this->reportesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->areasDeAnimalesToolStripMenuItem });
+			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
+			this->reportesToolStripMenuItem->Size = System::Drawing::Size(65, 20);
+			this->reportesToolStripMenuItem->Text = L"Reportes";
+			// 
+			// almacenToolStripMenuItem
+			// 
+			this->almacenToolStripMenuItem->Name = L"almacenToolStripMenuItem";
+			this->almacenToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->almacenToolStripMenuItem->Text = L"Almacen";
+			this->almacenToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::almacenToolStripMenuItem_Click);
+			// 
+			// alimentosToolStripMenuItem
+			// 
+			this->alimentosToolStripMenuItem->Name = L"alimentosToolStripMenuItem";
+			this->alimentosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->alimentosToolStripMenuItem->Text = L"Alimentos";
+			this->alimentosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::alimentosToolStripMenuItem_Click);
+			// 
+			// farmacosToolStripMenuItem
+			// 
+			this->farmacosToolStripMenuItem->Name = L"farmacosToolStripMenuItem";
+			this->farmacosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->farmacosToolStripMenuItem->Text = L"Farmacos";
+			this->farmacosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::farmacosToolStripMenuItem_Click);
+			// 
+			// personalToolStripMenuItem
+			// 
+			this->personalToolStripMenuItem->Name = L"personalToolStripMenuItem";
+			this->personalToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->personalToolStripMenuItem->Text = L"Personal";
+			this->personalToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::personalToolStripMenuItem_Click);
+			// 
+			// comederosToolStripMenuItem
+			// 
+			this->comederosToolStripMenuItem->Name = L"comederosToolStripMenuItem";
+			this->comederosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->comederosToolStripMenuItem->Text = L"Comederos";
+			this->comederosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::comederosToolStripMenuItem_Click);
+			// 
+			// incubadorasToolStripMenuItem
+			// 
+			this->incubadorasToolStripMenuItem->Name = L"incubadorasToolStripMenuItem";
+			this->incubadorasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->incubadorasToolStripMenuItem->Text = L"Incubadoras";
+			this->incubadorasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::incubadorasToolStripMenuItem_Click);
+			// 
+			// sensoresToolStripMenuItem
+			// 
+			this->sensoresToolStripMenuItem->Name = L"sensoresToolStripMenuItem";
+			this->sensoresToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->sensoresToolStripMenuItem->Text = L"Sensores";
+			this->sensoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::sensoresToolStripMenuItem_Click);
+			// 
+			// areaDeAnimalesToolStripMenuItem
+			// 
+			this->areaDeAnimalesToolStripMenuItem->Name = L"areaDeAnimalesToolStripMenuItem";
+			this->areaDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->areaDeAnimalesToolStripMenuItem->Text = L"Area de Animales";
+			this->areaDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areaDeAnimalesToolStripMenuItem_Click);
+			// 
+			// mantenimientosToolStripMenuItem
+			// 
+			this->mantenimientosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
+				this->almacenToolStripMenuItem,
+					this->alimentosToolStripMenuItem, this->farmacosToolStripMenuItem, this->personalToolStripMenuItem, this->comederosToolStripMenuItem,
+					this->incubadorasToolStripMenuItem, this->sensoresToolStripMenuItem, this->areaDeAnimalesToolStripMenuItem
+			});
+			this->mantenimientosToolStripMenuItem->Name = L"mantenimientosToolStripMenuItem";
+			this->mantenimientosToolStripMenuItem->Size = System::Drawing::Size(106, 20);
+			this->mantenimientosToolStripMenuItem->Text = L"Mantenimientos";
+			this->mantenimientosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientosToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
