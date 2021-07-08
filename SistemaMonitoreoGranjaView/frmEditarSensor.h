@@ -114,19 +114,12 @@ namespace SistemaMonitoreoGranjaView {
 			this->comboBox1->Size = System::Drawing::Size(172, 24);
 			this->comboBox1->TabIndex = 23;
 			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(225, 278);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(130, 20);
-			this->textBox4->TabIndex = 22;
-			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(143, 281);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(49, 13);
+			this->label5->Size = System::Drawing::Size(52, 13);
 			this->label5->TabIndex = 21;
 			this->label5->Text = L"Unidades";
 			this->label5->Click += gcnew System::EventHandler(this, &frmEditarSensor::label5_Click);
@@ -208,6 +201,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Location = System::Drawing::Point(90, 74);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);

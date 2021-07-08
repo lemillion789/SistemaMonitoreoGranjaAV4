@@ -19,9 +19,9 @@
 00018;Sensor de Comida;Siemmes;Peso;Kg
 00019;Sensor de Agua;HOBO;Nivel de Agua;Litro
 00020;Sensor de Proteinas;Henkel;Nivel de Proteinas;Raciones
-12346;SensorN1;Siemmens;Temperatura;°C
+12346;SensorN1;Siemmens;Temperatura;Â°C
 12348;SensorH1;Siemmens;Humedad;%
-12349;SensorN1;Siemmens;Temperatura;°C
+12349;SensorN1;Siemmens;Temperatura;Â°C
 12351;SensorH2;X;Humedad;%
-12352;cunch;Converse;Temperatura;°C
+12352;cunch;Converse;Temperatura;Â°C
 12353;SensorH3;X;Humedad;%
