@@ -118,9 +118,9 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->CheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->CheckBox = (gcnew System::Windows::Forms::CheckBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -227,6 +227,17 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Criterios de Búsqueda";
 			// 
+			// CheckBox
+			// 
+			this->CheckBox->AutoSize = true;
+			this->CheckBox->Location = System::Drawing::Point(408, 42);
+			this->CheckBox->Name = L"CheckBox";
+			this->CheckBox->Size = System::Drawing::Size(147, 17);
+			this->CheckBox->TabIndex = 4;
+			this->CheckBox->Text = L"Mostrar Solo Incubadoras";
+			this->CheckBox->UseVisualStyleBackColor = true;
+			this->CheckBox->CheckedChanged += gcnew System::EventHandler(this, &frmAdministrarAnimales::Incubadoras_CheckedChanged);
+			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
@@ -246,17 +257,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->label1->Size = System::Drawing::Size(44, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Animal :";
-			// 
-			// CheckBox
-			// 
-			this->CheckBox->AutoSize = true;
-			this->CheckBox->Location = System::Drawing::Point(408, 42);
-			this->CheckBox->Name = L"CheckBox";
-			this->CheckBox->Size = System::Drawing::Size(147, 17);
-			this->CheckBox->TabIndex = 4;
-			this->CheckBox->Text = L"Mostrar Solo Incubadoras";
-			this->CheckBox->UseVisualStyleBackColor = true;
-			this->CheckBox->CheckedChanged += gcnew System::EventHandler(this, &frmAdministrarAnimales::Incubadoras_CheckedChanged);
 			// 
 			// frmAdministrarAnimales
 			// 

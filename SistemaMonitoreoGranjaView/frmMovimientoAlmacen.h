@@ -102,9 +102,10 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(243, 60);
+			this->textBox1->Location = System::Drawing::Point(182, 49);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 22);
+			this->textBox1->Size = System::Drawing::Size(76, 20);
 			this->textBox1->TabIndex = 0;
 			// 
 			// groupBox1
@@ -112,9 +113,11 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->textBox1);
-			this->groupBox1->Location = System::Drawing::Point(52, 39);
+			this->groupBox1->Location = System::Drawing::Point(39, 32);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(775, 122);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Size = System::Drawing::Size(581, 99);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Ingrese cantidad a transferir";
@@ -122,17 +125,19 @@ namespace SistemaMonitoreoGranjaView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(169, 63);
+			this->label1->Location = System::Drawing::Point(127, 51);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(68, 17);
+			this->label1->Size = System::Drawing::Size(52, 13);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Cantidad:";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(459, 46);
+			this->button1->Location = System::Drawing::Point(344, 37);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(131, 50);
+			this->button1->Size = System::Drawing::Size(98, 41);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Realizar Transferencia";
 			this->button1->UseVisualStyleBackColor = true;
@@ -145,11 +150,13 @@ namespace SistemaMonitoreoGranjaView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4
 			});
-			this->dataGridView1->Location = System::Drawing::Point(52, 199);
+			this->dataGridView1->Location = System::Drawing::Point(39, 162);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(774, 332);
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(580, 270);
 			this->dataGridView1->TabIndex = 2;
 			// 
 			// Column1
@@ -183,20 +190,22 @@ namespace SistemaMonitoreoGranjaView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(63, 179);
+			this->label2->Location = System::Drawing::Point(47, 145);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(213, 17);
+			this->label2->Size = System::Drawing::Size(159, 13);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Seleccione Elemento a transferir";
 			// 
 			// frmMovimientoAlmacen
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(882, 553);
+			this->ClientSize = System::Drawing::Size(662, 449);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"frmMovimientoAlmacen";
 			this->Text = L"frmMovimientoAlmacen";
 			this->Load += gcnew System::EventHandler(this, &frmMovimientoAlmacen::frmMovimientoAlmacen_Load);
