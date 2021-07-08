@@ -69,22 +69,32 @@ namespace SistemaMonitoreoGranjaView {
 
 
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
 	private: System::Windows::Forms::DataGridView^ dataGridView2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn5;
+
+
+
+
+
 	private: System::Windows::Forms::Label^ label3;
 
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn5;
 	protected:
 
 	private:
@@ -105,21 +115,21 @@ namespace SistemaMonitoreoGranjaView {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
-			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridViewTextBoxColumn5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dataGridViewTextBoxColumn5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			this->SuspendLayout();
@@ -172,7 +182,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5
+					this->Column2, this->Column4, this->Column3, this->Column5
 			});
 			this->dataGridView1->Location = System::Drawing::Point(86, 168);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -181,47 +191,12 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView1->Size = System::Drawing::Size(517, 111);
 			this->dataGridView1->TabIndex = 8;
 			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"ID_Sensor";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Nombre";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Tipo_Sensor";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Marca";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 125;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Unidades";
-			this->Column5->MinimumWidth = 6;
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 125;
-			// 
 			// dataGridView2
 			// 
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->dataGridViewTextBoxColumn1,
-					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn5
+					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn5
 			});
 			this->dataGridView2->Location = System::Drawing::Point(86, 330);
 			this->dataGridView2->Name = L"dataGridView2";
@@ -229,41 +204,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView2->Size = System::Drawing::Size(517, 111);
 			this->dataGridView2->TabIndex = 12;
-			// 
-			// dataGridViewTextBoxColumn1
-			// 
-			this->dataGridViewTextBoxColumn1->HeaderText = L"ID_Sensor";
-			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
-			this->dataGridViewTextBoxColumn1->Width = 125;
-			// 
-			// dataGridViewTextBoxColumn2
-			// 
-			this->dataGridViewTextBoxColumn2->HeaderText = L"Nombre";
-			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
-			this->dataGridViewTextBoxColumn2->Width = 125;
-			// 
-			// dataGridViewTextBoxColumn3
-			// 
-			this->dataGridViewTextBoxColumn3->HeaderText = L"Tipo_Sensor";
-			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
-			this->dataGridViewTextBoxColumn3->Width = 125;
-			// 
-			// dataGridViewTextBoxColumn4
-			// 
-			this->dataGridViewTextBoxColumn4->HeaderText = L"Marca";
-			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
-			this->dataGridViewTextBoxColumn4->Width = 125;
-			// 
-			// dataGridViewTextBoxColumn5
-			// 
-			this->dataGridViewTextBoxColumn5->HeaderText = L"Unidades";
-			this->dataGridViewTextBoxColumn5->MinimumWidth = 6;
-			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
-			this->dataGridViewTextBoxColumn5->Width = 125;
 			// 
 			// label3
 			// 
@@ -303,6 +243,76 @@ namespace SistemaMonitoreoGranjaView {
 			this->textBox1->Size = System::Drawing::Size(159, 20);
 			this->textBox1->TabIndex = 17;
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"ID_Sensor";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Nombre";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Marca";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Tipo_Sensor";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Unidades";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
+			// 
+			// dataGridViewTextBoxColumn1
+			// 
+			this->dataGridViewTextBoxColumn1->HeaderText = L"ID_Sensor";
+			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
+			this->dataGridViewTextBoxColumn1->Width = 125;
+			// 
+			// dataGridViewTextBoxColumn2
+			// 
+			this->dataGridViewTextBoxColumn2->HeaderText = L"Nombre";
+			this->dataGridViewTextBoxColumn2->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn2->Name = L"dataGridViewTextBoxColumn2";
+			this->dataGridViewTextBoxColumn2->Width = 125;
+			// 
+			// dataGridViewTextBoxColumn4
+			// 
+			this->dataGridViewTextBoxColumn4->HeaderText = L"Marca";
+			this->dataGridViewTextBoxColumn4->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn4->Name = L"dataGridViewTextBoxColumn4";
+			this->dataGridViewTextBoxColumn4->Width = 125;
+			// 
+			// dataGridViewTextBoxColumn3
+			// 
+			this->dataGridViewTextBoxColumn3->HeaderText = L"Tipo_Sensor";
+			this->dataGridViewTextBoxColumn3->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn3->Name = L"dataGridViewTextBoxColumn3";
+			this->dataGridViewTextBoxColumn3->Width = 125;
+			// 
+			// dataGridViewTextBoxColumn5
+			// 
+			this->dataGridViewTextBoxColumn5->HeaderText = L"Unidades";
+			this->dataGridViewTextBoxColumn5->MinimumWidth = 6;
+			this->dataGridViewTextBoxColumn5->Name = L"dataGridViewTextBoxColumn5";
+			this->dataGridViewTextBoxColumn5->Width = 125;
+			// 
 			// frmEditarIncubadora
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -320,7 +330,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->label1);
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"frmEditarIncubadora";
-			this->Text = L"frmAgregarIncubadora";
+			this->Text = L"frmEditarIncubadora";
 			this->Load += gcnew System::EventHandler(this, &frmEditarIncubadora::frmAgregarIncubadora_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
@@ -348,8 +358,6 @@ namespace SistemaMonitoreoGranjaView {
 		this->textBox1->Text = tipo_Animalito;
 		
 
-
-
 		this->dataGridView1->Rows->Clear();
 		this->dataGridView2->Rows->Clear();
 
@@ -361,17 +369,27 @@ namespace SistemaMonitoreoGranjaView {
 		for (int i = 0; i < listaSensores->Count; i++) {
 
 			Sensores^ objSensor = listaSensores[i];
-			array<String^>^ fila = gcnew array<String^>(5);
-			fila[0] = objSensor->ID;
-			fila[1] = objSensor->Nombre;
-			fila[2] = objSensor->marca;
-			fila[3] = objSensor->tipoSensor;
-			fila[4] = Convert::ToString(objSensor->unidades);
-			if (objSensor->tipoSensor == "Temperatura") {
-				this->dataGridView1->Rows->Add(fila);
+			int pertenece1 = gestorSensores->verificarSensor(objSensor->ID);
+			int pertenece2 = gestorSensores->verificarSensorIncubadora(objSensor->ID);
+			if (pertenece1 == 1 || pertenece2 == 1) {
+
+				//MessageBox::Show("Seleccionar Sensor");
 			}
-			else if (objSensor->tipoSensor == "Humedad") {
-				this->dataGridView2->Rows->Add(fila);
+			else {
+
+				array<String^>^ fila = gcnew array<String^>(5);
+				fila[0] = objSensor->ID;
+				fila[1] = objSensor->Nombre;
+				fila[2] = objSensor->marca;
+				fila[3] = objSensor->tipoSensor;
+				fila[4] = Convert::ToString(objSensor->unidades);
+				if (objSensor->tipoSensor == "Temperatura") {
+					this->dataGridView1->Rows->Add(fila);
+				}
+				else if (objSensor->tipoSensor == "Humedad") {
+					this->dataGridView2->Rows->Add(fila);
+
+				}
 
 			}
 
@@ -382,66 +400,44 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*
-		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-		String^ IDSensor = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-		SensoresController^ gestorSensor = gcnew SensoresController();
-		Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
-		this->objSensorT = objSensor;
-		//MessageBox::Show("Sensor Agregado");
-
-		/*
-		frmEditarSensor^ ventanaEditarSensor = gcnew frmEditarSensor(objSensor);
-
-		ventanaEditarSensor->ShowDialog();
-		SensoresController^ gestorSensores = gcnew SensoresController(); //Instanciamos al controlador
-
-
-		gestorSensores->CargarSensores();
-		List<Sensores^>^ listasensores = gestorSensores->obtenerListaSensores();
-		mostrarGrilla(listasensores);
-		MessageBox::Show("Sensor Editado");
-		*/
-
 	}
-
-
-
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*
-		int posicionFilaSeleccionada = this->dataGridView2->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-		String^ IDSensor = (this->dataGridView2->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-		SensoresController^ gestorSensor = gcnew SensoresController();
-		Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
-		this->objSensorH = objSensor;
-		//MessageBox::Show("Sensor Agregado");
-		*/
+
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
 	}
 	private: System::Void button3_Click_1(System::Object^ sender, System::EventArgs^ e) {
 //Sensor Temperatura
+		if (this->dataGridView1->SelectedRows->Count == 0) {
 
-		int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-		String^ IDSensor = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-		SensoresController^ gestorSensor = gcnew SensoresController();
-		Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
-		
-		this->objIncubadora->List_Sensores[0] = objSensor;
-		
+			MessageBox::Show("Seleccionar Sensor");
+		}
+		else {
+			int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+			String^ IDSensor = (this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+			SensoresController^ gestorSensor = gcnew SensoresController();
+			Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
+
+			this->objIncubadora->List_Sensores[0] = objSensor;
+		}
 
 	}
 
 private: System::Void button4_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
-	int posicionFilaSeleccionada = this->dataGridView2->SelectedRows[0]->Index; // posición de la primera fila seleccionada
-	String^ IDSensor = (this->dataGridView2->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
-	SensoresController^ gestorSensor = gcnew SensoresController();
-	Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
-	
-	this->objIncubadora->List_Sensores[1] = objSensor;
+	if (this->dataGridView2->SelectedRows->Count == 0) {
 
+		MessageBox::Show("Seleccionar Sensor");
+	}
+	else {
+		int posicionFilaSeleccionada = this->dataGridView2->SelectedRows[0]->Index; // posición de la primera fila seleccionada
+		String^ IDSensor = (this->dataGridView2->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString());
+		SensoresController^ gestorSensor = gcnew SensoresController();
+		Sensores^ objSensor = gestorSensor->buscarSensor(IDSensor);
+
+		this->objIncubadora->List_Sensores[1] = objSensor;
+	}
 }
 };
 }

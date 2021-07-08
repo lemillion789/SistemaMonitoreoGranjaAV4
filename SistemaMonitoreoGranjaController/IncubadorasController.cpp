@@ -91,6 +91,7 @@ void IncubadorasController::EliminarIncubadora(String^ IDIncubadora) {
 		Incubadoras^ objIncubadora = this->listaIncubadoras[i];
 		if (objIncubadora->ID == IDIncubadora) {
 			this->listaIncubadoras->RemoveAt(i);
+			GuardarEnArchivo(listaIncubadoras);
 			break;
 		}
 	}
@@ -107,4 +108,19 @@ void IncubadorasController::GuardarEnArchivo(List<Incubadoras^>^ lista)
 
 	}
 	File::WriteAllLines("Incubadoras.txt", lineasArchivoSensores);
+}
+int IncubadorasController::verificarIncubadora(String^ ID) {
+	int pertenece = 0;
+	array<String^>^ lineas = File::ReadAllLines("Incubadoras.txt");
+	String^ separadores = ";";
+	for each (String ^ lineaIncubadoras in lineas) {
+		array<String^>^ palabras = lineaIncubadoras->Split(separadores->ToCharArray());
+		String^ IDIncubadora = palabras[0];
+		
+		if (ID == IDIncubadora ) {
+			pertenece = 1;
+			break;
+		}
+	}
+	return pertenece;
 }

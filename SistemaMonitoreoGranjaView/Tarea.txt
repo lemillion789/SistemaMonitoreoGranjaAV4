@@ -1,3 +1,12 @@
+En Area de Bovino;Revisar sensor;El sensor de Litro Detecto que en el comedero de Bovino esta vacio 
+En Area de Cuy;Revisar sensor;El sensor de Litro Detecto que en el comedero de Cuy esta vacio 
+En Area de Alpaca;Revisar sensor;El sensor de Litro Detecto que en el comedero de Alpaca esta vacio 
+En Area de Conejo;Revisar sensor;El sensor de Litro Detecto que en el comedero de Conejo esta vacio 
+En Area de Bovino;Revisar sensor;El sensor de Litro Detecto que en el comedero de Bovino esta vacio 
+En Area de Cuy;Revisar sensor;El sensor de Litro Detecto que en el comedero de Cuy esta vacio 
+En Area de Alpaca;Revisar sensor;El sensor de Litro Detecto que en el comedero de Alpaca esta vacio 
 En Area de ;Revisar sensor;El sensor de Litro Detecto que en el comedero de  esta vacio 
+En Area de ;Revisar sensor;El sensor de % Detecto que en el comedero de  esta vacio 
 En Area de ;Revisar sensor;El sensor de Litro Detecto que en el comedero de  esta vacio 
-En Area de ;Revisar sensor;El sensor de Litro Detecto que en el comedero de  esta vacio 
+En Area de ;Revisar sensor;El sensor de % Detecto que en el comedero de  esta vacio 
+En Area de ;Revisar sensor;El sensor de % Detecto que en el comedero de  esta vacio 

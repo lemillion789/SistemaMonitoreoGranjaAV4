@@ -44,10 +44,11 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::TextBox^ textBox4;
+
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
 
 	protected:
 
@@ -73,10 +74,11 @@ namespace SistemaMonitoreoGranjaView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -152,21 +154,17 @@ namespace SistemaMonitoreoGranjaView {
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(160, 274);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(49, 13);
+			this->label5->Size = System::Drawing::Size(52, 13);
 			this->label5->TabIndex = 8;
-			this->label5->Text = L"Cantidad";
-			// 
-			// textBox4
-			// 
-			this->textBox4->Location = System::Drawing::Point(242, 271);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(130, 20);
-			this->textBox4->TabIndex = 9;
+			this->label5->Text = L"Unidades";
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Nivel", L"Temperatura", L"Humedad" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				L"Nivel de Proteinas", L"Nivel de Agua", L"Peso",
+					L"Temperatura", L"Humedad"
+			});
 			this->comboBox1->Location = System::Drawing::Point(242, 212);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(130, 21);
@@ -175,6 +173,7 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Location = System::Drawing::Point(107, 67);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(327, 295);
@@ -192,6 +191,16 @@ namespace SistemaMonitoreoGranjaView {
 			this->label6->TabIndex = 12;
 			this->label6->Text = L"Nuevo Sensor";
 			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"Kg", L"Litro", L"Raciones", L"°C", L"%" });
+			this->comboBox2->Location = System::Drawing::Point(135, 207);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(130, 21);
+			this->comboBox2->TabIndex = 13;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &frmNuevoSensor::comboBox2_SelectedIndexChanged);
+			// 
 			// frmNuevoSensor
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -199,7 +208,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->ClientSize = System::Drawing::Size(593, 442);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->comboBox1);
-			this->Controls->Add(this->textBox4);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
@@ -212,6 +220,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmNuevoSensor";
 			this->Text = L"frmNuevoSensor";
+			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -234,7 +243,7 @@ namespace SistemaMonitoreoGranjaView {
 		String^ Marca = Convert::ToString(this->textBox3->Text);
 		String^ Tipo_Sensor = this->comboBox1->Text;
 
-		String^ unidad = (this->textBox4->Text);
+		String^ unidad = (this->comboBox2->Text);
 		
 		Sensores^ objSensor = gcnew Sensores(ID, Nombre, Marca, Tipo_Sensor, unidad);
 		SensoresController^ gestorSensores = gcnew SensoresController();
@@ -245,5 +254,7 @@ namespace SistemaMonitoreoGranjaView {
 
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

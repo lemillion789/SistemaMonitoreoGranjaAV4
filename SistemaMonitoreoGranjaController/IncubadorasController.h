@@ -19,6 +19,7 @@ namespace SistemaMonitoreoGranjaController {
 		void CargarIncubadorasDesdeArchivo();
 		void EliminarIncubadora(String^ IDIncubadora);
 		void GuardarEnArchivo(List<Incubadoras^>^ lista);
+		int verificarIncubadora(String^ ID);
 		/*List<Comederos^>^ buscarAlumnosxNivelxGradoxSeccion(String^ nivel, int grado, String^ seccion);
 		int verificarSiAlumnoPertencePartidoPolitico(String^ codigoAlumno);
 	*/

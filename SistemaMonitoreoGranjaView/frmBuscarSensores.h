@@ -104,10 +104,9 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(368, 395);
-			this->button2->Margin = System::Windows::Forms::Padding(4);
+			this->button2->Location = System::Drawing::Point(276, 321);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(100, 28);
+			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Seleccionar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -118,11 +117,9 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->comboBox2);
 			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Location = System::Drawing::Point(62, 41);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
+			this->groupBox1->Location = System::Drawing::Point(46, 33);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
-			this->groupBox1->Size = System::Drawing::Size(746, 123);
+			this->groupBox1->Size = System::Drawing::Size(560, 100);
 			this->groupBox1->TabIndex = 3;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Criterios de Búsqueda";
@@ -130,9 +127,10 @@ namespace SistemaMonitoreoGranjaView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(61, 45);
+			this->label1->Location = System::Drawing::Point(46, 37);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(103, 17);
+			this->label1->Size = System::Drawing::Size(77, 13);
 			this->label1->TabIndex = 9;
 			this->label1->Text = L"Tipo de sensor";
 			// 
@@ -143,18 +141,18 @@ namespace SistemaMonitoreoGranjaView {
 				L"", L"Temperatura", L"Nivel de Agua", L"Humedad",
 					L"Peso de comida", L"Raciones de Proteinas"
 			});
-			this->comboBox2->Location = System::Drawing::Point(210, 45);
+			this->comboBox2->Location = System::Drawing::Point(158, 37);
+			this->comboBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(196, 24);
+			this->comboBox2->Size = System::Drawing::Size(148, 21);
 			this->comboBox2->TabIndex = 8;
 			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &frmBuscarSensores::comboBox2_SelectedIndexChanged);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(471, 42);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Location = System::Drawing::Point(353, 34);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(100, 28);
+			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 6;
 			this->button1->Text = L"Buscar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -167,13 +165,13 @@ namespace SistemaMonitoreoGranjaView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(36, 170);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridView1->Location = System::Drawing::Point(27, 138);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(805, 207);
+			this->dataGridView1->Size = System::Drawing::Size(604, 168);
 			this->dataGridView1->TabIndex = 6;
 			// 
 			// Column1
@@ -213,14 +211,16 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// frmBuscarSensores
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(874, 449);
+			this->ClientSize = System::Drawing::Size(656, 365);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->groupBox1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"frmBuscarSensores";
 			this->Text = L"frmBuscarSensores";
+			this->Load += gcnew System::EventHandler(this, &frmBuscarSensores::frmBuscarSensores_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -281,6 +281,8 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
+}
+private: System::Void frmBuscarSensores_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
