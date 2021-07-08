@@ -26,6 +26,7 @@ Sensores^ SensoresController::buscarSensor(String^ ID) {
 		String^ Unidad =(palabras[4]);
 		if (ID_Sensor == ID) {
 			objSensorEncontrado = gcnew Sensores(ID, Nombre, Marca, Tipo_Sensor, Unidad);
+			objSensorEncontrado->listaMediciones = buscarMedicionesxSensor(ID);
 			break;
 		}
 	}
@@ -229,7 +230,6 @@ void SensoresController::CrearMedicionesNuevas()
 		List<Medicion^>^ listaNueva = gestorMedicion->agregarMedicionAleatoria(objSensorGrab,medidaNueva);
 		objSensorGrab->listaMediciones = listaNueva;
 	}
-	
 	//GUARDAR
 	int totalMediciones = 0;
 	for (int i = 0; i < this->listaSensores->Count; i++) {
@@ -352,4 +352,30 @@ void SensoresController::GuardarEnArchivo(List<Sensores^>^ lista)
 
 	}
 	File::WriteAllLines("Sensores.txt", lineasArchivoSensores);
+}
+
+void SensoresController::GuardarMedicionesEnArchivo()
+{
+	this->listaSensores->Clear();
+	CargarSensores();
+	//GUARDAR
+	int totalMediciones = 0;
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = this->listaSensores[i];
+		totalMediciones = totalMediciones + objSensorGrab->listaMediciones->Count;
+	}
+
+	//guardar en Mediciones.txt
+	array<String^>^ lineasArchivo = gcnew array<String^>(totalMediciones);
+	int k = 0;
+	for (int i = 0; i < this->listaSensores->Count; i++) {
+		Sensores^ objSensorGrab = this->listaSensores[i];
+		for (int j = 0; j < objSensorGrab->listaMediciones->Count; j++) {
+			Medicion^ objMedicion = objSensorGrab->listaMediciones[j];
+			lineasArchivo[k] = objSensorGrab->ID + ";" + objMedicion->medida + ";" + objMedicion->unidades + ";" + objMedicion->registro_hora;
+			k++;  //pasar a la siguiente linea -> arreglo
+		}
+	}
+	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
+	File::WriteAllLines("Mediciones.txt", lineasArchivo);
 }

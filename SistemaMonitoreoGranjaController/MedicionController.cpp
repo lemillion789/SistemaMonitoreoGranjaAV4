@@ -68,7 +68,6 @@ List<Medicion^>^ MedicionController::agregarMedicionAleatoria(Sensores^ ObjSenso
 	DateTime^ Gestortiempo = gcnew DateTime();
 	medicionNueva->registro_hora = Gestortiempo->Now.ToLongTimeString();
 	listaEnviar->Add(medicionNueva);
-
 	return listaEnviar;
 }
 

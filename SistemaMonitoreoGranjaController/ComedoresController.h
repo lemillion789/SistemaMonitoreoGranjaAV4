@@ -5,12 +5,15 @@ namespace SistemaMonitoreoGranjaController {
 	using namespace System::Collections::Generic;
 	using namespace SistemaMonitoreoGranjaModel;
 	using namespace System;
+	using namespace System::Data::SqlClient;
 
 	public ref class ComedoresController {
 	private:
 		List<Comederos^>^ listaComederos;
-
+		SqlConnection^ objConexion;
 	public:
+		void AbrirConexion();
+		void CerrarConexion();
 		ComedoresController();
 		Comederos^ buscarComedero(String^ ID);
 		List<Comederos^>^ buscarComederoxCapacidadMinima(int capAguaMin, int capProteinasMin, int capComidaMin);

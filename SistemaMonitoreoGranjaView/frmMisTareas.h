@@ -156,25 +156,38 @@ namespace SistemaMonitoreoGranjaView {
 	//TareaController^ gestorTarea = gcnew TareaController();
 //	gestorTarea->realizarTareaSensor(this->IDsensor);
 	this->listaTareas = gestor->buscarTareaxPersonal(IDPersonal);
-	mostrarGrilla(this->listaTareas);
+	List<Tarea^>^ listaTareasGrilla = gcnew List<Tarea^>();
+	for (int i = 0; i < this->listaTareas->Count; i++) {
+		if(this->listaTareas[i]->Estado==true)
+		listaTareasGrilla->Add(this->listaTareas[i]);
+	}
+	
+	mostrarGrilla(listaTareasGrilla);
 	}
 private: void mostrarGrilla(List<Tarea^>^ listaTarea) {
 	this->dataGridView1->Rows->Clear();
+	AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+	ComedoresController^ gestorComedero = gcnew ComedoresController();
+	SensoresController^ gestorSensor = gcnew SensoresController();
 	for (int i = 0; i < listaTarea->Count; i++) {
 		Tarea^ objTarea = listaTarea[i];
 		array<String^>^ fila = gcnew array<String^>(4);
 		fila[0] = objTarea->IDtarea;
-		fila[1] = objTarea->lugar;
+		fila[1] = "En Area de " + objTarea->objArea->tipo_animal + " " + objTarea->objArea->raza + " de sexo " + objTarea->objArea->sexo;
 		fila[2] = objTarea->fecha;
-		fila[3] = objTarea->descripcion;
-
+		fila[3] = "El sensor de " + objTarea->objSensor->tipoSensor + " detectó que el comedero está vacio o tiene problemas";
 		this->dataGridView1->Rows->Add(fila);
 	}
 }
 private: System::Void frmMisTareas_Load(System::Object^ sender, System::EventArgs^ e) {
 	TareaController^ GestorTareaController = gcnew TareaController();
 	this->listaTareas = GestorTareaController->buscarTareaxPersonal(IDPersonal);
-	mostrarGrilla(this->listaTareas);
+	List<Tarea^>^ listaTareasGrilla = gcnew List<Tarea^>();
+	for (int i = 0; i < this->listaTareas->Count; i++) {
+		if (this->listaTareas[i]->Estado == true)
+			listaTareasGrilla->Add(this->listaTareas[i]);
+	}
+	mostrarGrilla(listaTareasGrilla);
 }
 
 };

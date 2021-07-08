@@ -11,9 +11,18 @@ using namespace System;
 using namespace System::IO;
 TareaController::TareaController() {
 	this->listaTarea = gcnew List<Tarea^>();
+	this->objConexion = gcnew SqlConnection();
+}
+void TareaController::AbrirConexion() {
+	/*La cadena de conexión está compuesto de: Servidor de BD, nombre BD, usuario BD, password BD*/
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20152005;User ID=a20152005;Password=WLt8qnYH;";
+	this->objConexion->Open(); /*Ya establecí conexión con la BD*/
+}
+void TareaController::CerrarConexion() {
+	this->objConexion->Close();
 }
 
-void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(String^ IdSensor)
+void TareaController::realizarTareaSensor(String^ IdSensor)
 {
 	SensoresController^ GestorSensores = gcnew SensoresController();
 	MedicionController^ gestorMedicion = gcnew MedicionController();
@@ -100,13 +109,12 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTareaSensor(Stri
 
 	
 }
-void SistemaMonitoreoGranjaController::TareaController::realizarTarea(String^ IdTarea)
+void TareaController::realizarTarea(String^ IdTarea)
 {
 	SensoresController^ GestorSensores = gcnew SensoresController();
 	MedicionController^ gestorMedicion = gcnew MedicionController();
 	PersonalController^ gestorPersonal = gcnew PersonalController();
-	gestorPersonal->CargarPersonalDesdeArchivo();
-	List<Personal^>^ listaPersonal = gestorPersonal->obtenerListaPersonal();
+	AdvertenciaController^ gestorAdvertencia = gcnew AdvertenciaController();
 	GestorSensores->CargarSensores();
 	List<Sensores^>^ listaSensores = GestorSensores->obtenerListaSensores();
 
@@ -121,12 +129,12 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTarea(String^ Id
 	for (int i = 0; i < listaTareacodigos->Count; i++) {
 		Tarea^ objTareaAnalizado = listaTareacodigos[i];
 		if (objTareaAnalizado->IDtarea == IdTarea) {
-			IdSensor = objTareaAnalizado->descripcion; //idsensor
+			IdSensor = objTareaAnalizado->objSensor->ID; //idsensor
 			break;
 		}
 	}
 	//REMOVER TAREA
-	for (int j = 0; j < listaPersonal->Count; j++) {
+	/*for (int j = 0; j < listaPersonal->Count; j++) {
 		Personal^ objPersonal = listaPersonal[j];
 		for (int w = 0; w < objPersonal->listaTareas->Count; w++) {
 			if (objPersonal->listaTareas[w]->IDtarea== IdTarea) {
@@ -134,7 +142,7 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTarea(String^ Id
 				break;
 			}
 		}	
-	}
+	}*/
 
 	//corregir ultimaMedida
 
@@ -163,33 +171,12 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTarea(String^ Id
 			break;
 		}
 	}
-	//REMOVER TAREA
-	int totalTareasPersonal = 0;
-	for (int i = 0; i < listaPersonal->Count; i++) {
-		Personal^ objPersonal = listaPersonal[i];
-		totalTareasPersonal = totalTareasPersonal + objPersonal->listaTareas->Count;
-	}
-
-	//guardar en TareaxPersonal.txt
-	array<String^>^ lineas = gcnew array<String^>(totalTareasPersonal);
-	int l = 0;
-	for (int i = 0; i < listaPersonal->Count; i++) {
-		Personal^ objPersonal = listaPersonal[i];
-		for (int j = 0; j < objPersonal->listaTareas->Count; j++) {
-			Tarea^ objTarea = objPersonal->listaTareas[j];
-			lineas[l] = objTarea->IDtarea + ";" + objPersonal->ID;
-			l++;  //pasar a la siguiente linea -> arreglo
-		}
-	}
-	File::WriteAllLines("TareaxPersonal.txt", lineas);
-
 	//GUARDAR
 	int totalMediciones = 0;
 	for (int i = 0; i < listaSensores->Count; i++) {
 		Sensores^ objSensorGrab = listaSensores[i];
 		totalMediciones = totalMediciones + objSensorGrab->listaMediciones->Count;
 	}
-
 	//guardar en Mediciones.txt
 	array<String^>^ lineasArchivo = gcnew array<String^>(totalMediciones);
 	int k = 0;
@@ -203,36 +190,79 @@ void SistemaMonitoreoGranjaController::TareaController::realizarTarea(String^ Id
 	}
 	/*Aquí ya mi array de lineasArchivo esta OK, con la información a grabar*/
 	File::WriteAllLines("Mediciones.txt", lineasArchivo);
-}
-void TareaController::TareaPendiente(List<Advertencia^>^ listaTareasProgramadas) {
-	//GENERAR TAREAS
-	/*SensoresController^ objSensor = gcnew SensoresController();
-	String^ Unidades = objSensor->BuscarUnidadxIDSensor(IDSensor);
-	AreasDeAnimalesController^ objArea = gcnew AreasDeAnimalesController();
-	String^ IDArea = objArea->AreaDeAnimalesxIDsensor(IDSensor);
-	String^ Animal = objArea->AnimalxIDAreaAnimales(IDArea);
-	*/
-	this->listaTarea->Clear();
-	AreasDeAnimalesController^ objArea = gcnew AreasDeAnimalesController();
-	array<String^>^ lineasArchivo = gcnew array<String^>(listaTareasProgramadas->Count);
+	//REMOVER TAREA
+	List<Advertencia^>^ listaAdvertencias = gestorAdvertencia->generarReporteAdvertencias();
 
-	for (int i = 0; i < listaTareasProgramadas->Count; i++) {
-		Sensores^ objSensor = listaTareasProgramadas[i]->objSensor;
+	gestorPersonal->CargarPersonalDesdeArchivo();
+	List<Personal^>^ listaPersonal = gestorPersonal->obtenerListaPersonal();
+	int totalTareasPersonal = 0;
+	for (int i = 0; i < listaPersonal->Count; i++) {
+		Personal^ objPersonal = listaPersonal[i];
+		totalTareasPersonal = totalTareasPersonal + objPersonal->listaTareas->Count;
+	}
+	
+	//guardar en TareaxPersonal.txt
+	array<String^>^ lineas = gcnew array<String^>(totalTareasPersonal);
+	int l = 0;
+	for (int i = 0; i < listaPersonal->Count; i++) {
+		Personal^ objPersonal = listaPersonal[i];
+		for (int j = 0; j < objPersonal->listaTareas->Count; j++) {
+			Tarea^ objTarea = objPersonal->listaTareas[j];
+			lineas[l] = objTarea->IDtarea + ";" + objPersonal->ID;
+			l++;  //pasar a la siguiente linea -> arreglo
+		}
+	}
+	File::WriteAllLines("TareaxPersonal.txt", lineas);
+}
+void TareaController::TareaPendiente(List<Advertencia^>^ listaAdvertencias) {
+	CargarTareaDesdeArchivo();
+	AreasDeAnimalesController^ objArea = gcnew AreasDeAnimalesController();
+	array<String^>^ lineasArchivo = gcnew array<String^>(listaAdvertencias->Count);
+	
+	this->listaTarea->Clear();
+	for (int i = 0; i < listaAdvertencias->Count; i++) {
+		Sensores^ objSensor = listaAdvertencias[i]->objSensor;
 		int cantMediciones = objSensor->listaMediciones->Count;
 		String^ IDArea = objArea->AreaDeAnimalesxIDsensor(objSensor->ID);
 		AreaDeAnimales^ objAreaAnimal = objArea->buscarAreaxID(IDArea);
 		String^ IDtarea = i.ToString("D5");
-		String^ Lugar = "En Area de " + objAreaAnimal->tipo_animal + " " + objAreaAnimal->raza + " de sexo " + objAreaAnimal->sexo;
+		//String^ Lugar = "En Area de " + objAreaAnimal->tipo_animal + " " + objAreaAnimal->raza + " de sexo " + objAreaAnimal->sexo;
 		String^ Fecha = objSensor->listaMediciones[(cantMediciones)-1]->registro_hora;
-		String^ Descripcion = "El sensor de " + objSensor->tipoSensor + " Detecto que el comedero de " + objAreaAnimal->tipo_animal + " esta vacio o tiene problemas";
-		Tarea^ objTarea = gcnew Tarea(IDtarea, Lugar, Fecha, Descripcion);
+		//String^ Descripcion = "El sensor de " + objSensor->tipoSensor + " Detecto que el comedero de " + objAreaAnimal->tipo_animal + " esta vacio o tiene problemas";
+		Boolean Estado = listaAdvertencias[i]->alarma;
+		Tarea^ objTarea = gcnew Tarea(IDtarea, Fecha, objAreaAnimal, objSensor, Estado);
 		this->listaTarea->Add(objTarea);
 		//PARA GUARDAR TXT DE CODIGOS
-		lineasArchivo[i] = objTarea->IDtarea + ";" + IDArea + ";" + Fecha + ";" + objSensor->ID;
+		lineasArchivo[i] = objTarea->IDtarea + ";" + objTarea->fecha + ";" + objTarea->objArea->ID + ";" + objTarea->objSensor->ID + ";" + objTarea->Estado.ToString();
 	}
 	// GUARDAR Tarea por codigos:  IDTarea;IDarea;Fecha;IDSensor;
-	File::WriteAllLines("TareaCodigos.txt", lineasArchivo);
+	File::WriteAllLines("Tarea.txt", lineasArchivo);
 
+}
+
+int TareaController::seEncuentraTareaEnLista(String^ ID)
+{
+	int existe = 0;
+	/*AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from Tareas where ID='" + ID + "';";
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
+	/*while (objData->Read()) {
+		existe = 1;
+	}
+	objData->Close();
+	CerrarConexion();
+	return existe;*/
+	CargarTareaDesdeArchivo();
+	for (int i = 0; i < this->listaTarea->Count; i++) {
+		Tarea^ objTarea = this->listaTarea[i];
+		if (objTarea->IDtarea == ID) {
+			existe = 1;
+			break;
+		}
+	}
+	return existe;
 }
 
 
@@ -245,7 +275,7 @@ void TareaController::GuardarListaEnTXT() {
 array<String^>^ lineasArchivo = gcnew array<String^>(this->listaTarea->Count);
 	for (int j = 0; j < this->listaTarea->Count; j++) {
 		Tarea^ objTarea2 = this->listaTarea[j];
-		lineasArchivo[j] = objTarea2->IDtarea + ";" + objTarea2->lugar + ";" + objTarea2->fecha + ";" + objTarea2->descripcion;
+		lineasArchivo[j] = objTarea2->IDtarea + ";" + objTarea2->fecha + ";" + objTarea2->objArea->ID + ";" + objTarea2->objSensor->ID + ";" + objTarea2->Estado.ToString();
 
 	}
 	File::WriteAllLines("Tarea.txt", lineasArchivo);
@@ -255,34 +285,49 @@ void TareaController::CargarTareaDesdeArchivo() {
 
 	this->listaTarea->Clear();
 	array<String^>^ lineas = File::ReadAllLines("Tarea.txt");
-
+	AreaDeAnimales^ Area;
+	AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+	Sensores^ Sensor;
+	SensoresController^ gestorSensores = gcnew SensoresController();
+	Boolean Estado;
 	String^ separadores = ";";
 	for each (String ^ lineaPersonal in lineas) {
 		array<String^>^ palabras = lineaPersonal->Split(separadores->ToCharArray());
-		String^ Lugar = palabras[1];
-		String^ Fecha = palabras[2];
-		String^ Descripcion = palabras[3];
 		String^ ID = palabras[0];
-		Tarea^ objTarea = gcnew Tarea(ID,Lugar, Fecha, Descripcion);
+		String^ Fecha = palabras[1];
+		String^ IDArea = palabras[2];
+		String^ IDSensor = palabras[3];
+		String^ EstadoST = palabras[4];
+		Estado = EstadoST == "True";
+		Area = gestorArea->buscarAreaxID(IDArea);
+		Sensor = gestorSensores->buscarSensor(IDSensor);
+		Tarea^ objTarea = gcnew Tarea(ID, Fecha, Area, Sensor, Estado);
 		this->listaTarea->Add(objTarea);
-
 	}
 }
 
 List<Tarea^>^ TareaController::obtenerCodigosTarea()
 {
 	List<Tarea^>^ listaCodigosTarea = gcnew List<Tarea^>();
-	array<String^>^ lineas = File::ReadAllLines("TareaCodigos.txt");
+	array<String^>^ lineas = File::ReadAllLines("Tarea.txt");
 	String^ separadores = ";";
+	AreaDeAnimales^ Area;
+	AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+	Sensores^ Sensor;
+	SensoresController^ gestorSensores = gcnew SensoresController();
+	Boolean Estado;
 	for each (String ^ lineaPersonal in lineas) {
 		array<String^>^ palabras = lineaPersonal->Split(separadores->ToCharArray());
-		String^ IDarea = palabras[1];
-		String^ Fecha = palabras[2];
+		String^ ID = palabras[0];
+		String^ Fecha = palabras[1];
+		String^ IDArea = palabras[2];
 		String^ IDSensor = palabras[3];
-		String^ IDTarea = palabras[0];
-		Tarea^ objTarea = gcnew Tarea(IDTarea, IDarea, Fecha, IDSensor);
+		String^ EstadoST = palabras[4];
+		Estado = EstadoST == "True";
+		Area = gestorArea->buscarAreaxID(IDArea);
+		Sensor = gestorSensores->buscarSensor(IDSensor);
+		Tarea^ objTarea = gcnew Tarea(ID, Fecha, Area, Sensor, Estado);
 		listaCodigosTarea->Add(objTarea);
-
 	}
 	return listaCodigosTarea;
 }
@@ -362,14 +407,23 @@ Tarea^ TareaController::buscarTareaxID(String^ ID) {
 	Tarea^ objEncontrado;
 	array<String^>^ lineas = File::ReadAllLines("Tarea.txt");
 	String^ separadores = ";";
+	AreaDeAnimales^ Area;
+	AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+	Sensores^ Sensor;
+	SensoresController^ gestorSensores = gcnew SensoresController();
+	Boolean Estado;
 	for each (String ^ line in lineas) {
 		array<String^>^ palabras = line->Split(separadores->ToCharArray());
-		String^ IDtarea = palabras[0];
-		String^ lugar = palabras[1];
-		String^ fecha = palabras[2];
-		String^ descripcion = palabras[3];
-		if (IDtarea == ID) {
-			objEncontrado = gcnew Tarea(IDtarea,lugar,fecha,descripcion);
+		String^ IDTarea = palabras[0];
+		String^ Fecha = palabras[1];
+		String^ IDArea = palabras[2];
+		String^ IDSensor = palabras[3];
+		String^ EstadoST = palabras[4];
+		Estado = EstadoST == "True";
+		Area = gestorArea->buscarAreaxID(IDArea);
+		Sensor = gestorSensores->buscarSensor(IDSensor);
+		if (IDTarea == ID) {
+			objEncontrado = gcnew Tarea(ID, Fecha, Area, Sensor, Estado);
 			break;
 		}
 	}

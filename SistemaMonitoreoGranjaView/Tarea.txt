@@ -1,7 +1,14 @@
-00000;En Area de Conejo Guerrero de sexo M;22:01:44;El sensor de Peso Detecto que el comedero de Conejo esta vacio o tiene problemas
-00001;En Area de Bovino Filete de sexo H;22:01:44;El sensor de Peso Detecto que el comedero de Bovino esta vacio o tiene problemas
-00002;En Area de Bovino Filete de sexo H;22:01:44;El sensor de Nivel de Agua Detecto que el comedero de Bovino esta vacio o tiene problemas
-00003;En Area de Cuy Chiquito de sexo F;22:01:44;El sensor de Peso Detecto que el comedero de Cuy esta vacio o tiene problemas
-00004;En Area de Cuy Chiquito de sexo F;22:01:44;El sensor de Nivel de Agua Detecto que el comedero de Cuy esta vacio o tiene problemas
-00005;En Area de Alpaca Chompa de sexo F;22:01:44;El sensor de Peso Detecto que el comedero de Alpaca esta vacio o tiene problemas
-00006;En Area de Alpaca Chompa de sexo F;22:01:44;El sensor de Nivel de Agua Detecto que el comedero de Alpaca esta vacio o tiene problemas
+00000;20:47:41;00000;00001;False
+00001;20:47:41;00003;00010;False
+00002;20:47:41;00001;00004;False
+00003;20:47:41;00006;00019;False
+00004;20:47:41;00002;00007;False
+00005;20:47:41;00004;00013;False
+00006;20:47:41;00000;00000;False
+00007;20:47:41;00001;00003;False
+00008;20:47:41;00002;00006;False
+00009;20:47:41;00004;00012;False
+00010;20:47:41;00005;00015;False
+00011;20:47:41;00006;00018;False
+00012;20:47:41;00003;00009;False
+00013;20:47:41;00005;00016;False

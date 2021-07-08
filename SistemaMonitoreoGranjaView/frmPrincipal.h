@@ -89,6 +89,8 @@ namespace SistemaMonitoreoGranjaView {
 	private: List<Farmacos^>^ listaFarmacos;
 	private: System::Windows::Forms::ToolStripMenuItem^ misTareasToolStripMenuItem;
 	private: List<Almacen^>^ listaAlmacenes;
+	private: System::Windows::Forms::ToolStripMenuItem^ misTareasToolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^ misEstadisticasToolStripMenuItem;
 	private: Personal^ objPersonal;
 
 	private:
@@ -120,11 +122,13 @@ namespace SistemaMonitoreoGranjaView {
 			this->areaDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->areasDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->misTareasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->misTareasToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->misEstadisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->misTareasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -249,6 +253,31 @@ namespace SistemaMonitoreoGranjaView {
 			this->areasDeAnimalesToolStripMenuItem->Text = L"Areas de Animales";
 			this->areasDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areasDeAnimalesToolStripMenuItem_Click);
 			// 
+			// misTareasToolStripMenuItem
+			// 
+			this->misTareasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->misTareasToolStripMenuItem1,
+					this->misEstadisticasToolStripMenuItem
+			});
+			this->misTareasToolStripMenuItem->Name = L"misTareasToolStripMenuItem";
+			this->misTareasToolStripMenuItem->Size = System::Drawing::Size(78, 24);
+			this->misTareasToolStripMenuItem->Text = L"Personal";
+			this->misTareasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::misTareasToolStripMenuItem_Click);
+			// 
+			// misTareasToolStripMenuItem1
+			// 
+			this->misTareasToolStripMenuItem1->Name = L"misTareasToolStripMenuItem1";
+			this->misTareasToolStripMenuItem1->Size = System::Drawing::Size(224, 26);
+			this->misTareasToolStripMenuItem1->Text = L"Mis Tareas";
+			this->misTareasToolStripMenuItem1->Click += gcnew System::EventHandler(this, &frmPrincipal::misTareasToolStripMenuItem1_Click);
+			// 
+			// misEstadisticasToolStripMenuItem
+			// 
+			this->misEstadisticasToolStripMenuItem->Name = L"misEstadisticasToolStripMenuItem";
+			this->misEstadisticasToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->misEstadisticasToolStripMenuItem->Text = L"Mis Estadisticas";
+			this->misEstadisticasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::misEstadisticasToolStripMenuItem_Click);
+			// 
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(217, 213);
@@ -287,13 +316,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->timer1->Enabled = true;
 			this->timer1->Interval = 20000;
 			this->timer1->Tick += gcnew System::EventHandler(this, &frmPrincipal::timer1_Tick);
-			// 
-			// misTareasToolStripMenuItem
-			// 
-			this->misTareasToolStripMenuItem->Name = L"misTareasToolStripMenuItem";
-			this->misTareasToolStripMenuItem->Size = System::Drawing::Size(91, 24);
-			this->misTareasToolStripMenuItem->Text = L"Mis Tareas";
-			this->misTareasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::misTareasToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
@@ -439,20 +461,8 @@ private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) 
 	TareaController^ objTareacontroller = gcnew TareaController();
 	AdvertenciaController^ GestorAdvertencia = gcnew AdvertenciaController();
 	List<Advertencia^>^ listaAdvertencias = GestorAdvertencia->generarReporteAdvertencias();
-	List<Advertencia^>^ listaAdvertenciasTareas = gcnew List<Advertencia^>();
-	for (int i = 0; i < listaAdvertencias->Count; i++) {
-		Advertencia^ objAdvertencia = listaAdvertencias[i];
-		if (objAdvertencia->alarma) {
-			/*Sensores^ objSensor = objAdvertencia->objSensor;
-			objTareacontroller->TareaPendiente(objSensor);
-			//
-			//MessageBox::Show(objAdvertencia->IdSensor + "necesita revision");*/
-			listaAdvertenciasTareas->Add(objAdvertencia);
-		}
-	}
-	objTareacontroller->TareaPendiente(listaAdvertenciasTareas);
-	objTareacontroller->GuardarListaEnTXT();
-
+	List<Advertencia^>^ listaAdvertenciasControladas = GestorAdvertencia->obtenerListaTXT();
+	objTareacontroller->TareaPendiente(listaAdvertenciasControladas);
 }
 private: System::Void menuStrip1_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
 }
@@ -463,6 +473,18 @@ private: System::Void areasDeAnimalesToolStripMenuItem_Click(System::Object^ sen
 private: System::Void comederosToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void misTareasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+
+}
+private: System::Void misTareasToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmMisTareas^ ventana = gcnew frmMisTareas("20152005");
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+}
+private: System::Void misEstadisticasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
 		frmMisTareas^ ventana = gcnew frmMisTareas("20152005");
 		ventana->ShowDialog();

@@ -308,33 +308,49 @@ private: System::Void frmTarea_Load(System::Object^ sender, System::EventArgs^ e
 	
 	TareaController^ GestorTareaController = gcnew TareaController();
 	GestorTareaController->CargarTareaDesdeArchivo();
-	mostrarGrilla(GestorTareaController->RetornarListaTarea());
-	mostrarGrilla2(GestorTareaController->buscarTareaxPersonal(IDpersonalSeleccionado));
+	List<Tarea^>^ listaCompleta = GestorTareaController->RetornarListaTarea();
 	this->listaTareas = GestorTareaController->buscarTareaxPersonal(IDpersonalSeleccionado);
+	List<Tarea^>^ listaTareasGrilla1 = gcnew List<Tarea^>();
+	for (int i = 0; i < listaCompleta->Count; i++) {
+		if (listaCompleta[i]->Estado == true)
+			listaTareasGrilla1->Add(listaCompleta[i]);
+	}
+	mostrarGrilla(listaTareasGrilla1);
+	List<Tarea^>^ listaTareasGrilla2 = gcnew List<Tarea^>();
+	for (int i = 0; i < this->listaTareas->Count; i++) {
+		if (this->listaTareas[i]->Estado == true)
+			listaTareasGrilla2->Add(this->listaTareas[i]);
+	}
+	mostrarGrilla2(listaTareasGrilla2);
+
 }
 private: void mostrarGrilla(List<Tarea^>^ listaTarea) {
 	this->dataGridView1->Rows->Clear();
+	AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+	ComedoresController^ gestorComedero = gcnew ComedoresController();
+	SensoresController^ gestorSensor = gcnew SensoresController();
 	for (int i = 0; i < listaTarea->Count; i++) {
 		Tarea^ objTarea = listaTarea[i];
 		array<String^>^ fila = gcnew array<String^>(4);
 		fila[0] = objTarea->IDtarea;
-		fila[1] = objTarea->lugar;
+		fila[1] = "En Area de " + objTarea->objArea->tipo_animal + " " + objTarea->objArea->raza + " de sexo " + objTarea->objArea->sexo;
 		fila[2] = objTarea->fecha;
-		fila[3] = objTarea->descripcion;
-				
+		fila[3] = "El sensor de " + objTarea->objSensor->tipoSensor + " detectó que el comedero está vacio o tiene problemas";
 		this->dataGridView1->Rows->Add(fila);
 	}
 }
 private: void mostrarGrilla2(List<Tarea^>^ listaTarea) {
 	this->dataGridView2->Rows->Clear();
+	AreasDeAnimalesController^ gestorArea = gcnew AreasDeAnimalesController();
+	ComedoresController^ gestorComedero = gcnew ComedoresController();
+	SensoresController^ gestorSensor = gcnew SensoresController();
 	for (int i = 0; i < listaTarea->Count; i++) {
 		Tarea^ objTarea = listaTarea[i];
 		array<String^>^ fila = gcnew array<String^>(4);
 		fila[0] = objTarea->IDtarea;
-		fila[1] = objTarea->lugar;
+		fila[1] = "En Area de " + objTarea->objArea->tipo_animal + " " + objTarea->objArea->raza + " de sexo " + objTarea->objArea->sexo;
 		fila[2] = objTarea->fecha;
-		fila[3] = objTarea->descripcion;
-
+		fila[3] = "El sensor de " + objTarea->objSensor->tipoSensor + " detectó que el comedero está vacio o tiene problemas";
 		this->dataGridView2->Rows->Add(fila);
 	}
 }
@@ -366,12 +382,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		if (!esta_repetido) {
 			Tarea^ objTarea = gestor->buscarTareaxID(IDTareaAsignar);
-			
-			//objPersonal->listaTareas->Add(objTarea);
-			//listaTareas = objPersonal->listaTareas;
-			//this->listaTareas = listaTareas;
 			this->listaTareas->Add(objTarea);
-			mostrarGrilla2(listaTareas);
+			List<Tarea^>^ listaTareasGrilla2 = gcnew List<Tarea^>();
+			for (int i = 0; i < this->listaTareas->Count; i++) {
+				if (this->listaTareas[i]->Estado == true)
+					listaTareasGrilla2->Add(this->listaTareas[i]);
+			}
+			mostrarGrilla2(listaTareasGrilla2);
+			
 		}
 		else {
 			MessageBox::Show("La tarea ya se encuentra dentro de la lista de tareas asignadas");
@@ -399,7 +417,12 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			break;
 		}
 	}
-	mostrarGrilla2(this->listaTareas);
+	List<Tarea^>^ listaTareasGrilla2 = gcnew List<Tarea^>();
+	for (int i = 0; i < this->listaTareas->Count; i++) {
+		if (this->listaTareas[i]->Estado == true)
+			listaTareasGrilla2->Add(this->listaTareas[i]);
+	}
+	mostrarGrilla2(listaTareasGrilla2);
 }
 };
 }

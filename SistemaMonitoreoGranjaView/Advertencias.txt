@@ -1,0 +1,14 @@
+00001;False
+00010;False
+00004;False
+00019;False
+00007;False
+00013;False
+00000;False
+00003;False
+00006;False
+00012;False
+00015;False
+00018;False
+00009;False
+00016;False
