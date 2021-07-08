@@ -9,6 +9,7 @@
 #include "frmMantPersonal.h"
 #include "frmMantSensores.h"
 #include "frmMantAreaDeAnimales.h"
+
 /*Administracion:*/
 //#include "frmAdministrarAlmacen.h"
 #include "frmHistorialAlmacen.h"
@@ -17,7 +18,7 @@
 /*Reportes*/
 #include "frmReporteAreas.h"
 
-#include "frmMantenimientosBotones.h"
+
 
 namespace SistemaMonitoreoGranjaView {
 
@@ -107,7 +108,8 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
-	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Panel^ panelMenú;
+
 	private: System::Windows::Forms::Button^ button7;
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::Button^ button5;
@@ -151,21 +153,41 @@ namespace SistemaMonitoreoGranjaView {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+private: System::Windows::Forms::Panel^ PanelReportes;
+private: System::Windows::Forms::Panel^ panel6;
+private: System::Windows::Forms::Button^ button6;
+private: System::Windows::Forms::Label^ label13;
+private: System::Windows::Forms::Panel^ panel15;
+private: System::Windows::Forms::Button^ button9;
+private: System::Windows::Forms::Label^ label14;
+private: System::Windows::Forms::Panel^ panel16;
+private: System::Windows::Forms::Button^ button10;
+private: System::Windows::Forms::Label^ label15;
+private: System::Windows::Forms::Panel^ panel7;
+private: System::Windows::Forms::Label^ label5;
+private: System::Windows::Forms::Button^ BotonAlmacen;
+private: System::Windows::Forms::Panel^ panel14;
+private: System::Windows::Forms::Label^ label12;
+private: System::Windows::Forms::Button^ botoncomederos;
+private: System::Windows::Forms::Panel^ panel8;
+private: System::Windows::Forms::Label^ label6;
+private: System::Windows::Forms::Button^ Botonalimentos;
+private: System::Windows::Forms::Panel^ panel13;
+private: System::Windows::Forms::Label^ label11;
+private: System::Windows::Forms::Button^ botonincubadoras;
+private: System::Windows::Forms::Panel^ panel9;
+private: System::Windows::Forms::Label^ label7;
+private: System::Windows::Forms::Button^ botonfarmacos;
+private: System::Windows::Forms::Panel^ panel12;
+private: System::Windows::Forms::Label^ label10;
+private: System::Windows::Forms::Button^ botonsensores;
+private: System::Windows::Forms::Panel^ panel10;
+private: System::Windows::Forms::Label^ label8;
+private: System::Windows::Forms::Button^ botonpersonal;
+private: System::Windows::Forms::Panel^ panel11;
+private: System::Windows::Forms::Label^ label9;
+private: System::Windows::Forms::Button^ botonareas;
+private: System::Windows::Forms::Panel^ panelMantenimientos;
 
 	private: List<Almacen^>^ listaAlmacenes;
 
@@ -186,6 +208,17 @@ namespace SistemaMonitoreoGranjaView {
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmPrincipal::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->mantenimientosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->almacenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->alimentosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->farmacosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->personalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->comederosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->incubadorasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->sensoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->areaDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->areasDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -202,7 +235,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->panelMenú = (gcnew System::Windows::Forms::Panel());
 			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
@@ -210,17 +243,41 @@ namespace SistemaMonitoreoGranjaView {
 			this->iniciarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->loginToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->areasDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->almacenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->alimentosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->farmacosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->personalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->comederosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->incubadorasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->sensoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->areaDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->mantenimientosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->PanelReportes = (gcnew System::Windows::Forms::Panel());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->panel15 = (gcnew System::Windows::Forms::Panel());
+			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->panel16 = (gcnew System::Windows::Forms::Panel());
+			this->button10 = (gcnew System::Windows::Forms::Button());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->panel7 = (gcnew System::Windows::Forms::Panel());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->BotonAlmacen = (gcnew System::Windows::Forms::Button());
+			this->panel14 = (gcnew System::Windows::Forms::Panel());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->botoncomederos = (gcnew System::Windows::Forms::Button());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->Botonalimentos = (gcnew System::Windows::Forms::Button());
+			this->panel13 = (gcnew System::Windows::Forms::Panel());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->botonincubadoras = (gcnew System::Windows::Forms::Button());
+			this->panel9 = (gcnew System::Windows::Forms::Panel());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->botonfarmacos = (gcnew System::Windows::Forms::Button());
+			this->panel12 = (gcnew System::Windows::Forms::Panel());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->botonsensores = (gcnew System::Windows::Forms::Button());
+			this->panel10 = (gcnew System::Windows::Forms::Panel());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->botonpersonal = (gcnew System::Windows::Forms::Button());
+			this->panel11 = (gcnew System::Windows::Forms::Panel());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->botonareas = (gcnew System::Windows::Forms::Button());
+			this->panelMantenimientos = (gcnew System::Windows::Forms::Panel());
 			this->menuStrip1->SuspendLayout();
 			this->Menu->SuspendLayout();
 			this->panel5->SuspendLayout();
@@ -230,7 +287,20 @@ namespace SistemaMonitoreoGranjaView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
-			this->panel1->SuspendLayout();
+			this->panelMenú->SuspendLayout();
+			this->PanelReportes->SuspendLayout();
+			this->panel6->SuspendLayout();
+			this->panel15->SuspendLayout();
+			this->panel16->SuspendLayout();
+			this->panel7->SuspendLayout();
+			this->panel14->SuspendLayout();
+			this->panel8->SuspendLayout();
+			this->panel13->SuspendLayout();
+			this->panel9->SuspendLayout();
+			this->panel12->SuspendLayout();
+			this->panel10->SuspendLayout();
+			this->panel11->SuspendLayout();
+			this->panelMantenimientos->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -245,17 +315,99 @@ namespace SistemaMonitoreoGranjaView {
 			this->menuStrip1->Location = System::Drawing::Point(200, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(667, 24);
+			this->menuStrip1->Size = System::Drawing::Size(683, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &frmPrincipal::menuStrip1_ItemClicked);
+			// 
+			// mantenimientosToolStripMenuItem
+			// 
+			this->mantenimientosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
+				this->almacenToolStripMenuItem,
+					this->alimentosToolStripMenuItem, this->farmacosToolStripMenuItem, this->personalToolStripMenuItem, this->comederosToolStripMenuItem,
+					this->incubadorasToolStripMenuItem, this->sensoresToolStripMenuItem, this->areaDeAnimalesToolStripMenuItem
+			});
+			this->mantenimientosToolStripMenuItem->Name = L"mantenimientosToolStripMenuItem";
+			this->mantenimientosToolStripMenuItem->Size = System::Drawing::Size(106, 20);
+			this->mantenimientosToolStripMenuItem->Text = L"Mantenimientos";
+			this->mantenimientosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientosToolStripMenuItem_Click);
+			// 
+			// almacenToolStripMenuItem
+			// 
+			this->almacenToolStripMenuItem->Name = L"almacenToolStripMenuItem";
+			this->almacenToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->almacenToolStripMenuItem->Text = L"Almacen";
+			this->almacenToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::almacenToolStripMenuItem_Click);
+			// 
+			// alimentosToolStripMenuItem
+			// 
+			this->alimentosToolStripMenuItem->Name = L"alimentosToolStripMenuItem";
+			this->alimentosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->alimentosToolStripMenuItem->Text = L"Alimentos";
+			this->alimentosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::alimentosToolStripMenuItem_Click);
+			// 
+			// farmacosToolStripMenuItem
+			// 
+			this->farmacosToolStripMenuItem->Name = L"farmacosToolStripMenuItem";
+			this->farmacosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->farmacosToolStripMenuItem->Text = L"Farmacos";
+			this->farmacosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::farmacosToolStripMenuItem_Click);
+			// 
+			// personalToolStripMenuItem
+			// 
+			this->personalToolStripMenuItem->Name = L"personalToolStripMenuItem";
+			this->personalToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->personalToolStripMenuItem->Text = L"Personal";
+			this->personalToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::personalToolStripMenuItem_Click);
+			// 
+			// comederosToolStripMenuItem
+			// 
+			this->comederosToolStripMenuItem->Name = L"comederosToolStripMenuItem";
+			this->comederosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->comederosToolStripMenuItem->Text = L"Comederos";
+			this->comederosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::comederosToolStripMenuItem_Click);
+			// 
+			// incubadorasToolStripMenuItem
+			// 
+			this->incubadorasToolStripMenuItem->Name = L"incubadorasToolStripMenuItem";
+			this->incubadorasToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->incubadorasToolStripMenuItem->Text = L"Incubadoras";
+			this->incubadorasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::incubadorasToolStripMenuItem_Click);
+			// 
+			// sensoresToolStripMenuItem
+			// 
+			this->sensoresToolStripMenuItem->Name = L"sensoresToolStripMenuItem";
+			this->sensoresToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->sensoresToolStripMenuItem->Text = L"Sensores";
+			this->sensoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::sensoresToolStripMenuItem_Click);
+			// 
+			// areaDeAnimalesToolStripMenuItem
+			// 
+			this->areaDeAnimalesToolStripMenuItem->Name = L"areaDeAnimalesToolStripMenuItem";
+			this->areaDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(166, 22);
+			this->areaDeAnimalesToolStripMenuItem->Text = L"Area de Animales";
+			this->areaDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areaDeAnimalesToolStripMenuItem_Click);
+			// 
+			// reportesToolStripMenuItem
+			// 
+			this->reportesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->areasDeAnimalesToolStripMenuItem });
+			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
+			this->reportesToolStripMenuItem->Size = System::Drawing::Size(65, 20);
+			this->reportesToolStripMenuItem->Text = L"Reportes";
+			// 
+			// areasDeAnimalesToolStripMenuItem
+			// 
+			this->areasDeAnimalesToolStripMenuItem->Name = L"areasDeAnimalesToolStripMenuItem";
+			this->areasDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(171, 22);
+			this->areasDeAnimalesToolStripMenuItem->Text = L"Areas de Animales";
+			this->areasDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areasDeAnimalesToolStripMenuItem_Click);
 			// 
 			// button1
 			// 
 			this->button1->FlatAppearance->BorderSize = 0;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(0, 36);
+			this->button1->Location = System::Drawing::Point(-2, 34);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(176, 138);
@@ -270,7 +422,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button2->FlatAppearance->BorderSize = 0;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
-			this->button2->Location = System::Drawing::Point(0, 36);
+			this->button2->Location = System::Drawing::Point(-2, 37);
 			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(174, 138);
@@ -283,7 +435,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button3->FlatAppearance->BorderSize = 0;
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button3.Image")));
-			this->button3->Location = System::Drawing::Point(0, 38);
+			this->button3->Location = System::Drawing::Point(2, 38);
 			this->button3->Margin = System::Windows::Forms::Padding(2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(174, 136);
@@ -304,15 +456,15 @@ namespace SistemaMonitoreoGranjaView {
 			this->Menu->Controls->Add(this->panel5);
 			this->Menu->Controls->Add(this->panel4);
 			this->Menu->Controls->Add(this->panel3);
-			this->Menu->Location = System::Drawing::Point(200, 12);
+			this->Menu->Location = System::Drawing::Point(200, 21);
 			this->Menu->Name = L"Menu";
-			this->Menu->Size = System::Drawing::Size(667, 447);
+			this->Menu->Size = System::Drawing::Size(683, 477);
 			this->Menu->TabIndex = 6;
 			// 
 			// panel5
 			// 
-			this->panel5->Controls->Add(this->label3);
 			this->panel5->Controls->Add(this->button3);
+			this->panel5->Controls->Add(this->label3);
 			this->panel5->Location = System::Drawing::Point(95, 257);
 			this->panel5->Name = L"panel5";
 			this->panel5->Size = System::Drawing::Size(174, 174);
@@ -333,8 +485,8 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// panel4
 			// 
-			this->panel4->Controls->Add(this->label2);
 			this->panel4->Controls->Add(this->button1);
+			this->panel4->Controls->Add(this->label2);
 			this->panel4->Location = System::Drawing::Point(374, 77);
 			this->panel4->Name = L"panel4";
 			this->panel4->Size = System::Drawing::Size(174, 174);
@@ -355,8 +507,8 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// panel3
 			// 
-			this->panel3->Controls->Add(this->label1);
 			this->panel3->Controls->Add(this->button2);
+			this->panel3->Controls->Add(this->label1);
 			this->panel3->Location = System::Drawing::Point(95, 77);
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(174, 174);
@@ -431,24 +583,24 @@ namespace SistemaMonitoreoGranjaView {
 			this->pictureBox4->TabIndex = 13;
 			this->pictureBox4->TabStop = false;
 			// 
-			// panel1
+			// panelMenú
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+			this->panelMenú->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
 				static_cast<System::Int32>(static_cast<System::Byte>(78)));
-			this->panel1->Controls->Add(this->pictureBox4);
-			this->panel1->Controls->Add(this->pictureBox3);
-			this->panel1->Controls->Add(this->pictureBox2);
-			this->panel1->Controls->Add(this->pictureBox1);
-			this->panel1->Controls->Add(this->label4);
-			this->panel1->Controls->Add(this->button7);
-			this->panel1->Controls->Add(this->button8);
-			this->panel1->Controls->Add(this->button5);
-			this->panel1->Controls->Add(this->button4);
-			this->panel1->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(200, 459);
-			this->panel1->TabIndex = 5;
+			this->panelMenú->Controls->Add(this->pictureBox4);
+			this->panelMenú->Controls->Add(this->pictureBox3);
+			this->panelMenú->Controls->Add(this->pictureBox2);
+			this->panelMenú->Controls->Add(this->pictureBox1);
+			this->panelMenú->Controls->Add(this->label4);
+			this->panelMenú->Controls->Add(this->button7);
+			this->panelMenú->Controls->Add(this->button8);
+			this->panelMenú->Controls->Add(this->button5);
+			this->panelMenú->Controls->Add(this->button4);
+			this->panelMenú->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panelMenú->Location = System::Drawing::Point(0, 0);
+			this->panelMenú->Name = L"panelMenú";
+			this->panelMenú->Size = System::Drawing::Size(200, 498);
+			this->panelMenú->TabIndex = 5;
 			// 
 			// button7
 			// 
@@ -516,7 +668,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(200, 53);
 			this->button4->TabIndex = 0;
-			this->button4->Text = L"      LogIn";
+			this->button4->Text = L"      Inicio";
 			this->button4->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &frmPrincipal::button4_Click);
@@ -524,14 +676,14 @@ namespace SistemaMonitoreoGranjaView {
 			// iniciarSesiónToolStripMenuItem
 			// 
 			this->iniciarSesiónToolStripMenuItem->Name = L"iniciarSesiónToolStripMenuItem";
-			this->iniciarSesiónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->iniciarSesiónToolStripMenuItem->Size = System::Drawing::Size(146, 22);
 			this->iniciarSesiónToolStripMenuItem->Text = L"Iniciar Sesión ";
 			this->iniciarSesiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::iniciarSesiónToolStripMenuItem_Click);
 			// 
 			// cerrarSesiónToolStripMenuItem
 			// 
 			this->cerrarSesiónToolStripMenuItem->Name = L"cerrarSesiónToolStripMenuItem";
-			this->cerrarSesiónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->cerrarSesiónToolStripMenuItem->Size = System::Drawing::Size(146, 22);
 			this->cerrarSesiónToolStripMenuItem->Text = L"Cerrar Sesión";
 			this->cerrarSesiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::cerrarSesiónToolStripMenuItem_Click);
 			// 
@@ -545,100 +697,424 @@ namespace SistemaMonitoreoGranjaView {
 			this->loginToolStripMenuItem->Size = System::Drawing::Size(49, 20);
 			this->loginToolStripMenuItem->Text = L"Login";
 			// 
-			// areasDeAnimalesToolStripMenuItem
+			// PanelReportes
 			// 
-			this->areasDeAnimalesToolStripMenuItem->Name = L"areasDeAnimalesToolStripMenuItem";
-			this->areasDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->areasDeAnimalesToolStripMenuItem->Text = L"Areas de Animales";
-			this->areasDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areasDeAnimalesToolStripMenuItem_Click);
+			this->PanelReportes->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->PanelReportes->Controls->Add(this->panel6);
+			this->PanelReportes->Controls->Add(this->panel15);
+			this->PanelReportes->Controls->Add(this->panel16);
+			this->PanelReportes->Location = System::Drawing::Point(200, 21);
+			this->PanelReportes->Name = L"PanelReportes";
+			this->PanelReportes->Size = System::Drawing::Size(683, 471);
+			this->PanelReportes->TabIndex = 7;
 			// 
-			// reportesToolStripMenuItem
+			// panel6
 			// 
-			this->reportesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->areasDeAnimalesToolStripMenuItem });
-			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
-			this->reportesToolStripMenuItem->Size = System::Drawing::Size(65, 20);
-			this->reportesToolStripMenuItem->Text = L"Reportes";
+			this->panel6->Controls->Add(this->button6);
+			this->panel6->Controls->Add(this->label13);
+			this->panel6->Location = System::Drawing::Point(95, 257);
+			this->panel6->Name = L"panel6";
+			this->panel6->Size = System::Drawing::Size(174, 174);
+			this->panel6->TabIndex = 6;
 			// 
-			// almacenToolStripMenuItem
+			// button6
 			// 
-			this->almacenToolStripMenuItem->Name = L"almacenToolStripMenuItem";
-			this->almacenToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->almacenToolStripMenuItem->Text = L"Almacen";
-			this->almacenToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::almacenToolStripMenuItem_Click);
+			this->button6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->button6->FlatAppearance->BorderSize = 0;
+			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button6.Image")));
+			this->button6->Location = System::Drawing::Point(2, 42);
+			this->button6->Margin = System::Windows::Forms::Padding(2);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(174, 138);
+			this->button6->TabIndex = 3;
+			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &frmPrincipal::button6_Click);
 			// 
-			// alimentosToolStripMenuItem
+			// label13
 			// 
-			this->alimentosToolStripMenuItem->Name = L"alimentosToolStripMenuItem";
-			this->alimentosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->alimentosToolStripMenuItem->Text = L"Alimentos";
-			this->alimentosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::alimentosToolStripMenuItem_Click);
+			this->label13->AutoSize = true;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label13->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label13->Location = System::Drawing::Point(23, 17);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(115, 19);
+			this->label13->TabIndex = 4;
+			this->label13->Text = L"Reporte Áreas";
 			// 
-			// farmacosToolStripMenuItem
+			// panel15
 			// 
-			this->farmacosToolStripMenuItem->Name = L"farmacosToolStripMenuItem";
-			this->farmacosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->farmacosToolStripMenuItem->Text = L"Farmacos";
-			this->farmacosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::farmacosToolStripMenuItem_Click);
+			this->panel15->Controls->Add(this->button9);
+			this->panel15->Controls->Add(this->label14);
+			this->panel15->Location = System::Drawing::Point(374, 77);
+			this->panel15->Name = L"panel15";
+			this->panel15->Size = System::Drawing::Size(174, 174);
+			this->panel15->TabIndex = 5;
 			// 
-			// personalToolStripMenuItem
+			// button9
 			// 
-			this->personalToolStripMenuItem->Name = L"personalToolStripMenuItem";
-			this->personalToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->personalToolStripMenuItem->Text = L"Personal";
-			this->personalToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::personalToolStripMenuItem_Click);
+			this->button9->FlatAppearance->BorderSize = 0;
+			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button9->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button9.Image")));
+			this->button9->Location = System::Drawing::Point(-2, 34);
+			this->button9->Margin = System::Windows::Forms::Padding(2);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(176, 138);
+			this->button9->TabIndex = 2;
+			this->button9->UseVisualStyleBackColor = true;
 			// 
-			// comederosToolStripMenuItem
+			// label14
 			// 
-			this->comederosToolStripMenuItem->Name = L"comederosToolStripMenuItem";
-			this->comederosToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->comederosToolStripMenuItem->Text = L"Comederos";
-			this->comederosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::comederosToolStripMenuItem_Click);
+			this->label14->AutoSize = true;
+			this->label14->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label14->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label14->Location = System::Drawing::Point(24, 10);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(123, 19);
+			this->label14->TabIndex = 4;
+			this->label14->Text = L"Mis Resultados";
 			// 
-			// incubadorasToolStripMenuItem
+			// panel16
 			// 
-			this->incubadorasToolStripMenuItem->Name = L"incubadorasToolStripMenuItem";
-			this->incubadorasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->incubadorasToolStripMenuItem->Text = L"Incubadoras";
-			this->incubadorasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::incubadorasToolStripMenuItem_Click);
+			this->panel16->Controls->Add(this->button10);
+			this->panel16->Controls->Add(this->label15);
+			this->panel16->Location = System::Drawing::Point(95, 77);
+			this->panel16->Name = L"panel16";
+			this->panel16->Size = System::Drawing::Size(174, 174);
+			this->panel16->TabIndex = 0;
 			// 
-			// sensoresToolStripMenuItem
+			// button10
 			// 
-			this->sensoresToolStripMenuItem->Name = L"sensoresToolStripMenuItem";
-			this->sensoresToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->sensoresToolStripMenuItem->Text = L"Sensores";
-			this->sensoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::sensoresToolStripMenuItem_Click);
+			this->button10->FlatAppearance->BorderSize = 0;
+			this->button10->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button10->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button10.Image")));
+			this->button10->Location = System::Drawing::Point(2, 36);
+			this->button10->Margin = System::Windows::Forms::Padding(2);
+			this->button10->Name = L"button10";
+			this->button10->Size = System::Drawing::Size(174, 136);
+			this->button10->TabIndex = 4;
+			this->button10->UseVisualStyleBackColor = true;
+			this->button10->Click += gcnew System::EventHandler(this, &frmPrincipal::button10_Click);
 			// 
-			// areaDeAnimalesToolStripMenuItem
+			// label15
 			// 
-			this->areaDeAnimalesToolStripMenuItem->Name = L"areaDeAnimalesToolStripMenuItem";
-			this->areaDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->areaDeAnimalesToolStripMenuItem->Text = L"Area de Animales";
-			this->areaDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areaDeAnimalesToolStripMenuItem_Click);
+			this->label15->AutoSize = true;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label15->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label15->Location = System::Drawing::Point(23, 10);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(129, 19);
+			this->label15->TabIndex = 4;
+			this->label15->Text = L"Mis Actividades";
+			this->label15->Click += gcnew System::EventHandler(this, &frmPrincipal::label15_Click);
 			// 
-			// mantenimientosToolStripMenuItem
+			// panel7
 			// 
-			this->mantenimientosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
-				this->almacenToolStripMenuItem,
-					this->alimentosToolStripMenuItem, this->farmacosToolStripMenuItem, this->personalToolStripMenuItem, this->comederosToolStripMenuItem,
-					this->incubadorasToolStripMenuItem, this->sensoresToolStripMenuItem, this->areaDeAnimalesToolStripMenuItem
-			});
-			this->mantenimientosToolStripMenuItem->Name = L"mantenimientosToolStripMenuItem";
-			this->mantenimientosToolStripMenuItem->Size = System::Drawing::Size(106, 20);
-			this->mantenimientosToolStripMenuItem->Text = L"Mantenimientos";
-			this->mantenimientosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientosToolStripMenuItem_Click);
+			this->panel7->Controls->Add(this->label5);
+			this->panel7->Controls->Add(this->BotonAlmacen);
+			this->panel7->Location = System::Drawing::Point(35, 73);
+			this->panel7->Name = L"panel7";
+			this->panel7->Size = System::Drawing::Size(131, 108);
+			this->panel7->TabIndex = 0;
+			// 
+			// label5
+			// 
+			this->label5->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label5->Location = System::Drawing::Point(32, 5);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(100, 23);
+			this->label5->TabIndex = 1;
+			this->label5->Text = L"Almacén";
+			// 
+			// BotonAlmacen
+			// 
+			this->BotonAlmacen->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"BotonAlmacen.BackgroundImage")));
+			this->BotonAlmacen->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->BotonAlmacen->FlatAppearance->BorderSize = 0;
+			this->BotonAlmacen->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->BotonAlmacen->Location = System::Drawing::Point(0, 32);
+			this->BotonAlmacen->Name = L"BotonAlmacen";
+			this->BotonAlmacen->Size = System::Drawing::Size(131, 76);
+			this->BotonAlmacen->TabIndex = 0;
+			this->BotonAlmacen->UseVisualStyleBackColor = true;
+			this->BotonAlmacen->Click += gcnew System::EventHandler(this, &frmPrincipal::BotonAlmacen_Click);
+			// 
+			// panel14
+			// 
+			this->panel14->Controls->Add(this->label12);
+			this->panel14->Controls->Add(this->botoncomederos);
+			this->panel14->Location = System::Drawing::Point(36, 225);
+			this->panel14->Name = L"panel14";
+			this->panel14->Size = System::Drawing::Size(131, 108);
+			this->panel14->TabIndex = 5;
+			// 
+			// label12
+			// 
+			this->label12->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label12->Location = System::Drawing::Point(32, 5);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(100, 23);
+			this->label12->TabIndex = 1;
+			this->label12->Text = L"Comederos";
+			// 
+			// botoncomederos
+			// 
+			this->botoncomederos->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"botoncomederos.BackgroundImage")));
+			this->botoncomederos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->botoncomederos->FlatAppearance->BorderSize = 0;
+			this->botoncomederos->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->botoncomederos->Location = System::Drawing::Point(0, 32);
+			this->botoncomederos->Name = L"botoncomederos";
+			this->botoncomederos->Size = System::Drawing::Size(131, 76);
+			this->botoncomederos->TabIndex = 0;
+			this->botoncomederos->UseVisualStyleBackColor = true;
+			this->botoncomederos->Click += gcnew System::EventHandler(this, &frmPrincipal::botoncomederos_Click);
+			// 
+			// panel8
+			// 
+			this->panel8->Controls->Add(this->label6);
+			this->panel8->Controls->Add(this->Botonalimentos);
+			this->panel8->Location = System::Drawing::Point(196, 73);
+			this->panel8->Name = L"panel8";
+			this->panel8->Size = System::Drawing::Size(131, 108);
+			this->panel8->TabIndex = 2;
+			// 
+			// label6
+			// 
+			this->label6->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label6->Location = System::Drawing::Point(32, 5);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(100, 23);
+			this->label6->TabIndex = 1;
+			this->label6->Text = L"Alimentos";
+			// 
+			// Botonalimentos
+			// 
+			this->Botonalimentos->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Botonalimentos.BackgroundImage")));
+			this->Botonalimentos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->Botonalimentos->FlatAppearance->BorderSize = 0;
+			this->Botonalimentos->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->Botonalimentos->Location = System::Drawing::Point(0, 32);
+			this->Botonalimentos->Name = L"Botonalimentos";
+			this->Botonalimentos->Size = System::Drawing::Size(131, 76);
+			this->Botonalimentos->TabIndex = 0;
+			this->Botonalimentos->UseVisualStyleBackColor = true;
+			this->Botonalimentos->Click += gcnew System::EventHandler(this, &frmPrincipal::Botonalimentos_Click);
+			// 
+			// panel13
+			// 
+			this->panel13->Controls->Add(this->label11);
+			this->panel13->Controls->Add(this->botonincubadoras);
+			this->panel13->Location = System::Drawing::Point(197, 225);
+			this->panel13->Name = L"panel13";
+			this->panel13->Size = System::Drawing::Size(131, 108);
+			this->panel13->TabIndex = 6;
+			// 
+			// label11
+			// 
+			this->label11->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label11->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label11->Location = System::Drawing::Point(32, 5);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(100, 23);
+			this->label11->TabIndex = 1;
+			this->label11->Text = L"Incubadoras";
+			// 
+			// botonincubadoras
+			// 
+			this->botonincubadoras->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"botonincubadoras.BackgroundImage")));
+			this->botonincubadoras->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->botonincubadoras->FlatAppearance->BorderSize = 0;
+			this->botonincubadoras->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->botonincubadoras->Location = System::Drawing::Point(0, 32);
+			this->botonincubadoras->Name = L"botonincubadoras";
+			this->botonincubadoras->Size = System::Drawing::Size(131, 76);
+			this->botonincubadoras->TabIndex = 0;
+			this->botonincubadoras->UseVisualStyleBackColor = true;
+			this->botonincubadoras->Click += gcnew System::EventHandler(this, &frmPrincipal::botonincubadoras_Click);
+			// 
+			// panel9
+			// 
+			this->panel9->Controls->Add(this->label7);
+			this->panel9->Controls->Add(this->botonfarmacos);
+			this->panel9->Location = System::Drawing::Point(356, 73);
+			this->panel9->Name = L"panel9";
+			this->panel9->Size = System::Drawing::Size(131, 108);
+			this->panel9->TabIndex = 3;
+			// 
+			// label7
+			// 
+			this->label7->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label7->Location = System::Drawing::Point(32, 5);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(100, 23);
+			this->label7->TabIndex = 1;
+			this->label7->Text = L"Fármacos";
+			// 
+			// botonfarmacos
+			// 
+			this->botonfarmacos->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"botonfarmacos.BackgroundImage")));
+			this->botonfarmacos->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->botonfarmacos->FlatAppearance->BorderSize = 0;
+			this->botonfarmacos->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->botonfarmacos->Location = System::Drawing::Point(0, 32);
+			this->botonfarmacos->Name = L"botonfarmacos";
+			this->botonfarmacos->Size = System::Drawing::Size(131, 76);
+			this->botonfarmacos->TabIndex = 0;
+			this->botonfarmacos->UseVisualStyleBackColor = true;
+			this->botonfarmacos->Click += gcnew System::EventHandler(this, &frmPrincipal::botonfarmacos_Click);
+			// 
+			// panel12
+			// 
+			this->panel12->Controls->Add(this->label10);
+			this->panel12->Controls->Add(this->botonsensores);
+			this->panel12->Location = System::Drawing::Point(357, 225);
+			this->panel12->Name = L"panel12";
+			this->panel12->Size = System::Drawing::Size(131, 108);
+			this->panel12->TabIndex = 7;
+			// 
+			// label10
+			// 
+			this->label10->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label10->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label10->Location = System::Drawing::Point(32, 5);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(100, 23);
+			this->label10->TabIndex = 1;
+			this->label10->Text = L"Sensores";
+			// 
+			// botonsensores
+			// 
+			this->botonsensores->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"botonsensores.BackgroundImage")));
+			this->botonsensores->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->botonsensores->FlatAppearance->BorderSize = 0;
+			this->botonsensores->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->botonsensores->Location = System::Drawing::Point(0, 32);
+			this->botonsensores->Name = L"botonsensores";
+			this->botonsensores->Size = System::Drawing::Size(131, 76);
+			this->botonsensores->TabIndex = 0;
+			this->botonsensores->UseVisualStyleBackColor = true;
+			this->botonsensores->Click += gcnew System::EventHandler(this, &frmPrincipal::botonsensores_Click);
+			// 
+			// panel10
+			// 
+			this->panel10->Controls->Add(this->label8);
+			this->panel10->Controls->Add(this->botonpersonal);
+			this->panel10->Location = System::Drawing::Point(504, 73);
+			this->panel10->Name = L"panel10";
+			this->panel10->Size = System::Drawing::Size(131, 108);
+			this->panel10->TabIndex = 4;
+			// 
+			// label8
+			// 
+			this->label8->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label8->Location = System::Drawing::Point(32, 5);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(100, 23);
+			this->label8->TabIndex = 1;
+			this->label8->Text = L"Personal";
+			// 
+			// botonpersonal
+			// 
+			this->botonpersonal->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"botonpersonal.BackgroundImage")));
+			this->botonpersonal->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->botonpersonal->FlatAppearance->BorderSize = 0;
+			this->botonpersonal->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->botonpersonal->Location = System::Drawing::Point(0, 32);
+			this->botonpersonal->Name = L"botonpersonal";
+			this->botonpersonal->Size = System::Drawing::Size(131, 76);
+			this->botonpersonal->TabIndex = 0;
+			this->botonpersonal->UseVisualStyleBackColor = true;
+			this->botonpersonal->Click += gcnew System::EventHandler(this, &frmPrincipal::botonpersonal_Click);
+			// 
+			// panel11
+			// 
+			this->panel11->Controls->Add(this->label9);
+			this->panel11->Controls->Add(this->botonareas);
+			this->panel11->Location = System::Drawing::Point(505, 225);
+			this->panel11->Name = L"panel11";
+			this->panel11->Size = System::Drawing::Size(131, 108);
+			this->panel11->TabIndex = 8;
+			// 
+			// label9
+			// 
+			this->label9->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label9->Location = System::Drawing::Point(32, 5);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(100, 23);
+			this->label9->TabIndex = 1;
+			this->label9->Text = L"Áreas";
+			// 
+			// botonareas
+			// 
+			this->botonareas->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"botonareas.BackgroundImage")));
+			this->botonareas->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->botonareas->FlatAppearance->BorderSize = 0;
+			this->botonareas->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->botonareas->Location = System::Drawing::Point(0, 32);
+			this->botonareas->Name = L"botonareas";
+			this->botonareas->Size = System::Drawing::Size(131, 76);
+			this->botonareas->TabIndex = 0;
+			this->botonareas->UseVisualStyleBackColor = true;
+			this->botonareas->Click += gcnew System::EventHandler(this, &frmPrincipal::botonareas_Click);
+			// 
+			// panelMantenimientos
+			// 
+			this->panelMantenimientos->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->panelMantenimientos->Controls->Add(this->panel11);
+			this->panelMantenimientos->Controls->Add(this->panel10);
+			this->panelMantenimientos->Controls->Add(this->panel12);
+			this->panelMantenimientos->Controls->Add(this->panel9);
+			this->panelMantenimientos->Controls->Add(this->panel13);
+			this->panelMantenimientos->Controls->Add(this->panel8);
+			this->panelMantenimientos->Controls->Add(this->panel14);
+			this->panelMantenimientos->Controls->Add(this->panel7);
+			this->panelMantenimientos->Location = System::Drawing::Point(200, 21);
+			this->panelMantenimientos->Name = L"panelMantenimientos";
+			this->panelMantenimientos->Size = System::Drawing::Size(683, 477);
+			this->panelMantenimientos->TabIndex = 9;
 			// 
 			// frmPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(867, 459);
-			this->ClientSize = System::Drawing::Size(586, 449);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->menuStrip1);
-			this->Controls->Add(this->panel1);
+			this->ClientSize = System::Drawing::Size(883, 498);
+			this->Controls->Add(this->PanelReportes);
 			this->Controls->Add(this->Menu);
+			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->panelMenú);
+			this->Controls->Add(this->panelMantenimientos);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(2);
@@ -660,8 +1136,24 @@ namespace SistemaMonitoreoGranjaView {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
-			this->panel1->ResumeLayout(false);
-			this->panel1->PerformLayout();
+			this->panelMenú->ResumeLayout(false);
+			this->panelMenú->PerformLayout();
+			this->PanelReportes->ResumeLayout(false);
+			this->panel6->ResumeLayout(false);
+			this->panel6->PerformLayout();
+			this->panel15->ResumeLayout(false);
+			this->panel15->PerformLayout();
+			this->panel16->ResumeLayout(false);
+			this->panel16->PerformLayout();
+			this->panel7->ResumeLayout(false);
+			this->panel14->ResumeLayout(false);
+			this->panel8->ResumeLayout(false);
+			this->panel13->ResumeLayout(false);
+			this->panel9->ResumeLayout(false);
+			this->panel12->ResumeLayout(false);
+			this->panel10->ResumeLayout(false);
+			this->panel11->ResumeLayout(false);
+			this->panelMantenimientos->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -783,6 +1275,9 @@ private: System::Void areaDeAnimalesToolStripMenuItem_Click(System::Object^ send
 	}
 }
 private: System::Void frmPrincipal_Load(System::Object^ sender, System::EventArgs^ e) {
+	Menu->Visible = true;
+	panelMantenimientos->Visible = false;
+	PanelReportes->Visible = false;
 }
 private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 	//GENERAR MEDICIONES DESDE QUE EMPIEZA EL PROGRAMA
@@ -815,25 +1310,123 @@ private: System::Void tableLayoutPanel1_Paint(System::Object^ sender, System::Wi
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
-	frmMantenimientosBotones^ ventanaReporte = gcnew frmMantenimientosBotones();
-	ventanaReporte->ShowDialog();
+	Menu->Visible = false;
+	panelMantenimientos->Visible = true;
+	PanelReportes->Visible = false;
+	//frmMantenimientosBotones^ ventanaReporte = gcnew frmMantenimientosBotones();
+	//ventanaReporte->ShowDialog();
 
 
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	frmIniciarSesion^ ventana = gcnew frmIniciarSesion();
-	ventana->ShowDialog();
+	Menu->Visible = true;
+	panelMantenimientos->Visible = false;
+	PanelReportes->Visible = false;
+	//frmIniciarSesion^ ventana = gcnew frmIniciarSesion();
+	//ventana->ShowDialog();
 	//UserController que da acceso vuelve a user = 1
 
-	user = 1;
+	//user = 1;
 }
 private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-	frmReporteAreas^ ventanaReporte = gcnew frmReporteAreas();
-	ventanaReporte->ShowDialog();
+	Menu->Visible = false;
+	panelMantenimientos->Visible = false;
+	PanelReportes->Visible = true;
+
+
 
 }
 private: System::Void frmPrincipal_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 	Application::Exit();
+}
+private: System::Void BotonAlmacen_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmMantAlmacen^ ventana = gcnew frmMantAlmacen(listaAlmacenes);
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+
+
+}
+private: System::Void Botonalimentos_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmMantAlimentos^ ventana = gcnew frmMantAlimentos(listaAlimentos);
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+
+
+
+	}
+}
+private: System::Void botonfarmacos_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmMantFarmacos^ ventana = gcnew frmMantFarmacos(listaFarmacos);
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+}
+private: System::Void botonpersonal_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (user) {
+		frmMantPersonal^ ventana = gcnew frmMantPersonal();
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+}
+private: System::Void botoncomederos_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmMantComederos^ ventana = gcnew frmMantComederos();
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+}
+private: System::Void botonincubadoras_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (user) {
+		frmMantIncubadoras^ ventana = gcnew frmMantIncubadoras();
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+}
+private: System::Void botonsensores_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmMantSensores^ ventana = gcnew frmMantSensores();
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+}
+private: System::Void botonareas_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user) {
+		frmAdministrarAnimales^ ventana = gcnew frmAdministrarAnimales();
+		ventana->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Debe iniciar sesión");
+	}
+}
+private: System::Void label15_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmReporteAreas^ ventanaReporte = gcnew frmReporteAreas();
+	ventanaReporte->ShowDialog();
 }
 };
 }

@@ -1,276 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="EditarContraseña.cpp" />
+    <ClCompile Include="frmAdministrarAlmacen.cpp" />
+    <ClCompile Include="frmAdministrarAnimales.cpp" />
+    <ClCompile Include="frmAdministrarComederosDeArea.cpp" />
+    <ClCompile Include="frmAdministrarComederoySensorIncubadora.cpp" />
+    <ClCompile Include="frmAdministrarPersonal.cpp" />
+    <ClCompile Include="frmAdministrarSensoresDeComedero.cpp" />
+    <ClCompile Include="frmAgregarAlimento.cpp" />
+    <ClCompile Include="frmAgregarAlmacen.cpp" />
+    <ClCompile Include="frmAgregarComedero.cpp" />
+    <ClCompile Include="frmAgregarFarmaco.cpp" />
+    <ClCompile Include="frmAgregarIncubadora.cpp" />
+    <ClCompile Include="frmAgregarPersonal.cpp" />
+    <ClCompile Include="frmBuscarComederos.cpp" />
+    <ClCompile Include="frmBuscarSensores.cpp" />
+    <ClCompile Include="frmEditarArea.cpp" />
+    <ClCompile Include="frmEditarComedero.cpp" />
+    <ClCompile Include="frmEditarFarmaco.cpp" />
+    <ClCompile Include="frmEditarPersonal.cpp" />
+    <ClCompile Include="frmEditarIncubadora.cpp" />
+    <ClCompile Include="frmEditarSensor.cpp" />
+    <ClCompile Include="frmHistorialAlmacen.cpp" />
+    <ClCompile Include="frmIniciarSesion.cpp" />
+    <ClCompile Include="frmMantAlimentos.cpp" />
+    <ClCompile Include="frmMantAlmacen.cpp" />
+    <ClCompile Include="frmMantAreadeAnimales.cpp" />
+    <ClCompile Include="frmMantComederos.cpp" />
+    <ClCompile Include="frmMantFarmacos.cpp" />
+    <ClCompile Include="frmMantIncubadoras.cpp" />
+    <ClCompile Include="frmMantPersonal.cpp" />
+    <ClCompile Include="frmMantSensores.cpp" />
+    <ClCompile Include="frmMovimientoAlmacen.cpp" />
+    <ClCompile Include="frmNuevaArea.cpp" />
+    <ClCompile Include="frmNuevoComedero.cpp" />
+    <ClCompile Include="frmNuevoSensor.cpp" />
+    <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="frmReporteAreas.cpp" />
+    <ClCompile Include="frmVerAlmacen.cpp" />
+    <ClCompile Include="frmTarea.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="verReporteMediciones.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="frmPrincipal.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmIniciarSesion.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantAlmacen.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantAlimentos.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantFarmacos.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantPersonal.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantComederos.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantIncubadoras.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAdministrarPersonal.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAdministrarAnimales.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAdministrarAlmacen.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAgregarAlimento.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAgregarFarmaco.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAgregarAlmacen.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAgregarPersonal.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAgregarComedero.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAgregarIncubadora.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmNuevoSensor.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantSensores.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmEditarSensor.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmEditarArea.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantAreadeAnimales.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmNuevaArea.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmNuevoComedero.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmEditarComedero.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmBuscarSensores.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmBuscarComederos.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAdministrarComederosDeArea.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAdministrarSensoresDeComedero.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmReporteAreas.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="verReporteMediciones.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmEditarFarmaco.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmTarea.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAdministrarComederoySensorIncubadora.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmEditarPersonal.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmHistorialAlmacen.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmVerAlmacen.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMovimientoAlmacen.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmAdministrarComederoySensorIncubadora.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="frmEditarIncubadora.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="frmMantenimientosBotones.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-    <ClCompile Include="EditarContraseña.cpp">
-      <Filter>Archivos de encabezado</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="frmPrincipal.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmIniciarSesion.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantAlmacen.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantAlimentos.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantFarmacos.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantPersonal.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantComederos.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantIncubadoras.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAdministrarPersonal.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAdministrarAnimales.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAdministrarAlmacen.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAgregarAlimento.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAgregarFarmaco.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAgregarAlmacen.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAgregarPersonal.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAgregarComedero.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAgregarIncubadora.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmNuevoSensor.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantSensores.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmEditarSensor.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantAreaDeAnimales.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmNuevoComedero.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmNuevaArea.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmEditarArea.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmEditarComedero.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmBuscarSensores.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmBuscarComederos.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAdministrarComederosDeArea.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAdministrarSensoresDeComedero.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmReporteAreas.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="verReporteMediciones.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmEditarFarmaco.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAdministrarComederoySensorIncubadora.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmTarea.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmEditarPersonal.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmHistorialAlmacen.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmVerAlmacen.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMovimientoAlmacen.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmAdministrarComederoySensorIncubadora.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmEditarIncubadora.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="frmMantenimientosBotones.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="EditarContraseña.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
+    <ClInclude Include="EditarContraseña.h" />
+    <ClInclude Include="frmAdministrarAlmacen.h" />
+    <ClInclude Include="frmAdministrarAnimales.h" />
+    <ClInclude Include="frmAdministrarComederosDeArea.h" />
+    <ClInclude Include="frmAdministrarComederoySensorIncubadora.h" />
+    <ClInclude Include="frmAdministrarPersonal.h" />
+    <ClInclude Include="frmAdministrarSensoresDeComedero.h" />
+    <ClInclude Include="frmAgregarAlimento.h" />
+    <ClInclude Include="frmAgregarAlmacen.h" />
+    <ClInclude Include="frmAgregarComedero.h" />
+    <ClInclude Include="frmAgregarFarmaco.h" />
+    <ClInclude Include="frmAgregarIncubadora.h" />
+    <ClInclude Include="frmAgregarPersonal.h" />
+    <ClInclude Include="frmBuscarComederos.h" />
+    <ClInclude Include="frmBuscarSensores.h" />
+    <ClInclude Include="frmEditarArea.h" />
+    <ClInclude Include="frmEditarComedero.h" />
+    <ClInclude Include="frmEditarFarmaco.h" />
+    <ClInclude Include="frmEditarIncubadora.h" />
+    <ClInclude Include="frmEditarPersonal.h" />
+    <ClInclude Include="frmEditarSensor.h" />
+    <ClInclude Include="frmHistorialAlmacen.h" />
+    <ClInclude Include="frmIniciarSesion.h" />
+    <ClInclude Include="frmMantAlimentos.h" />
+    <ClInclude Include="frmMantAlmacen.h" />
+    <ClInclude Include="frmMantAreaDeAnimales.h" />
+    <ClInclude Include="frmMantComederos.h" />
+    <ClInclude Include="frmMantFarmacos.h" />
+    <ClInclude Include="frmMantIncubadoras.h" />
+    <ClInclude Include="frmMantPersonal.h" />
+    <ClInclude Include="frmMantSensores.h" />
+    <ClInclude Include="frmMovimientoAlmacen.h" />
+    <ClInclude Include="frmNuevaArea.h" />
+    <ClInclude Include="frmNuevoComedero.h" />
+    <ClInclude Include="frmNuevoSensor.h" />
+    <ClInclude Include="frmPrincipal.h" />
+    <ClInclude Include="frmReporteAreas.h" />
+    <ClInclude Include="frmTarea.h" />
+    <ClInclude Include="frmVerAlmacen.h" />
+    <ClInclude Include="verReporteMediciones.h" />
   </ItemGroup>
 </Project>

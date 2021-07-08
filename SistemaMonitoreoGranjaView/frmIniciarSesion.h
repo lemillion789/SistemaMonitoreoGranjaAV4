@@ -54,7 +54,7 @@ namespace SistemaMonitoreoGranjaView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -217,41 +217,44 @@ namespace SistemaMonitoreoGranjaView {
 #pragma endregion
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-	String^ ID = this->textBox1->Text;
-	String^ Contraseña = this->textBox2->Text;
-	UsuarioController^ verificar = gcnew UsuarioController();
-	String^ validoID = Convert::ToString(verificar->BuscarIDenBD(ID));
-	String^ validoContrasena = Convert::ToString(verificar->BuscarContraseñaenBD(Contraseña));
-	if (validoID == "1") {
-		if (validoContrasena == "1") {
-			
-			//this->Close();
-			frmPrincipal^ gestor = gcnew frmPrincipal();
-			gestor->Show();
-			this->Hide();
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		String^ ID = this->textBox1->Text;
+		String^ Contraseña = this->textBox2->Text;
+		UsuarioController^ verificar = gcnew UsuarioController();
+		String^ validoID = Convert::ToString(verificar->BuscarIDenBD(ID));
+		String^ validoContrasena = Convert::ToString(verificar->BuscarContraseñaenBD(Contraseña));
+		if (validoID == "1") {
+			if (validoContrasena == "1") {
+
+				//this->Close();
+				frmPrincipal^ gestor = gcnew frmPrincipal();
+				gestor->Show();
+				this->Hide();
+			}
+			else {
+				MessageBox::Show("Contraseña incorrecta");
+
+			}
 		}
 		else {
-			MessageBox::Show("Contraseña incorrecta");
 
+			MessageBox::Show("ID incorrecto");
 		}
+
+
+
+
 	}
-	else {
-
-		MessageBox::Show("ID incorrecto");
+	private: System::Void frmIniciarSesion_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-
-
+	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 	
+	};
+	}
 
-}
-private: System::Void frmIniciarSesion_Load(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-};
-}
+
