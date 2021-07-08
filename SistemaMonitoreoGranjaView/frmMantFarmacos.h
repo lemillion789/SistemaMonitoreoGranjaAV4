@@ -288,6 +288,12 @@ private: System::Void frmMantFarmacos_Load(System::Object^ sender, System::Event
 	mostrarGrilla(objLista);
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	/// <summary>
+	/// /
+	/// </summary>
+	/// <param name="sender"></param>
+	/// <param name="e"></param>
+	/// <returns></returns>
 	String^ nombreBuscar = this->textBox1->Text;
 	List<Farmacos^>^ lista;
 	FarmacoController^ objGestor = gcnew FarmacoController();
