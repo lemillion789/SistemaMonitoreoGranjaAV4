@@ -12,12 +12,12 @@ namespace SistemaMonitoreoGranjaModel {
 		String^ ApMaterno;
 		String^ funcion;
 		String^ horario;
-		String^ tareas;
+		//String^ tareas;
 		String^ asistencia;
 		Usuario^ objUsuario;
 	public:
 		
-		Personal(String^ ID, String^ nombre, String^ ApPaterno, String^ ApMaterno, String^ funcion, String^ horario, String^ tareas , String^ asistencia );
+		Personal(String^ ID, String^ nombre, String^ ApPaterno, String^ ApMaterno, String^ funcion, String^ horario , String^ asistencia );
 
 
 	};
