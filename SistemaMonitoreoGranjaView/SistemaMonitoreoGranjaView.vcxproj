@@ -157,6 +157,7 @@
     <ClCompile Include="frmMantAlmacen.cpp" />
     <ClCompile Include="frmMantAreadeAnimales.cpp" />
     <ClCompile Include="frmMantComederos.cpp" />
+    <ClCompile Include="frmMantenimientosBotones.cpp" />
     <ClCompile Include="frmMantFarmacos.cpp" />
     <ClCompile Include="frmMantIncubadoras.cpp" />
     <ClCompile Include="frmMantPersonal.cpp" />
@@ -251,6 +252,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantComederos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMantenimientosBotones.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantFarmacos.h">
@@ -377,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantComederos.resx">
       <DependentUpon>frmMantComederos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientosBotones.resx">
+      <DependentUpon>frmMantenimientosBotones.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantFarmacos.resx">
       <DependentUpon>frmMantFarmacos.h</DependentUpon>
