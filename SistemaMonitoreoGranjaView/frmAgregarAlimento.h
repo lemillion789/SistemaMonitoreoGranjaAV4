@@ -226,6 +226,8 @@ namespace SistemaMonitoreoGranjaView {
 		String^ codigo = "ALMT" + Convert::ToString(nCodigo);
 		objAlimento = gcnew Alimentos(codigo, nombre, descripcion, fecha, presentacion, unidad);
 		this->listaAlimentos->Add(objAlimento);
+		AlimentosController^ objController = gcnew AlimentosController();
+		objController->guardarDatos(listaAlimentos);
 		MessageBox::Show("Se ha agregado el objeto a la lista.");
 		this->Close();
 	}

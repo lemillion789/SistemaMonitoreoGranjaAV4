@@ -230,7 +230,7 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmAgregarFarmaco^ ventana = gcnew frmAgregarFarmaco();
+		frmAgregarFarmaco^ ventana = gcnew frmAgregarFarmaco(listaFarmacos);
 		ventana->ShowDialog();
 		FarmacoController^ gestor = gcnew FarmacoController();
 		gestor->CargarFarmacosDesdeArchivo();
@@ -273,7 +273,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void frmMantFarmacos_Load(System::Object^ sender, System::EventArgs^ e) {
 	FarmacoController^ gestor = gcnew FarmacoController();
 	gestor->CargarFarmacosDesdeArchivo();
-	List<Farmacos^>^ objLista = gestor->obtenerListaFarmacos();
+	List<Farmacos^>^ objLista = gestor->leerDatos();
 	mostrarGrilla(objLista);
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {

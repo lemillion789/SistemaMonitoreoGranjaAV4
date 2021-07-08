@@ -27,6 +27,13 @@ namespace SistemaMonitoreoGranjaView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		frmAgregarFarmaco(List<Farmacos^>^ listaFarmacos)
+		{
+			InitializeComponent();
+			this->listaFarmacos = listaFarmacos;
+			//TODO: agregar código de constructor aquí
+			//
+		}
 
 	protected:
 		/// <summary>
@@ -51,6 +58,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Button^ Aceptar;
 	private: System::Windows::Forms::Button^ Cancelar;
 	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+	private: List<Farmacos^>^ listaFarmacos;
 	private: int nCodigo;
 
 	private:
@@ -204,16 +212,15 @@ namespace SistemaMonitoreoGranjaView {
 		int cantidad = Convert::ToInt32(this->textBox2->Text);
 		String^ fecha = this->dateTimePicker1->Text;
 		String^ descripcion = this->richTextBox1->Text;
-		/*srand(time(NULL));
-		nCodigo = rand() % 9000 + 1000;
-		String^ codigo = "FRMC" + Convert::ToString(nCodigo);*/
+
 		objGestor->CargarFarmacosDesdeArchivo();
 		int Count = objGestor->ObtenerCantidadFarmacos();
 		String^ codigo = Count.ToString("D5");
 
-		Farmacos^ objFarmaco = gcnew Farmacos(codigo, nombre, cantidad, descripcion, fecha);
-		
+		Farmacos^ objFarmaco = gcnew Farmacos(codigo, nombre, cantidad, fecha, descripcion);
+		this->listaFarmacos->Add(objFarmaco);
 		objGestor->GuardarFarmacoEnArchivo(objFarmaco);
+		objGestor->guardarDatos(listaFarmacos);
 		MessageBox::Show("Se ha agregado el objeto a la lista.");
 		this->Close();
 	}

@@ -10,6 +10,7 @@ namespace SistemaMonitoreoGranjaView {
 	using namespace System::Drawing;
 	using namespace SistemaMonitoreoGranjaModel;
 	using namespace System::Collections::Generic;
+	using namespace SistemaMonitoreoGranjaController;
 
 	/// <summary>
 	/// Resumen de frmVerAlmacen
@@ -28,6 +29,8 @@ namespace SistemaMonitoreoGranjaView {
 		{
 			InitializeComponent();
 			//
+			this->listaAlimentos = gcnew List<Alimentos^>();
+			this->listaFarmacos = gcnew List<Farmacos^>();
 			this->listaAlmacenes = listaAlmacenes;
 			//TODO: agregar código de constructor aquí
 			//
@@ -65,11 +68,19 @@ namespace SistemaMonitoreoGranjaView {
 
 
 	private: List<Almacen^>^ listaAlmacenes;
+	private: List<Farmacos^>^ listaFarmacos;
+	private: List<Alimentos^>^ listaAlimentos;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+
+
+
+
+
 
 
 
@@ -97,6 +108,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox1->SuspendLayout();
@@ -175,9 +187,9 @@ namespace SistemaMonitoreoGranjaView {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Column1,
-					this->Column2, this->Column3, this->Column4, this->Column5
+					this->Column2, this->Column3, this->Column6, this->Column4, this->Column5
 			});
 			this->dataGridView1->Location = System::Drawing::Point(43, 180);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -206,6 +218,13 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
 			this->Column3->Width = 125;
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Cantidad";
+			this->Column6->MinimumWidth = 6;
+			this->Column6->Name = L"Column6";
+			this->Column6->Width = 125;
 			// 
 			// Column4
 			// 
@@ -243,6 +262,8 @@ namespace SistemaMonitoreoGranjaView {
 		this->comboBox2->Items->Add("Farmaco");
 		this->comboBox2->Items->Add("Alimento");
 		this->comboBox1->Items->Clear();
+		AlmacenController^ objGestorAlmacen = gcnew AlmacenController();
+		listaAlmacenes = objGestorAlmacen->leerDatos();
 		for (int i = 0; i < listaAlmacenes->Count; i++) {
 			Almacen^ objAlmacen = listaAlmacenes[i];
 			this->comboBox1->Items->Add(objAlmacen->nombre);
@@ -252,6 +273,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	Almacen^ objAlmacen;
 	String^ nombreSelec;
 	String^ elementoSelec;
+	String^ codigoAlmacen;
+	AlmacenController^ objGestorAlmacen = gcnew AlmacenController();
 	nombreSelec = this->comboBox1->Text;
 	elementoSelec = this->comboBox2->Text;
 	for (int i = 0; i < listaAlmacenes->Count; i++) {
@@ -261,36 +284,48 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			break;
 		}
 	}
+	codigoAlmacen = objAlmacen->codigo;
+
 	if (elementoSelec == "Farmaco") {
-		mostrarGrillaFarmaco(objAlmacen->List_Farmacos);
+		listaFarmacos = objGestorAlmacen->obtenerFarmacosAlmacen(codigoAlmacen);
+		mostrarGrillaFarmaco(listaFarmacos, codigoAlmacen);
 	}
 	else {
-		mostrarGrillaAlimento(objAlmacen->List_Alimentos);
+		listaAlimentos = objGestorAlmacen->obtenerAlimentosAlmacen(codigoAlmacen);
+		mostrarGrillaAlimento(listaAlimentos, codigoAlmacen);
 	}
 }
-		private: void mostrarGrillaAlimento(List<Alimentos^>^ listaAlimentos) {
+		private: void mostrarGrillaAlimento(List<Alimentos^>^ listaAlimentos,String^ codigoAlmacen) {
+			int cantidad;
+			AlmacenController^ objGestor = gcnew AlmacenController();
 			this->dataGridView1->Rows->Clear();
 			for (int i = 0; i < listaAlimentos->Count; i++) {
 				Alimentos^ objAlimento = listaAlimentos[i];
-				array<String^>^ fila = gcnew array<String^>(5);
+				cantidad = objGestor->calcularCantidadAlmacen(codigoAlmacen, objAlimento->codigo);
+				array<String^>^ fila = gcnew array<String^>(6);
 				fila[0] = objAlimento->codigo;
 				fila[1] = objAlimento->nombre;
 				fila[2] = "Alimento";
-				fila[3] = objAlimento->fechaVencimiento;
-				fila[4] = objAlimento->descripcion;
+				fila[3] = Convert::ToString(cantidad);
+				fila[4] = objAlimento->fechaVencimiento;
+				fila[5] = objAlimento->descripcion;
 				this->dataGridView1->Rows->Add(fila);
 			}
 		}
-	private: void mostrarGrillaFarmaco(List<Farmacos^>^ listaFarmacos) {
+	private: void mostrarGrillaFarmaco(List<Farmacos^>^ listaFarmacos, String^ codigoAlmacen) {
+		int cantidad;
+		AlmacenController^ objGestor = gcnew AlmacenController();
 		this->dataGridView1->Rows->Clear();
 		for (int i = 0; i < listaFarmacos->Count; i++) {
 			Farmacos^ objFarmaco = listaFarmacos[i];
-			array<String^>^ fila = gcnew array<String^>(5);
+			cantidad = objGestor->calcularCantidadAlmacen(codigoAlmacen, objFarmaco->ID);
+			array<String^>^ fila = gcnew array<String^>(6);
 			fila[0] = objFarmaco->ID;
 			fila[1] = objFarmaco->nombre;
 			fila[2] = "Farmaco";
-			fila[3] = objFarmaco->fechaVencimiento;
-			fila[4] = objFarmaco->descripcion;
+			fila[3] = Convert::ToString(cantidad);
+			fila[4] = objFarmaco->fechaVencimiento;
+			fila[5] = objFarmaco->descripcion;
 			this->dataGridView1->Rows->Add(fila);
 		}
 	}

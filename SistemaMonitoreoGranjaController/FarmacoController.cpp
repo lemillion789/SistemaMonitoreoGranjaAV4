@@ -6,6 +6,7 @@ using namespace System::IO; /*Este es el namespace que permite manipular las cla
 
 FarmacoController::FarmacoController() {
 	this->listaFarmacos = gcnew List<Farmacos^>();
+	this->objConexion = gcnew SqlConnection();
 }
 
 void FarmacoController::CargarFarmacosDesdeArchivo() {
@@ -138,4 +139,93 @@ void SistemaMonitoreoGranjaController::FarmacoController::editarFarmaco(String^ 
 	}
 	/*Aquí ya mi array de lineasArchivoPartido esta OK, con la información a grabar*/
 	File::WriteAllLines("Farmacos.txt", lineasArchivoFarmaco);
+}
+
+//////SQL
+
+void FarmacoController::AbrirConexion() {
+	/*La cadena de conexión está compuesto de: Servidor de BD, nombre BD, usuario BD, password BD*/
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20152005;User ID=a20152005;Password=WLt8qnYH;";
+	this->objConexion->Open(); /*Ya establecí conexión con la BD*/
+}
+
+void FarmacoController::CerrarConexion() {
+	this->objConexion->Close();
+}
+
+List<Farmacos^>^ FarmacoController::leerDatos() {
+	List<Farmacos^>^ listaFarmaco = gcnew List<Farmacos^>();
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from Farmacos;";
+	SqlDataReader^ objData = objQuery->ExecuteReader();
+	while (objData->Read()) {
+		String^ ID = safe_cast<String^>(objData[0]);
+		String^ nombre = safe_cast<String^>(objData[1]);
+		int cantidad = safe_cast<int>(objData[2]);
+		String^ fecha = safe_cast<String^>(objData[3]);
+		String^ descripcion = safe_cast<String^>(objData[4]);
+		Farmacos^ objFarmaco = gcnew Farmacos(ID, nombre, cantidad, fecha, descripcion);
+		listaFarmaco->Add(objFarmaco);
+	}
+	objData->Close();
+	CerrarConexion();
+	return listaFarmaco;
+}
+void FarmacoController::limpiarTabla() {
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "delete from Farmacos;";
+	objQuery->ExecuteNonQuery();
+	CerrarConexion();
+}
+
+void FarmacoController::guardarDatos(List<Farmacos^>^ listaFarmaco) {
+	Farmacos^ objFarmaco;
+	limpiarTabla();
+	AbrirConexion();
+	for (int i = 0; i < listaFarmaco->Count; i++) {
+		objFarmaco = listaFarmaco[i];
+		SqlCommand^ objQuery = gcnew SqlCommand();
+		objQuery->Connection = this->objConexion;
+		objQuery->CommandText = "insert into Farmacos values (@p1,@p2,@p3,@p4,@p5);";
+		SqlParameter^ p1 = gcnew SqlParameter("@p1", System::Data::SqlDbType::VarChar, 8);
+		p1->Value = objFarmaco->ID;
+		SqlParameter^ p2 = gcnew SqlParameter("@p2", System::Data::SqlDbType::VarChar, 20);
+		p2->Value = objFarmaco->nombre;
+		SqlParameter^ p3 = gcnew SqlParameter("@p3", System::Data::SqlDbType::Int);
+		p3->Value = objFarmaco->cantidad;
+		SqlParameter^ p4 = gcnew SqlParameter("@p4", System::Data::SqlDbType::VarChar, 10);
+		p4->Value = objFarmaco->fechaVencimiento;
+		SqlParameter^ p5 = gcnew SqlParameter("@p5", System::Data::SqlDbType::VarChar, 150);
+		p5->Value = objFarmaco->descripcion;
+		objQuery->Parameters->Add(p1);
+		objQuery->Parameters->Add(p2);
+		objQuery->Parameters->Add(p3);
+		objQuery->Parameters->Add(p4);
+		objQuery->Parameters->Add(p5);
+		objQuery->ExecuteNonQuery();
+	}
+	CerrarConexion();
+}
+Farmacos^ FarmacoController::buscarFarmacosCodigo(String^ codigo) {
+	AbrirConexion();
+	Farmacos^ objFarmaco;
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from Farmacos where ID='" + codigo + "';";
+	SqlDataReader^ objData = objQuery->ExecuteReader();
+	while (objData->Read()) {
+		String^ ID = safe_cast<String^>(objData[0]);
+		String^ nombre = safe_cast<String^>(objData[1]);
+		int cantidad = safe_cast<int>(objData[2]);
+		String^ fecha = safe_cast<String^>(objData[3]);
+		String^ descripcion = safe_cast<String^>(objData[4]);
+		objFarmaco = gcnew Farmacos(ID, nombre, cantidad, fecha, descripcion);
+	}
+	objData->Close();
+	CerrarConexion();
+	return objFarmaco;
 }
