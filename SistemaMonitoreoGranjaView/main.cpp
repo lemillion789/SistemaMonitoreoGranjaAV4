@@ -1,5 +1,5 @@
 
-#include "frmPrincipal.h" //Lo primero que hará es que abrirá nuestra ventana principal
+#include "frmIniciarSesion.h" //Lo primero que hará es que abrirá nuestra ventana principal
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace SistemaMonitoreoGranjaView;
@@ -11,6 +11,6 @@ void main(array <String^>^ args)
 	Application::SetCompatibleTextRenderingDefault(false);
 
 	// Como necesitamos que lo primero en mostrarse sea la pantalla principal, hacemos lo siguiente
-	frmPrincipal ventana; //Creamos un objeto del tipo frmPrincipal
+	frmIniciarSesion ventana; //Creamos un objeto del tipo frmPrincipal
 	Application::Run(% ventana); // Ejecutamos la ventana
 }

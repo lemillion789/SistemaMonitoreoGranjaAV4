@@ -1,3 +1,4 @@
+#include "frmPrincipal.h"
 #pragma once
 
 namespace SistemaMonitoreoGranjaView {
@@ -46,6 +47,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::Label^ label4;
+
 
 
 	private:
@@ -119,8 +121,10 @@ namespace SistemaMonitoreoGranjaView {
 			this->textBox2->Location = System::Drawing::Point(86, 197);
 			this->textBox2->Margin = System::Windows::Forms::Padding(2);
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->PasswordChar = '*';
 			this->textBox2->Size = System::Drawing::Size(116, 20);
 			this->textBox2->TabIndex = 3;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &frmIniciarSesion::textBox2_TextChanged);
 			// 
 			// button1
 			// 
@@ -203,6 +207,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Name = L"frmIniciarSesion";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
 			this->Text = L"frmIniciarSesion";
+			this->TransparencyKey = System::Drawing::Color::White;
 			this->Load += gcnew System::EventHandler(this, &frmIniciarSesion::frmIniciarSesion_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
 			this->ResumeLayout(false);
@@ -220,15 +225,19 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ ID = this->textBox1->Text;
 	String^ Contraseña = this->textBox2->Text;
 	UsuarioController^ verificar = gcnew UsuarioController();
-	String^ validoID = Convert::ToString(verificar->ValidarDatosID(ID));
-	String^ validoContrasena = Convert::ToString(verificar->ValidarDatosContrasena(Contraseña));
+	String^ validoID = Convert::ToString(verificar->BuscarIDenBD(ID));
+	String^ validoContrasena = Convert::ToString(verificar->BuscarContraseñaenBD(Contraseña));
 	if (validoID == "1") {
 		if (validoContrasena == "1") {
-			this->Close();
-			//this->Hide();
+			
+			//this->Close();
+			frmPrincipal^ gestor = gcnew frmPrincipal();
+			gestor->Show();
+			this->Hide();
 		}
 		else {
 			MessageBox::Show("Contraseña incorrecta");
+
 		}
 	}
 	else {
@@ -241,6 +250,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 }
 private: System::Void frmIniciarSesion_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

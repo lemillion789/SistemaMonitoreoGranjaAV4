@@ -2,6 +2,7 @@
 #include "frmAgregarPersonal.h"
 #include "frmEditarPersonal.h"
 #include "frmTarea.h"
+#include "EditarContraseña.h"
 namespace SistemaMonitoreoGranjaView {
 	//comentario
 	using namespace System;
@@ -197,6 +198,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button5->TabIndex = 3;
 			this->button5->Text = L"Asignar Usuario y Contraseña";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &frmAdministrarPersonal::button5_Click);
 			// 
 			// button2
 			// 
@@ -235,7 +237,7 @@ namespace SistemaMonitoreoGranjaView {
 		PersonalController^ gestorPersonal = gcnew PersonalController();
 		gestorPersonal->CargarPersonalDesdeArchivo();
 		List<Personal^>^ objListaPartidos;
-		mostrarGrilla(gestorPersonal->obtenerListaPersonal());
+		mostrarGrilla(gestorPersonal->ObtenerlistaPersonaldesdeBD());
 	}
 	private: void mostrarGrilla(List<Personal^>^ listaPartidos) {
 		this->dataGridView1->Rows->Clear();
@@ -262,10 +264,10 @@ namespace SistemaMonitoreoGranjaView {
 		PersonalController^ objGestorPartido = gcnew PersonalController();
 		if (BuscarPersonal == "") {
 			objGestorPartido->CargarPersonalDesdeArchivo();
-			listaPersonal = objGestorPartido->obtenerListaPersonal();
+			listaPersonal = objGestorPartido->ObtenerlistaPersonaldesdeBD();
 		}
 		else {
-			listaPersonal = objGestorPartido->buscarPersonal(BuscarPersonal);
+			listaPersonal = objGestorPartido->buscarPersonalxNombreBD(BuscarPersonal);
 
 		}
 		mostrarGrilla(listaPersonal);
@@ -280,5 +282,12 @@ namespace SistemaMonitoreoGranjaView {
 		frmTarea^ ventanatarea = gcnew frmTarea();
 		ventanatarea->ShowDialog();
 	}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
+	String^ IDPersonalEliminar = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString();
+	EditarContraseña^ gestor = gcnew EditarContraseña(IDPersonalEliminar);
+	 gestor->ShowDialog();
+
+}
 };
 }

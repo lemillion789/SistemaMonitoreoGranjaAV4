@@ -1,5 +1,5 @@
 #pragma once
-#include "frmIniciarSesion.h"
+//#include "frmIniciarSesion.h"
 /*Mantenimientos*/
 #include "frmMantAlimentos.h"
 #include "frmMantAlmacen.h"
@@ -41,13 +41,15 @@ namespace SistemaMonitoreoGranjaView {
 			this->listaAlimentos = gcnew List<Alimentos^>();
 			this->listaFarmacos = gcnew List<Farmacos^>();
 			this->listaAlmacenes = gcnew List<Almacen^>();
-
+			
 			//
 			//TODO: agregar código de constructor aquí
 			//
 			
 
 		}
+
+		
 		 
 	protected:
 		/// <summary>
@@ -60,7 +62,7 @@ namespace SistemaMonitoreoGranjaView {
 				delete components;
 			}
 		}
-	private: int user = 0;
+	private: int user = 1;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	protected:
 
@@ -236,9 +238,9 @@ namespace SistemaMonitoreoGranjaView {
 			this->menuStrip1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(204)), static_cast<System::Int32>(static_cast<System::Byte>(202)),
 				static_cast<System::Int32>(static_cast<System::Byte>(203)));
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->loginToolStripMenuItem,
-					this->mantenimientosToolStripMenuItem, this->reportesToolStripMenuItem
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->mantenimientosToolStripMenuItem,
+					this->reportesToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(200, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -630,6 +632,10 @@ namespace SistemaMonitoreoGranjaView {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(867, 459);
+			this->ClientSize = System::Drawing::Size(586, 449);
+			this->Controls->Add(this->button3);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->Menu);
@@ -639,6 +645,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->Name = L"frmPrincipal";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L" ";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &frmPrincipal::frmPrincipal_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -661,15 +668,17 @@ namespace SistemaMonitoreoGranjaView {
 		}
 #pragma endregion
 	private: System::Void iniciarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmIniciarSesion^ ventana = gcnew frmIniciarSesion();
-		ventana->ShowDialog();
+	//	frmIniciarSesion^ ventana = gcnew frmIniciarSesion();
+		//ventana->ShowDialog();
 		//UserController que da acceso vuelve a user = 1
+	//	UsuarioController^ verificar = gcnew UsuarioController();
+
 		
-		user = 1;
+		//user = 1;
 	}
 	private: System::Void cerrarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Sesión cerrada correctamente.");
-		user = 0;
+		user = 1;
 	}
 private: System::Void almacenToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
@@ -822,6 +831,9 @@ private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e
 	frmReporteAreas^ ventanaReporte = gcnew frmReporteAreas();
 	ventanaReporte->ShowDialog();
 
+}
+private: System::Void frmPrincipal_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+	Application::Exit();
 }
 };
 }

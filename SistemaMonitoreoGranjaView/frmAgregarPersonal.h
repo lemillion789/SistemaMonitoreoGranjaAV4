@@ -300,11 +300,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ Tareas = this->textBox4->Text;
 	String^ asistencia = this->comboBox2->Text;
 	
-	Personal^ objPersonal = gcnew Personal(ID, Nombre, ApPaterno, ApMaterno, Funcion, horario, Tareas, asistencia);
+	Personal^ objPersonal = gcnew Personal(ID,Nombre, ApPaterno, ApMaterno, Funcion, horario, Tareas, asistencia);
 	PersonalController^ objGestorPersonal = gcnew PersonalController();
-	objGestorPersonal->GuardarPersonalEnArchivo(objPersonal);
-	MessageBox::Show("El Personal ha sido guardado con éxito");
+	UsuarioController^ objGestorUsuario = gcnew UsuarioController();
+	objGestorUsuario->Grabarusuario(ID);
+	objGestorPersonal->GuardarPersonalEnBD(objPersonal);
 	this->Close();
+	MessageBox::Show("El Personal ha sido agregado con éxito");
+	
 }
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }

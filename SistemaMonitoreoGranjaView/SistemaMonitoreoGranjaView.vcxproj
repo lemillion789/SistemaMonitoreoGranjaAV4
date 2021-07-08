@@ -131,6 +131,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EditarContraseña.cpp" />
     <ClCompile Include="frmAdministrarAlmacen.cpp" />
     <ClCompile Include="frmAdministrarAnimales.cpp" />
     <ClCompile Include="frmAdministrarComederosDeArea.cpp" />
@@ -174,6 +175,9 @@
     <ClCompile Include="verReporteMediciones.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EditarContraseña.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmAdministrarAlmacen.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -296,6 +300,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EditarContraseña.resx">
+      <DependentUpon>EditarContraseña.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAdministrarAlmacen.resx">
       <DependentUpon>frmAdministrarAlmacen.h</DependentUpon>
     </EmbeddedResource>
