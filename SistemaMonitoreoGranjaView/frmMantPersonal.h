@@ -263,30 +263,15 @@ namespace SistemaMonitoreoGranjaView {
 		ventana->ShowDialog();
 		PersonalController^ gestorPersonal = gcnew PersonalController();
 		gestorPersonal->CargarPersonalDesdeArchivo();
-		mostrarGrilla(gestorPersonal->obtenerListaPersonal());
+		mostrarGrilla(gestorPersonal->ObtenerlistaPersonaldesdeBD());
 	}
 private: System::Void frmMantPersonal_Load(System::Object^ sender, System::EventArgs^ e) {
 	PersonalController^ gestorPersonal = gcnew PersonalController();
 	gestorPersonal->CargarPersonalDesdeArchivo();
 	List<Personal^>^ objListaPartidos;
-	mostrarGrilla(gestorPersonal->obtenerListaPersonal());
+	mostrarGrilla(gestorPersonal->ObtenerlistaPersonaldesdeBD());
 }
- private: void mostrarGrilla(List<Personal^>^ listaPartidos) {
-	 this->dataGridView1->Rows->Clear();
-	 for (int i = 0; i < listaPartidos->Count; i++) {
-		 Personal^ objPersonal = listaPartidos[i];
-		 array<String^>^ fila = gcnew array<String^>(8);
-		 fila[0] = objPersonal->ID;
-		 fila[1] = objPersonal->nombre;
-		 fila[2] = objPersonal->ApPaterno;
-		 fila[3] = objPersonal->ApMaterno;
-		 fila[4] = objPersonal->funcion;
-		 fila[5] = objPersonal->horario;
-		 fila[6] = objPersonal->tareas;
-		 fila[7] = objPersonal->asistencia;
-		 this->dataGridView1->Rows->Add(fila);
-	 }
- }
+
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -296,10 +281,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	PersonalController^ objGestorPartido = gcnew PersonalController();
 	if (BuscarPersonal == "") {
 		objGestorPartido->CargarPersonalDesdeArchivo();
-		listaPersonal = objGestorPartido->obtenerListaPersonal();
+		listaPersonal = objGestorPartido->ObtenerlistaPersonaldesdeBD();
 	}
 	else {
-		listaPersonal = objGestorPartido->buscarPersonal(BuscarPersonal);
+		listaPersonal = objGestorPartido->buscarPersonalxNombreBD(BuscarPersonal);
 
 	}
 	mostrarGrilla(listaPersonal);
@@ -308,9 +293,11 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	int posicionFilaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
 	String^ IDPersonalEliminar = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString();
 	PersonalController^ objPersonal = gcnew PersonalController();
-	objPersonal->EliminarPersonal(IDPersonalEliminar);
+	objPersonal->EliminarPersonalBD(IDPersonalEliminar);
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	objUsuarioController->EliminarusuarioBD(IDPersonalEliminar);
 	objPersonal->CargarPersonalDesdeArchivo();
-	List<Personal^>^ listaPartidos = objPersonal->obtenerListaPersonal();
+    List<Personal^>^ listaPartidos = objPersonal->ObtenerlistaPersonaldesdeBD();
 	mostrarGrilla(listaPartidos);
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -318,8 +305,28 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	String^ IDPersonalEditar = this->dataGridView1->Rows[posicionFilaSeleccionada]->Cells[0]->Value->ToString();
 	frmEditarPersonal^ ventanaEditar = gcnew frmEditarPersonal(IDPersonalEditar);
 	ventanaEditar->ShowDialog();
+	PersonalController^ objPersonal = gcnew PersonalController();
+	mostrarGrilla(objPersonal->ObtenerlistaPersonaldesdeBD());
+
 }
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
+
+		private: void mostrarGrilla(List<Personal^>^ listaPartidos) {
+			this->dataGridView1->Rows->Clear();
+			for (int i = 0; i < listaPartidos->Count; i++) {
+				Personal^ objPersonal = listaPartidos[i];
+				array<String^>^ fila = gcnew array<String^>(8);
+				fila[0] = objPersonal->ID;
+				fila[1] = objPersonal->nombre;
+				fila[2] = objPersonal->ApPaterno;
+				fila[3] = objPersonal->ApMaterno;
+				fila[4] = objPersonal->funcion;
+				fila[5] = objPersonal->horario;
+				fila[6] = objPersonal->tareas;
+				fila[7] = objPersonal->asistencia;
+				this->dataGridView1->Rows->Add(fila);
+			}
+		}
 };
 }

@@ -3,11 +3,12 @@ namespace SistemaMonitoreoGranjaController {
 	using namespace SistemaMonitoreoGranjaModel;
 	using namespace System::Collections::Generic;
 	using namespace System;
+	using namespace System::Data::SqlClient;
 	public ref class PersonalController {
 
 	private:
 		List <Personal^ >^ listaPersonal;
-
+		SqlConnection^ objConexion;
 	public:
 		PersonalController();
 		void CargarPersonalDesdeArchivo();
@@ -17,5 +18,15 @@ namespace SistemaMonitoreoGranjaController {
 		List<Personal^>^ buscarPersonal(String^ nombreBuscar);
 		void EliminarPersonal(String^ IDPersonalEliminar);
 		Personal^ buscarPersonalxCodigo(String^ IDBuscar);
+		void AbrirConexion();
+		void CerrarConexion();
+		//base de datos
+		List<Personal^>^ buscarPersonalxNombreBD(String^ Nombre);
+		List<Personal^>^ ObtenerlistaPersonaldesdeBD();
+		void EliminarPersonalBD(String^ IDPersonalEliminar);
+		void GuardarPersonalEnBD(Personal^ objPersonal);
+		Personal^ buscarPersonalxIDBD(String^ ID);
+		void EditarPersonalenBD(Personal^ objPersonal, String^ ID);
+
 	};
 }

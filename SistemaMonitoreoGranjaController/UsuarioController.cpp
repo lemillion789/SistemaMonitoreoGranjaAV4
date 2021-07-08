@@ -80,6 +80,67 @@ int UsuarioController::BuscarContraseñaenBD(String^ ContrasenaBOX) {
 	CerrarConexion();
 	return existe;
 }
+Usuario^ UsuarioController::buscarUsuarioxIDBD(String^ ID) {
+	
+	Usuario^ objUsuario = nullptr;
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from Usuario where ID='" + ID + "';";
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
+	while (objData->Read()) {
+		String^ ID = safe_cast<String^>(objData[0]);
+		String^ contraseña = safe_cast<String^>(objData[1]);
+	
+		objUsuario = gcnew Usuario(ID, contraseña);
+
+	}
+	objData->Close();
+	CerrarConexion();
+	return objUsuario;
+}
+
+
+void UsuarioController::Grabarusuario(String^ ID) {
+
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "insert into Usuario values (@p1,@p2);";
+	/*Esto de los parámetros es solo para el insert*/
+	SqlParameter^ p1 = gcnew SqlParameter("@p1", System::Data::SqlDbType::Int);
+	p1->Value = ID;
+	SqlParameter^ p2 = gcnew SqlParameter("@p2", System::Data::SqlDbType::VarChar, 50);
+	p2->Value = 000000;
+
+	objQuery->Parameters->Add(p1);
+	objQuery->Parameters->Add(p2);
+
+	/*Este método se ejecuta tanto para el update, delete e insert*/
+	objQuery->ExecuteNonQuery();
+	CerrarConexion();
+}
+
+void UsuarioController::EliminarusuarioBD(String^ ID) {
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "Delete FROM Usuario where ID = " + ID + "; ";
+	objQuery->ExecuteNonQuery();
+	CerrarConexion();
+}
+
+void UsuarioController::EditarContraseña(String^ ID, String^ ContrasenaBOX) {
+
+
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "update Usuario set  Contraseña = '" + ContrasenaBOX + "' where ID =" + ID + ";";
+	objQuery->ExecuteNonQuery();
+	CerrarConexion();
+
+}
 /*int UsuarioController::validar(String^ IDBOX, String^ ContrasenaBOX) {
 	
 	int valido1;

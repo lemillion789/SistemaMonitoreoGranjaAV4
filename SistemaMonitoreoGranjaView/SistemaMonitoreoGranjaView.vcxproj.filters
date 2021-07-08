@@ -138,6 +138,9 @@
     <ClCompile Include="frmEditarIncubadora.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
+    <ClCompile Include="EditarContraseña.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmPrincipal.h">
@@ -258,6 +261,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="frmEditarIncubadora.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="EditarContraseña.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

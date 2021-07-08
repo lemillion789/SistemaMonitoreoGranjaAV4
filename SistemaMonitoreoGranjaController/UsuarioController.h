@@ -19,6 +19,11 @@ namespace SistemaMonitoreoGranjaController {
 		 void CerrarConexion();
 		 int BuscarIDenBD(String^ IDBOX);
 		 int BuscarContraseñaenBD(String^ ContrasenaBOX);
+		 Usuario^ buscarUsuarioxIDBD(String^ ID);
 		// int validar(String^ IDBOX, String^ ContrasenaBOX);
+         void Grabarusuario(String^ ID);
+		 void EliminarusuarioBD(String^ ID);
+		 void EditarContraseña(String^ ID, String^ ContrasenaBOX);
+
 	};
 }

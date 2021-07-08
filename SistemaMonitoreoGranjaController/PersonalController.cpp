@@ -5,6 +5,7 @@ using namespace System;
 using namespace System::IO;
 PersonalController::PersonalController() {
 	this->listaPersonal = gcnew List<Personal^>();
+	this->objConexion = gcnew SqlConnection();
 }
 void PersonalController::CargarPersonalDesdeArchivo() {
 
@@ -119,6 +120,152 @@ Personal^ PersonalController::buscarPersonalxCodigo(String^ IDBuscar) {
 		}
 	}
 	return objPersonalEncontrado;
+
+
+}
+// TODO EN BASE DE DATOS 
+void PersonalController::AbrirConexion() {
+
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20152005;User ID=a20152005;Password=WLt8qnYH;";
+	this->objConexion->Open();
+}
+void PersonalController::CerrarConexion() {
+	this->objConexion->Close();
+}
+List<Personal^>^ PersonalController::buscarPersonalxNombreBD(String^ Nombre) {
+	List<Personal^>^ listaPersonal=gcnew List<Personal^>();
+	Personal^ objPersonal = nullptr;
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from Personal where Nombre='" + Nombre + "';";
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
+	while (objData->Read()) {
+		String^ ID =Convert::ToString( (safe_cast<int>(objData[0])));
+		String^ Nombres = safe_cast<String^>(objData[1]);
+		String^ apellidoPaterno = safe_cast<String^>(objData[2]);
+		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
+		String^ Funcion = safe_cast<String^>(objData[4]);
+		String^ Horario = safe_cast<String^>(objData[5]);
+		String^ Tarea = safe_cast<String^>(objData[6]);
+		String^ Asistencia = safe_cast<String^>(objData[7]);
+		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Tarea, Asistencia);
+		listaPersonal->Add(objPersonal);
+	}
+	objData->Close();
+	CerrarConexion();
+	return listaPersonal;
+}
+List<Personal^>^ PersonalController::ObtenerlistaPersonaldesdeBD() {
+
+	List<Personal^>^ listaPersonal = gcnew List<Personal^>();
+	Personal^ objPersonal = nullptr;
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from Personal;";
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
+	while (objData->Read()) {
+		String^ ID = Convert::ToString((safe_cast<int>(objData[0])));
+		String^ Nombres = safe_cast<String^>(objData[1]);
+		String^ apellidoPaterno = safe_cast<String^>(objData[2]);
+		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
+		String^ Funcion = safe_cast<String^>(objData[4]);
+		String^ Horario = safe_cast<String^>(objData[5]);
+		String^ Tarea = safe_cast<String^>(objData[6]);
+		String^ Asistencia = safe_cast<String^>(objData[7]);
+		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Tarea, Asistencia);
+		listaPersonal->Add(objPersonal);
+	}
+	objData->Close();
+	CerrarConexion();
+	return listaPersonal;
+
+}
+void PersonalController::EliminarPersonalBD(String^ IDPersonalEliminar) {
+
+
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "Delete FROM Personal where ID = " + IDPersonalEliminar + "; ";
+objQuery->ExecuteNonQuery();
+	CerrarConexion();
+}
+void PersonalController::GuardarPersonalEnBD(Personal^ objPersonal) {
+
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "insert into Personal values (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8);";
+	/*Esto de los parámetros es solo para el insert*/
+	SqlParameter^ p1 = gcnew SqlParameter("@p1", System::Data::SqlDbType::Int);
+	p1->Value = objPersonal->ID;
+	SqlParameter^ p2 = gcnew SqlParameter("@p2", System::Data::SqlDbType::VarChar, 50);
+	p2->Value = objPersonal->nombre;
+	SqlParameter^ p3 = gcnew SqlParameter("@p3", System::Data::SqlDbType::VarChar, 50);
+	p3->Value = objPersonal->ApPaterno;
+	SqlParameter^ p4 = gcnew SqlParameter("@p4", System::Data::SqlDbType::VarChar, 50);
+	p4->Value = objPersonal->ApMaterno;
+	SqlParameter^ p5 = gcnew SqlParameter("@p5", System::Data::SqlDbType::VarChar, 50);
+	p5->Value = objPersonal->funcion;
+	SqlParameter^ p6 = gcnew SqlParameter("@p6", System::Data::SqlDbType::VarChar, 50);
+	p6->Value = objPersonal->horario;
+	SqlParameter^ p7 = gcnew SqlParameter("@p7", System::Data::SqlDbType::VarChar, 50);
+	p7->Value = objPersonal->tareas;
+	SqlParameter^ p8 = gcnew SqlParameter("@p8", System::Data::SqlDbType::VarChar, 50);
+	p8->Value = objPersonal->asistencia;
+	objQuery->Parameters->Add(p1);
+	objQuery->Parameters->Add(p2);
+	objQuery->Parameters->Add(p3);
+	objQuery->Parameters->Add(p4);
+	objQuery->Parameters->Add(p5);
+	objQuery->Parameters->Add(p6);
+	objQuery->Parameters->Add(p7);
+	objQuery->Parameters->Add(p8);
+	/*Este método se ejecuta tanto para el update, delete e insert*/
+	objQuery->ExecuteNonQuery();
+	CerrarConexion();
+
+
+
+}
+Personal^ PersonalController::buscarPersonalxIDBD(String^ ID) {
+	List<Personal^>^ listaPersonal = gcnew List<Personal^>();
+	Personal^ objPersonal = nullptr;
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "select * from Personal where ID='" + ID + "';";
+	SqlDataReader^ objData = objQuery->ExecuteReader(); /*Cuando es un select, se utiliza ExecuteReader*/
+	while (objData->Read()) {
+		String^ ID = Convert::ToString((safe_cast<int>(objData[0])));
+		String^ Nombres = safe_cast<String^>(objData[1]);
+		String^ apellidoPaterno = safe_cast<String^>(objData[2]);
+		String^ apellidoMaterno = safe_cast<String^>(objData[3]);
+		String^ Funcion = safe_cast<String^>(objData[4]);
+		String^ Horario = safe_cast<String^>(objData[5]);
+		String^ Tarea = safe_cast<String^>(objData[6]);
+		String^ Asistencia = safe_cast<String^>(objData[7]);
+		objPersonal = gcnew Personal(ID, Nombres, apellidoPaterno, apellidoMaterno, Funcion, Horario, Tarea, Asistencia);
+		
+	}
+	objData->Close();
+	CerrarConexion();
+	return objPersonal;
+}
+
+void PersonalController::EditarPersonalenBD(Personal^ objPersonal, String^ ID) {
+
+	AbrirConexion();
+	SqlCommand^ objQuery = gcnew SqlCommand();
+	objQuery->Connection = this->objConexion;
+	objQuery->CommandText = "update Personal set ID = "+ objPersonal->ID +", Nombre = '" + objPersonal->nombre + "', apPaterno = '" + objPersonal->ApPaterno + "', ApMaterno = '" + objPersonal->ApMaterno + "', Funcion= '" + objPersonal->funcion + "', Horario = '" + objPersonal->horario + "', Tareas = '" + objPersonal->tareas+ "', Asistencia = '" + objPersonal->asistencia + "' where ID =" + ID + ";";
+	objQuery->ExecuteNonQuery();
+	CerrarConexion();
+
+
+
 
 
 }
