@@ -1,11 +1,7 @@
-00001;False
-00004;False
-00007;False
+12345;True
+12347;True
+12349;True
+00004;True
+00019;True
 00010;True
 00013;True
-00016;False
-00019;True
-12348;True
-12351;True
-12352;True
-12353;True

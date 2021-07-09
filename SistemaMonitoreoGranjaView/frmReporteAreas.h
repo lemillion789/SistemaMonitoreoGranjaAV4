@@ -50,7 +50,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: String^ IDSensorSeleccionado;
 	private: String^ IDAreaSeleccionado;
 	private: String^ IDComederoSeleccionado;
-
+	private: String^ IDIncubadoraSeleccionada;
 	protected:
 
 	private:
@@ -230,6 +230,7 @@ namespace SistemaMonitoreoGranjaView {
 	}
 	private: System::Void comboBox1_SelectedIndexChanged_1(System::Object^ sender, System::EventArgs^ e) {
 		AreasDeAnimalesController^ objGestorAreaController = gcnew AreasDeAnimalesController();
+		IncubadorasController^ objGestorIncubadora = gcnew IncubadorasController();
 		objGestorAreaController->CargarAreasDesdeArchivo();
 		AreaDeAnimales^ objArea = objGestorAreaController->ObtenerAreaLista(comboBox1->SelectedIndex);
 		this->IDAreaSeleccionado = objArea->ID;
@@ -239,6 +240,13 @@ namespace SistemaMonitoreoGranjaView {
 			Comederos^ objComedero = listaComederos[i];
 			String^ nombre = objComedero->nombre;
 			this->comboBox2->Items->Add(nombre);
+		}
+		if (objGestorIncubadora->verificarIncubadora(objArea->ID)) {
+			//objGestorIncubadora->CargarIncubadorasDesdeArchivo();
+			//Incubadoras^ objIncubadora = objGestorIncubadora->buscarIncubadorasxID(objArea->ID);
+			this->comboBox2->Items->Add("Incubadora");
+			//this->comboBox2->Items->Add(objIncubadora->List_Sensores[0]);
+			//this->comboBox2->Items->Add(objIncubadora->List_Sensores[1]);
 		}
 	}
 private: System::Void comboBox3_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -250,26 +258,47 @@ private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, Sys
 	AreaDeAnimales^ objArea = objGestorAreaController->ObtenerAreaLista(comboBox1->SelectedIndex);
 	List<Comederos^>^ listaComederos = objGestorAreaController->BuscarComederosArea(objArea->ID);
 	
-	Comederos^ ComederoSeleccionado = listaComederos[comboBox2->SelectedIndex];
-	
-	ComedoresController^ objGestorComederoController = gcnew ComedoresController();
-	List<Sensores^>^ listaSensores = objGestorComederoController->buscarSensoresComedero(ComederoSeleccionado->ID);
-	this->IDComederoSeleccionado = ComederoSeleccionado->ID;
-	for (int i = 0; i < listaSensores->Count; i++) {
-		Sensores^ objSensor = listaSensores[i];
-		String^ nombre = objSensor->Nombre;
-		this->comboBox3->Items->Add(nombre);
+	if (comboBox2->SelectedIndex == 0) {
+		Comederos^ ComederoSeleccionado = listaComederos[comboBox2->SelectedIndex];
+
+		ComedoresController^ objGestorComederoController = gcnew ComedoresController();
+		List<Sensores^>^ listaSensores = objGestorComederoController->buscarSensoresComedero(ComederoSeleccionado->ID);
+		this->IDComederoSeleccionado = ComederoSeleccionado->ID;
+		for (int i = 0; i < listaSensores->Count; i++) {
+			Sensores^ objSensor = listaSensores[i];
+			String^ nombre = objSensor->Nombre;
+			this->comboBox3->Items->Add(nombre);
+		}
 	}
+	else if (comboBox2->SelectedIndex == 1) {
+		IncubadorasController^ objGestorIncubadora = gcnew IncubadorasController();
+		objGestorIncubadora->CargarIncubadorasDesdeArchivo();
+		Incubadoras^ objIncubadora = objGestorIncubadora->buscarIncubadorasxID(objArea->ID);
+		this->IDIncubadoraSeleccionada = objIncubadora->ID;
+		this->comboBox3->Items->Add(objIncubadora->List_Sensores[0]->tipoSensor);
+		this->comboBox3->Items->Add(objIncubadora->List_Sensores[1]->tipoSensor);
+	}
+	
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (this->comboBox3->Text == "") {
 		MessageBox::Show("Seleccione todos los parametros");
 	}
-	else{
+	else if (comboBox2->SelectedIndex == 0) {
 		ComedoresController^ objGestorComederoController = gcnew ComedoresController();
 		List<Sensores^>^ listaSensores = objGestorComederoController->buscarSensoresComedero(this->IDComederoSeleccionado);
 		Sensores^ SensorSeleccionado = listaSensores[comboBox3->SelectedIndex];
 
+		verReporteMediciones^ ventanaReporteMedicion = gcnew verReporteMediciones(SensorSeleccionado->ID);
+		ventanaReporteMedicion->ShowDialog();
+	}
+	else if (comboBox2->SelectedIndex == 1) {
+		IncubadorasController^ objGestorIncubadora = gcnew IncubadorasController();
+		objGestorIncubadora->CargarIncubadorasDesdeArchivo();
+		Incubadoras^ objIncubadora = objGestorIncubadora->buscarIncubadorasxID(this->IDIncubadoraSeleccionada);
+
+		List<Sensores^>^ listaSensores = objIncubadora->List_Sensores;
+		Sensores^ SensorSeleccionado = listaSensores[comboBox3->SelectedIndex];
 		verReporteMediciones^ ventanaReporteMedicion = gcnew verReporteMediciones(SensorSeleccionado->ID);
 		ventanaReporteMedicion->ShowDialog();
 	}
