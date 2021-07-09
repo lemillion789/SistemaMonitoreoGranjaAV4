@@ -68,7 +68,7 @@ namespace SistemaMonitoreoGranjaView {
 			}
 		}
 	private: int user = 1;
-	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+
 	protected:
 
 
@@ -121,17 +121,17 @@ namespace SistemaMonitoreoGranjaView {
 	private: System::Windows::Forms::ToolStripMenuItem^ loginToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ iniciarSesiónToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesiónToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ mantenimientosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ almacenToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ alimentosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ farmacosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ personalToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ comederosToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ incubadorasToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ sensoresToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ areaDeAnimalesToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ reportesToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ areasDeAnimalesToolStripMenuItem;
+
+
+
+
+
+
+
+
+
+
+
 
 private: System::Windows::Forms::Panel^ PanelReportes;
 private: System::Windows::Forms::Panel^ panel6;
@@ -170,6 +170,7 @@ private: System::Windows::Forms::Button^ botonareas;
 private: System::Windows::Forms::Panel^ panelMantenimientos;
 
 	private: List<Almacen^>^ listaAlmacenes;
+private: System::Windows::Forms::Panel^ panel1;
 	private: String^ IDUsuario;
 
 
@@ -188,18 +189,6 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmPrincipal::typeid));
-			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->mantenimientosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->almacenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->alimentosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->farmacosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->personalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->comederosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->incubadorasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->sensoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->areaDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->reportesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->areasDeAnimalesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -256,7 +245,7 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->botonareas = (gcnew System::Windows::Forms::Button());
 			this->panelMantenimientos = (gcnew System::Windows::Forms::Panel());
-			this->menuStrip1->SuspendLayout();
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->Menu->SuspendLayout();
 			this->panel5->SuspendLayout();
 			this->panel4->SuspendLayout();
@@ -278,106 +267,8 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->panel10->SuspendLayout();
 			this->panel11->SuspendLayout();
 			this->panelMantenimientos->SuspendLayout();
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
-			// 
-			// menuStrip1
-			// 
-			this->menuStrip1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(204)), static_cast<System::Int32>(static_cast<System::Byte>(202)),
-				static_cast<System::Int32>(static_cast<System::Byte>(203)));
-			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->mantenimientosToolStripMenuItem,
-					this->reportesToolStripMenuItem
-			});
-			this->menuStrip1->Location = System::Drawing::Point(200, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(683, 24);
-			this->menuStrip1->TabIndex = 1;
-			this->menuStrip1->Text = L"menuStrip1";
-			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &frmPrincipal::menuStrip1_ItemClicked);
-			// 
-			// mantenimientosToolStripMenuItem
-			// 
-			this->mantenimientosToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(8) {
-				this->almacenToolStripMenuItem,
-					this->alimentosToolStripMenuItem, this->farmacosToolStripMenuItem, this->personalToolStripMenuItem, this->comederosToolStripMenuItem,
-					this->incubadorasToolStripMenuItem, this->sensoresToolStripMenuItem, this->areaDeAnimalesToolStripMenuItem
-			});
-			this->mantenimientosToolStripMenuItem->Name = L"mantenimientosToolStripMenuItem";
-			this->mantenimientosToolStripMenuItem->Size = System::Drawing::Size(106, 20);
-			this->mantenimientosToolStripMenuItem->Text = L"Mantenimientos";
-			this->mantenimientosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::mantenimientosToolStripMenuItem_Click);
-			// 
-			// almacenToolStripMenuItem
-			// 
-			this->almacenToolStripMenuItem->Name = L"almacenToolStripMenuItem";
-			this->almacenToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->almacenToolStripMenuItem->Text = L"Almacen";
-			this->almacenToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::almacenToolStripMenuItem_Click);
-			// 
-			// alimentosToolStripMenuItem
-			// 
-			this->alimentosToolStripMenuItem->Name = L"alimentosToolStripMenuItem";
-			this->alimentosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->alimentosToolStripMenuItem->Text = L"Alimentos";
-			this->alimentosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::alimentosToolStripMenuItem_Click);
-			// 
-			// farmacosToolStripMenuItem
-			// 
-			this->farmacosToolStripMenuItem->Name = L"farmacosToolStripMenuItem";
-			this->farmacosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->farmacosToolStripMenuItem->Text = L"Farmacos";
-			this->farmacosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::farmacosToolStripMenuItem_Click);
-			// 
-			// personalToolStripMenuItem
-			// 
-			this->personalToolStripMenuItem->Name = L"personalToolStripMenuItem";
-			this->personalToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->personalToolStripMenuItem->Text = L"Personal";
-			this->personalToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::personalToolStripMenuItem_Click);
-			// 
-			// comederosToolStripMenuItem
-			// 
-			this->comederosToolStripMenuItem->Name = L"comederosToolStripMenuItem";
-			this->comederosToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->comederosToolStripMenuItem->Text = L"Comederos";
-			this->comederosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::comederosToolStripMenuItem_Click);
-			// 
-			// incubadorasToolStripMenuItem
-			// 
-			this->incubadorasToolStripMenuItem->Name = L"incubadorasToolStripMenuItem";
-			this->incubadorasToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->incubadorasToolStripMenuItem->Text = L"Incubadoras";
-			this->incubadorasToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::incubadorasToolStripMenuItem_Click);
-			// 
-			// sensoresToolStripMenuItem
-			// 
-			this->sensoresToolStripMenuItem->Name = L"sensoresToolStripMenuItem";
-			this->sensoresToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->sensoresToolStripMenuItem->Text = L"Sensores";
-			this->sensoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::sensoresToolStripMenuItem_Click);
-			// 
-			// areaDeAnimalesToolStripMenuItem
-			// 
-			this->areaDeAnimalesToolStripMenuItem->Name = L"areaDeAnimalesToolStripMenuItem";
-			this->areaDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(166, 22);
-			this->areaDeAnimalesToolStripMenuItem->Text = L"Area de Animales";
-			this->areaDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areaDeAnimalesToolStripMenuItem_Click);
-			// 
-			// reportesToolStripMenuItem
-			// 
-			this->reportesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->areasDeAnimalesToolStripMenuItem });
-			this->reportesToolStripMenuItem->Name = L"reportesToolStripMenuItem";
-			this->reportesToolStripMenuItem->Size = System::Drawing::Size(65, 20);
-			this->reportesToolStripMenuItem->Text = L"Reportes";
-			// 
-			// areasDeAnimalesToolStripMenuItem
-			// 
-			this->areasDeAnimalesToolStripMenuItem->Name = L"areasDeAnimalesToolStripMenuItem";
-			this->areasDeAnimalesToolStripMenuItem->Size = System::Drawing::Size(171, 22);
-			this->areasDeAnimalesToolStripMenuItem->Text = L"Areas de Animales";
-			this->areasDeAnimalesToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::areasDeAnimalesToolStripMenuItem_Click);
 			// 
 			// button1
 			// 
@@ -524,17 +415,18 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Location = System::Drawing::Point(608, 9);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(18, 18);
 			this->pictureBox1->TabIndex = 10;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &frmPrincipal::pictureBox1_Click);
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox2->Location = System::Drawing::Point(36, 12);
+			this->pictureBox2->Location = System::Drawing::Point(632, 9);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(18, 18);
 			this->pictureBox2->TabIndex = 11;
@@ -544,7 +436,7 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			// 
 			this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
 			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox3->Location = System::Drawing::Point(60, 12);
+			this->pictureBox3->Location = System::Drawing::Point(656, 9);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(18, 18);
 			this->pictureBox3->TabIndex = 12;
@@ -565,9 +457,6 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->panelMenú->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
 				static_cast<System::Int32>(static_cast<System::Byte>(78)));
 			this->panelMenú->Controls->Add(this->pictureBox4);
-			this->panelMenú->Controls->Add(this->pictureBox3);
-			this->panelMenú->Controls->Add(this->pictureBox2);
-			this->panelMenú->Controls->Add(this->pictureBox1);
 			this->panelMenú->Controls->Add(this->label4);
 			this->panelMenú->Controls->Add(this->button7);
 			this->panelMenú->Controls->Add(this->button8);
@@ -1047,26 +936,36 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->panelMantenimientos->Size = System::Drawing::Size(683, 477);
 			this->panelMantenimientos->TabIndex = 9;
 			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(204)), static_cast<System::Int32>(static_cast<System::Byte>(202)),
+				static_cast<System::Int32>(static_cast<System::Byte>(203)));
+			this->panel1->Controls->Add(this->pictureBox2);
+			this->panel1->Controls->Add(this->pictureBox3);
+			this->panel1->Controls->Add(this->pictureBox1);
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel1->Location = System::Drawing::Point(200, 0);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(683, 30);
+			this->panel1->TabIndex = 10;
+			// 
 			// frmPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(883, 498);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->PanelReportes);
 			this->Controls->Add(this->Menu);
-			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->panelMenú);
 			this->Controls->Add(this->panelMantenimientos);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
-			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"frmPrincipal";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L" ";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &frmPrincipal::frmPrincipal_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);
-			this->menuStrip1->ResumeLayout(false);
-			this->menuStrip1->PerformLayout();
 			this->Menu->ResumeLayout(false);
 			this->panel5->ResumeLayout(false);
 			this->panel5->PerformLayout();
@@ -1094,8 +993,8 @@ private: System::Windows::Forms::Panel^ panelMantenimientos;
 			this->panel10->ResumeLayout(false);
 			this->panel11->ResumeLayout(false);
 			this->panelMantenimientos->ResumeLayout(false);
+			this->panel1->ResumeLayout(false);
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -1368,6 +1267,10 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmMisEstadisticas^ ventanaReporte = gcnew frmMisEstadisticas(IDUsuario);
 	ventanaReporte->ShowDialog();
+}
+private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	Application::Exit();
+
 }
 };
 }

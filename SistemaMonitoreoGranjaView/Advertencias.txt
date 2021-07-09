@@ -1,7 +1,0 @@
-12345;True
-12347;True
-12349;True
-00004;True
-00019;True
-00010;True
-00013;True

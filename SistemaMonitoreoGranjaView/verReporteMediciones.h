@@ -49,6 +49,9 @@ namespace SistemaMonitoreoGranjaView {
 	private: String^ IDsensor;
 	private: System::Windows::Forms::Timer^ timer1;
 	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ button1;
 
 	private: System::ComponentModel::IContainer^ components;
 	protected:
@@ -70,28 +73,40 @@ namespace SistemaMonitoreoGranjaView {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(verReporteMediciones::typeid));
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
+			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			this->chart1->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->chart1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->chart1->BackImageAlignment = System::Windows::Forms::DataVisualization::Charting::ChartImageAlignmentStyle::BottomLeft;
+			this->chart1->BorderlineColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->chart1->BorderSkin->BorderColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)),
+				static_cast<System::Int32>(static_cast<System::Byte>(93)), static_cast<System::Int32>(static_cast<System::Byte>(78)));
 			chartArea1->Name = L"ChartArea1";
 			this->chart1->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(195, 0);
-			this->chart1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->chart1->Margin = System::Windows::Forms::Padding(2);
 			this->chart1->Name = L"chart1";
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
 			series1->Legend = L"Legend1";
 			series1->Name = L"Mediciones";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(671, 448);
+			this->chart1->Size = System::Drawing::Size(677, 471);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
@@ -103,13 +118,52 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
-				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->panel1->Controls->Add(this->button1);
+			this->panel1->Controls->Add(this->label1);
+			this->panel1->Controls->Add(this->pictureBox1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Left;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(200, 459);
 			this->panel1->TabIndex = 1;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Location = System::Drawing::Point(40, 381);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(105, 28);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"Cerrar";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &verReporteMediciones::button1_Click_1);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Gadugi", 24, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->label1->Location = System::Drawing::Point(3, 175);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(187, 38);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"Estadísticas";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->Location = System::Drawing::Point(12, 36);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(163, 126);
+			this->pictureBox1->TabIndex = 2;
+			this->pictureBox1->TabStop = false;
 			// 
 			// verReporteMediciones
 			// 
@@ -118,11 +172,15 @@ namespace SistemaMonitoreoGranjaView {
 			this->ClientSize = System::Drawing::Size(867, 459);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->chart1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"verReporteMediciones";
 			this->Text = L"verReporteMediciones";
 			this->Load += gcnew System::EventHandler(this, &verReporteMediciones::verReporteMediciones_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -180,6 +238,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	TareaController^ gestorTarea = gcnew TareaController();
 	gestorTarea->realizarTareaSensor(this->IDsensor);
 
+}
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
 }
 };
 }
