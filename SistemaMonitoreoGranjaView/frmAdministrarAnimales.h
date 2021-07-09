@@ -127,17 +127,27 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button2
 			// 
+			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Gadugi", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
 			this->button2->Location = System::Drawing::Point(566, 152);
 			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(86, 35);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Ver Area";
-			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Text = L"Ver Área";
+			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &frmAdministrarAnimales::button2_Click);
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
 				this->Column1,
@@ -220,6 +230,10 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox2->Controls->Add(this->CheckBox);
 			this->groupBox2->Controls->Add(this->comboBox1);
 			this->groupBox2->Controls->Add(this->label1);
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Gadugi", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->groupBox2->Location = System::Drawing::Point(10, 17);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(642, 82);
@@ -230,9 +244,11 @@ namespace SistemaMonitoreoGranjaView {
 			// CheckBox
 			// 
 			this->CheckBox->AutoSize = true;
-			this->CheckBox->Location = System::Drawing::Point(408, 42);
+			this->CheckBox->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->CheckBox->Location = System::Drawing::Point(401, 35);
 			this->CheckBox->Name = L"CheckBox";
-			this->CheckBox->Size = System::Drawing::Size(147, 17);
+			this->CheckBox->Size = System::Drawing::Size(223, 23);
 			this->CheckBox->TabIndex = 4;
 			this->CheckBox->Text = L"Mostrar Solo Incubadoras";
 			this->CheckBox->UseVisualStyleBackColor = true;
@@ -240,21 +256,27 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Gadugi", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Bovino", L"Cuy", L"Alpaca" });
 			this->comboBox1->Location = System::Drawing::Point(142, 38);
 			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(208, 21);
+			this->comboBox1->Size = System::Drawing::Size(208, 22);
 			this->comboBox1->TabIndex = 3;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &frmAdministrarAnimales::comboBox1_SelectedIndexChanged);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->label1->Location = System::Drawing::Point(61, 40);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(44, 13);
+			this->label1->Size = System::Drawing::Size(72, 19);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Animal :";
 			// 
@@ -262,6 +284,8 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
 			this->ClientSize = System::Drawing::Size(667, 407);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox2);
