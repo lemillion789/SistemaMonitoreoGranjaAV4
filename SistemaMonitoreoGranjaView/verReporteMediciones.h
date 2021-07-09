@@ -126,7 +126,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Left;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(200, 459);
+			this->panel1->Size = System::Drawing::Size(199, 459);
 			this->panel1->TabIndex = 1;
 			// 
 			// button1
@@ -159,6 +159,7 @@ namespace SistemaMonitoreoGranjaView {
 			// pictureBox1
 			// 
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 			this->pictureBox1->Location = System::Drawing::Point(12, 36);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(163, 126);
@@ -172,7 +173,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->ClientSize = System::Drawing::Size(867, 459);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->chart1);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"verReporteMediciones";
 			this->Text = L"verReporteMediciones";

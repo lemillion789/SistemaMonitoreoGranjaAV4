@@ -122,10 +122,10 @@ namespace SistemaMonitoreoGranjaView {
 			this->chart1->Name = L"chart1";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
-			series1->Name = L"Lista1";
+			series1->Name = L"Pendient.";
 			series2->ChartArea = L"ChartArea1";
 			series2->Legend = L"Legend1";
-			series2->Name = L"Lista2";
+			series2->Name = L"Complet.";
 			this->chart1->Series->Add(series1);
 			this->chart1->Series->Add(series2);
 			this->chart1->Size = System::Drawing::Size(373, 337);
@@ -314,14 +314,14 @@ private: System::Void frmMisEstadisticas_Load(System::Object^ sender, System::Ev
 			listaTareasGrilla2->Add(this->listaTareas[i]);
 	}
 	mostrarGrilla2(listaTareasGrilla2);
-	this->chart1->Series["Lista1"]->Points->Add(listaTareasGrilla1->Count);
-	this->chart1->Series["Lista1"]->Points[0]->AxisLabel = "Tareas pendientes";  //etiquetaX
-	this->chart1->Series["Lista1"]->Points[0]->LegendText = "Tareas pendientes"; //legenda
-	this->chart1->Series["Lista1"]->Points[0]->Label = Convert::ToString(listaTareasGrilla1->Count);  //etiquetaY
-	this->chart1->Series["Lista2"]->Points->Add(listaTareasGrilla2->Count);
-	this->chart1->Series["Lista2"]->Points[0]->AxisLabel = "Tareas completadas";  //etiquetaX
-	this->chart1->Series["Lista2"]->Points[0]->LegendText = "Tareas completadas"; //legenda
-	this->chart1->Series["Lista2"]->Points[0]->Label = Convert::ToString(listaTareasGrilla2->Count);  //etiquetaY
+	this->chart1->Series["Pendient."]->Points->Add(listaTareasGrilla1->Count);
+	//this->chart1->Series["Pendient."]->Points[0]->AxisLabel = "Tareas pendientes";  //etiquetaX
+	this->chart1->Series["Pendient."]->Points[0]->LegendText = "Tareas pendientes"; //legenda
+	this->chart1->Series["Pendient."]->Points[0]->Label = Convert::ToString(listaTareasGrilla1->Count);  //etiquetaY
+	this->chart1->Series["Complet."]->Points->Add(listaTareasGrilla2->Count);
+	//this->chart1->Series["Complet."]->Points[0]->AxisLabel = "Tareas completadas";  //etiquetaX
+	this->chart1->Series["Complet."]->Points[0]->LegendText = "Tareas completadas"; //legenda
+	this->chart1->Series["Complet."]->Points[0]->Label = Convert::ToString(listaTareasGrilla2->Count);  //etiquetaY
 }
 private: void mostrarGrilla1(List<Tarea^>^ listaTarea) {
 	this->dataGridView1->Rows->Clear();

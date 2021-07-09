@@ -51,6 +51,7 @@ namespace SistemaMonitoreoGranjaView {
 	private: String^ IDAreaSeleccionado;
 	private: String^ IDComederoSeleccionado;
 	private: String^ IDIncubadoraSeleccionada;
+	private: System::Windows::Forms::Label^ label5;
 	protected:
 
 	private:
@@ -66,9 +67,9 @@ namespace SistemaMonitoreoGranjaView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -79,22 +80,23 @@ namespace SistemaMonitoreoGranjaView {
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chart1->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart1->Legends->Add(legend3);
+			chartArea2->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart1->Legends->Add(legend2);
 			this->chart1->Location = System::Drawing::Point(268, 53);
 			this->chart1->Name = L"chart1";
-			series3->ChartArea = L"ChartArea1";
-			series3->Legend = L"Legend1";
-			series3->Name = L"Areas";
-			this->chart1->Series->Add(series3);
+			series2->ChartArea = L"ChartArea1";
+			series2->Legend = L"Legend1";
+			series2->Name = L"Areas";
+			this->chart1->Series->Add(series2);
 			this->chart1->Size = System::Drawing::Size(657, 367);
 			this->chart1->TabIndex = 1;
 			this->chart1->Text = L"chart1";
@@ -114,13 +116,14 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
 				static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->groupBox1->Location = System::Drawing::Point(28, 52);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
 			this->groupBox1->Size = System::Drawing::Size(190, 368);
 			this->groupBox1->TabIndex = 2;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Estado";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &frmReporteAreas::groupBox1_Enter);
 			// 
 			// button1
 			// 
@@ -129,7 +132,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->button1->FlatAppearance->BorderSize = 0;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Location = System::Drawing::Point(54, 325);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(80, 25);
 			this->button1->TabIndex = 7;
@@ -140,7 +143,7 @@ namespace SistemaMonitoreoGranjaView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(56, 251);
+			this->label4->Location = System::Drawing::Point(56, 252);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(76, 19);
@@ -150,12 +153,13 @@ namespace SistemaMonitoreoGranjaView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(47, 177);
+			this->label3->Location = System::Drawing::Point(50, 168);
 			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(95, 19);
+			this->label3->Size = System::Drawing::Size(103, 38);
 			this->label3->TabIndex = 5;
-			this->label3->Text = L"Comederos";
+			this->label3->Text = L"Comederos/\r\nIncubadoras";
+			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label2
 			// 
@@ -172,8 +176,8 @@ namespace SistemaMonitoreoGranjaView {
 			this->comboBox3->Font = (gcnew System::Drawing::Font(L"Gadugi", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(22, 284);
-			this->comboBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->comboBox3->Location = System::Drawing::Point(22, 283);
+			this->comboBox3->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(144, 22);
 			this->comboBox3->TabIndex = 3;
@@ -184,8 +188,8 @@ namespace SistemaMonitoreoGranjaView {
 			this->comboBox2->Font = (gcnew System::Drawing::Font(L"Gadugi", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(22, 210);
-			this->comboBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->comboBox2->Location = System::Drawing::Point(22, 218);
+			this->comboBox2->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(144, 22);
 			this->comboBox2->TabIndex = 2;
@@ -196,8 +200,8 @@ namespace SistemaMonitoreoGranjaView {
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Gadugi", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(22, 136);
-			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->comboBox1->Location = System::Drawing::Point(22, 134);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(144, 22);
 			this->comboBox1->TabIndex = 1;
@@ -215,6 +219,18 @@ namespace SistemaMonitoreoGranjaView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Seleccione los \r\nparametros para \r\nver las mediciones:";
 			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(264, 20);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(207, 19);
+			this->label5->TabIndex = 5;
+			this->label5->Text = L"Cant. Comederos por Área";
+			// 
 			// frmReporteAreas
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -222,9 +238,12 @@ namespace SistemaMonitoreoGranjaView {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
 				static_cast<System::Int32>(static_cast<System::Byte>(78)));
 			this->ClientSize = System::Drawing::Size(956, 492);
+			this->Controls->Add(this->label5);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->chart1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"frmReporteAreas";
 			this->Text = L"frmReporteAreas";
 			this->Load += gcnew System::EventHandler(this, &frmReporteAreas::frmReporteAreas_Load);
@@ -232,6 +251,7 @@ namespace SistemaMonitoreoGranjaView {
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -332,6 +352,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	
 }
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
