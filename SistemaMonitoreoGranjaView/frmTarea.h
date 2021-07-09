@@ -114,14 +114,14 @@ namespace SistemaMonitoreoGranjaView {
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -133,74 +133,40 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(1110, 348);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->button1->Location = System::Drawing::Point(842, 285);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(136, 31);
+			this->button1->Size = System::Drawing::Size(140, 61);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Asignar Tarea";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &frmTarea::button1_Click);
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column4,
 					this->Column1, this->Column2, this->Column3
 			});
-			this->dataGridView1->Location = System::Drawing::Point(15, 274);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridView1->Location = System::Drawing::Point(11, 223);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(1070, 231);
+			this->dataGridView1->Size = System::Drawing::Size(802, 188);
 			this->dataGridView1->TabIndex = 9;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmTarea::dataGridView1_CellContentClick);
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(16, 256);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(124, 17);
-			this->label1->TabIndex = 10;
-			this->label1->Text = L"Tarea pendientes:";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(11, 44);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(120, 17);
-			this->label2->TabIndex = 12;
-			this->label2->Text = L"Tarea Asignadas:";
-			this->label2->Click += gcnew System::EventHandler(this, &frmTarea::label2_Click);
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(625, 522);
-			this->button2->Margin = System::Windows::Forms::Padding(4);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(136, 31);
-			this->button2->TabIndex = 14;
-			this->button2->Text = L"Grabar";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &frmTarea::button2_Click);
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(1110, 116);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(136, 31);
-			this->button3->TabIndex = 15;
-			this->button3->Text = L"Quitar Tarea";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &frmTarea::button3_Click);
 			// 
 			// Column4
 			// 
@@ -230,20 +196,77 @@ namespace SistemaMonitoreoGranjaView {
 			this->Column3->Name = L"Column3";
 			this->Column3->Width = 400;
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(12, 208);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(93, 13);
+			this->label1->TabIndex = 10;
+			this->label1->Text = L"Tarea pendientes:";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(8, 36);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(90, 13);
+			this->label2->TabIndex = 12;
+			this->label2->Text = L"Tarea Asignadas:";
+			this->label2->Click += gcnew System::EventHandler(this, &frmTarea::label2_Click);
+			// 
+			// button2
+			// 
+			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->button2->FlatAppearance->BorderSize = 0;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->button2->Location = System::Drawing::Point(388, 431);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(131, 36);
+			this->button2->TabIndex = 14;
+			this->button2->Text = L"Grabar";
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &frmTarea::button2_Click);
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)), static_cast<System::Int32>(static_cast<System::Byte>(237)),
+				static_cast<System::Int32>(static_cast<System::Byte>(238)));
+			this->button3->FlatAppearance->BorderSize = 0;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Gadugi", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->button3->Location = System::Drawing::Point(842, 91);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(140, 61);
+			this->button3->TabIndex = 15;
+			this->button3->Text = L"Quitar Tarea";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &frmTarea::button3_Click);
+			// 
 			// dataGridView2
 			// 
+			this->dataGridView2->BackgroundColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(239)),
+				static_cast<System::Int32>(static_cast<System::Byte>(237)), static_cast<System::Int32>(static_cast<System::Byte>(238)));
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->dataGridViewTextBoxColumn1,
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4
 			});
-			this->dataGridView2->Location = System::Drawing::Point(12, 63);
-			this->dataGridView2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridView2->Location = System::Drawing::Point(9, 51);
+			this->dataGridView2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->RowHeadersWidth = 51;
 			this->dataGridView2->RowTemplate->Height = 24;
 			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView2->Size = System::Drawing::Size(1070, 174);
+			this->dataGridView2->Size = System::Drawing::Size(802, 141);
 			this->dataGridView2->TabIndex = 16;
 			// 
 			// dataGridViewTextBoxColumn1
@@ -276,9 +299,11 @@ namespace SistemaMonitoreoGranjaView {
 			// 
 			// frmTarea
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1274, 577);
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(242)), static_cast<System::Int32>(static_cast<System::Byte>(93)),
+				static_cast<System::Int32>(static_cast<System::Byte>(78)));
+			this->ClientSize = System::Drawing::Size(997, 488);
 			this->Controls->Add(this->dataGridView2);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
@@ -286,7 +311,6 @@ namespace SistemaMonitoreoGranjaView {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"frmTarea";
 			this->Text = L"frmTarea";
 			this->Load += gcnew System::EventHandler(this, &frmTarea::frmTarea_Load);

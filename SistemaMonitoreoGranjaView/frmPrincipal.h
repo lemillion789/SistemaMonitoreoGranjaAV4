@@ -415,7 +415,7 @@ private: System::Windows::Forms::Panel^ panel1;
 			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
 			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(608, 9);
+			this->pictureBox1->Location = System::Drawing::Point(653, 9);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(18, 18);
 			this->pictureBox1->TabIndex = 10;
@@ -426,7 +426,7 @@ private: System::Windows::Forms::Panel^ panel1;
 			// 
 			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
 			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox2->Location = System::Drawing::Point(632, 9);
+			this->pictureBox2->Location = System::Drawing::Point(629, 9);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(18, 18);
 			this->pictureBox2->TabIndex = 11;
@@ -436,7 +436,7 @@ private: System::Windows::Forms::Panel^ panel1;
 			// 
 			this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
 			this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->pictureBox3->Location = System::Drawing::Point(656, 9);
+			this->pictureBox3->Location = System::Drawing::Point(605, 9);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(18, 18);
 			this->pictureBox3->TabIndex = 12;
@@ -535,7 +535,7 @@ private: System::Windows::Forms::Panel^ panel1;
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(200, 53);
 			this->button4->TabIndex = 0;
-			this->button4->Text = L"      Inicio";
+			this->button4->Text = L"      Administ.";
 			this->button4->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &frmPrincipal::button4_Click);
@@ -1242,7 +1242,7 @@ private: System::Void botonsensores_Click(System::Object^ sender, System::EventA
 }
 private: System::Void botonareas_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (user) {
-		frmAdministrarAnimales^ ventana = gcnew frmAdministrarAnimales();
+		frmMantAreaDeAnimales^ ventana = gcnew frmMantAreaDeAnimales();
 		ventana->ShowDialog();
 	}
 	else {
